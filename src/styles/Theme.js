@@ -14,19 +14,19 @@ export const Theme = {
   typographies: {
     TITLE: css`
       font-size: 36px;
-      font-weight: 500;
+      font-weight: 700;
     `,
     SUB_TITLE: css`
       font-size: 24px;
-      font-weight: 500;
+      font-weight: 700;
     `,
     DEFAULT_TXT: css`
       font-size: 16px;
-      font-weight: 400;
+      font-weight: 500;
     `,
     BIG_TXT: css`
       font-size: 20px;
-      font-weight: 400;
+      font-weight: 500;
     `,
     SMALL_TXT: css`
       font-size: 14px;
@@ -34,11 +34,11 @@ export const Theme = {
     `,
     BIG_BTN_TXT: css`
       font-size: 32px;
-      font-weight: 400;
+      font-weight: 500;
     `,
     SMALL_BTN_TXT: css`
       font-size: 16px;
-      font-weight: 400;
+      font-weight: 500;
     `,
   },
 };

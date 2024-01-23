@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+import './font.css';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -9,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'GmarketSans', 'nanumgothic', sans-serif;
   }
   button {
     margin: 0;
