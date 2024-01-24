@@ -41,4 +41,8 @@ export const Theme = {
       font-weight: 500;
     `,
   },
+  device: {
+    DESKTOP: `(min-width: 1200px)`,
+    MOBILE: `(min-width: 350px) `,
+  },
 };
