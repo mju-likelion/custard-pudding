@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
   ${reset}
   * {
     box-sizing: border-box;
+    font-family: 'GmarketSans', 'nanumgothic', sans-serif;
   }
   body {
     margin: 0;
