@@ -11,6 +11,7 @@ const Wrapper = styled.button`
   padding: 9px 16px;
   width: 74px;
   height: 26px;
+  color: ${({ theme }) => theme.colors.WHITE_TXT};
   background-color: ${({ theme }) => theme.colors.MAIN_PINK};
 
   &:hover {

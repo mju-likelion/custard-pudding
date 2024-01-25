@@ -19,6 +19,7 @@ const Wrapper = styled.button`
   padding: 10px 20px;
   width: 78px;
   height: 30px;
+  color: ${({ theme }) => theme.colors.WHITE_TXT};
   background-color: ${({ theme, disabled }) =>
     disabled ? theme.colors.DISABLE_BTN : theme.colors.MAIN_PINK};
 
