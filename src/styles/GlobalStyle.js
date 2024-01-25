@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
+    font-family: 'GmarketSans', 'nanumgothic', sans-serif;
   }
   button {
     margin: 0;
