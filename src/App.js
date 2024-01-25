@@ -10,7 +10,7 @@ function App() {
     <ThemeProvider theme={Theme}>
       <GlobalStyle />
       <BrowserRouter>
-        <BigButton text="지원하기" disabled={true} />
+        <BigButton disabled={true}>지원하기</BigButton>
         <RoutesContainer />
       </BrowserRouter>
     </ThemeProvider>
