@@ -30,7 +30,6 @@ const NameCardString = styled(CardString)`
 
 const CardBody = styled.div`
   background-color: ${({ theme }) => theme.colors.MODAL_BG};
-
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   border-bottom: 24px;

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import CardLanyard from '../components/CardLanyard/CardLanyard';
 import SubTitle from '../components/checkPage/SubTitle';
 import Input from '../components/checkPage/Input';
+import SmallButton from '../components/checkPage/SmallButton';
 
 const Check = () => {
   return (
@@ -11,6 +12,9 @@ const Check = () => {
           <SubTitle>지원 확인하기</SubTitle>
           <Input />
         </ContentsWrapper>
+        <ButtonWrapper>
+          <SmallButton>확인하기</SmallButton>
+        </ButtonWrapper>
       </CardLanyard>
     </Container>
   );
@@ -30,6 +34,12 @@ const ContentsWrapper = styled.div`
   flex-direction: column;
   gap: 20px;
   position: relative;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 278px;
 `;
 
 export default Check;
