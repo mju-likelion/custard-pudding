@@ -1,11 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const NavDropdown = () => {
+  const navigate = useNavigate();
   return (
     <Container>
-      <NavItem>지원하기</NavItem>
-      <NavItem>지원 확인하기</NavItem>
+      <NavItem onClick={() => navigate()}>지원하기</NavItem>
+      <NavItem onClick={() => navigate()}>지원 확인하기</NavItem>
     </Container>
   );
 };
