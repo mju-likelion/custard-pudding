@@ -40,6 +40,7 @@ const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 278px;
+  margin-bottom: 24px;
 `;
 
 export default Check;

@@ -42,7 +42,8 @@ const ContentsWrapper = styled.div`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 22px;
+  margin-bottom: 24px;
+  margin-top: 28px;
 `;
 
 const StyledP = styled.p`
