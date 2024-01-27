@@ -12,7 +12,12 @@ const ERROR_MESSAGE = '올바른 아이디 형식이 아닙니다.';
 const Apply = () => {
   return (
     <Container>
-      <CardLanyard width={'544px'} height={'358px'}>
+      <CardLanyard
+        width={'250px'}
+        height={'318px'}
+        pcWidth={'544px'}
+        pcHeight={'358px'}
+      >
         <ContentsWrapper>
           <SubTitle>지원하기</SubTitle>
           <Input
@@ -20,9 +25,7 @@ const Apply = () => {
             defaultMessage={DEFAULT_MESSAGE}
             errorMessage={ERROR_MESSAGE}
           />
-          <ButtonWrapper>
-            <SmallButton>지원하기</SmallButton>
-          </ButtonWrapper>
+          <Button>지원하기</Button>
         </ContentsWrapper>
       </CardLanyard>
     </Container>
@@ -43,11 +46,7 @@ const ContentsWrapper = styled.div`
   flex-direction: column;
   gap: 20px;
 `;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 24px;
+const Button = styled(SmallButton)`
   margin-top: 28px;
 `;
 
