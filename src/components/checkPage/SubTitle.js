@@ -13,8 +13,6 @@ const TitleBox = styled.div`
   text-decoration: underline;
   text-underline-offset: 12px;
   text-decoration-thickness: 2px;
-  position: absolute;
-  top: 85px;
 `;
 
 export default SubTitle;

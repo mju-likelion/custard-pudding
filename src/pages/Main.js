@@ -1,5 +1,11 @@
+import Apply from './Apply';
+
 const Main = () => {
-  return <></>;
+  return (
+    <>
+      <Apply />
+    </>
+  );
 };
 
 export default Main;
