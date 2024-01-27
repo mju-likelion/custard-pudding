@@ -29,6 +29,9 @@ const NameCardString = styled(CardString)`
 `;
 
 const CardBody = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: ${({ theme }) => theme.colors.MODAL_BG};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
