@@ -1,11 +1,5 @@
-import Check from './Check.js';
-
 const Main = () => {
-  return (
-    <>
-      <Check />
-    </>
-  );
+  return <></>;
 };
 
 export default Main;
