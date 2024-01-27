@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import PartCard from '../components/mainPage/PartCard';
 import AssignmentBox from '../components/mainPage/AssignmentBox';
+import BigButton from '../components/Button/BigButton';
 import part_message from '../messages/part';
 import letter from '../assets/imgs/letter.svg';
 import react_icon from '../assets/imgs/react_icon.svg';
@@ -47,6 +48,7 @@ const Main = () => {
           </AdditionalInfoLink>
         </Boxes>
       </AssignmentContainer>
+      <BigButton>지원하기</BigButton>
     </PageWrapper>
   );
 };
