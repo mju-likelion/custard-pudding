@@ -19,6 +19,10 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     cursor: pointer;
     background-color: transparent;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
   input{
     margin: 0;
