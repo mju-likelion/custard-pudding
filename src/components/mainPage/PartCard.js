@@ -45,12 +45,16 @@ const Card = styled.div`
   border-radius: 30px;
 `;
 const Part = styled.div`
+  height: 35px;
+  @media ${({ theme }) => theme.devices.TABLET} {
+    height: 62px;
+  }
   align-self: end;
   display: flex;
   align-items: center;
+  gap: 10px;
 `;
 const PartTitle = styled.p`
-  margin-right: 10px;
   display: inline-block;
   font-size: 20px;
   font-weight: 700;
@@ -74,6 +78,7 @@ const Content = styled.p`
 `;
 const TechList = styled.p`
   ${({ theme }) => theme.typographies.M_SMALL_TXT}
+  line-height: 14px;
   @media ${({ theme }) => theme.devices.TABLET} {
     ${({ theme }) => theme.typographies.SMALL_TXT}
     line-height: 23px;

@@ -31,6 +31,29 @@ const Main = () => {
           />
         </Cards>
       </PartContainer>
+      <AssignmentContainer>
+        <Title>지원 과제</Title>
+        <Boxes>
+          <Box>
+            <PartName>Web</PartName>
+            <Line />
+            <Content>
+              HTML, CSS를 사용해 지원자를 소개하는 자기소개 페이지를 만들어
+              제출해주세요.
+            </Content>
+          </Box>
+          <Box>
+            <PartName>Server</PartName>
+            <Line />
+            <Content>간단한 Java 프로그래밍 과제를 제출해주세요.</Content>
+          </Box>
+          <AdditionalInfoLink>
+            ※ 지원 과제에 대한 추가적인 설명은 &nbsp;
+            <Link href="https://www.instagram.com/mju_likelion/">Notion</Link>을
+            반드시 참고 바랍니다.
+          </AdditionalInfoLink>
+        </Boxes>
+      </AssignmentContainer>
     </PageWrapper>
   );
 };
@@ -47,12 +70,25 @@ const PageWrapper = styled.div`
     width: 1200px;
   }
   margin: 0 auto;
+  padding: 20px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 100px;
   @media ${({ theme }) => theme.devices.DESKTOP} {
     gap: 200px;
+  }
+`;
+const LetterImg = styled.img`
+  width: 300px;
+  @media ${({ theme }) => theme.devices.MOBILE} {
+    width: 340px;
+  }
+  @media ${({ theme }) => theme.devices.TABLET} {
+    width: 450px;
+  }
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    width: 860px;
   }
 `;
 const PartContainer = styled.div`
@@ -64,7 +100,7 @@ const PartContainer = styled.div`
 `;
 const Title = styled.p`
   display: inline-block;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   border-bottom: 2px solid ${({ theme }) => theme.colors.WHITE_TXT};
   ${({ theme }) => theme.typographies.SUB_TITLE}
   @media ${({ theme }) => theme.devices.TABLET} {
@@ -81,21 +117,95 @@ const Cards = styled.div`
     margin: 0 30px;
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
-    margin: 0 60px;
+    margin: 0 40px;
     flex-direction: row;
   }
 `;
-const LetterImg = styled.img`
-  width: 300px;
+const AssignmentContainer = styled.div`
+  width: 100%;
+  padding: 0 10px;
   @media ${({ theme }) => theme.devices.MOBILE} {
-    width: 340px;
+    padding: 0 30px;
   }
+`;
+const Boxes = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
   @media ${({ theme }) => theme.devices.TABLET} {
-    width: 450px;
+    gap: 40px;
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
-    width: 860px;
+    gap: 70px;
   }
+`;
+const Box = styled.div`
+  width: 280px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
+  @media ${({ theme }) => theme.devices.TABLET} {
+    width: 100%;
+    padding: 30px;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+  }
+  background-color: ${({ theme }) => theme.colors.CARD_BG};
+  border-radius: 30px;
+`;
+const PartName = styled.div`
+  padding: 15px 20px;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: 700;
+  @media ${({ theme }) => theme.devices.TABLET} {
+    padding: 20px;
+    border-radius: 50px;
+    ${({ theme }) => theme.typographies.SUB_TITLE};
+  }
+  text-align: center;
+  background-color: ${({ theme }) => theme.colors.MODAL_BG};
+`;
+const Line = styled.div`
+  display: none;
+  @media ${({ theme }) => theme.devices.TABLET} {
+    display: block;
+    width: 1px;
+    height: 46px;
+    background-color: ${({ theme }) => theme.colors.WHITE_TXT};
+  }
+`;
+const Content = styled.p`
+  ${({ theme }) => theme.typographies.M_DEFAULT_TXT}
+  line-height: 20px;
+  @media ${({ theme }) => theme.devices.TABLET} {
+    ${({ theme }) => theme.typographies.DEFAULT_TXT}
+  }
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    ${({ theme }) => theme.typographies.BIG_TXT}
+    line-height: 25px;
+  }
+`;
+const AdditionalInfoLink = styled.p`
+  ${({ theme }) => theme.typographies.M_DEFAULT_TXT}
+  line-height: 18px;
+  @media ${({ theme }) => theme.devices.TABLET} {
+    ${({ theme }) => theme.typographies.DEFAULT_TXT}
+  }
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    ${({ theme }) => theme.typographies.BIG_TXT}
+    line-height: 24px;
+  }
+  align-self: center;
+`;
+const Link = styled.a`
+  color: ${({ theme }) => theme.colors.MAIN_PINK};
+  text-underline-position: under;
+  text-decoration-thickness: 2px;
 `;
 
 export default Main;
