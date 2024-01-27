@@ -8,10 +8,13 @@ const Check = () => {
   return (
     <Container>
       <CardLanyard width={'544px'} height={'358px'}>
-        <ContentsWrapper>
-          <SubTitle>지원 확인하기</SubTitle>
-          <Input />
-        </ContentsWrapper>
+        <InputWithCaption>
+          <ContentsWrapper>
+            <SubTitle>지원 확인하기</SubTitle>
+            <Input />
+          </ContentsWrapper>
+          <StyledP></StyledP>
+        </InputWithCaption>
         <ButtonWrapper>
           <SmallButton>확인하기</SmallButton>
         </ButtonWrapper>
@@ -28,6 +31,8 @@ const Container = styled.div`
   width: 100%;
 `;
 
+const InputWithCaption = styled.div``;
+
 const ContentsWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -39,8 +44,15 @@ const ContentsWrapper = styled.div`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 278px;
   margin-bottom: 24px;
+  margin-top: 28px;
 `;
 
+const StyledP = styled.p`
+  color: ${({ theme }) => theme.colors.HOVER_BTN};
+  ${({ theme }) => theme.typographies.SMALL_TXT};
+  display: flex;
+  justify-content: center;
+  margin-top: 236px;
+`;
 export default Check;
