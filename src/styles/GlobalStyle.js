@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
   ${reset}
   * {
     box-sizing: border-box;
+    font-family: 'GmarketSans', 'nanumgothic', sans-serif;
   }
   body {
     margin: 0;
@@ -18,6 +19,10 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     cursor: pointer;
     background-color: transparent;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
   input{
     margin: 0;

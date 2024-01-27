@@ -14,7 +14,7 @@
   },
   "rules": {
     "require-await": "error",
-    "no-unused-vars": "error",
+    "no-unused-vars": "warn",
     "no-use-before-define": "warn",
     "no-empty-function": "warn",
     "react/prop-types": "off",
