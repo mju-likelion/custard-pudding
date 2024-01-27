@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 import PartCard from '../components/mainPage/PartCard';
-import letter from '../assets/letter.svg';
-import react_icon from '../assets/react_icon.svg';
-import spring_boot_icon from '../assets/spring_boot_icon.svg';
+import AssignmentBox from '../components/mainPage/AssignmentBox';
+import part_message from '../messages/part';
+import letter from '../assets/imgs/letter.svg';
+import react_icon from '../assets/imgs/react_icon.svg';
+import spring_boot_icon from '../assets/imgs/spring_boot_icon.svg';
 
 const Main = () => {
+  const { web, server } = part_message;
+
   return (
     <PageWrapper>
       <LetterImg src={letter} />
@@ -12,41 +16,30 @@ const Main = () => {
         <Title>파트</Title>
         <Cards>
           <PartCard
-            part="Web"
+            part_name={web.part_name}
             icon={react_icon}
-            content={
-              '실제 서비스에 사용되는 API 서버를 설계하고, NestJS를 통해 실제 작동하는 서버로 구현/배포해요.'
-            }
-            techList={'git, Github, JavaScript, Netlify, React'}
+            content={web.content}
+            tech_list={web.tech_list}
           />
           <PartCard
-            part="Server"
+            part_name={server.part_name}
             icon={spring_boot_icon}
-            content={
-              '실제 서비스에 사용되는 API 서버를 설계하고, NestJS를 통해 실제 작동하는 서버로 구현/배포해요.'
-            }
-            techList={
-              'git, Github, Spring Boot, JPA, Spring Security, JAVA, nginx, EC2, MySQL'
-            }
+            content={server.content}
+            tech_list={server.tech_list}
           />
         </Cards>
       </PartContainer>
       <AssignmentContainer>
         <Title>지원 과제</Title>
         <Boxes>
-          <Box>
-            <PartName>Web</PartName>
-            <Line />
-            <Content>
-              HTML, CSS를 사용해 지원자를 소개하는 자기소개 페이지를 만들어
-              제출해주세요.
-            </Content>
-          </Box>
-          <Box>
-            <PartName>Server</PartName>
-            <Line />
-            <Content>간단한 Java 프로그래밍 과제를 제출해주세요.</Content>
-          </Box>
+          <AssignmentBox
+            part_name={web.part_name}
+            assignment={web.assignment}
+          />
+          <AssignmentBox
+            part_name={server.part_name}
+            assignment={server.assignment}
+          />
           <AdditionalInfoLink>
             ※ 지원 과제에 대한 추가적인 설명은 &nbsp;
             <Link href="https://www.instagram.com/mju_likelion/">Notion</Link>을
@@ -138,56 +131,6 @@ const Boxes = styled.div`
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
     gap: 70px;
-  }
-`;
-const Box = styled.div`
-  width: 280px;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 20px;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    width: 100%;
-    padding: 30px;
-    flex-direction: row;
-    align-items: center;
-    gap: 30px;
-  }
-  background-color: ${({ theme }) => theme.colors.CARD_BG};
-  border-radius: 30px;
-`;
-const PartName = styled.div`
-  padding: 15px 20px;
-  border-radius: 40px;
-  font-size: 16px;
-  font-weight: 700;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    padding: 20px;
-    border-radius: 50px;
-    ${({ theme }) => theme.typographies.SUB_TITLE};
-  }
-  text-align: center;
-  background-color: ${({ theme }) => theme.colors.MODAL_BG};
-`;
-const Line = styled.div`
-  display: none;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    display: block;
-    width: 1px;
-    height: 46px;
-    background-color: ${({ theme }) => theme.colors.WHITE_TXT};
-  }
-`;
-const Content = styled.p`
-  ${({ theme }) => theme.typographies.M_DEFAULT_TXT}
-  line-height: 20px;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    ${({ theme }) => theme.typographies.DEFAULT_TXT}
-  }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    ${({ theme }) => theme.typographies.BIG_TXT}
-    line-height: 25px;
   }
 `;
 const AdditionalInfoLink = styled.p`

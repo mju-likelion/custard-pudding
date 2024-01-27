@@ -1,17 +1,17 @@
 import styled from 'styled-components';
-import card_ring from '../../assets/card_ring.svg';
+import card_ring from '../../assets/imgs/card_ring.svg';
 
-const PartCard = ({ part, icon, content, techList }) => {
+const PartCard = ({ part_name, icon, content, tech_list }) => {
   return (
     <CardContainer>
       <Ring src={card_ring} />
       <Card>
         <Part>
-          <PartTitle>{part}</PartTitle>
+          <PartTitle>{part_name}</PartTitle>
           <Icon src={icon} />
         </Part>
         <Content>{content}</Content>
-        <TechList>{techList}</TechList>
+        <TechList>{tech_list}</TechList>
       </Card>
     </CardContainer>
   );
