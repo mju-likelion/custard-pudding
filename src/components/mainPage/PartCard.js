@@ -55,7 +55,6 @@ const Part = styled.div`
   gap: 10px;
 `;
 const PartTitle = styled.p`
-  display: inline-block;
   font-size: 20px;
   font-weight: 700;
   @media ${({ theme }) => theme.devices.TABLET} {
