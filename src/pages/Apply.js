@@ -67,7 +67,11 @@ const Container = styled.div`
 `;
 
 const InputWraaper = styled.div`
-  margin: 78px 0 72px 0;
+  margin: 34px 0 58px 0;
+
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    margin: 18px 0 48px 0;
+  }
 `;
 
 const ContentsWrapper = styled.div`
@@ -75,6 +79,10 @@ const ContentsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    margin: 85px 54px 24px 52px;
+  }
 `;
 
 const Button = styled(SmallButton)`
