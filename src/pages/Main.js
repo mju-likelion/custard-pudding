@@ -61,9 +61,6 @@ const PageWrapper = styled.div`
   @media ${({ theme }) => theme.devices.TABLET} {
     width: 600px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    width: 1200px;
-  }
   margin: 0 auto;
   padding: 20px 0;
   display: flex;
@@ -71,6 +68,7 @@ const PageWrapper = styled.div`
   align-items: center;
   gap: 100px;
   @media ${({ theme }) => theme.devices.DESKTOP} {
+    width: 1200px;
     gap: 200px;
   }
 `;
