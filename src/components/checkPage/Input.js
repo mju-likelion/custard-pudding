@@ -4,7 +4,7 @@ const Input = ({ isError, defaultMessage, errorMessage, inputSize }) => {
   return (
     <Wrapper>
       <Caption>지원 아이디</Caption>
-      <StypledInput $inputSize={inputSize} />
+      <StyledInput $inputSize={inputSize} />
       <ErrorMessage>{isError ? errorMessage : defaultMessage}</ErrorMessage>
     </Wrapper>
   );
@@ -16,7 +16,7 @@ const Caption = styled.p`
   margin-bottom: 4px;
 `;
 
-const StypledInput = styled.input`
+const StyledInput = styled.input`
   width: ${({ $inputSize }) => $inputSize.width};
   height: ${({ $inputSize }) => $inputSize.height};
   background: transparent;
