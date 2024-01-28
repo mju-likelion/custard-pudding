@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-const Input = ({ isError, defaultMessage, errorMessage }) => {
+const Input = ({ isError, defaultMessage, errorMessage, inputSize }) => {
   return (
     <Wrapper>
       <Caption>지원 아이디</Caption>
-      <StypledInput />
+      <StypledInput $inputSize={inputSize} />
       <ErrorMessage>{isError ? errorMessage : defaultMessage}</ErrorMessage>
     </Wrapper>
   );
@@ -17,14 +17,19 @@ const Caption = styled.p`
 `;
 
 const StypledInput = styled.input`
-  width: 438px;
-  height: 56px;
+  width: ${({ $inputSize }) => $inputSize.width};
+  height: ${({ $inputSize }) => $inputSize.height};
   background: transparent;
   border: 1px solid #d4d4d8;
   ${({ theme }) => theme.typographies.DEFAULT_TXT};
   color: ${({ theme }) => theme.colors.WHITE_TXT};
   padding: 18px 16px;
   border-radius: 8px;
+
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    width: ${({ $inputSize }) => $inputSize.pcWidth};
+    height: ${({ $inputSize }) => $inputSize.pcHeight};
+  }
 `;
 
 const ErrorMessage = styled.p`

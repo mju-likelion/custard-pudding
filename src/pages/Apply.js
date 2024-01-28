@@ -10,6 +10,13 @@ const DEFAULT_MESSAGE =
 const ERROR_MESSAGE = '올바른 아이디 형식이 아닙니다.';
 
 const Apply = () => {
+  const inputSizeValue = {
+    width: '220px',
+    height: '28px',
+    pcWidth: '438px',
+    pcHeight: '56px',
+  };
+
   return (
     <Container>
       <CardLanyard
@@ -24,6 +31,7 @@ const Apply = () => {
             isError={true}
             defaultMessage={DEFAULT_MESSAGE}
             errorMessage={ERROR_MESSAGE}
+            inputSize={inputSizeValue}
           />
           <Button>지원하기</Button>
         </ContentsWrapper>
