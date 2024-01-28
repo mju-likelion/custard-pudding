@@ -26,7 +26,7 @@ const Apply = () => {
 
   const messageSizeValue = {
     width: '220px',
-    height: '6px',
+    height: '8px',
     pcWidth: '438px',
     pcHeight: '20px',
   };
@@ -41,14 +41,16 @@ const Apply = () => {
       >
         <ContentsWrapper>
           <SubTitle>지원하기</SubTitle>
-          <Input
-            isError={true}
-            defaultMessage={DEFAULT_MESSAGE}
-            errorMessage={ERROR_MESSAGE}
-            inputSize={inputSizeValue}
-            captionSize={captionSizeValue}
-            messageSize={messageSizeValue}
-          />
+          <InputWraaper>
+            <Input
+              isError={true}
+              defaultMessage={DEFAULT_MESSAGE}
+              errorMessage={ERROR_MESSAGE}
+              inputSize={inputSizeValue}
+              captionSize={captionSizeValue}
+              messageSize={messageSizeValue}
+            />
+          </InputWraaper>
           <Button>지원하기</Button>
         </ContentsWrapper>
       </CardLanyard>
@@ -64,14 +66,19 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const ContentsWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
+const InputWraaper = styled.div`
+  margin: 78px 0 72px 0;
 `;
+
+const ContentsWrapper = styled.div`
+  margin: 42px 16px 19px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const Button = styled(SmallButton)`
-  margin-top: 28px;
+  /* margin-top: 28px; */
 `;
 
 export default Apply;

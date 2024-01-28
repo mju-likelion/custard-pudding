@@ -54,8 +54,9 @@ const StyledInput = styled.input`
 const ErrorMessage = styled.p`
   width: ${({ $messageSize }) => $messageSize.width};
   height: ${({ $messageSize }) => $messageSize.height};
+  /* height: 100px; */
   color: ${({ theme }) => theme.colors.HOVER_BTN};
-  ${({ theme }) => theme.typographies.SMALL_TXT};
+  ${({ theme }) => theme.typographies.SMALL_ERROR_TXT};
   margin-top: 4px;
 
   @media ${({ theme }) => theme.devices.DESKTOP} {

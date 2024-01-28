@@ -40,6 +40,10 @@ export const Theme = {
       font-size: 16px;
       font-weight: 500;
     `,
+    SMALL_ERROR_TXT: css`
+      font-size: 8px;
+      font-weight: 300;
+    `,
   },
   devices: {
     DESKTOP: `(min-width: 1200px)`,

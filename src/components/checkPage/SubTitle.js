@@ -9,10 +9,15 @@ const SubTitle = ({ children }) => {
 };
 
 const TitleBox = styled.div`
-  ${({ theme }) => theme.typographies.TITLE};
-  text-decoration: underline;
-  text-underline-offset: 12px;
-  text-decoration-thickness: 2px;
+  ${({ theme }) => theme.typographies.DEFAULT_TXT};
+  border-bottom: 1px solid;
+  padding-bottom: 2px;
+
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    ${({ theme }) => theme.typographies.TITLE}
+    border-bottom: 2px solid;
+    padding-bottom: 4px;
+  }
 `;
 
 export default SubTitle;
