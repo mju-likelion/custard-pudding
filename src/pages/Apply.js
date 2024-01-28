@@ -17,6 +17,13 @@ const Apply = () => {
     pcHeight: '56px',
   };
 
+  const captionSizeValue = {
+    width: '220px',
+    height: '12px',
+    pcWidth: '438px',
+    pcHeight: '24px',
+  };
+
   return (
     <Container>
       <CardLanyard
@@ -32,6 +39,7 @@ const Apply = () => {
             defaultMessage={DEFAULT_MESSAGE}
             errorMessage={ERROR_MESSAGE}
             inputSize={inputSizeValue}
+            captionSize={captionSizeValue}
           />
           <Button>지원하기</Button>
         </ContentsWrapper>

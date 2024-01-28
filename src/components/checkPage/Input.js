@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 
-const Input = ({ isError, defaultMessage, errorMessage, inputSize }) => {
+const Input = ({
+  isError,
+  defaultMessage,
+  errorMessage,
+  inputSize,
+  captionSize,
+}) => {
   return (
     <Wrapper>
-      <Caption>지원 아이디</Caption>
+      <Caption $captionSize={captionSize}>지원 아이디</Caption>
       <StyledInput $inputSize={inputSize} />
       <ErrorMessage>{isError ? errorMessage : defaultMessage}</ErrorMessage>
     </Wrapper>
@@ -11,9 +17,19 @@ const Input = ({ isError, defaultMessage, errorMessage, inputSize }) => {
 };
 
 const Caption = styled.p`
-  ${({ theme }) => theme.typographies.BIG_TXT};
+  ${({ theme }) => theme.typographies.SMALL_TXT};
   text-align: left;
-  margin-bottom: 4px;
+  margin: 0 0 6px 2px;
+
+  width: ${({ $captionSize }) => $captionSize.width};
+  height: ${({ $captionSize }) => $captionSize.height};
+
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    width: ${({ $captionSize }) => $captionSize.pcWidth};
+    height: ${({ $captionSize }) => $captionSize.pcHeight};
+    ${({ theme }) => theme.typographies.BIG_TXT};
+    margin: 0 0 4px 2px;
+  }
 `;
 
 const StyledInput = styled.input`
