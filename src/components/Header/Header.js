@@ -29,8 +29,11 @@ const Header = () => {
           <SmallLogoWrapper src={SmallLogo} onClick={() => navigate()} />
           <SubtitleBox>APPLY</SubtitleBox>
         </LogoBox>
-        {isOpenIcon && <OpenIconBox onClick={openMenu} />}
-        {!isOpenIcon && <CloseIconBox onClick={closeMenu} />}
+        {isOpenIcon ? (
+          <OpenIconBox onClick={openMenu} />
+        ) : (
+          <CloseIconBox onClick={closeMenu} />
+        )}
         <NavContainer>
           <NavItem onClick={() => navigate()}>지원하기</NavItem>
           <NavItem onClick={() => navigate()}>지원 확인하기</NavItem>
