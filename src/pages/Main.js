@@ -1,9 +1,9 @@
-import Apply from './Apply';
+import Check from './Check';
 
 const Main = () => {
   return (
     <>
-      <Apply />
+      <Check />
     </>
   );
 };
