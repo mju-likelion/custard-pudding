@@ -6,12 +6,15 @@ const Input = ({
   errorMessage,
   inputSize,
   captionSize,
+  messageSize,
 }) => {
   return (
     <Wrapper>
       <Caption $captionSize={captionSize}>지원 아이디</Caption>
       <StyledInput $inputSize={inputSize} />
-      <ErrorMessage>{isError ? errorMessage : defaultMessage}</ErrorMessage>
+      <ErrorMessage $messageSize={messageSize}>
+        {isError ? errorMessage : defaultMessage}
+      </ErrorMessage>
     </Wrapper>
   );
 };
@@ -49,8 +52,18 @@ const StyledInput = styled.input`
 `;
 
 const ErrorMessage = styled.p`
+  width: ${({ $messageSize }) => $messageSize.width};
+  height: ${({ $messageSize }) => $messageSize.height};
   color: ${({ theme }) => theme.colors.HOVER_BTN};
   ${({ theme }) => theme.typographies.SMALL_TXT};
+  margin-top: 4px;
+
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    width: ${({ $messageSize }) => $messageSize.pcWidth};
+    height: ${({ $messageSize }) => $messageSize.pcHeight};
+    ${({ theme }) => theme.typographies.BIG_TXT};
+    margin-top: 6px;
+  }
 `;
 
 const Wrapper = styled.div``;
