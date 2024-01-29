@@ -6,7 +6,7 @@ const PageLayout = ({ children }) => {
 
 const PageContainer = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   color: ${({ theme }) => theme.colors.WHITE_TXT};
   background-color: ${({ theme }) => theme.colors.PAGE_BG};
 `;

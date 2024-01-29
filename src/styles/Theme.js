@@ -40,13 +40,22 @@ export const Theme = {
       font-size: 16px;
       font-weight: 500;
     `,
+
     SMALL_ERROR_TXT: css`
       font-size: 8px;
+    `,
+    M_DEFAULT_TXT: css`
+      font-size: 12px;
+      font-weight: 500;
+    `,
+    M_SMALL_TXT: css`
+      font-size: 10px;
       font-weight: 300;
     `,
   },
   devices: {
     DESKTOP: `(min-width: 1200px)`,
-    MOBILE: `(min-width: 350px) `,
+    TABLET: `(min-width: 600px)`,
+    MOBILE: `(min-width: 390px) `,
   },
 };
