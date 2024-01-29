@@ -10,6 +10,27 @@ const DEFAULT_MESSAGE =
 const ERROR_MESSAGE = '올바른 아이디 형식이 아닙니다.';
 
 const Apply = () => {
+  const inputSizeValue = {
+    width: '220px',
+    height: '28px',
+    pcWidth: '438px',
+    pcHeight: '56px',
+  };
+
+  const captionSizeValue = {
+    width: '220px',
+    height: '12px',
+    pcWidth: '438px',
+    pcHeight: '24px',
+  };
+
+  const messageSizeValue = {
+    width: '220px',
+    height: '8px',
+    pcWidth: '438px',
+    pcHeight: '20px',
+  };
+
   return (
     <Container>
       <CardLanyard
@@ -20,11 +41,16 @@ const Apply = () => {
       >
         <ContentsWrapper>
           <SubTitle>지원하기</SubTitle>
-          <Input
-            isError={true}
-            defaultMessage={DEFAULT_MESSAGE}
-            errorMessage={ERROR_MESSAGE}
-          />
+          <InputWraaper>
+            <Input
+              isError={true}
+              defaultMessage={DEFAULT_MESSAGE}
+              errorMessage={ERROR_MESSAGE}
+              inputSize={inputSizeValue}
+              captionSize={captionSizeValue}
+              messageSize={messageSizeValue}
+            />
+          </InputWraaper>
           <Button>지원하기</Button>
         </ContentsWrapper>
       </CardLanyard>
@@ -40,14 +66,27 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const ContentsWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
+const InputWraaper = styled.div`
+  margin: 34px 0 58px 0;
+
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    margin: 18px 0 48px 0;
+  }
 `;
+
+const ContentsWrapper = styled.div`
+  margin: 42px 16px 19px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    margin: 85px 54px 24px 52px;
+  }
+`;
+
 const Button = styled(SmallButton)`
-  margin-top: 28px;
+  /* margin-top: 28px; */
 `;
 
 export default Apply;

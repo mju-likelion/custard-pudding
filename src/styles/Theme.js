@@ -40,6 +40,10 @@ export const Theme = {
       font-size: 16px;
       font-weight: 500;
     `,
+
+    SMALL_ERROR_TXT: css`
+      font-size: 8px;
+    `,
     M_DEFAULT_TXT: css`
       font-size: 12px;
       font-weight: 500;
