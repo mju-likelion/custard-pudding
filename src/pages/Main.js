@@ -62,7 +62,7 @@ const PageWrapper = styled.div`
     width: 600px;
   }
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 20px 0 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
