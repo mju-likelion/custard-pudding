@@ -1,28 +1,41 @@
 import styled from 'styled-components';
-import UserInfoInput from '../components/UserInfoInput';
+import UserInfoInput from '../components/writePage/UserInfoInput';
+import { INPUT_LABEL_LIST } from '../components/writePage/InputLabelList';
+import ApplyAnswer from '../components/writePage/ApplyAnswer';
 
 const Introduction = () => {
   return (
     <>
-      <Header></Header>
+      <Header />
       <AllContainer>
         <InfoContainer>
-          <InfoTitle>지원자 정보</InfoTitle>
+          <Title>지원자 정보</Title>
           <InfoInputBox>
             <InnerInputBox>
-              <UserInfoInput subTitle="이름" />
-              <UserInfoInput subTitle="학과" />
-              <UserInfoInput subTitle="학번" />
-              <UserInfoInput subTitle="학년" />
+              {INPUT_LABEL_LIST.left.map((item) => (
+                <UserInfoInput key={item.id} subTitle={item.label} />
+              ))}
             </InnerInputBox>
+            <HorizontalLine />
             <InnerInputBox>
-              <UserInfoInput subTitle="이메일" />
-              <UserInfoInput subTitle="전화번호" />
-              <UserInfoInput subTitle="지원 아이디" />
+              {INPUT_LABEL_LIST.right.map((item) => (
+                <UserInfoInput key={item.id} subTitle={item.label} />
+              ))}
             </InnerInputBox>
           </InfoInputBox>
           <InfoHelperText>※ 형식에 맞지 않는 값이 있습니다</InfoHelperText>
         </InfoContainer>
+        <IntroduceContainer>
+          <Title>자기소개서</Title>
+          <Question>1. 이렇게 저렇게 하려는데 어떻게 할거냐?</Question>
+          <ApplyAnswer></ApplyAnswer>
+          <Question>2. 이렇게 저렇게 하려는데 어떻게 할거냐?</Question>
+          <ApplyAnswer></ApplyAnswer>
+          <Question>3. 이렇게 저렇게 하려는데 어떻게 할거냐?</Question>
+          <ApplyAnswer></ApplyAnswer>
+          <Question>4. 이렇게 저렇게 하려는데 어떻게 할거냐?</Question>
+          <ApplyAnswer></ApplyAnswer>
+        </IntroduceContainer>
       </AllContainer>
     </>
   );
@@ -32,9 +45,12 @@ const Header = styled.div`
   width: 100%;
   height: 56px;
   background-color: green;
+  @media ${({ theme }) => theme.devices.TABLET} {
+    background-color: blue;
+  }
   @media ${({ theme }) => theme.devices.DESKTOP} {
     height: 70px;
-    background-color: blue;
+    background-color: red;
   }
 `;
 const AllContainer = styled.div`
@@ -43,6 +59,8 @@ const AllContainer = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+// 지원자 정보 영역 시작
 const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -52,7 +70,7 @@ const InfoContainer = styled.div`
     margin: 175px 0 200px 0;
   }
 `;
-const InfoTitle = styled.div`
+const Title = styled.div`
   align-self: flex-start;
   margin-bottom: 20px;
   color: ${({ theme }) => theme.colors.MAIN_PINK};
@@ -64,7 +82,7 @@ const InfoTitle = styled.div`
 `;
 const InfoInputBox = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   border: 1px solid #939393;
   border-radius: 15px;
   padding: 33px 38px 34px 38px;
@@ -76,6 +94,9 @@ const InfoInputBox = styled.div`
     height: 726px;
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 68px 75px;
     width: 972px;
     height: 388px;
@@ -84,7 +105,16 @@ const InfoInputBox = styled.div`
 const InnerInputBox = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 15px;
+  @media ${({ theme }) => theme.devices.TABLET} {
+    gap: 28px;
+  }
+`;
+const HorizontalLine = styled.div`
+  width: 100%;
+  height: 1px;
+  background-color: #282828;
+  margin: auto 0;
 `;
 
 const InfoHelperText = styled.div`
@@ -95,6 +125,32 @@ const InfoHelperText = styled.div`
     font-weight: 300;
     color: #ff5172;
     margin-top: 28px;
+  }
+`;
+
+// 자기소개서 영역 시작
+const IntroduceContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* 모바일 margin 정해야됨 */
+  @media ${({ theme }) => theme.devices.TABLET} {
+    margin-bottom: 200px;
+  }
+`;
+const Question = styled.p`
+  align-self: flex-start;
+  margin-bottom: 10px;
+  color: ${({ theme }) => theme.colors.WHITE_TXT};
+  font-size: 12px;
+  font-weight: 500;
+
+  @media ${({ theme }) => theme.devices.TABLET} {
+    margin-bottom: 25px;
+    ${({ theme }) => theme.typographies.DEFAULT_TXT}
+  }
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    ${({ theme }) => theme.typographies.BIG_TXT}
   }
 `;
 
