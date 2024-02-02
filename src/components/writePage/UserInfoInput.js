@@ -44,9 +44,12 @@ const InfoInput = styled.input`
   border: none;
   border-radius: 8px;
   background-color: #282828;
+  font-size: 10px;
+  font-weight: 500;
   color: white;
   @media ${({ theme }) => theme.devices.TABLET} {
     padding: 14px 18px;
+    font-size: 14px;
   }
 `;
 

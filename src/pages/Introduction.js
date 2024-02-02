@@ -54,7 +54,7 @@ const Introduction = () => {
             <FileButton>파일 선택</FileButton>
           </HomeworkInputBox>
           <HomeworkHelperText>
-            뭐시기 저시기 이런거 말할거에요
+            ※ 뭐시기 저시기 이런거 말할거에요
           </HomeworkHelperText>
         </HomeworkContainer>
       </AllContainer>
@@ -96,9 +96,10 @@ const Title = styled.div`
   align-self: flex-start;
   margin-bottom: 20px;
   color: ${({ theme }) => theme.colors.MAIN_PINK};
-  font-size: 32px;
+  font-size: 20px;
   font-weight: 700;
   @media ${({ theme }) => theme.devices.TABLET} {
+    font-size: 32px;
     margin-bottom: 50px;
   }
 `;
@@ -181,6 +182,9 @@ const HorizontalLine = styled.div`
   height: 1px;
   background-color: #282828;
   margin: auto 0;
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    display: none;
+  }
 `;
 
 const InfoHelperText = styled.div`
@@ -225,7 +229,6 @@ const Question = styled.p`
 const HomeworkContainer = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid blue;
   width: 330px;
   height: 690px;
 

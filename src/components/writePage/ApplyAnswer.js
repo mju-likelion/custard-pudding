@@ -11,7 +11,7 @@ const ApplyAnswer = () => {
 
 const AnswerContainer = styled.label`
   width: 330px;
-  height: 690px;
+  height: 330px;
   padding: 26px 27px;
   margin-bottom: 50px;
 
@@ -41,9 +41,10 @@ const AnswerTextarea = styled.textarea`
   color: ${({ theme }) => theme.colors.WHITE_TXT};
   border: none;
   resize: none;
-  line-height: 40px;
+  line-height: 20px;
 
   @media ${({ theme }) => theme.devices.TABLET} {
+    line-height: 40px;
     font-size: 14px;
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
@@ -53,7 +54,7 @@ const AnswerTextarea = styled.textarea`
     width: 5px;
   }
   &::-webkit-scrollbar-thumb {
-    background: #939393; /* 스크롤바 색상 */
+    background: #3b3b3b; /* 스크롤바 색상 */
     border-radius: 10px; /* 스크롤바 둥근 테두리 */
     height: 2px;
   }
