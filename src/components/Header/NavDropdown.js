@@ -13,6 +13,7 @@ const NavDropdown = () => {
 };
 
 const Container = styled.div`
+  position: absolute;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.MODAL_BG};
   display: flex;
@@ -25,7 +26,7 @@ const Container = styled.div`
 
 const NavItem = styled.button`
   all: unset;
-  height: 56px;
+  height: 40px;
   padding: 18px 16px;
   font-size: 16px;
   font-weight: 700;
