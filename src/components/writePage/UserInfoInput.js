@@ -10,7 +10,7 @@ const UserInfoInput = ({ subTitle }) => {
 };
 
 const Container = styled.div`
-  width: 254px;
+  width: 100%;
   height: 26px;
   display: flex;
   align-items: center;
@@ -27,10 +27,12 @@ const Container = styled.div`
 `;
 
 const InfoLabel = styled.p`
-  ${({ theme }) => theme.colors.WHITE_TXT}
   font-size: 12px;
+  font-weight: 500;
   white-space: nowrap;
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  color: ${({ theme }) => theme.colors.WHITE_TXT};
+
+  @media ${({ theme }) => theme.devices.TABLET} {
     ${({ theme }) => theme.typographies.BIG_TXT}
   }
 `;

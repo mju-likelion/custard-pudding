@@ -1,9 +1,8 @@
-// import Apply from './Apply';
-import Introduction from './Introduction';
+import Apply from './Apply';
 const Main = () => {
   return (
     <>
-      <Introduction />
+      <Apply />
     </>
   );
 };
