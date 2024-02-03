@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-const UserInfoInput = ({ subTitle }) => {
+const UserInfoInput = ({ subTitle, isDisabled }) => {
   return (
     <Container>
       <InfoLabel>{subTitle}</InfoLabel>
-      <InfoInput></InfoInput>
+      {isDisabled ? <InfoInput disabled /> : <InfoInput />}
     </Container>
   );
 };
@@ -15,9 +15,9 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 18px;
+
   @media ${({ theme }) => theme.devices.TABLET} {
-    width: 350px;
     height: 42px;
     gap: 17px;
   }
@@ -43,10 +43,15 @@ const InfoInput = styled.input`
   padding: 8px 18px;
   border: none;
   border-radius: 8px;
-  background-color: #282828;
+  background-color: ${({ theme }) => theme.colors.CARD_BG};
+  &:disabled {
+    background-color: #202020;
+    border: 1px solid ${({ theme }) => theme.colors.MODAL_BG};
+  }
   font-size: 10px;
   font-weight: 500;
-  color: white;
+  color: ${({ theme }) => theme.colors.WHITE_TXT};
+
   @media ${({ theme }) => theme.devices.TABLET} {
     padding: 14px 18px;
     font-size: 14px;

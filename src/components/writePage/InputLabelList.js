@@ -8,6 +8,6 @@ export const INPUT_LABEL_LIST = {
   right: [
     { id: 5, label: '이메일' },
     { id: 6, label: '전화번호' },
-    { id: 7, label: '지원 아이디' },
+    { id: 7, label: '지원 아이디', isDisabled: true },
   ],
 };

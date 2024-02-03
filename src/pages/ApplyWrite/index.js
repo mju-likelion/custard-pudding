@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import UserInfoInput from '../components/writePage/UserInfoInput';
-import { INPUT_LABEL_LIST } from '../components/writePage/InputLabelList';
-import ApplyAnswer from '../components/writePage/ApplyAnswer';
+import UserInfoInput from '../../components/writePage/UserInfoInput';
+import { INPUT_LABEL_LIST } from '../../components/writePage/InputLabelList';
+import ApplyAnswer from '../../components/writePage/ApplyAnswer';
 
-const Introduction = () => {
+const ApplyWrite = () => {
   return (
     <>
       <Header />
@@ -19,7 +19,11 @@ const Introduction = () => {
             <HorizontalLine />
             <InnerInputBox>
               {INPUT_LABEL_LIST.right.map((item) => (
-                <UserInfoInput key={item.id} subTitle={item.label} />
+                <UserInfoInput
+                  key={item.id}
+                  subTitle={item.label}
+                  isDisabled={item.isDisabled}
+                />
               ))}
               <ApplyPartBox>
                 <PartLabel>지원 파트</PartLabel>
@@ -35,16 +39,14 @@ const Introduction = () => {
         <IntroduceContainer>
           <Title>자기소개서</Title>
           {/* data 따로 관리하는 파일에서 get 요청 후 렌더링 + map 활용 */}
-          <Question>1. 이렇게 저렇게 하려는데 어떻게?</Question>
-          <ApplyAnswer></ApplyAnswer>
-          <Question>2. 이렇게 저렇게 하려는데 어떻게?</Question>
-          <ApplyAnswer></ApplyAnswer>
-          <Question>3. 이렇게 저렇게 하려는데 어떻게?</Question>
-          <ApplyAnswer></ApplyAnswer>
-          <Question>4. 이렇게 저렇게 하려는데 어떻게?</Question>
-          <ApplyAnswer></ApplyAnswer>
-          <Question>5. 이렇게 저렇게 하려는데 어떻게?</Question>
-          <ApplyAnswer></ApplyAnswer>
+          {[1, 2, 3, 4, 5].map((item, idx) => (
+            <>
+              <Question key={idx}>
+                {item}. 뭐시기 저시기 {item}번 문항입니다.
+              </Question>
+              <ApplyAnswer />
+            </>
+          ))}
         </IntroduceContainer>
         <HomeworkContainer>
           <Title>지원 과제</Title>
@@ -61,6 +63,7 @@ const Introduction = () => {
     </>
   );
 };
+
 const Header = styled.div`
   position: sticky;
   width: 100%;
@@ -81,13 +84,11 @@ const AllContainer = styled.div`
   align-items: center;
 `;
 
-// 지원자 정보 영역 시작
 const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 100px 0;
-  /* 마진 아래 다시 정해야됨 */
   @media ${({ theme }) => theme.devices.TABLET} {
     margin: 175px 0 200px 0;
   }
@@ -108,7 +109,7 @@ const InfoInputBox = styled.div`
   flex-direction: column;
   border: 1px solid #939393;
   border-radius: 15px;
-  padding: 33px 38px 34px 38px;
+  padding: 33px 52px;
   width: 330px;
   height: 405px;
   @media ${({ theme }) => theme.devices.TABLET} {
@@ -137,7 +138,7 @@ const InnerInputBox = styled.div`
 const ApplyPartBox = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 18px;
   @media ${({ theme }) => theme.devices.TABLET} {
     gap: 17px;
   }
@@ -156,17 +157,16 @@ const PartBtnBox = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  /* gap: 18px; */
 `;
 
 const PartBtn = styled.button`
-  width: 92px;
+  width: 74px;
   height: 26px;
   border-radius: 8px;
   font-size: 10px;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.WHITE_TXT};
-  background-color: #2b2b2b;
+  background-color: ${({ theme }) => theme.colors.CARD_BG};
   @media ${({ theme }) => theme.devices.TABLET} {
     width: 116px;
     height: 42px;
@@ -180,7 +180,7 @@ const PartBtn = styled.button`
 const HorizontalLine = styled.div`
   width: 100%;
   height: 1px;
-  background-color: #282828;
+  background-color: ${({ theme }) => theme.colors.CARD_BG};
   margin: auto 0;
   @media ${({ theme }) => theme.devices.DESKTOP} {
     display: none;
@@ -188,24 +188,20 @@ const HorizontalLine = styled.div`
 `;
 
 const InfoHelperText = styled.div`
-  /* 모바일꺼 해야됨 */
   margin-top: 15px;
   font-size: 12px;
   font-weight: 300;
-  color: #ff5172;
-
+  color: ${({ theme }) => theme.colors.HOVER_BTN};
   @media ${({ theme }) => theme.devices.TABLET} {
     margin-top: 28px;
     font-size: 20px;
   }
 `;
 
-// 자기소개서 영역 시작
 const IntroduceContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  /* 모바일 margin 정해야됨 */
+  margin-bottom: 60px;
   @media ${({ theme }) => theme.devices.TABLET} {
     margin-bottom: 90px;
   }
@@ -227,10 +223,10 @@ const Question = styled.p`
 `;
 
 const HomeworkContainer = styled.div`
-  display: flex;
-  flex-direction: column;
   width: 330px;
   height: 690px;
+  display: flex;
+  flex-direction: column;
 
   @media ${({ theme }) => theme.devices.TABLET} {
     width: 560px;
@@ -254,14 +250,13 @@ const HomeworkInputBox = styled.div`
 const HomeworkInput = styled.input`
   width: 240px;
   height: 30px;
-  background-color: #2b2b2b;
+  background-color: ${({ theme }) => theme.colors.CARD_BG};
   border-radius: 8px;
   border: none;
   @media ${({ theme }) => theme.devices.TABLET} {
     width: 440px;
     height: 56px;
   }
-  /* margin: 100px; */
 `;
 const FileButton = styled.button`
   width: 70px;
@@ -282,10 +277,10 @@ const HomeworkHelperText = styled.p`
   margin-top: 5px;
   font-size: 10px;
   font-weight: 300;
-  color: #c8c8c8;
+  color: ${({ theme }) => theme.colors.DISABLE_BTN};
   @media ${({ theme }) => theme.devices.TABLET} {
     margin-top: 10px;
     font-size: 14px;
   }
 `;
-export default Introduction;
+export default ApplyWrite;
