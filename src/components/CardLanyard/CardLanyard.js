@@ -11,8 +11,8 @@ const CardLanyard = ({ width, height, pcWidth, pcHeight, children }) => {
     <CardContainer
       width={width}
       height={height}
-      pcWidth={pcWidth}
-      pcHeight={pcHeight}
+      $pcWidth={pcWidth}
+      $pcHeight={pcHeight}
     >
       <NameCardString />
       <CardBody>{children}</CardBody>
@@ -26,8 +26,8 @@ const CardContainer = styled.div`
   height: ${({ height }) => height};
 
   @media ${({ theme }) => theme.devices.DESKTOP} {
-    width: ${({ pcWidth }) => pcWidth};
-    height: ${({ pcHeight }) => pcHeight};
+    width: ${({ $pcWidth }) => $pcWidth};
+    height: ${({ $pcHeight }) => $pcHeight};
   }
 `;
 
