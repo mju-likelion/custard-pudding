@@ -6,50 +6,52 @@ import part_message from '../messages/part';
 import letter from '../assets/imgs/letter.svg';
 import react_icon from '../assets/imgs/react_icon.svg';
 import spring_boot_icon from '../assets/imgs/spring_boot_icon.svg';
+import Check from './Check';
 
 const Main = () => {
   const { web, server } = part_message;
 
   return (
-    <PageWrapper>
-      <LetterImg src={letter} />
-      <PartContainer>
-        <Title>파트</Title>
-        <Cards>
-          <PartCard
-            part_name={web.part_name}
-            icon={react_icon}
-            content={web.content}
-            tech_list={web.tech_list}
-          />
-          <PartCard
-            part_name={server.part_name}
-            icon={spring_boot_icon}
-            content={server.content}
-            tech_list={server.tech_list}
-          />
-        </Cards>
-      </PartContainer>
-      <AssignmentContainer>
-        <Title>지원 과제</Title>
-        <Boxes>
-          <AssignmentBox
-            part_name={web.part_name}
-            assignment={web.assignment}
-          />
-          <AssignmentBox
-            part_name={server.part_name}
-            assignment={server.assignment}
-          />
-          <AdditionalInfoLink>
-            ※ 지원 과제에 대한 추가적인 설명은 &nbsp;
-            <Link href="https://www.instagram.com/mju_likelion/">Notion</Link>을
-            반드시 참고 바랍니다.
-          </AdditionalInfoLink>
-        </Boxes>
-      </AssignmentContainer>
-      <BigButton>지원하기</BigButton>
-    </PageWrapper>
+    // <PageWrapper>
+    //   <LetterImg src={letter} />
+    //   <PartContainer>
+    //     <Title>파트</Title>
+    //     <Cards>
+    //       <PartCard
+    //         part_name={web.part_name}
+    //         icon={react_icon}
+    //         content={web.content}
+    //         tech_list={web.tech_list}
+    //       />
+    //       <PartCard
+    //         part_name={server.part_name}
+    //         icon={spring_boot_icon}
+    //         content={server.content}
+    //         tech_list={server.tech_list}
+    //       />
+    //     </Cards>
+    //   </PartContainer>
+    //   <AssignmentContainer>
+    //     <Title>지원 과제</Title>
+    //     <Boxes>
+    //       <AssignmentBox
+    //         part_name={web.part_name}
+    //         assignment={web.assignment}
+    //       />
+    //       <AssignmentBox
+    //         part_name={server.part_name}
+    //         assignment={server.assignment}
+    //       />
+    //       <AdditionalInfoLink>
+    //         ※ 지원 과제에 대한 추가적인 설명은 &nbsp;
+    //         <Link href="https://www.instagram.com/mju_likelion/">Notion</Link>을
+    //         반드시 참고 바랍니다.
+    //       </AdditionalInfoLink>
+    //     </Boxes>
+    //   </AssignmentContainer>
+    //   <BigButton>지원하기</BigButton>
+    // </PageWrapper>
+    <Check />
   );
 };
 

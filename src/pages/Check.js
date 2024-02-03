@@ -3,11 +3,9 @@ import CardLanyard from '../components/CardLanyard/CardLanyard';
 import SubTitle from '../components/checkPage/SubTitle';
 import Input from '../components/checkPage/Input';
 import SmallButton from '../components/checkPage/SmallButton';
-
-const DEFAULT_MESSAGE =
-  '※. 지원 여부는 지원 아이디를 통해 확인 가능하며, 수정할 수 없습니다.';
-
-const ERROR_MESSAGE = '올바른 아이디 형식이 아닙니다.';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 const Check = () => {
   const inputSizeValue = {
@@ -31,29 +29,45 @@ const Check = () => {
     pcHeight: '20px',
   };
 
+  const schema = yup.object({
+    id: yup
+      .string()
+      .matches(/^[a-zA-Z][0-9a-zA-Z]*$/, '형식에 맞는 아이디를 입력해주세요')
+      .required('아이디를 입력해주세요')
+      .min(6, '6글자 이상 12글자 이하로 입력하세요')
+      .max(12, '6글자 이상 12글자 이하로 입력하세요'),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
+
   return (
     <Container>
-      <CardLanyard
-        width={'250px'}
-        height={'318px'}
-        pcWidth={'544px'}
-        pcHeight={'358px'}
-      >
-        <ContentsWrapper>
-          <SubTitle>지원 확인하기</SubTitle>
-          <InputWraaper>
-            <Input
-              isError={true}
-              defaultMessage={DEFAULT_MESSAGE}
-              errorMessage={ERROR_MESSAGE}
-              inputSize={inputSizeValue}
-              captionSize={captionSizeValue}
-              messageSize={messageSizeValue}
-            />
-          </InputWraaper>
-          <Button>지원하기</Button>
-        </ContentsWrapper>
-      </CardLanyard>
+      <form onSubmit={handleSubmit((data) => console.log(data))}>
+        <CardLanyard
+          width={'250px'}
+          height={'318px'}
+          pcWidth={'544px'}
+          pcHeight={'358px'}
+        >
+          <ContentsWrapper>
+            <SubTitle>지원 확인하기</SubTitle>
+            <InputWraaper>
+              <Input
+                inputSize={inputSizeValue}
+                captionSize={captionSizeValue}
+                messageSize={messageSizeValue}
+                hookFormRegister={register}
+                messageErrors={errors}
+              />
+            </InputWraaper>
+            <Button type={'submit'}>지원하기</Button>
+          </ContentsWrapper>
+        </CardLanyard>
+      </form>
     </Container>
   );
 };

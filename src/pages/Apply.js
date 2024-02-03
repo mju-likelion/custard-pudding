@@ -43,7 +43,7 @@ const Apply = () => {
           <SubTitle>지원하기</SubTitle>
           <InputWraaper>
             <Input
-              isError={true}
+              //   isError={true}
               defaultMessage={DEFAULT_MESSAGE}
               errorMessage={ERROR_MESSAGE}
               inputSize={inputSizeValue}

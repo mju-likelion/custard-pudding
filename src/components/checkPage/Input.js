@@ -1,19 +1,18 @@
 import styled from 'styled-components';
 
 const Input = ({
-  isError,
-  defaultMessage,
-  errorMessage,
   inputSize,
   captionSize,
   messageSize,
+  hookFormRegister,
+  messageErrors,
 }) => {
   return (
     <Wrapper>
       <Caption $captionSize={captionSize}>지원 아이디</Caption>
-      <StyledInput $inputSize={inputSize} />
+      <StyledInput $inputSize={inputSize} {...hookFormRegister('id')} />
       <ErrorMessage $messageSize={messageSize}>
-        {isError ? errorMessage : defaultMessage}
+        {messageErrors.id && messageErrors.id.message}
       </ErrorMessage>
     </Wrapper>
   );
