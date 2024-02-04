@@ -4,8 +4,8 @@ import SubTitle from '../components/checkPage/SubTitle';
 import Input from '../components/checkPage/Input';
 import SmallButton from '../components/checkPage/SmallButton';
 import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { idValidationSchema } from '../validation/idValidationSchema';
 
 const Check = () => {
   const inputSizeValue = {
@@ -29,20 +29,11 @@ const Check = () => {
     pcHeight: '20px',
   };
 
-  const schema = yup.object({
-    id: yup
-      .string()
-      .matches(/^[a-zA-Z][0-9a-zA-Z]*$/, '형식에 맞는 아이디를 입력해주세요')
-      .required('아이디를 입력해주세요')
-      .min(6, '6글자 이상 12글자 이하로 입력하세요')
-      .max(12, '6글자 이상 12글자 이하로 입력하세요'),
-  });
-
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({ resolver: yupResolver(idValidationSchema) });
 
   return (
     <Container>
