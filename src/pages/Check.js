@@ -64,7 +64,7 @@ const Check = () => {
                 messageErrors={errors}
               />
             </InputWraaper>
-            <Button type={'submit'}>지원하기</Button>
+            <Button type={'submit'}>확인하기</Button>
           </ContentsWrapper>
         </CardLanyard>
       </form>
