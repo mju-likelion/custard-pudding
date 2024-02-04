@@ -4,11 +4,6 @@ import SubTitle from '../components/checkPage/SubTitle';
 import Input from '../components/checkPage/Input';
 import SmallButton from '../components/checkPage/SmallButton';
 
-const DEFAULT_MESSAGE =
-  '※. 지원 여부는 지원 아이디를 통해 확인 가능하며, 수정할 수 없습니다.';
-
-const ERROR_MESSAGE = '올바른 아이디 형식이 아닙니다.';
-
 const Apply = () => {
   const inputSizeValue = {
     width: '220px',
@@ -43,9 +38,6 @@ const Apply = () => {
           <SubTitle>지원하기</SubTitle>
           <InputWraaper>
             <Input
-              //   isError={true}
-              defaultMessage={DEFAULT_MESSAGE}
-              errorMessage={ERROR_MESSAGE}
               inputSize={inputSizeValue}
               captionSize={captionSizeValue}
               messageSize={messageSizeValue}
