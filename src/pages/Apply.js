@@ -3,11 +3,9 @@ import CardLanyard from '../components/CardLanyard/CardLanyard';
 import SubTitle from '../components/checkPage/SubTitle';
 import Input from '../components/checkPage/Input';
 import SmallButton from '../components/checkPage/SmallButton';
-
-const DEFAULT_MESSAGE =
-  '※. 지원 여부는 지원 아이디를 통해 확인 가능하며, 수정할 수 없습니다.';
-
-const ERROR_MESSAGE = '올바른 아이디 형식이 아닙니다.';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { idValidationSchema } from '../validation/idValidationSchema';
 
 const Apply = () => {
   const inputSizeValue = {
@@ -31,29 +29,36 @@ const Apply = () => {
     pcHeight: '20px',
   };
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(idValidationSchema) });
+
   return (
     <Container>
-      <CardLanyard
-        width={'250px'}
-        height={'318px'}
-        pcWidth={'544px'}
-        pcHeight={'358px'}
-      >
-        <ContentsWrapper>
-          <SubTitle>지원하기</SubTitle>
-          <InputWraaper>
-            <Input
-              isError={true}
-              defaultMessage={DEFAULT_MESSAGE}
-              errorMessage={ERROR_MESSAGE}
-              inputSize={inputSizeValue}
-              captionSize={captionSizeValue}
-              messageSize={messageSizeValue}
-            />
-          </InputWraaper>
-          <Button>지원하기</Button>
-        </ContentsWrapper>
-      </CardLanyard>
+      <form onSubmit={handleSubmit((data) => console.log(data))}>
+        <CardLanyard
+          width={'250px'}
+          height={'318px'}
+          pcWidth={'544px'}
+          pcHeight={'358px'}
+        >
+          <ContentsWrapper>
+            <SubTitle>지원하기</SubTitle>
+            <InputWraaper>
+              <Input
+                inputSize={inputSizeValue}
+                captionSize={captionSizeValue}
+                messageSize={messageSizeValue}
+                hookFormRegister={register}
+                messageErrors={errors}
+              />
+            </InputWraaper>
+            <Button>지원하기</Button>
+          </ContentsWrapper>
+        </CardLanyard>
+      </form>
     </Container>
   );
 };
