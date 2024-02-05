@@ -9,7 +9,7 @@ const Input = ({
 }) => {
   return (
     <Wrapper>
-      <Caption $captionSize={captionSize}>지원 아이디</Caption>
+      <Caption $captionSize={captionSize}>학번</Caption>
       <StyledInput $inputSize={inputSize} {...hookFormRegister('id')} />
       <ErrorMessage $messageSize={messageSize}>
         {messageErrors.id && messageErrors.id.message}
