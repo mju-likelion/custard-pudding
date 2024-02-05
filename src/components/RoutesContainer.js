@@ -10,7 +10,7 @@ const RoutesContainer = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/apply" element={<Apply />} />
-        <Route path="/apply/exist/:id" element={<Check />} />
+        <Route path="/check" element={<Check />} />
       </Routes>
     </PageLayout>
   );
