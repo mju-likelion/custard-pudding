@@ -2,57 +2,57 @@ import styled from 'styled-components';
 import PartCard from '../components/mainPage/PartCard';
 import AssignmentBox from '../components/mainPage/AssignmentBox';
 import BigButton from '../components/Button/BigButton';
+import ScrollBar from '../components/mainPage/ScrollBar';
+
 import part_message from '../messages/part';
 import letter from '../assets/imgs/letter.svg';
-import react_icon from '../assets/imgs/react_icon.svg';
-import spring_boot_icon from '../assets/imgs/spring_boot_icon.svg';
 
 const Main = () => {
-  const { web, server } = part_message;
-
   return (
-    <PageWrapper>
-      <LetterImg src={letter} />
-      <PartContainer>
-        <Title>파트</Title>
-        <Cards>
-          <PartCard
-            part_name={web.part_name}
-            icon={react_icon}
-            content={web.content}
-            tech_list={web.tech_list}
-          />
-          <PartCard
-            part_name={server.part_name}
-            icon={spring_boot_icon}
-            content={server.content}
-            tech_list={server.tech_list}
-          />
-        </Cards>
-      </PartContainer>
-      <AssignmentContainer>
-        <Title>지원 과제</Title>
-        <Boxes>
-          <AssignmentBox
-            part_name={web.part_name}
-            assignment={web.assignment}
-          />
-          <AssignmentBox
-            part_name={server.part_name}
-            assignment={server.assignment}
-          />
-          <AdditionalInfoLink>
-            ※ 지원 과제에 대한 추가적인 설명은 &nbsp;
-            <Link href="https://www.instagram.com/mju_likelion/">Notion</Link>을
-            반드시 참고 바랍니다.
-          </AdditionalInfoLink>
-        </Boxes>
-      </AssignmentContainer>
-      <BigButton>지원하기</BigButton>
-    </PageWrapper>
+    <Container>
+      <PageWrapper>
+        <LetterImg src={letter} />
+        <PartContainer>
+          <Title>파트</Title>
+          <PartCards>
+            {Object.entries(part_message).map(([key, value]) => (
+              <PartCard
+                key={key}
+                part_name={value.part_name}
+                icon={value.icon}
+                content={value.content}
+                tech_list={value.tech_list}
+              />
+            ))}
+          </PartCards>
+        </PartContainer>
+        <AssignmentContainer>
+          <Title>지원 과제</Title>
+          <AssignmentBoxes>
+            {Object.entries(part_message).map(([key, value]) => (
+              <AssignmentBox
+                key={key}
+                part_name={value.part_name}
+                assignment={value.assignment}
+              />
+            ))}
+            <AdditionalInfoLink>
+              ※ 지원 과제에 대한 추가적인 설명은 &nbsp;
+              <Link href="https://www.instagram.com/mju_likelion/">Notion</Link>
+              을 반드시 참고 바랍니다.
+            </AdditionalInfoLink>
+          </AssignmentBoxes>
+        </AssignmentContainer>
+        <BigButton>지원하기</BigButton>
+      </PageWrapper>
+      <ScrollBar />
+    </Container>
   );
 };
 
+const Container = styled.div`
+  display: flex;
+`;
 const PageWrapper = styled.div`
   width: 300px;
   @media ${({ theme }) => theme.devices.MOBILE} {
@@ -100,7 +100,7 @@ const Title = styled.p`
     ${({ theme }) => theme.typographies.TITLE}
   }
 `;
-const Cards = styled.div`
+const PartCards = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -121,7 +121,7 @@ const AssignmentContainer = styled.div`
     padding: 0 30px;
   }
 `;
-const Boxes = styled.div`
+const AssignmentBoxes = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
