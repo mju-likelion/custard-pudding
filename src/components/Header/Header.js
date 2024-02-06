@@ -47,12 +47,9 @@ const Header = () => {
 const Container = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.PAGE_BG};
-  position: sticky;
+  position: absolute;
   top: 0;
   z-index: 99;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 `;
 
 const InnerContainer = styled.div`

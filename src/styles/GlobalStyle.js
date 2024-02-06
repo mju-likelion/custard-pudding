@@ -16,8 +16,7 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; 
-    
+    overflow-x: hidden;     
   }
 
   html {
@@ -27,6 +26,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     overflow-x: hidden; /* 가로 스크롤 방지 */
   }
+  
   #root {
     height: 100%;
   }
