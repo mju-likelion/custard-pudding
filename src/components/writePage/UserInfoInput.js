@@ -40,7 +40,7 @@ const InfoLabel = styled.p`
 const InfoInput = styled.input`
   width: 100%;
   height: 100%;
-  padding: 8px 18px;
+  padding: 8px 10px;
   border: none;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.CARD_BG};

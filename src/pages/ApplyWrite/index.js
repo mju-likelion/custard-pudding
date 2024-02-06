@@ -6,27 +6,26 @@ import ApplyAnswer from '../../components/writePage/ApplyAnswer';
 const ApplyWrite = () => {
   return (
     <>
-      <Header />
       <AllContainer>
         <InfoContainer>
           <Title>지원자 정보</Title>
           <InfoInputBox>
             <InnerInputBox>
               {INPUT_LABEL_LIST.left.map((item) => (
-                <UserInfoInput key={item.id} subTitle={item.label} />
-              ))}
-            </InnerInputBox>
-            <HorizontalLine />
-            <InnerInputBox>
-              {INPUT_LABEL_LIST.right.map((item) => (
                 <UserInfoInput
                   key={item.id}
                   subTitle={item.label}
                   isDisabled={item.isDisabled}
                 />
               ))}
+            </InnerInputBox>
+            <HorizontalLine />
+            <InnerInputBox>
+              {INPUT_LABEL_LIST.right.map((item) => (
+                <UserInfoInput key={item.id} subTitle={item.label} />
+              ))}
               <ApplyPartBox>
-                <PartLabel>지원 파트</PartLabel>
+                <PartLabel>지원파트</PartLabel>
                 <PartBtnBox>
                   <PartBtn>웹</PartBtn>
                   <PartBtn>서버</PartBtn>
@@ -64,19 +63,6 @@ const ApplyWrite = () => {
   );
 };
 
-const Header = styled.div`
-  position: sticky;
-  width: 100%;
-  height: 56px;
-  background-color: green;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    background-color: blue;
-  }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    height: 70px;
-    background-color: red;
-  }
-`;
 const AllContainer = styled.div`
   width: 100%;
   display: flex;
@@ -109,13 +95,13 @@ const InfoInputBox = styled.div`
   flex-direction: column;
   border: 1px solid #939393;
   border-radius: 15px;
-  padding: 33px 52px;
+  padding: 35px 52px;
   width: 330px;
-  height: 405px;
+  height: 367px;
   @media ${({ theme }) => theme.devices.TABLET} {
     padding: 65px 105px;
     width: 560px;
-    height: 726px;
+    height: 656px;
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
     display: flex;
@@ -182,6 +168,7 @@ const HorizontalLine = styled.div`
   height: 1px;
   background-color: ${({ theme }) => theme.colors.CARD_BG};
   margin: auto 0;
+  display: block;
   @media ${({ theme }) => theme.devices.DESKTOP} {
     display: none;
   }
