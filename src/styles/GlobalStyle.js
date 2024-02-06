@@ -12,25 +12,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: 'GmarketSans', 'nanumgothic', sans-serif;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; 
-    
   }
-
-  html {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* 가로 스크롤 방지 */
-  }
-  #root {
-    height: 100%;
-  }
-
   button {
     margin: 0;
     padding: 0;
