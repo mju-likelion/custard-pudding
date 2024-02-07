@@ -83,18 +83,14 @@ const LogoBox = styled.div`
 `;
 
 const BigLogoWrapper = styled.img`
-  @media ${({ theme }) => theme.devices.MOBILE} {
-    display: none;
-  }
+  display: none;
   @media ${({ theme }) => theme.devices.DESKTOP} {
     display: block;
   }
 `;
 
 const SmallLogoWrapper = styled.img`
-  @media ${({ theme }) => theme.devices.MOBILE} {
-    display: block;
-  }
+  display: block;
   @media ${({ theme }) => theme.devices.DESKTOP} {
     display: none;
   }

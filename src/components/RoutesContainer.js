@@ -1,14 +1,18 @@
 import { Route, Routes } from 'react-router-dom';
 import PageLayout from './PageLayout';
 import Main from '../pages/Main';
+import Apply from '../pages/Apply';
+import Check from '../pages/Check';
 
 const RoutesContainer = () => {
   return (
-    <PageLayout>
-      <Routes>
+    <Routes>
+      <Route element={<PageLayout />}>
         <Route path="/" element={<Main />} />
-      </Routes>
-    </PageLayout>
+        <Route path="/apply" element={<Apply />} />
+        <Route path="/check" element={<Check />} />
+      </Route>
+    </Routes>
   );
 };
 
