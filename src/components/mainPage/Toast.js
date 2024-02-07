@@ -1,28 +1,20 @@
 import styled from 'styled-components';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
-const Toast = ({ children }) => {
-  const notify = () => {
-    toast('💖\u00A0\u00A0메일 주소가 복사 되었습니다!');
-  };
-
+const Toast = () => {
   return (
-    <div>
-      <button onClick={notify}>{children}</button>
-      <StyledToastContainer
-        limit={1}
-        position="bottom-center"
-        autoClose={1500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-    </div>
+    <StyledToastContainer
+      limit={1}
+      position="bottom-center"
+      autoClose={1500}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+    />
   );
 };
 
@@ -31,7 +23,10 @@ const StyledToastContainer = styled(ToastContainer)`
   display: flex;
   justify-content: center;
   &&&.Toastify__toast-container {
-    margin-bottom: 70px;
+    margin-bottom: 100px;
+    @media ${({ theme }) => theme.devices.TABLET} {
+      margin-bottom: 70px;
+    }
     .Toastify__toast {
       width: 330px;
       height: 70px;

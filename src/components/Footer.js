@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import CopyMail from './mainPage/CopyMail';
 import Toast from './mainPage/Toast';
 import { ReactComponent as Github_icon } from '../assets/imgs/github_icon.svg';
 import { ReactComponent as Instar_icon } from '../assets/imgs/instar_icon.svg';
@@ -14,10 +15,11 @@ const Footer = () => {
         <a href="https://www.instagram.com/mju_likelion/">
           <Instar />
         </a>
-        <Toast>
+        <CopyMail>
           <Email />
-        </Toast>
+        </CopyMail>
       </SnsLinks>
+      <Toast />
       <Copyright>
         © 2024. LIKELION MJU All pictures cannot be copied without permission.
       </Copyright>
@@ -40,7 +42,6 @@ const SnsLinks = styled.div`
   align-items: center;
   gap: 30px;
 `;
-
 const Icon = css`
   width: 28px;
   @media ${({ theme }) => theme.devices.TABLET} {
@@ -51,7 +52,6 @@ const Icon = css`
     fill: ${({ theme }) => theme.colors.HOVER_BTN};
   }
 `;
-
 const Github = styled(Github_icon)`
   ${Icon}
 `;
