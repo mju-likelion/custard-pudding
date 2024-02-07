@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import Toast from './mainPage/Toast';
 import { ReactComponent as Github_icon } from '../assets/imgs/github_icon.svg';
 import { ReactComponent as Instar_icon } from '../assets/imgs/instar_icon.svg';
 import { ReactComponent as Email_icon } from '../assets/imgs/email_icon.svg';
@@ -13,9 +14,9 @@ const Footer = () => {
         <a href="https://www.instagram.com/mju_likelion/">
           <Instar />
         </a>
-        <a href="https://www.naver.com/">
+        <Toast>
           <Email />
-        </a>
+        </Toast>
       </SnsLinks>
       <Copyright>
         © 2024. LIKELION MJU All pictures cannot be copied without permission.
