@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import { Outlet } from 'react-router-dom';
 import Footer from './Footer';
 import Header from './Header/Header';
 
-const PageLayout = ({ children }) => {
+const PageLayout = () => {
   return (
     <PageContainer>
       <Header />
-      {children}
+      <Outlet />
       <Footer />
     </PageContainer>
   );
