@@ -6,13 +6,13 @@ import Check from '../pages/Check';
 
 const RoutesContainer = () => {
   return (
-    <PageLayout>
-      <Routes>
+    <Routes>
+      <Route element={<PageLayout />}>
         <Route path="/" element={<Main />} />
         <Route path="/apply" element={<Apply />} />
         <Route path="/check" element={<Check />} />
-      </Routes>
-    </PageLayout>
+      </Route>
+    </Routes>
   );
 };
 
