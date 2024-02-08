@@ -5,26 +5,33 @@ import ApplyAnswer from '../../components/writePage/ApplyAnswer';
 import { useForm } from 'react-hook-form';
 import { writeValidationSchema } from '../../validation/writeValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useState } from 'react';
 
 const ApplyWrite = () => {
   // const EMPTY_ERROR = '※ 작성이 완료되지 않은 내용이 있습니다';
   // const WRONG_FORM_ERROR = '※ 형식에 맞지 않는 값이 있습니다';
+  const [FormError, setFormError] = useState(false);
 
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-    // setFocus,
   } = useForm({
     resolver: yupResolver(writeValidationSchema),
     mode: 'onChange',
   });
 
-  const value = watch();
+  console.log(Object.keys(errors).length);
+  const isFormError = () => {
+    if (Object.keys(errors).length > 0) {
+      setFormError(true);
+    } else if (Object.keys(errors).length === 0) {
+      setFormError(false);
+    }
+  };
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -41,7 +48,6 @@ const ApplyWrite = () => {
                   isDisabled={item.isDisabled}
                   register={register}
                   errors={errors}
-                  value={value}
                 />
               ))}
             </InnerInputBox>
@@ -66,12 +72,14 @@ const ApplyWrite = () => {
               </ApplyPartBox>
             </InnerInputBox>
           </InfoInputBox>
-          <InfoHelperText $isError={errors.name ? true : false}>
+          <InfoHelperText $isError={FormError}>
             ※ 형식에 맞지 않는 값이 있습니다
           </InfoHelperText>
         </InfoContainer>
         {/* 테스트 버튼 */}
-        <TestButton type="submit">제출하기</TestButton>
+        <TestButton type="submit" onClick={isFormError}>
+          제출하기
+        </TestButton>
         <IntroduceContainer>
           <Title>자기소개서</Title>
           {/* data 따로 관리하는 파일에서 get 요청 후 렌더링 + map 활용 */}

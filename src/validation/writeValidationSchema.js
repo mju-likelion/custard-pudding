@@ -5,12 +5,12 @@ export const writeValidationSchema = yup.object().shape({
     .string()
     .required()
     .matches(/^[가-힣]{1,6}$/),
-  major: yup.string().required('전공입력해'),
+  major: yup.string().required(),
   // studentId: yup.string().required(),
   grade: yup
     .string()
-    .required('학년입력해')
-    .oneOf([1, 2, 3, 4, '휴학', '졸업유예']),
+    .required()
+    .oneOf(['1', '2', '3', '4', '휴학', '졸업유예']),
   email: yup.string().required().email(),
   phoneNumber: yup
     .string()
