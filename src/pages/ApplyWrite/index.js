@@ -1,11 +1,33 @@
 import styled from 'styled-components';
 import UserInfoInput from '../../components/writePage/UserInfoInput';
-import { INPUT_LABEL_LIST } from '../../components/writePage/InputLabelList';
+import { INPUT_LABEL_LIST } from './InputLabelList';
 import ApplyAnswer from '../../components/writePage/ApplyAnswer';
+import { useForm } from 'react-hook-form';
+import { writeValidationSchema } from '../../validation/writeValidationSchema';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 const ApplyWrite = () => {
+  // const EMPTY_ERROR = '※ 작성이 완료되지 않은 내용이 있습니다';
+  // const WRONG_FORM_ERROR = '※ 형식에 맞지 않는 값이 있습니다';
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+    // setFocus,
+  } = useForm({
+    resolver: yupResolver(writeValidationSchema),
+    mode: 'onChange',
+  });
+
+  const value = watch();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
-    <>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <AllContainer>
         <InfoContainer>
           <Title>지원자 정보</Title>
@@ -14,15 +36,26 @@ const ApplyWrite = () => {
               {INPUT_LABEL_LIST.left.map((item) => (
                 <UserInfoInput
                   key={item.id}
-                  subTitle={item.label}
+                  label={item.label}
+                  name={item.name}
                   isDisabled={item.isDisabled}
+                  register={register}
+                  errors={errors}
+                  value={value}
                 />
               ))}
             </InnerInputBox>
             <HorizontalLine />
             <InnerInputBox>
               {INPUT_LABEL_LIST.right.map((item) => (
-                <UserInfoInput key={item.id} subTitle={item.label} />
+                <UserInfoInput
+                  key={item.id}
+                  label={item.label}
+                  name={item.name}
+                  register={register}
+                  errors={errors}
+                  placeholder={item.placeholder}
+                />
               ))}
               <ApplyPartBox>
                 <PartLabel>지원파트</PartLabel>
@@ -33,8 +66,12 @@ const ApplyWrite = () => {
               </ApplyPartBox>
             </InnerInputBox>
           </InfoInputBox>
-          <InfoHelperText>※ 형식에 맞지 않는 값이 있습니다</InfoHelperText>
+          <InfoHelperText $isError={errors.name ? true : false}>
+            ※ 형식에 맞지 않는 값이 있습니다
+          </InfoHelperText>
         </InfoContainer>
+        {/* 테스트 버튼 */}
+        <TestButton type="submit">제출하기</TestButton>
         <IntroduceContainer>
           <Title>자기소개서</Title>
           {/* data 따로 관리하는 파일에서 get 요청 후 렌더링 + map 활용 */}
@@ -59,7 +96,7 @@ const ApplyWrite = () => {
           </HomeworkHelperText>
         </HomeworkContainer>
       </AllContainer>
-    </>
+    </form>
   );
 };
 
@@ -179,6 +216,7 @@ const InfoHelperText = styled.div`
   font-size: 12px;
   font-weight: 300;
   color: ${({ theme }) => theme.colors.HOVER_BTN};
+  visibility: ${({ $isError }) => ($isError ? 'visible' : 'hidden')};
   @media ${({ theme }) => theme.devices.TABLET} {
     margin-top: 28px;
     font-size: 20px;
@@ -269,5 +307,11 @@ const HomeworkHelperText = styled.p`
     margin-top: 10px;
     font-size: 14px;
   }
+`;
+const TestButton = styled.button`
+  width: 200px;
+  height: 100px;
+  color: white;
+  background-color: pink;
 `;
 export default ApplyWrite;

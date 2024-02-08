@@ -1,10 +1,21 @@
 import styled from 'styled-components';
 
-const UserInfoInput = ({ subTitle, isDisabled }) => {
+const UserInfoInput = ({
+  label,
+  name,
+  isDisabled,
+  register,
+  errors,
+  placeholder,
+}) => {
   return (
     <Container>
-      <InfoLabel>{subTitle}</InfoLabel>
-      {isDisabled ? <InfoInput disabled /> : <InfoInput />}
+      <InfoLabel>{label}</InfoLabel>
+      {isDisabled ? (
+        <InfoInput disabled />
+      ) : (
+        <InfoInput placeholder={placeholder} id={name} {...register(name)} />
+      )}
     </Container>
   );
 };
