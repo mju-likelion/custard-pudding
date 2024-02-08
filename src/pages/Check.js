@@ -6,8 +6,24 @@ import SmallButton from '../components/checkPage/SmallButton';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { idValidationSchema } from '../validation/idValidationSchema';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Check = () => {
+  const navigate = useNavigate();
+
+  const handleFormSubmit = async (data) => {
+    const response = await axios.get('대현이가 준 api', { params: data });
+
+    const isExist = response.data.isExist;
+
+    if (!isExist) {
+      navigate('/조회안됨');
+    } else {
+      navigate('/조회됨');
+    }
+  };
+
   const inputSizeValue = {
     width: '220px',
     height: '28px',
@@ -37,7 +53,7 @@ const Check = () => {
 
   return (
     <Container>
-      <form onSubmit={handleSubmit((data) => console.log(data))}>
+      <form onSubmit={handleSubmit(handleFormSubmit)}>
         <CardLanyard
           width={'250px'}
           height={'318px'}
