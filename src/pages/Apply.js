@@ -6,8 +6,32 @@ import SmallButton from '../components/checkPage/SmallButton';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { idValidationSchema } from '../validation/idValidationSchema';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Apply = () => {
+  const navigate = useNavigate();
+
+  const handleFormSubmit = (data) => {
+    axios
+      .post('내가 보내야하는 api', { userId: data.userId })
+      .then((res) => {
+        const statusCode = res.data.statusCode;
+
+        if (statusCode === 201) {
+          navigate('/지원서작성');
+        }
+      })
+      .catch((res) => {
+        const statusCode = res.data.statusCode;
+        if (statusCode === 400) {
+          navigate('/오류');
+        } else if (statusCode === 409) {
+          navigate('/이미존재함');
+        }
+      });
+  };
+
   const inputSizeValue = {
     width: '220px',
     height: '28px',
@@ -37,7 +61,7 @@ const Apply = () => {
 
   return (
     <Container>
-      <form onSubmit={handleSubmit((data) => console.log(data))}>
+      <form onSubmit={handleSubmit(handleFormSubmit)}>
         <CardLanyard
           width={'250px'}
           height={'318px'}
