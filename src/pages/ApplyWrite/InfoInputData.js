@@ -15,3 +15,8 @@ export const INPUT_LABEL_LIST = {
     },
   ],
 };
+
+export const PART = [
+  { id: 1, partKo: '웹', partEn: 'web' },
+  { id: 2, partKo: '서버', partEn: 'server' },
+];

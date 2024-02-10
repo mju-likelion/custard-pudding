@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import UserInfoInput from '../../components/writePage/UserInfoInput';
-import { INPUT_LABEL_LIST } from './InputLabelList';
+import { INPUT_LABEL_LIST } from './InfoInputData';
+import { TEXTAREA_LIST } from './IntroductionData';
+import { PART } from './InfoInputData';
+
 import ApplyAnswer from '../../components/writePage/ApplyAnswer';
 import { useForm } from 'react-hook-form';
 import { writeValidationSchema } from '../../validation/writeValidationSchema';
@@ -11,6 +14,7 @@ const ApplyWrite = () => {
   // const EMPTY_ERROR = '※ 작성이 완료되지 않은 내용이 있습니다';
   // const WRONG_FORM_ERROR = '※ 형식에 맞지 않는 값이 있습니다';
   const [FormError, setFormError] = useState(false);
+  const [selectedPart, setSelectedPart] = useState('web');
 
   const {
     register,
@@ -21,13 +25,16 @@ const ApplyWrite = () => {
     mode: 'onChange',
   });
 
-  console.log(Object.keys(errors).length);
   const isFormError = () => {
     if (Object.keys(errors).length > 0) {
       setFormError(true);
     } else if (Object.keys(errors).length === 0) {
       setFormError(false);
     }
+  };
+
+  const handlePartClick = (part) => {
+    setSelectedPart(part);
   };
 
   const onSubmit = (data) => {
@@ -66,8 +73,16 @@ const ApplyWrite = () => {
               <ApplyPartBox>
                 <PartLabel>지원파트</PartLabel>
                 <PartBtnBox>
-                  <PartBtn>웹</PartBtn>
-                  <PartBtn>서버</PartBtn>
+                  {PART.map((item) => (
+                    <PartBtn
+                      key={item.id}
+                      select={selectedPart === item.partEn}
+                      onClick={() => handlePartClick(item.partEn)}
+                      type="button"
+                    >
+                      {item.partKo}
+                    </PartBtn>
+                  ))}
                 </PartBtnBox>
               </ApplyPartBox>
             </InnerInputBox>
@@ -83,12 +98,12 @@ const ApplyWrite = () => {
         <IntroduceContainer>
           <Title>자기소개서</Title>
           {/* data 따로 관리하는 파일에서 get 요청 후 렌더링 + map 활용 */}
-          {[1, 2, 3, 4, 5].map((item, idx) => (
+          {TEXTAREA_LIST.map((item) => (
             <>
-              <Question key={idx}>
-                {item}. 뭐시기 저시기 {item}번 문항입니다.
+              <Question key={item.id}>
+                {item.id}. 뭐시기 저시기 {item.id}번 문항입니다.
               </Question>
-              <ApplyAnswer />
+              <ApplyAnswer register={register} name={item.name} />
             </>
           ))}
         </IntroduceContainer>
@@ -197,7 +212,9 @@ const PartBtn = styled.button`
   font-size: 10px;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.WHITE_TXT};
-  background-color: ${({ theme }) => theme.colors.CARD_BG};
+  background-color: ${({ theme, select }) =>
+    select ? theme.colors.MAIN_PINK : theme.colors.CARD_BG};
+
   @media ${({ theme }) => theme.devices.TABLET} {
     width: 116px;
     height: 42px;

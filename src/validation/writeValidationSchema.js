@@ -16,4 +16,10 @@ export const writeValidationSchema = yup.object().shape({
     .string()
     .required()
     .matches(/^010-([0-9]{4})-([0-9]{4})$/),
+
+  // firstQuestion: yup.string().required(),
+  // secondQuestion: yup.string().required(),
+  // thirdQuestion: yup.string().required(),
+  // fourthQuestion: yup.string().required(),
+  // fifthQuestion: yup.string().required(),
 });

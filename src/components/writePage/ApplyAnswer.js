@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-const ApplyAnswer = () => {
+const ApplyAnswer = ({ register, name }) => {
   return (
     // htmlFor, id는 따로 데이터 배열 고유값 id 만들어서 사용
     <AnswerContainer htmlFor="answer">
-      <AnswerTextarea id="answer"></AnswerTextarea>
+      <AnswerTextarea id="answer" {...register[name]}></AnswerTextarea>
     </AnswerContainer>
   );
 };
