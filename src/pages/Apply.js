@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import styled from 'styled-components';
 import CardLanyard from '../components/CardLanyard/CardLanyard';
 import SubTitle from '../components/checkPage/SubTitle';
@@ -11,10 +12,11 @@ import axios from 'axios';
 
 const Apply = () => {
   const navigate = useNavigate();
-
   const handleFormSubmit = (data) => {
     axios
-      .post('내가 보내야하는 api', { userId: data.userId })
+      .post(`${process.env.REACT_APP_API_URL}/apply`, {
+        studentId: data.id,
+      })
       .then((res) => {
         const statusCode = res.data.statusCode;
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import styled from 'styled-components';
 import CardLanyard from '../components/CardLanyard/CardLanyard';
 import SubTitle from '../components/checkPage/SubTitle';
@@ -13,14 +14,19 @@ const Check = () => {
   const navigate = useNavigate();
 
   const handleFormSubmit = async (data) => {
-    const response = await axios.get('대현이가 준 api', { params: data });
+    console.log(data.id);
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_URL}/apply/exist/${data.id}`,
+    );
 
     const isExist = response.data.isExist;
 
     if (!isExist) {
-      navigate('/조회안됨');
+      // navigate('/조회안됨');
+      alert('조회안됨');
     } else {
-      navigate('/조회됨');
+      // navigate('/조회됨');
+      alert('조회됨');
     }
   };
 
