@@ -22,10 +22,10 @@ const Box = styled.div`
     top: ${({ $position }) => `calc(${$position}% - 150px)`};
   }
   @media ${({ theme }) => theme.devices.TABLET} {
-    top: ${({ $position }) => `calc(${$position}% - 200px)`};
+    top: ${({ $position }) => `calc(${$position}% - 250px)`};
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
-    top: ${({ $position }) => `calc(${$position}% - 350px)`};
+    top: ${({ $position }) => `calc(${$position}% - 330px)`};
   }
 `;
 
