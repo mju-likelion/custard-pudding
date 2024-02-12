@@ -17,7 +17,9 @@ const PartCard = ({ part_name, icon, content, tech_list }) => {
   );
 };
 
-const CardContainer = styled.div``;
+const CardContainer = styled.div`
+  position: relative;
+`;
 const Ring = styled.img`
   width: 58px;
   margin: -17px 0 0 -20px;
@@ -37,7 +39,6 @@ const Card = styled.div`
     height: 300px;
     padding: 10px 20px 20px 30px;
   }
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
