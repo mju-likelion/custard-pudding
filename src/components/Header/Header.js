@@ -11,32 +11,29 @@ import { ReactComponent as CloseMenuIcon } from '../../assets/imgs/header_mobile
 const Header = () => {
   const navigate = useNavigate();
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const [isOpenIcon, setIsOpenIcon] = useState(true);
 
   const openMenu = () => {
     setIsOpenMenu(true);
-    setIsOpenIcon(false);
   };
   const closeMenu = () => {
     setIsOpenMenu(false);
-    setIsOpenIcon(true);
   };
   return (
     <Container>
       <InnerContainer>
         <LogoBox>
-          <BigLogoWrapper src={BigLogo} onClick={() => navigate()} />
-          <SmallLogoWrapper src={SmallLogo} onClick={() => navigate()} />
+          <BigLogoWrapper src={BigLogo} onClick={() => navigate('/')} />
+          <SmallLogoWrapper src={SmallLogo} onClick={() => navigate('/')} />
           <SubtitleBox>APPLY</SubtitleBox>
         </LogoBox>
-        {isOpenIcon ? (
+        {!isOpenMenu ? (
           <OpenIconBox onClick={openMenu} />
         ) : (
           <CloseIconBox onClick={closeMenu} />
         )}
         <NavContainer>
-          <NavItem onClick={() => navigate()}>지원하기</NavItem>
-          <NavItem onClick={() => navigate()}>지원 확인하기</NavItem>
+          <NavItem onClick={() => navigate('/apply')}>지원하기</NavItem>
+          <NavItem onClick={() => navigate('/check')}>지원 확인하기</NavItem>
         </NavContainer>
       </InnerContainer>
       {isOpenMenu && <NavDropdown />}

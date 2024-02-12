@@ -1,10 +1,27 @@
 import styled from 'styled-components';
 
-const UserInfoInput = ({ subTitle, isDisabled }) => {
+const UserInfoInput = ({
+  label,
+  name,
+  isDisabled,
+  register,
+  errors,
+  placeholder,
+  studentIdValue,
+}) => {
   return (
     <Container>
-      <InfoLabel>{subTitle}</InfoLabel>
-      {isDisabled ? <InfoInput disabled /> : <InfoInput />}
+      <InfoLabel>{label}</InfoLabel>
+      {isDisabled ? (
+        <InfoInput disabled error={errors[name]} value={studentIdValue} />
+      ) : (
+        <InfoInput
+          placeholder={placeholder}
+          id={name}
+          {...register(name)}
+          error={errors[name]}
+        />
+      )}
     </Container>
   );
 };
@@ -42,11 +59,16 @@ const InfoInput = styled.input`
   height: 100%;
   padding: 8px 10px;
   border: none;
+  border: ${({ error, theme }) =>
+    error ? `1px solid ${theme.colors.HOVER_BTN}` : 'none'};
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.CARD_BG};
   &:disabled {
     background-color: #202020;
     border: 1px solid ${({ theme }) => theme.colors.MODAL_BG};
+  }
+  &:focus {
+    border: ${({ theme }) => `2px solid ${theme.colors.MODAL_BG}`};
   }
   font-size: 10px;
   font-weight: 500;
