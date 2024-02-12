@@ -1,14 +1,17 @@
 import styled from 'styled-components';
 
-const ApplyAnswer = ({ register, name, value }) => {
+const ApplyAnswer = ({ register, name, value, maxLength }) => {
   return (
     <AnswerContainer htmlFor={name}>
       <AnswerTextarea
         id={name}
         {...register(name)}
         autoFocus={false}
-      ></AnswerTextarea>
-      <AnswerLength>( {value[name].length} / 1000 )</AnswerLength>
+        maxLength={maxLength}
+      />
+      <AnswerLength>
+        ( {value[name].length} / {maxLength} )
+      </AnswerLength>
     </AnswerContainer>
   );
 };

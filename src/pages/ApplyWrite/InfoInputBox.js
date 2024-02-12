@@ -30,6 +30,7 @@ const InfoInputBox = ({ register, errors }) => {
               register={register}
               errors={errors}
               studentIdValue={studentIdValue}
+              placeholder={item.placeholder}
             />
           ) : (
             <UserInfoInput
@@ -39,6 +40,7 @@ const InfoInputBox = ({ register, errors }) => {
               isDisabled={item.isDisabled}
               register={register}
               errors={errors}
+              placeholder={item.placeholder}
             />
           ),
         )}

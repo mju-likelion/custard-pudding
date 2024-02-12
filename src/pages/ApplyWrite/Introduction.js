@@ -11,7 +11,12 @@ const Introduction = ({ register, value }) => {
           <Question key={item.id}>
             {item.id}. 뭐시기 저시기 {item.id}번 문항입니다.
           </Question>
-          <ApplyAnswer register={register} name={item.name} value={value} />
+          <ApplyAnswer
+            register={register}
+            name={item.name}
+            value={value}
+            maxLength={item.maxLength}
+          />
         </>
       ))}
     </>
