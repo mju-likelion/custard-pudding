@@ -21,6 +21,7 @@ const Apply = () => {
         const statusCode = res.data.statusCode;
 
         if (statusCode === 201) {
+          sessionStorage.setItem('studentId', JSON.stringify(data.id));
           navigate('/지원서작성');
         }
       })
