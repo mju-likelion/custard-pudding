@@ -1,28 +1,33 @@
 import styled from 'styled-components';
-import UserInfoInput from '../../components/writePage/UserInfoInput';
-import { INPUT_LABEL_LIST } from './InfoInputData';
-import { TEXTAREA_LIST } from './IntroductionData';
-import { PART } from './InfoInputData';
-
-import ApplyAnswer from '../../components/writePage/ApplyAnswer';
-import { useForm } from 'react-hook-form';
-import { writeValidationSchema } from '../../validation/writeValidationSchema';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+import InfoInputBox from './InfoInputBox';
+import ApplyAnswer from '../../components/writePage/ApplyAnswer';
+import { TEXTAREA_LIST } from './IntroductionData';
+import { writeValidationSchema } from '../../validation/writeValidationSchema';
 
 const ApplyWrite = () => {
   // const EMPTY_ERROR = '※ 작성이 완료되지 않은 내용이 있습니다';
   // const WRONG_FORM_ERROR = '※ 형식에 맞지 않는 값이 있습니다';
   const [FormError, setFormError] = useState(false);
-  const [selectedPart, setSelectedPart] = useState('web');
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm({
     resolver: yupResolver(writeValidationSchema),
     mode: 'onChange',
+    defaultValues: {
+      firstQuestion: '',
+      secondQuestion: '',
+      thirdQuestion: '',
+      fourthQuestion: '',
+      fifthQuestion: '',
+    },
   });
 
   const isFormError = () => {
@@ -32,78 +37,30 @@ const ApplyWrite = () => {
       setFormError(false);
     }
   };
-
-  const handlePartClick = (part) => {
-    setSelectedPart(part);
-  };
+  const value = watch();
 
   const onSubmit = (data) => {
-    // console.log(data);
+    // axios API
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <AllContainer>
         <InfoContainer>
           <Title>지원자 정보</Title>
-          <InfoInputBox>
-            <InnerInputBox>
-              {INPUT_LABEL_LIST.left.map((item) => (
-                <UserInfoInput
-                  key={item.id}
-                  label={item.label}
-                  name={item.name}
-                  isDisabled={item.isDisabled}
-                  register={register}
-                  errors={errors}
-                />
-              ))}
-            </InnerInputBox>
-            <HorizontalLine />
-            <InnerInputBox>
-              {INPUT_LABEL_LIST.right.map((item) => (
-                <UserInfoInput
-                  key={item.id}
-                  label={item.label}
-                  name={item.name}
-                  register={register}
-                  errors={errors}
-                  placeholder={item.placeholder}
-                />
-              ))}
-              <ApplyPartBox>
-                <PartLabel>지원파트</PartLabel>
-                <PartBtnBox>
-                  {PART.map((item) => (
-                    <PartBtn
-                      key={item.id}
-                      select={selectedPart === item.partEn}
-                      onClick={() => handlePartClick(item.partEn)}
-                      type="button"
-                    >
-                      {item.partKo}
-                    </PartBtn>
-                  ))}
-                </PartBtnBox>
-              </ApplyPartBox>
-            </InnerInputBox>
-          </InfoInputBox>
+          <InfoInputBox errors={errors} register={register} />
           <InfoHelperText $isError={FormError}>
             ※ 형식에 맞지 않는 값이 있습니다
           </InfoHelperText>
         </InfoContainer>
-        {/* 테스트 버튼 */}
-        <TestButton type="submit" onClick={isFormError}>
-          제출하기
-        </TestButton>
         <IntroduceContainer>
           <Title>자기소개서</Title>
-          {/* data 따로 관리하는 파일에서 get 요청 후 렌더링 + map 활용 */}
           {TEXTAREA_LIST.map((item) => (
             <>
               <Question key={item.id}>
                 {item.id}. 뭐시기 저시기 {item.id}번 문항입니다.
               </Question>
-              <ApplyAnswer register={register} name={item.name} />
+              <ApplyAnswer register={register} name={item.name} value={value} />
             </>
           ))}
         </IntroduceContainer>
@@ -119,6 +76,9 @@ const ApplyWrite = () => {
           </HomeworkHelperText>
         </HomeworkContainer>
       </AllContainer>
+      <TestButton type="submit" onClick={isFormError}>
+        제출하기
+      </TestButton>
     </form>
   );
 };
@@ -150,92 +110,6 @@ const Title = styled.div`
     margin-bottom: 50px;
   }
 `;
-const InfoInputBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #939393;
-  border-radius: 15px;
-  padding: 35px 52px;
-  width: 330px;
-  height: 367px;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    padding: 65px 105px;
-    width: 560px;
-    height: 656px;
-  }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 68px 85px;
-    width: 972px;
-    height: 388px;
-  }
-`;
-const InnerInputBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    gap: 28px;
-  }
-`;
-
-const ApplyPartBox = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    gap: 17px;
-  }
-`;
-const PartLabel = styled.p`
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
-  color: ${({ theme }) => theme.colors.WHITE_TXT};
-
-  @media ${({ theme }) => theme.devices.TABLET} {
-    ${({ theme }) => theme.typographies.BIG_TXT}
-  }
-`;
-const PartBtnBox = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-`;
-
-const PartBtn = styled.button`
-  width: 74px;
-  height: 26px;
-  border-radius: 8px;
-  font-size: 10px;
-  font-weight: 500;
-  color: ${({ theme }) => theme.colors.WHITE_TXT};
-  background-color: ${({ theme, select }) =>
-    select ? theme.colors.MAIN_PINK : theme.colors.CARD_BG};
-
-  @media ${({ theme }) => theme.devices.TABLET} {
-    width: 116px;
-    height: 42px;
-    font-size: 14px;
-  }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    width: 130px;
-    ${({ theme }) => theme.typographies.DEFAULT_TXT}
-  }
-`;
-const HorizontalLine = styled.div`
-  width: 100%;
-  height: 1px;
-  background-color: ${({ theme }) => theme.colors.CARD_BG};
-  margin: auto 0;
-  display: block;
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    display: none;
-  }
-`;
-
 const InfoHelperText = styled.div`
   margin-top: 15px;
   font-size: 12px;
