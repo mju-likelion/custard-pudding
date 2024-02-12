@@ -7,12 +7,13 @@ const UserInfoInput = ({
   register,
   errors,
   placeholder,
+  studentIdValue,
 }) => {
   return (
     <Container>
       <InfoLabel>{label}</InfoLabel>
       {isDisabled ? (
-        <InfoInput disabled error={errors[name]} />
+        <InfoInput disabled error={errors[name]} value={studentIdValue} />
       ) : (
         <InfoInput
           placeholder={placeholder}

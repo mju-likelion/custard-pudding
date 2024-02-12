@@ -4,8 +4,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import InfoInputBox from './InfoInputBox';
-import ApplyAnswer from '../../components/writePage/ApplyAnswer';
-import { TEXTAREA_LIST } from './IntroductionData';
+import Introduction from './Introduction';
 import { writeValidationSchema } from '../../validation/writeValidationSchema';
 
 const ApplyWrite = () => {
@@ -55,14 +54,7 @@ const ApplyWrite = () => {
         </InfoContainer>
         <IntroduceContainer>
           <Title>자기소개서</Title>
-          {TEXTAREA_LIST.map((item) => (
-            <>
-              <Question key={item.id}>
-                {item.id}. 뭐시기 저시기 {item.id}번 문항입니다.
-              </Question>
-              <ApplyAnswer register={register} name={item.name} value={value} />
-            </>
-          ))}
+          <Introduction register={register} value={value}></Introduction>
         </IntroduceContainer>
         <HomeworkContainer>
           <Title>지원 과제</Title>
@@ -130,22 +122,6 @@ const IntroduceContainer = styled.div`
     margin-bottom: 90px;
   }
 `;
-const Question = styled.p`
-  align-self: flex-start;
-  margin-bottom: 10px;
-  color: ${({ theme }) => theme.colors.WHITE_TXT};
-  font-size: 12px;
-  font-weight: 500;
-
-  @media ${({ theme }) => theme.devices.TABLET} {
-    margin-bottom: 25px;
-    ${({ theme }) => theme.typographies.DEFAULT_TXT}
-  }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    ${({ theme }) => theme.typographies.BIG_TXT}
-  }
-`;
-
 const HomeworkContainer = styled.div`
   width: 330px;
   height: 690px;
@@ -160,6 +136,22 @@ const HomeworkContainer = styled.div`
   @media ${({ theme }) => theme.devices.DESKTOP} {
     width: 972px;
     height: 882px;
+  }
+`;
+
+const Question = styled.p`
+  align-self: flex-start;
+  margin-bottom: 10px;
+  color: ${({ theme }) => theme.colors.WHITE_TXT};
+  font-size: 12px;
+  font-weight: 500;
+
+  @media ${({ theme }) => theme.devices.TABLET} {
+    margin-bottom: 25px;
+    ${({ theme }) => theme.typographies.DEFAULT_TXT}
+  }
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    ${({ theme }) => theme.typographies.BIG_TXT}
   }
 `;
 

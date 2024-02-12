@@ -2,28 +2,46 @@ import styled from 'styled-components';
 import { INPUT_LABEL_LIST } from './InfoInputData';
 import { PART } from './InfoInputData';
 import UserInfoInput from '../../components/writePage/UserInfoInput';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const InfoInputBox = ({ register, errors }) => {
   const [selectedPart, setSelectedPart] = useState('web');
-
+  const [studentIdValue, setStudentIdValue] = useState('');
   const handlePartClick = (part) => {
     setSelectedPart(part);
   };
 
+  // 테스트용 sessionStorage 구현
+  useEffect(() => {
+    sessionStorage.setItem('test', '6020xxxx');
+    setStudentIdValue(sessionStorage.getItem('test'));
+  });
+
   return (
     <Container>
       <InnerInputBox>
-        {INPUT_LABEL_LIST.left.map((item) => (
-          <UserInfoInput
-            key={item.id}
-            label={item.label}
-            name={item.name}
-            isDisabled={item.isDisabled}
-            register={register}
-            errors={errors}
-          />
-        ))}
+        {INPUT_LABEL_LIST.left.map((item) =>
+          item.name === 'studentId' ? (
+            <UserInfoInput
+              key={item.id}
+              label={item.label}
+              name={item.name}
+              isDisabled={item.isDisabled}
+              register={register}
+              errors={errors}
+              studentIdValue={studentIdValue}
+            />
+          ) : (
+            <UserInfoInput
+              key={item.id}
+              label={item.label}
+              name={item.name}
+              isDisabled={item.isDisabled}
+              register={register}
+              errors={errors}
+            />
+          ),
+        )}
       </InnerInputBox>
       <HorizontalLine />
       <InnerInputBox>
