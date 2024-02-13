@@ -3,7 +3,7 @@ import TAG from '../../assets/imgs/card_tag.svg';
 import { resultData } from './resultData';
 
 const CheckCard = ({ status }) => {
-  const resultKey = status ? 'checked' : 'failed';
+  const resultKey = status ? 'success' : 'failed';
   const result = resultData[resultKey];
 
   return (
