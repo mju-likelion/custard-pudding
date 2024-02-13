@@ -1,19 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TEXTAREA_LIST } from './IntroductionData';
+// import { TEXTAREA_LIST } from './IntroductionData';
 import ApplyAnswer from '../../components/writePage/ApplyAnswer';
 
-const Introduction = ({ register, value }) => {
+const Introduction = ({ register, value, questionList }) => {
   return (
     <>
-      {TEXTAREA_LIST.map((item) => (
+      {questionList.map((item) => (
         <>
           <Question key={item.id}>
-            {item.id}. 뭐시기 저시기 {item.id}번 문항입니다.
+            {item.sequence}. {item.title}
           </Question>
           <ApplyAnswer
             register={register}
-            name={item.name}
+            name={String(item.sequence)}
             value={value}
             maxLength={item.maxLength}
           />

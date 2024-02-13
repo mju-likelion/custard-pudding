@@ -21,9 +21,9 @@ const Header = () => {
   return (
     <Container>
       <InnerContainer>
-        <LogoBox>
-          <BigLogoWrapper src={BigLogo} onClick={() => navigate('/')} />
-          <SmallLogoWrapper src={SmallLogo} onClick={() => navigate('/')} />
+        <LogoBox onClick={() => navigate('/')}>
+          <BigLogoWrapper src={BigLogo} />
+          <SmallLogoWrapper src={SmallLogo} />
           <SubtitleBox>APPLY</SubtitleBox>
         </LogoBox>
         {!isOpenMenu ? (
@@ -47,9 +47,6 @@ const Container = styled.div`
   position: sticky;
   top: 0;
   z-index: 99;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 `;
 
 const InnerContainer = styled.div`

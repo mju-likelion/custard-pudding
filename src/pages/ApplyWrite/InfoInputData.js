@@ -1,6 +1,6 @@
 export const INPUT_LABEL_LIST = {
   left: [
-    { id: 1, label: '이름', name: 'name', placeholder: '홍길동' },
+    { id: 1, label: '이름', name: 'name', placeholder: 'EX) 홍길동' },
     { id: 3, label: '학번', name: 'studentId', isDisabled: true },
     { id: 4, label: '학년', name: 'grade' },
     { id: 2, label: '학과', name: 'major' },
@@ -10,7 +10,7 @@ export const INPUT_LABEL_LIST = {
       id: 5,
       label: '이메일',
       name: 'email',
-      placeholder: 'likelion@naver.com',
+      placeholder: 'EX) likelion@naver.com',
     },
     {
       id: 6,

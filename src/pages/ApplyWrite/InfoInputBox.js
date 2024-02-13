@@ -4,12 +4,8 @@ import { PART } from './InfoInputData';
 import UserInfoInput from '../../components/writePage/UserInfoInput';
 import { useEffect, useState } from 'react';
 
-const InfoInputBox = ({ register, errors }) => {
-  const [selectedPart, setSelectedPart] = useState('web');
+const InfoInputBox = ({ register, errors, selectedPart, handlePartClick }) => {
   const [studentIdValue, setStudentIdValue] = useState('');
-  const handlePartClick = (part) => {
-    setSelectedPart(part);
-  };
 
   // 테스트용 sessionStorage 구현
   useEffect(() => {
