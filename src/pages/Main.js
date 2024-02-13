@@ -1,13 +1,15 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import PartCard from '../components/mainPage/PartCard';
 import AssignmentBox from '../components/mainPage/AssignmentBox';
 import BigButton from '../components/Button/BigButton';
-import ScrollBar from '../components/mainPage/ScrollBar';
 
+import ScrollBar from '../components/mainPage/ScrollBar';
 import part_message from '../messages/part';
 import letter from '../assets/imgs/letter.svg';
 
 const Main = () => {
+  const navigate = useNavigate();
   return (
     <Container>
       <PageWrapper>
@@ -43,7 +45,7 @@ const Main = () => {
             </AdditionalInfoLink>
           </AssignmentBoxes>
         </AssignmentContainer>
-        <BigButton>지원하기</BigButton>
+        <BigButton onClick={() => navigate('/write')}>지원하기</BigButton>
       </PageWrapper>
       <ScrollBar />
     </Container>
