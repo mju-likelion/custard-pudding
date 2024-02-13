@@ -1,14 +1,14 @@
-/* eslint-disable no-undef */
 import styled from 'styled-components';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import CardLanyard from '../components/CardLanyard/CardLanyard';
 import SubTitle from '../components/checkPage/SubTitle';
 import Input from '../components/checkPage/Input';
 import SmallButton from '../components/checkPage/SmallButton';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import CheckCard from '../components/checkPage/CheckCard';
 import { idValidationSchema } from '../validation/idValidationSchema';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 const Check = () => {
   const navigate = useNavigate();
@@ -81,6 +81,7 @@ const Check = () => {
           </ContentsWrapper>
         </CardLanyard>
       </form>
+      {/*<CheckCard status={true} />*/}
     </Container>
   );
 };
