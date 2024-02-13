@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import styled from 'styled-components';
 import CardLanyard from '../components/CardLanyard/CardLanyard';
 import SubTitle from '../components/checkPage/SubTitle';
@@ -6,8 +7,34 @@ import SmallButton from '../components/checkPage/SmallButton';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { idValidationSchema } from '../validation/idValidationSchema';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Apply = () => {
+  const navigate = useNavigate();
+  const handleFormSubmit = (data) => {
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/apply`, {
+        studentId: data.id,
+      })
+      .then((res) => {
+        const statusCode = res.data.statusCode;
+
+        if (statusCode === 201) {
+          sessionStorage.setItem('studentId', JSON.stringify(data.id));
+          // navigate('/지원서작성');
+        }
+      })
+      .catch((error) => {
+        const statusCode = error.data.statusCode;
+        if (statusCode === 400) {
+          navigate('/오류');
+        } else if (statusCode === 409) {
+          navigate('/이미존재함');
+        }
+      });
+  };
+
   const inputSizeValue = {
     width: '220px',
     height: '28px',
@@ -37,7 +64,7 @@ const Apply = () => {
 
   return (
     <Container>
-      <form onSubmit={handleSubmit((data) => console.log(data))}>
+      <form onSubmit={handleSubmit(handleFormSubmit)}>
         <CardLanyard
           width={'250px'}
           height={'318px'}
@@ -67,7 +94,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: calc(100vh - 100px - 70px);
   width: 100%;
 `;
 
