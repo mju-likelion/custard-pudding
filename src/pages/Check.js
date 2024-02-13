@@ -1,14 +1,35 @@
 import styled from 'styled-components';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import CardLanyard from '../components/CardLanyard/CardLanyard';
 import SubTitle from '../components/checkPage/SubTitle';
 import Input from '../components/checkPage/Input';
 import SmallButton from '../components/checkPage/SmallButton';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { idValidationSchema } from '../validation/idValidationSchema';
 import CheckCard from '../components/checkPage/CheckCard';
+import { idValidationSchema } from '../validation/idValidationSchema';
 
 const Check = () => {
+  const navigate = useNavigate();
+
+  const handleFormSubmit = async (data) => {
+    console.log(data.id);
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_URL}/apply/exist/${data.id}`,
+    );
+
+    const isExist = response.data.isExist;
+
+    if (!isExist) {
+      // navigate('/조회안됨');
+      alert('조회안됨');
+    } else {
+      // navigate('/조회됨');
+      alert('조회됨');
+    }
+  };
+
   const inputSizeValue = {
     width: '220px',
     height: '28px',
@@ -38,7 +59,7 @@ const Check = () => {
 
   return (
     <Container>
-      <form onSubmit={handleSubmit((data) => console.log(data))}>
+      <form onSubmit={handleSubmit(handleFormSubmit)}>
         <CardLanyard
           width={'250px'}
           height={'318px'}
@@ -69,7 +90,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: calc(100vh - 100px - 70px);
   width: 100%;
 `;
 
