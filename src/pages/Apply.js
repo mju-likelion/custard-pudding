@@ -22,11 +22,11 @@ const Apply = () => {
 
         if (statusCode === 201) {
           sessionStorage.setItem('studentId', JSON.stringify(data.id));
-          navigate('/지원서작성');
+          // navigate('/지원서작성');
         }
       })
-      .catch((res) => {
-        const statusCode = res.data.statusCode;
+      .catch((error) => {
+        const statusCode = error.data.statusCode;
         if (statusCode === 400) {
           navigate('/오류');
         } else if (statusCode === 409) {
