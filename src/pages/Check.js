@@ -6,6 +6,7 @@ import SmallButton from '../components/checkPage/SmallButton';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { idValidationSchema } from '../validation/idValidationSchema';
+import CheckCard from '../components/checkPage/CheckCard';
 
 const Check = () => {
   const inputSizeValue = {
@@ -59,6 +60,7 @@ const Check = () => {
           </ContentsWrapper>
         </CardLanyard>
       </form>
+      {/*<CheckCard status={true} />*/}
     </Container>
   );
 };
