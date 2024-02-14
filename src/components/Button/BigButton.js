@@ -34,6 +34,14 @@ const Wrapper = styled.button`
     width: 272px;
     height: 100px;
   }
+
+  @media${({ theme }) => theme.devices.TABLET} {
+    ${({ theme }) => theme.typographies.BIG_BTN_TXT};
+    width: 272px;
+    height: 100px;
+    border-radius: 40px;
+    padding: 26px 72px;
+  }
 `;
 
 export default BigButton;
