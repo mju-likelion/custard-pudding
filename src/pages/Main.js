@@ -45,7 +45,7 @@ const Main = () => {
             </AdditionalInfoLink>
           </AssignmentBoxes>
         </AssignmentContainer>
-        <BigButton onClick={() => navigate('/write')}>지원하기</BigButton>
+        <BigButton onClick={() => navigate('/apply')}>지원하기</BigButton>
       </PageWrapper>
       <ScrollBar />
     </Container>

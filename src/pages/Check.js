@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useState } from 'react';
 import { Axios } from '../api/Axios';
 import CardLanyard from '../components/CardLanyard/CardLanyard';
 import SubTitle from '../components/checkPage/SubTitle';
@@ -8,7 +9,6 @@ import Input from '../components/checkPage/Input';
 import SmallButton from '../components/checkPage/SmallButton';
 import CheckCard from '../components/checkPage/CheckCard';
 import { idValidationSchema } from '../validation/idValidationSchema';
-import { useState } from 'react';
 
 const Check = () => {
   const [isChecked, setIsChecked] = useState(undefined);

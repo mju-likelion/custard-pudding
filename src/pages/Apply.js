@@ -1,38 +1,39 @@
 /* eslint-disable no-undef */
 import styled from 'styled-components';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useNavigate } from 'react-router-dom';
+import { Axios } from '../api/Axios';
 import CardLanyard from '../components/CardLanyard/CardLanyard';
 import SubTitle from '../components/checkPage/SubTitle';
 import Input from '../components/checkPage/Input';
 import SmallButton from '../components/checkPage/SmallButton';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { idValidationSchema } from '../validation/idValidationSchema';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { useState } from 'react';
 
 const Apply = () => {
-  const navigate = useNavigate();
-  const handleFormSubmit = (data) => {
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/apply`, {
-        studentId: data.id,
-      })
-      .then((res) => {
-        const statusCode = res.data.statusCode;
+  const [isExist, setIsExist] = useState(undefined);
 
-        if (statusCode === 201) {
-          sessionStorage.setItem('studentId', JSON.stringify(data.id));
-          // navigate('/지원서작성');
-        }
-      })
-      .catch((error) => {
-        const statusCode = error.data.statusCode;
-        if (statusCode === 400) {
-          navigate('/오류');
-        } else if (statusCode === 409) {
-          navigate('/이미존재함');
-        }
+  const navigate = useNavigate();
+
+  const handleFormSubmit = async (data) => {
+    try {
+      const response = await Axios.post('/apply', {
+        studentId: data.id,
       });
+      const statusCode = response.data.statusCode;
+      if (statusCode === 201) {
+        sessionStorage.setItem('studentId', JSON.stringify(data.id));
+        navigate('/write');
+      }
+    } catch (error) {
+      const statusCode = error.response.data.statusCode;
+      if (statusCode === 409) {
+        alert('이미 지원 이력이 존재합니다.');
+      } else if (statusCode === 400) {
+        alert('오류가 발생했습니다.');
+      }
+    }
   };
 
   const inputSizeValue = {
@@ -41,21 +42,18 @@ const Apply = () => {
     pcWidth: '438px',
     pcHeight: '56px',
   };
-
   const captionSizeValue = {
     width: '220px',
     height: '12px',
     pcWidth: '438px',
     pcHeight: '24px',
   };
-
   const messageSizeValue = {
     width: '220px',
     height: '8px',
     pcWidth: '438px',
     pcHeight: '20px',
   };
-
   const {
     register,
     handleSubmit,
