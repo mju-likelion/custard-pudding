@@ -2,11 +2,10 @@ import styled from 'styled-components';
 
 /**
  * @param {string} text
- * @param {() => void} handleClick
  */
-const BigButton = ({ children, disabled }) => {
+const BigButton = ({ children, disabled, onClick }) => {
   return (
-    <Wrapper type="button" disabled={disabled}>
+    <Wrapper type="button" disabled={disabled} onClick={onClick}>
       {children}
     </Wrapper>
   );
