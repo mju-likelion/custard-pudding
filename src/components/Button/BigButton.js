@@ -15,7 +15,7 @@ const Wrapper = styled.button`
   border-radius: 40px;
   font-size: 10px;
   font-weight: 300;
-  padding: 10px 20px;
+  padding: 10px 18px;
   width: 78px;
   height: 30px;
   color: ${({ theme }) => theme.colors.WHITE_TXT};
@@ -33,6 +33,14 @@ const Wrapper = styled.button`
     border-radius: 40px;
     width: 272px;
     height: 100px;
+  }
+
+  @media${({ theme }) => theme.devices.TABLET} {
+    ${({ theme }) => theme.typographies.BIG_BTN_TXT};
+    width: 272px;
+    height: 100px;
+    border-radius: 40px;
+    padding: 26px 72px;
   }
 `;
 
