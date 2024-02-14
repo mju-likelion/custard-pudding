@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import NavDropdown from './NavDropdown';
 
 import BigLogo from '../../assets/imgs/logo_big.svg';
@@ -10,7 +10,13 @@ import { ReactComponent as CloseMenuIcon } from '../../assets/imgs/header_mobile
 
 const Header = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const [current, setCurrent] = useState({
+    apply: false,
+    check: false,
+  });
 
   const openMenu = () => {
     setIsOpenMenu(true);
@@ -18,12 +24,42 @@ const Header = () => {
   const closeMenu = () => {
     setIsOpenMenu(false);
   };
+
+  const button_data = [
+    {
+      title: '지원하기',
+      path: 'apply',
+      onClick: () => {
+        setCurrent({ apply: true, check: false });
+        navigate('/apply');
+      },
+    },
+    {
+      title: '지원 확인하기',
+      path: 'check',
+      onClick: () => {
+        setCurrent({ apply: false, check: true });
+        navigate('/check');
+      },
+    },
+  ];
+
+  useEffect(() => {
+    if (location.pathname === '/apply') {
+      setCurrent({ apply: true, check: false });
+    } else if (location.pathname === '/write') {
+      setCurrent({ apply: true, check: false });
+    } else if (location.pathname === '/check') {
+      setCurrent({ apply: false, check: true });
+    } else setCurrent({ apply: false, check: false });
+  }, [location]);
+
   return (
     <Container>
       <InnerContainer>
-        <LogoBox>
-          <BigLogoWrapper src={BigLogo} onClick={() => navigate('/')} />
-          <SmallLogoWrapper src={SmallLogo} onClick={() => navigate('/')} />
+        <LogoBox onClick={() => navigate('/')}>
+          <BigLogoWrapper src={BigLogo} />
+          <SmallLogoWrapper src={SmallLogo} />
           <SubtitleBox>APPLY</SubtitleBox>
         </LogoBox>
         {!isOpenMenu ? (
@@ -32,8 +68,17 @@ const Header = () => {
           <CloseIconBox onClick={closeMenu} />
         )}
         <NavContainer>
-          <NavItem onClick={() => navigate('/apply')}>지원하기</NavItem>
-          <NavItem onClick={() => navigate('/check')}>지원 확인하기</NavItem>
+          {button_data.map((button) => {
+            return (
+              <NavItem
+                key={button.title}
+                $current={current[button.path]}
+                onClick={button.onClick}
+              >
+                {button.title}
+              </NavItem>
+            );
+          })}
         </NavContainer>
       </InnerContainer>
       {isOpenMenu && <NavDropdown />}
@@ -51,7 +96,6 @@ const Container = styled.div`
   justify-content: center;
   align-items: center; */
 `;
-
 const InnerContainer = styled.div`
   max-width: 1200px;
   height: 56px;
@@ -68,7 +112,6 @@ const InnerContainer = styled.div`
     padding: 27px 16px;
   }
 `;
-
 const LogoBox = styled.div`
   display: flex;
   align-items: center;
@@ -78,29 +121,23 @@ const LogoBox = styled.div`
   }
   cursor: pointer;
 `;
-
 const BigLogoWrapper = styled.img`
   display: none;
   @media ${({ theme }) => theme.devices.DESKTOP} {
     display: block;
   }
 `;
-
 const SmallLogoWrapper = styled.img`
   display: block;
   @media ${({ theme }) => theme.devices.DESKTOP} {
     display: none;
   }
 `;
-
 const SubtitleBox = styled.div`
   padding: 3px 0 0 0;
   font-size: 16px;
   font-weight: 300;
   line-height: 10px;
-  color: #ffffff;
-  // vs F1EBEB
-
   @media ${({ theme }) => theme.devices.TABLET} {
     font-size: 18px;
   }
@@ -109,7 +146,6 @@ const SubtitleBox = styled.div`
     line-height: 21px;
   }
 `;
-
 const NavContainer = styled.div`
   display: none;
   align-items: center;
@@ -128,12 +164,11 @@ const NavContainer = styled.div`
     gap: 60px;
   }
 `;
-
 const NavItem = styled.button`
   all: unset;
   cursor: pointer;
+  color: ${({ $current }) => ($current ? 'pink' : 'white')};
 `;
-
 const OpenIconBox = styled(OpenMenuIcon)`
   @media ${({ theme }) => theme.devices.MOBILE} {
     display: block;
