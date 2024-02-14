@@ -25,22 +25,28 @@ const Header = () => {
     setIsOpenMenu(false);
   };
 
+  const onClick = ({ currents }, path) => {
+    if (location.pathname === '/write') {
+      const response = confirm(
+        '페이지를 떠나면 변경된 내용이 저장되지 않습니다. 페이지를 이동하시겠습니까?',
+      );
+      if (response) {
+        setCurrent({ currents });
+        navigate(path);
+      }
+    } else navigate(path);
+  };
+
   const button_data = [
     {
       title: '지원하기',
       path: 'apply',
-      onClick: () => {
-        setCurrent({ apply: true, check: false });
-        navigate('/apply');
-      },
+      onClick: () => onClick({ apply: true, check: false }, '/apply'),
     },
     {
       title: '지원 확인하기',
       path: 'check',
-      onClick: () => {
-        setCurrent({ apply: false, check: true });
-        navigate('/check');
-      },
+      onClick: () => onClick({ apply: false, check: true }, '/check'),
     },
   ];
 
@@ -57,7 +63,7 @@ const Header = () => {
   return (
     <Container>
       <InnerContainer>
-        <LogoBox onClick={() => navigate('/')}>
+        <LogoBox onClick={() => onClick({ apply: false, check: false }, '/')}>
           <BigLogoWrapper src={BigLogo} />
           <SmallLogoWrapper src={SmallLogo} />
           <SubtitleBox>APPLY</SubtitleBox>
@@ -167,7 +173,8 @@ const NavContainer = styled.div`
 const NavItem = styled.button`
   all: unset;
   cursor: pointer;
-  color: ${({ $current }) => ($current ? 'pink' : 'white')};
+  color: ${({ $current, theme }) =>
+    $current ? theme.colors.MAIN_PINK : 'white'};
 `;
 const OpenIconBox = styled(OpenMenuIcon)`
   @media ${({ theme }) => theme.devices.MOBILE} {
