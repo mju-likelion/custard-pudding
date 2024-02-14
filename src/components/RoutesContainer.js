@@ -4,6 +4,7 @@ import Main from '../pages/Main';
 import Apply from '../pages/Apply';
 import Check from '../pages/Check';
 import ApplyWrite from '../pages/ApplyWrite';
+import Complete from '../pages/Complete';
 import NotFound from '../pages/NotFound';
 
 const RoutesContainer = () => {
@@ -14,6 +15,7 @@ const RoutesContainer = () => {
         <Route path="/apply" element={<Apply />} />
         <Route path="/check" element={<Check />} />
         <Route path="/write" element={<ApplyWrite />} />
+        <Route path="/complete" element={<Complete />} />
         <Route path="/*" element={<NotFound />} />
       </Route>
     </Routes>

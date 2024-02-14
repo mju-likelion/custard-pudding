@@ -20,7 +20,7 @@ const PageContainer = styled.div`
     height: calc(100vh - 70px - 100px - 80px);
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
-    height: calc(100vh - 70px - 100px -100px);
+    height: calc(100vh - 70px - 100px - 100px);
   }
 `;
 const SignBoard = styled.div`
@@ -38,7 +38,7 @@ const SignBoard = styled.div`
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
     width: 480px;
-    height: 300px;
+    height: 280px;
     margin: 100px auto 0;
     padding-top: 70px;
   }
