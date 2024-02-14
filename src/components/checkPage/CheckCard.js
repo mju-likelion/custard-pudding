@@ -22,8 +22,8 @@ const CardContainer = styled.div`
   border-radius: 25px;
   background: ${({ theme }) => theme.colors.MODAL_BG};
   @media ${({ theme }) => theme.devices.TABLET} {
-    width: 500px;
-    height: 630px;
+    width: 400px;
+    height: 530px;
   }
 `;
 const Tag = styled.img`
@@ -36,7 +36,6 @@ const Tag = styled.img`
   }
 `;
 const Content = styled.div`
-  width: 130px;
   margin: 60px auto 0;
   line-height: 30px;
   text-align: center;
@@ -45,9 +44,10 @@ const Content = styled.div`
   ${({ theme }) => theme.typographies.DEFAULT_TXT};
   @media ${({ theme }) => theme.devices.TABLET} {
     width: 300px;
-    margin: 140px auto 0;
+    margin: 90px auto 0;
     line-height: 60px;
-    ${({ theme }) => theme.typographies.TITLE};
+    font-size: 32px;
+    font-weight: 700;
   }
 `;
 const Icon = styled.img`
