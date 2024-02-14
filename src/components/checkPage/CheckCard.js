@@ -3,8 +3,21 @@ import TAG from '../../assets/imgs/card_tag.svg';
 import { resultData } from './resultData';
 
 const CheckCard = ({ status }) => {
-  const resultKey = status ? 'success' : 'failed';
-  const result = resultData[resultKey];
+  let result = {};
+
+  switch (status) {
+    case 'check_success':
+      result = resultData['check_success'];
+      break;
+
+    case 'check_failed':
+      result = resultData['check_failed'];
+      break;
+
+    case 'rejected':
+      result = resultData['rejected'];
+      break;
+  }
 
   return (
     <CardContainer>
