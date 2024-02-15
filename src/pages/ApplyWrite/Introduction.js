@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { TEXTAREA_LIST } from './IntroductionData';
 import ApplyAnswer from '../../components/writePage/ApplyAnswer';
 
 const Introduction = ({ register, value, questionList }) => {
@@ -13,7 +12,7 @@ const Introduction = ({ register, value, questionList }) => {
           </Question>
           <ApplyAnswer
             register={register}
-            name={String(item.sequence)}
+            name={'question' + String(item.sequence)}
             value={value}
             maxLength={item.maxLength}
           />

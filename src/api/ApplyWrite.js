@@ -7,7 +7,6 @@ export const getPageBaseInfo = (
 ) => {
   Axios.get(`/application/${part}`)
     .then((res) => {
-      console.log(res.data.data);
       callbackFunction(res.data.data);
       callbackFunctionTwo(res.data.data.introduces);
     })
@@ -18,7 +17,6 @@ export const getPageBaseInfo = (
 export const getPartQuestionList = (part, callbackFunction) => {
   Axios.get(`/application/${part}`)
     .then((res) => {
-      console.log(res.data.data.introduces);
       callbackFunction(res.data.data.introduces);
     })
     .catch((err) => {
