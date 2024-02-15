@@ -81,7 +81,7 @@ const ApplyWrite = () => {
         </IntroduceContainer>
         <HomeworkContainer>
           <Title>지원 과제</Title>
-          <HomeworkBox selectedPart={selectedPart}></HomeworkBox>
+          <HomeworkBox selectedPart={selectedPart} />
         </HomeworkContainer>
         <AgreeContainer>
           <Title>참고 사항</Title>
