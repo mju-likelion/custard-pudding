@@ -85,9 +85,15 @@ const ApplyWrite = () => {
         </HomeworkContainer>
         <AgreeContainer>
           <Title>참고 사항</Title>
-          <PersonalAgreeBox></PersonalAgreeBox>
-          <PersonalAgreeBox></PersonalAgreeBox>
-          <PersonalAgreeBox></PersonalAgreeBox>
+          {/* 이게 좋은 로직일까? */}
+          {baseInfo.agreements &&
+            baseInfo.agreements.map((item) => (
+              <PersonalAgreeBox
+                key={item.id}
+                text={item.content}
+                sequence={item.sequence}
+              />
+            ))}
         </AgreeContainer>
         <InfoHelperText $isError={FormError}>
           ※ 작성이 완료되지 않았거나, 형식에 맞지 않는 값이 있습니다.

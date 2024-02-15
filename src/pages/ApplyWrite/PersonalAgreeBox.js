@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { DATA } from './test';
-const PersonalAgreeBox = () => {
+const PersonalAgreeBox = ({ text, sequence }) => {
   return (
     <Container>
       <TitleBox>
@@ -11,7 +10,7 @@ const PersonalAgreeBox = () => {
         </CheckBox>
       </TitleBox>
       <AgreeContentBox>
-        <AgreeContent>{DATA}</AgreeContent>
+        <AgreeContent>{text}</AgreeContent>
       </AgreeContentBox>
     </Container>
   );
