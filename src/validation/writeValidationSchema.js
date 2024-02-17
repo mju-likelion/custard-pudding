@@ -5,7 +5,7 @@ export const writeValidationSchema = yup.object().shape({
     .string()
     .required()
     .matches(/^[가-힣]{1,6}$/),
-  major: yup.string().required(),
+  majors: yup.string().required(),
   // studentId: yup.string().required(),
   grade: yup
     .string()

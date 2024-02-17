@@ -8,14 +8,22 @@ const UserInfoInput = ({
   errors,
   placeholder,
   studentIdValue,
+  setValue,
+  getValues,
+  majorData,
 }) => {
   return (
     <Container>
       <InfoLabel>{label}</InfoLabel>
       {isDisabled ? (
         <InfoInput disabled error={errors[name]} value={studentIdValue} />
-      ) : name === 'grade' || name === 'major' ? (
-        <SelectBox />
+      ) : name === 'grade' || name === 'majors' ? (
+        <SelectBox
+          setValue={setValue}
+          majorData={majorData}
+          name={name}
+          getValues={getValues}
+        />
       ) : (
         <InfoInput
           placeholder={placeholder}

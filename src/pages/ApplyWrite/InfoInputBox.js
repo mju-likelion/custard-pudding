@@ -4,7 +4,15 @@ import { PART } from './InfoInputData';
 import UserInfoInput from '../../components/writePage/UserInfoInput';
 import { useEffect, useState } from 'react';
 
-const InfoInputBox = ({ register, errors, selectedPart, handlePartClick }) => {
+const InfoInputBox = ({
+  register,
+  errors,
+  selectedPart,
+  handlePartClick,
+  setValue,
+  majorData,
+  getValues,
+}) => {
   const [studentIdValue, setStudentIdValue] = useState('');
 
   // 테스트용 sessionStorage 구현
@@ -27,6 +35,7 @@ const InfoInputBox = ({ register, errors, selectedPart, handlePartClick }) => {
               errors={errors}
               studentIdValue={studentIdValue}
               placeholder={item.placeholder}
+              majorData={majorData}
             />
           ) : (
             <UserInfoInput
@@ -37,6 +46,9 @@ const InfoInputBox = ({ register, errors, selectedPart, handlePartClick }) => {
               register={register}
               errors={errors}
               placeholder={item.placeholder}
+              setValue={setValue}
+              getValues={getValues}
+              majorData={majorData}
             />
           ),
         )}
@@ -135,6 +147,7 @@ const PartBtn = styled.button`
   font-size: 10px;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.WHITE_TXT};
+  transition: all 0.2s ease-in-out;
   background-color: ${({ theme, $select }) =>
     $select ? theme.colors.MAIN_PINK : theme.colors.CARD_BG};
 

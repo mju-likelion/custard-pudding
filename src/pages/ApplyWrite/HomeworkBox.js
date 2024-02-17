@@ -23,7 +23,7 @@ const HomeworkBox = ({ selectedPart, setValue, register }) => {
   return (
     <>
       <Title>{HOMEWORK_DATA[selectedPart].title}</Title>
-      {selectedPart === 'web' ? (
+      {selectedPart === 'web' && (
         <>
           <WebHomeworkWrapper>
             <FileInputLabel htmlFor="file">
@@ -44,8 +44,9 @@ const HomeworkBox = ({ selectedPart, setValue, register }) => {
 
           <button onClick={uploadFiles}>업로드 테스트용</button>
         </>
-      ) : (
-        <ServerHomeworkInput />
+      )}
+      {selectedPart === 'server' && (
+        <ServerHomeworkInput {...register('link')} />
       )}
       <HomeworkHelperText>
         {HOMEWORK_DATA[selectedPart].helperText}

@@ -25,6 +25,7 @@ const ApplyWrite = () => {
     formState: { errors, isValid },
     watch,
     setValue,
+    getValues,
   } = useForm({
     resolver: yupResolver(writeValidationSchema),
     mode: 'onChange',
@@ -34,6 +35,8 @@ const ApplyWrite = () => {
       question3: '',
       question4: '',
       question5: '',
+      grade: '1',
+      majors: '전기공학과',
     },
   });
 
@@ -54,7 +57,7 @@ const ApplyWrite = () => {
     isFormError();
   }, [errors]);
   const value = watch();
-
+  console.log(value);
   const onSubmit = () => {
     // 제출하기 POST API
   };
@@ -63,7 +66,7 @@ const ApplyWrite = () => {
     setSelectedPart(part);
     // 질문 GET API
     getPartQuestionList(part, setQuestionList);
-    console.log(baseInfo);
+    // console.log(baseInfo);
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -75,6 +78,9 @@ const ApplyWrite = () => {
             register={register}
             selectedPart={selectedPart}
             handlePartClick={handlePartClick}
+            setValue={setValue}
+            getValues={getValues}
+            majorData={baseInfo.majors}
           />
         </InfoContainer>
         <IntroduceContainer>

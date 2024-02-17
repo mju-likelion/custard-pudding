@@ -3,7 +3,7 @@ export const INPUT_LABEL_LIST = {
     { id: 1, label: '이름', name: 'name', placeholder: '홍길동' },
     { id: 3, label: '학번', name: 'studentId', isDisabled: true },
     { id: 4, label: '학년', name: 'grade' },
-    { id: 2, label: '학과', name: 'major' },
+    { id: 2, label: '학과', name: 'majors' },
   ],
   right: [
     {
