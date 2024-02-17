@@ -23,3 +23,12 @@ export const getPartQuestionList = (part, callbackFunction) => {
       console.log(err);
     });
 };
+export const postFileData = (formData) => {
+  Axios.post(`/application/file`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+};

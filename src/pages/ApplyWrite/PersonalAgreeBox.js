@@ -1,17 +1,22 @@
 import styled from 'styled-components';
-import { DATA } from './test';
-const PersonalAgreeBox = ({ text, sequence }) => {
+import agreeIcon from '../../assets/imgs/agree_icon.svg';
+
+const PersonalAgreeBox = ({ text, sequence, register }) => {
   return (
     <Container>
       <TitleBox>
         <Title>개인정보 동의</Title>
         <CheckWrapper>
-          <CheckLabel>[동의]</CheckLabel>
-          <CheckBox />
+          <CheckLabel htmlFor={'agree' + sequence}>[동의]</CheckLabel>
+          <CheckBox
+            // {...register['agree' + sequence]}
+            type="checkbox"
+            id={'agree' + sequence}
+          />
         </CheckWrapper>
       </TitleBox>
       <AgreeContentBox>
-        <AgreeContent>{DATA}</AgreeContent>
+        <AgreeContent>{text}</AgreeContent>
       </AgreeContentBox>
     </Container>
   );
@@ -19,19 +24,13 @@ const PersonalAgreeBox = ({ text, sequence }) => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  /* width: 326px;
-  height: 190px; */
   margin-bottom: 30px;
   gap: 6px;
   @media ${({ theme }) => theme.devices.TABLET} {
-    /* width: 562px;
-    height: 294px; */
     margin-bottom: 50px;
     gap: 10px;
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
-    /* width: 972px;
-    height: 358px; */
     margin-bottom: 100px;
   }
 `;
@@ -65,7 +64,8 @@ const CheckWrapper = styled.div`
     gap: 8px;
   }
 `;
-const CheckLabel = styled.div`
+const CheckLabel = styled.label`
+  user-select: none;
   color: ${({ theme }) => theme.colors.MAIN_PINK};
   font-size: 12px;
   font-weight: 500;
@@ -77,17 +77,26 @@ const CheckLabel = styled.div`
     ${({ theme }) => theme.typographies.BIG_TXT}
   }
 `;
-const CheckBox = styled.img`
+const CheckBox = styled.input`
+  appearance: none;
+  border: 1px solid ${({ theme }) => theme.colors.MODAL_BG};
+  border-radius: 3px;
   width: 20px;
   height: 20px;
+  &:checked {
+    background-image: url(${agreeIcon});
+    background-color: ${({ theme }) => theme.colors.MAIN_PINK};
+    background-position: 50%;
+
+    opacity: 0.6;
+    padding: 2px;
+  }
   @media ${({ theme }) => theme.devices.DESKTOP} {
     width: 28px;
     height: 28px;
   }
 `;
 const AgreeContentBox = styled.div`
-  /* width: 100%;
-  height: 100%; */
   width: 326px;
   height: 156px;
   background-color: ${({ theme }) => theme.colors.CARD_BG};

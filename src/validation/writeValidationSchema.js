@@ -22,4 +22,8 @@ export const writeValidationSchema = yup.object().shape({
   question3: yup.string().required(),
   question4: yup.string().required(),
   question5: yup.string().required(),
+
+  // agree1: yup.boolean().required(),
+  // agree2: yup.boolean().required(),
+  // agree3: yup.boolean().required(),
 });

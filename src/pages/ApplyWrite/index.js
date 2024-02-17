@@ -17,12 +17,14 @@ const ApplyWrite = () => {
   const [selectedPart, setSelectedPart] = useState('web');
   const [baseInfo, setBaseInfo] = useState({});
   const [questionList, setQuestionList] = useState([]);
+  const [taskFile, setTaskFile] = useState(null);
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
     watch,
+    setValue,
   } = useForm({
     resolver: yupResolver(writeValidationSchema),
     mode: 'onChange',
@@ -47,6 +49,10 @@ const ApplyWrite = () => {
       setFormError(false);
     }
   };
+
+  useEffect(() => {
+    isFormError();
+  }, [errors]);
   const value = watch();
 
   const onSubmit = () => {
@@ -81,7 +87,11 @@ const ApplyWrite = () => {
         </IntroduceContainer>
         <HomeworkContainer>
           <Title>지원 과제</Title>
-          <HomeworkBox selectedPart={selectedPart} />
+          <HomeworkBox
+            selectedPart={selectedPart}
+            setValue={setValue}
+            register={register}
+          />
         </HomeworkContainer>
         <AgreeContainer>
           <Title>참고 사항</Title>
@@ -92,10 +102,11 @@ const ApplyWrite = () => {
                 key={item.id}
                 text={item.content}
                 sequence={item.sequence}
+                register={register}
               />
             ))}
         </AgreeContainer>
-        <InfoHelperText $isError={FormError}>
+        <InfoHelperText $isError={!isValid}>
           ※ 작성이 완료되지 않았거나, 형식에 맞지 않는 값이 있습니다.
         </InfoHelperText>
         <TestButton type="submit" onClick={isFormError}>
