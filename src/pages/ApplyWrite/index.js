@@ -23,6 +23,13 @@ const ApplyWrite = () => {
   const [selectedPart, setSelectedPart] = useState('WEB');
   const [applicationData, setApplicationData] = useState({});
   const [files, setFiles] = useState({});
+  const [studentIdValue, setStudentIdValue] = useState('');
+
+  // 테스트용 sessionStorage 구현
+  useEffect(() => {
+    sessionStorage.setItem('test', '60123292');
+    setStudentIdValue(sessionStorage.getItem('test'));
+  });
 
   const {
     register,
@@ -51,31 +58,46 @@ const ApplyWrite = () => {
     }
   };
 
+  const findMajorId = (majors, majorName) => {
+    for (let i = 0; i < majors.length; i++) {
+      if (majors[i].name === majorName) {
+        return majors[i].id;
+      }
+    }
+    return null;
+  };
+
   const onSubmit = () => {
     // e.preventDefault();
+    // if (Object.keys(files).length > 0) {
     // const formData = new FormData();
     // formData.append('file', files[0]);
     // const fileLinkRes = postFileData(formData);
-    // postApplicationData(value);
-    const testData = {
-      agree1: value.agree1,
-      agree2: value.agree2,
-      agree3: value.agree3,
+    // }
+
+    const agreementMap = {};
+    applicationData.agreements.forEach((item, idx) => {
+      agreementMap[item.id] = value['agree' + (idx + 1)];
+    });
+    const introducesMap = {};
+    applicationData.introduces.forEach((item, idx) => {
+      introducesMap[item.id] = value['question' + (idx + 1)];
+    });
+    const selectedMajorId = findMajorId(applicationData.majors, value.majors);
+
+    const submitFormData = {
+      studentId: studentIdValue,
+      name: value.name,
+      majorId: selectedMajorId,
+      phoneNumber: value.phoneNumber,
       email: value.email,
       grade: value.grade,
+      part: selectedPart,
       link: value.link,
-      majors: value.major,
-      name: value.name,
-      phoneNumber: value.phoneNumber,
-      question1: value.question1,
-      question2: value.question2,
-      question3: value.question3,
-      question4: value.question4,
-      question5: value.question5,
+      introduces: introducesMap,
+      agreements: agreementMap,
     };
-
-    const jsonData = JSON.stringify(testData);
-    console.log('이거임', jsonData);
+    postApplicationData(JSON.stringify(submitFormData));
   };
 
   const handlePartClick = (part) => {
@@ -97,6 +119,7 @@ const ApplyWrite = () => {
               setValue={setValue}
               getValues={getValues}
               majorData={applicationData.majors}
+              studentIdValue={studentIdValue}
             />
           </InfoContainer>
           <IntroduceContainer>

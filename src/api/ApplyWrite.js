@@ -22,7 +22,11 @@ export const postFileData = (formData) => {
 };
 
 export const postApplicationData = (data) => {
-  Axios.post('/application', data)
+  Axios.post('/application', data, {
+    headers: {
+      'Content-Type': `application/json`,
+    },
+  })
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };

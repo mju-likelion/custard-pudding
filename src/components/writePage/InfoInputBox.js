@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
 import { INPUT_LABEL_LIST } from '../../pages/ApplyWrite/data/InfoInputData';
 import { PART } from '../../pages/ApplyWrite/data/InfoInputData';
 import UserInfoInput from './UserInfoInput';
@@ -13,15 +12,8 @@ const InfoInputBox = ({
   setValue,
   majorData,
   getValues,
+  studentIdValue,
 }) => {
-  const [studentIdValue, setStudentIdValue] = useState('');
-
-  // 테스트용 sessionStorage 구현
-  useEffect(() => {
-    sessionStorage.setItem('test', '6020xxxx');
-    setStudentIdValue(sessionStorage.getItem('test'));
-  });
-
   return (
     <Container>
       <InnerInputBox>
