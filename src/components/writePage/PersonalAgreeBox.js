@@ -7,11 +7,11 @@ const PersonalAgreeBox = ({ text, sequence, register }) => {
       <TitleBox>
         <Title>개인정보 동의</Title>
         <CheckWrapper>
-          <CheckLabel htmlFor={'agree' + sequence}>[동의]</CheckLabel>
+          <CheckLabel htmlFor={'agree' + String(sequence)}>[동의]</CheckLabel>
           <CheckBox
-            // {...register['agree' + sequence]}
+            {...register('agree' + String(sequence))}
             type="checkbox"
-            id={'agree' + sequence}
+            id={'agree' + String(sequence)}
           />
         </CheckWrapper>
       </TitleBox>

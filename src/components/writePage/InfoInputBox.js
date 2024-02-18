@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import { INPUT_LABEL_LIST } from './InfoInputData';
-import { PART } from './InfoInputData';
-import UserInfoInput from '../../components/writePage/UserInfoInput';
 import { useEffect, useState } from 'react';
+import { INPUT_LABEL_LIST } from '../../pages/ApplyWrite/data/InfoInputData';
+import { PART } from '../../pages/ApplyWrite/data/InfoInputData';
+import UserInfoInput from './UserInfoInput';
+import SelectBox from './SelectBox';
 
 const InfoInputBox = ({
   register,
@@ -25,17 +26,14 @@ const InfoInputBox = ({
     <Container>
       <InnerInputBox>
         {INPUT_LABEL_LIST.left.map((item) =>
-          item.name === 'studentId' ? (
-            <UserInfoInput
+          item.name === 'grade' || item.name === 'majors' ? (
+            <SelectBox
               key={item.id}
-              label={item.label}
               name={item.name}
-              isDisabled={item.isDisabled}
-              register={register}
-              errors={errors}
-              studentIdValue={studentIdValue}
-              placeholder={item.placeholder}
+              label={item.label}
               majorData={majorData}
+              getValues={getValues}
+              setValue={setValue}
             />
           ) : (
             <UserInfoInput
@@ -45,9 +43,10 @@ const InfoInputBox = ({
               isDisabled={item.isDisabled}
               register={register}
               errors={errors}
-              placeholder={item.placeholder}
               setValue={setValue}
               getValues={getValues}
+              studentIdValue={studentIdValue}
+              placeholder={item.placeholder}
               majorData={majorData}
             />
           ),

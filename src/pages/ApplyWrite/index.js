@@ -3,21 +3,26 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import InfoInputBox from './InfoInputBox';
-import Introduction from './Introduction';
+import InfoInputBox from '../../components/writePage/InfoInputBox';
+import Introduction from '../../components/writePage/Introduction';
+import HomeworkBox from '../../components/writePage/HomeworkBox';
+import PersonalAgreeBox from '../../components/writePage/PersonalAgreeBox';
+import BigButton from '../../components/Button/BigButton';
+import { DEFAULT_VALUES } from './data/HookFormDefaultData';
 import { writeValidationSchema } from '../../validation/writeValidationSchema';
-import { getPageBaseInfo, getPartQuestionList } from '../../api/ApplyWrite';
-import HomeworkBox from './HomeworkBox';
-import PersonalAgreeBox from './PersonalAgreeBox';
+import {
+  getApplicationData,
+  postFileData,
+  postApplicationData,
+} from '../../api/ApplyWrite';
 
 const ApplyWrite = () => {
   // const EMPTY_ERROR = '※ 작성이 완료되지 않은 내용이 있습니다';
   // const WRONG_FORM_ERROR = '※ 형식에 맞지 않는 값이 있습니다';
   const [FormError, setFormError] = useState(false);
-  const [selectedPart, setSelectedPart] = useState('web');
-  const [baseInfo, setBaseInfo] = useState({});
-  const [questionList, setQuestionList] = useState([]);
-  const [taskFile, setTaskFile] = useState(null);
+  const [selectedPart, setSelectedPart] = useState('WEB');
+  const [applicationData, setApplicationData] = useState({});
+  const [files, setFiles] = useState({});
 
   const {
     register,
@@ -29,20 +34,13 @@ const ApplyWrite = () => {
   } = useForm({
     resolver: yupResolver(writeValidationSchema),
     mode: 'onChange',
-    defaultValues: {
-      question1: '',
-      question2: '',
-      question3: '',
-      question4: '',
-      question5: '',
-      grade: '1',
-      majors: '전기공학과',
-    },
+    defaultValues: DEFAULT_VALUES,
   });
 
-  // 전공, 개인정보 동의 문장 GET API
+  const value = watch();
+
   useEffect(() => {
-    getPageBaseInfo(selectedPart, setBaseInfo, setQuestionList);
+    getApplicationData(selectedPart, setApplicationData);
   }, []);
 
   const isFormError = () => {
@@ -53,72 +51,96 @@ const ApplyWrite = () => {
     }
   };
 
-  useEffect(() => {
-    isFormError();
-  }, [errors]);
-  const value = watch();
-  console.log(value);
   const onSubmit = () => {
-    // 제출하기 POST API
+    // e.preventDefault();
+    // const formData = new FormData();
+    // formData.append('file', files[0]);
+    // const fileLinkRes = postFileData(formData);
+    // postApplicationData(value);
+    const testData = {
+      agree1: value.agree1,
+      agree2: value.agree2,
+      agree3: value.agree3,
+      email: value.email,
+      grade: value.grade,
+      link: value.link,
+      majors: value.major,
+      name: value.name,
+      phoneNumber: value.phoneNumber,
+      question1: value.question1,
+      question2: value.question2,
+      question3: value.question3,
+      question4: value.question4,
+      question5: value.question5,
+    };
+
+    const jsonData = JSON.stringify(testData);
+    console.log('이거임', jsonData);
   };
 
   const handlePartClick = (part) => {
     setSelectedPart(part);
-    // 질문 GET API
-    getPartQuestionList(part, setQuestionList);
-    // console.log(baseInfo);
+    getApplicationData(part, setApplicationData);
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <AllContainer>
-        <InfoContainer>
-          <Title>지원자 정보</Title>
-          <InfoInputBox
-            errors={errors}
-            register={register}
-            selectedPart={selectedPart}
-            handlePartClick={handlePartClick}
-            setValue={setValue}
-            getValues={getValues}
-            majorData={baseInfo.majors}
-          />
-        </InfoContainer>
-        <IntroduceContainer>
-          <Title>자기소개서</Title>
-          <Introduction
-            register={register}
-            value={value}
-            questionList={questionList}
-          />
-        </IntroduceContainer>
-        <HomeworkContainer>
-          <Title>지원 과제</Title>
-          <HomeworkBox
-            selectedPart={selectedPart}
-            setValue={setValue}
-            register={register}
-          />
-        </HomeworkContainer>
-        <AgreeContainer>
-          <Title>참고 사항</Title>
-          {/* 이게 좋은 로직일까? */}
-          {baseInfo.agreements &&
-            baseInfo.agreements.map((item) => (
-              <PersonalAgreeBox
-                key={item.id}
-                text={item.content}
-                sequence={item.sequence}
-                register={register}
-              />
-            ))}
-        </AgreeContainer>
-        <InfoHelperText $isError={!isValid}>
-          ※ 작성이 완료되지 않았거나, 형식에 맞지 않는 값이 있습니다.
-        </InfoHelperText>
-        <TestButton type="submit" onClick={isFormError}>
-          제출하기
-        </TestButton>
-      </AllContainer>
+      {applicationData && (
+        <AllContainer>
+          <InfoContainer>
+            <Title>지원자 정보</Title>
+            <InfoInputBox
+              errors={errors}
+              register={register}
+              selectedPart={selectedPart}
+              handlePartClick={handlePartClick}
+              setValue={setValue}
+              getValues={getValues}
+              majorData={applicationData.majors}
+            />
+          </InfoContainer>
+          <IntroduceContainer>
+            <Title>자기소개서</Title>
+            <Introduction
+              register={register}
+              value={value}
+              questionList={applicationData.introduces}
+            />
+          </IntroduceContainer>
+          <HomeworkContainer>
+            <Title>지원 과제</Title>
+            <HomeworkBox
+              selectedPart={selectedPart}
+              register={register}
+              files={files}
+              setFiles={setFiles}
+            />
+          </HomeworkContainer>
+          <AgreeContainer>
+            <Title>참고 사항</Title>
+            {/* 이게 좋은 로직일까? */}
+            {applicationData.agreements &&
+              applicationData.agreements.map((item) => (
+                <PersonalAgreeBox
+                  key={item.id}
+                  text={item.content}
+                  sequence={item.sequence}
+                  register={register}
+                />
+              ))}
+          </AgreeContainer>
+          <InfoHelperText $isError={!isValid}>
+            ※ 작성이 완료되지 않았거나, 형식에 맞지 않는 값이 있습니다.
+          </InfoHelperText>
+          {value.agree1 && value.agree2 && value.agree3 ? (
+            <BigButton type="submit" onClick={isFormError} $isActive={true}>
+              제출하기
+            </BigButton>
+          ) : (
+            <BigButton disabled={true}>제출하기</BigButton>
+          )}
+        </AllContainer>
+      )}
     </form>
   );
 };
@@ -194,11 +216,5 @@ const AgreeContainer = styled.div`
     margin-bottom: 90px;
   }
 `;
-const TestButton = styled.button`
-  width: 200px;
-  height: 100px;
-  margin: 0 auto;
-  color: white;
-  background-color: pink;
-`;
+
 export default ApplyWrite;

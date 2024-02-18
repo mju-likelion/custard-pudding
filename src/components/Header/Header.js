@@ -27,16 +27,16 @@ const Header = () => {
           <SubtitleBox>APPLY</SubtitleBox>
         </LogoBox>
         {!isOpenMenu ? (
-          <OpenIconBox onClick={openMenu} />
+          <OpenIconBox onClick={() => openMenu()} />
         ) : (
-          <CloseIconBox onClick={closeMenu} />
+          <CloseIconBox onClick={() => closeMenu()} />
         )}
         <NavContainer>
           <NavItem onClick={() => navigate('/apply')}>지원하기</NavItem>
           <NavItem onClick={() => navigate('/check')}>지원 확인하기</NavItem>
         </NavContainer>
       </InnerContainer>
-      {isOpenMenu && <NavDropdown />}
+      {isOpenMenu && <NavDropdown closeMenu={() => closeMenu()} />}
     </Container>
   );
 };

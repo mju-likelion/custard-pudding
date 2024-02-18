@@ -1,15 +1,12 @@
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
-import css from 'styled-components';
 import { useEffect } from 'react';
-// import { useForm } from 'react-hook-form';
-import { GRADE_DATA } from './SelectGradeData';
-const SelectBox = ({ name, setValue, majorData, getValues }) => {
+import { GRADE_DATA } from '../../pages/ApplyWrite/data/SelectGradeData';
+
+const SelectBox = ({ name, setValue, majorData, getValues, label }) => {
   const [isOpen, setIsOpen] = useState(false);
   const SelectContainerRef = useRef(null);
-  // const { getValues } = useForm();
 
-  // 이전 페이지 참고 코드
   const handleClickOutside = (e) => {
     if (
       SelectContainerRef.current &&
@@ -20,7 +17,6 @@ const SelectBox = ({ name, setValue, majorData, getValues }) => {
   };
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
-    // 뒷정리 함수
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -37,29 +33,60 @@ const SelectBox = ({ name, setValue, majorData, getValues }) => {
   };
 
   return (
-    <SelectContainer ref={SelectContainerRef}>
-      <SelectWrapper onClick={handleOptions} $isOpen={isOpen}>
-        {getValues(name)}
-      </SelectWrapper>
-      {isOpen && (
-        <SelectOptions $isScroll={name === 'majors'}>
-          {name === 'majors' &&
-            majorData.map((item) => (
-              <Option key={item.id} onClick={() => setData(item.name)}>
-                {item.name}
-              </Option>
-            ))}
-          {name === 'grade' &&
-            GRADE_DATA.map((item, idx) => (
-              <Option key={idx} onClick={() => setData(item)}>
-                {item}
-              </Option>
-            ))}
-        </SelectOptions>
-      )}
-    </SelectContainer>
+    <AllContainer>
+      <InfoLabel>{label}</InfoLabel>
+      <SelectContainer ref={SelectContainerRef}>
+        <SelectWrapper onClick={handleOptions} $isOpen={isOpen}>
+          {getValues(name)}
+        </SelectWrapper>
+        {isOpen && (
+          <SelectOptions $isScroll={name === 'majors'}>
+            {name === 'majors' &&
+              majorData.map((item) => (
+                <Option key={item.id} onClick={() => setData(item.name)}>
+                  {item.name}
+                </Option>
+              ))}
+            {name === 'grade' &&
+              GRADE_DATA.map((item, idx) => (
+                <Option key={idx} onClick={() => setData(item)}>
+                  {item}
+                </Option>
+              ))}
+          </SelectOptions>
+        )}
+      </SelectContainer>
+    </AllContainer>
   );
 };
+
+const AllContainer = styled.div`
+  width: 226px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+
+  @media ${({ theme }) => theme.devices.TABLET} {
+    width: 350px;
+    height: 42px;
+    gap: 17px;
+  }
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    width: 369px;
+  }
+`;
+const InfoLabel = styled.p`
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: ${({ theme }) => theme.colors.WHITE_TXT};
+
+  @media ${({ theme }) => theme.devices.TABLET} {
+    ${({ theme }) => theme.typographies.BIG_TXT}
+  }
+`;
 
 const SelectContainer = styled.div`
   width: 100%;
@@ -115,8 +142,8 @@ const SelectOptions = styled.div`
     width: 8px;
   }
   &::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.colors.MODAL_BG}; /* 스크롤바 색상 */
-    border-radius: 10px; /* 스크롤바 둥근 테두리 */
+    background: ${({ theme }) => theme.colors.MODAL_BG};
+    border-radius: 10px;
     height: 50%;
   }
   &::-webkit-scrollbar-track {
@@ -141,8 +168,8 @@ const Option = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.MODAL_BG};
   font-size: 10px;
   font-weight: 300;
-  flex-shrink: 0; /* 줄어들지 않도록 설정 */
 
+  flex-shrink: 0;
   transition: all 0.2s ease-in-out;
   user-select: none;
 

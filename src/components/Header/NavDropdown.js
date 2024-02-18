@@ -2,12 +2,18 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-const NavDropdown = () => {
+const NavDropdown = ({ closeMenu }) => {
   const navigate = useNavigate();
+
+  const handleNavClick = (address) => {
+    closeMenu();
+    navigate(address);
+  };
+
   return (
     <Container>
-      <NavItem onClick={() => navigate()}>지원하기</NavItem>
-      <NavItem onClick={() => navigate()}>지원 확인하기</NavItem>
+      <NavItem onClick={() => handleNavClick('/apply')}>지원하기</NavItem>
+      <NavItem onClick={() => handleNavClick('/check')}>지원 확인하기</NavItem>
     </Container>
   );
 };

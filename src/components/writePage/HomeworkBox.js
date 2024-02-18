@@ -1,29 +1,15 @@
 import styled from 'styled-components';
-import { HOMEWORK_DATA } from './HomeworkData';
-import { useState } from 'react';
-import { postFileData } from '../../api/ApplyWrite';
-const HomeworkBox = ({ selectedPart, setValue, register }) => {
-  const [files, setFiles] = useState({});
+import { HOMEWORK_DATA } from '../../pages/ApplyWrite/data/HomeworkData';
 
-  const handleFileChange = (e, key) => {
-    if (key === 'file') {
-      setFiles(e.target.files);
-    }
-  };
-
-  const uploadFiles = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    const uploadFile = files[0];
-    formData.append('file', uploadFile);
-    // console.log(formData.getAll('file'));
-    postFileData(formData);
+const HomeworkBox = ({ selectedPart, register, files, setFiles }) => {
+  const handleFileChange = (e) => {
+    setFiles(e.target.files);
   };
 
   return (
     <>
       <Title>{HOMEWORK_DATA[selectedPart].title}</Title>
-      {selectedPart === 'web' && (
+      {selectedPart === 'WEB' && (
         <>
           <WebHomeworkWrapper>
             <FileInputLabel htmlFor="file">
@@ -34,18 +20,12 @@ const HomeworkBox = ({ selectedPart, setValue, register }) => {
             id="file"
             name="file"
             type="file"
-            accept=".html,.zip"
-            onChange={(e) => handleFileChange(e, 'file')}
-            onClick={(e) => {
-              e.target.value = null;
-            }}
-            // {...register}
+            accept=".zip"
+            onChange={(e) => handleFileChange(e)}
           />
-
-          <button onClick={uploadFiles}>업로드 테스트용</button>
         </>
       )}
-      {selectedPart === 'server' && (
+      {selectedPart === 'SERVER' && (
         <ServerHomeworkInput {...register('link')} />
       )}
       <HomeworkHelperText>

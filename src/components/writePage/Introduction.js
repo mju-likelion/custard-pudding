@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import ApplyAnswer from '../../components/writePage/ApplyAnswer';
+import ApplyAnswer from './ApplyAnswer';
 
 const Introduction = ({ register, value, questionList }) => {
   return (
     <>
-      {questionList.map((item) => (
+      {questionList?.map((item) => (
         <>
           <Question key={item.id}>
             {item.sequence}. {item.title}
