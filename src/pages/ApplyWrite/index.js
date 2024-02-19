@@ -7,7 +7,7 @@ import InfoInputBox from '../../components/writePage/InfoInputBox';
 import Introduction from '../../components/writePage/Introduction';
 import HomeworkBox from '../../components/writePage/HomeworkBox';
 import PersonalAgreeBox from '../../components/writePage/PersonalAgreeBox';
-import BigButton from '../../components/Button/BigButton';
+import SubmitButton from '../../components/writePage/SubmitButton';
 import { DEFAULT_VALUES } from './data/HookFormDefaultData';
 import { writeValidationSchema } from '../../validation/writeValidationSchema';
 import {
@@ -20,8 +20,6 @@ const ApplyWrite = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // const EMPTY_ERROR = '※ 작성이 완료되지 않은 내용이 있습니다';
-  // const WRONG_FORM_ERROR = '※ 형식에 맞지 않는 값이 있습니다';
   const [FormError, setFormError] = useState(false);
   const [selectedPart, setSelectedPart] = useState('WEB');
   const [applicationData, setApplicationData] = useState({});
@@ -101,6 +99,8 @@ const ApplyWrite = () => {
       agreements: agreementObject,
     };
     postApplicationData(submitFormData);
+    navigate('/complete');
+    sessionStorage.removeItem('studentId');
   };
 
   useEffect(() => {
@@ -175,11 +175,11 @@ const ApplyWrite = () => {
             ※ 작성이 완료되지 않았거나, 형식에 맞지 않는 값이 있습니다.
           </InfoHelperText>
           {value.agree1 && value.agree2 && value.agree3 ? (
-            <BigButton type="submit" onClick={isFormError} $isActive={true}>
+            <SubmitButton onClick={isFormError} $isActive={true}>
               제출하기
-            </BigButton>
+            </SubmitButton>
           ) : (
-            <BigButton disabled={true}>제출하기</BigButton>
+            <SubmitButton disabled={true}>제출하기</SubmitButton>
           )}
         </AllContainer>
       )}
@@ -192,6 +192,13 @@ const AllContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 40px;
+  @media ${({ theme }) => theme.devices.TABLET} {
+    margin-bottom: 60px;
+  }
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    margin-bottom: 100px;
+  }
 `;
 
 const InfoContainer = styled.div`
@@ -222,6 +229,9 @@ const InfoHelperText = styled.div`
   visibility: ${({ $isError }) => ($isError ? 'visible' : 'hidden')};
   @media ${({ theme }) => theme.devices.TABLET} {
     margin-bottom: 28px;
+    font-size: 17px;
+  }
+  @media ${({ theme }) => theme.devices.DESKTOP} {
     font-size: 20px;
   }
 `;
