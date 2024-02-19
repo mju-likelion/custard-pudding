@@ -27,6 +27,7 @@ const Apply = () => {
         navigate('/write');
       }
     } catch (error) {
+      console.log(error);
       const statusCode = error.response.data.statusCode;
       if (statusCode === '409') {
         setIsExist(true);
