@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import InfoInputBox from '../../components/writePage/InfoInputBox';
@@ -18,6 +18,7 @@ import {
 
 const ApplyWrite = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   // const EMPTY_ERROR = '※ 작성이 완료되지 않은 내용이 있습니다';
   // const WRONG_FORM_ERROR = '※ 형식에 맞지 않는 값이 있습니다';
@@ -101,6 +102,13 @@ const ApplyWrite = () => {
     };
     postApplicationData(submitFormData);
   };
+
+  useEffect(() => {
+    if (studentIdValue === null) {
+      alert('잘못된 접근입니다.');
+      navigate('/');
+    }
+  }, [studentIdValue]);
 
   useEffect(() => {
     const handleBeforeUnload = (event) => {
