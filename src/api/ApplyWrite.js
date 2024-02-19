@@ -11,13 +11,15 @@ export const getApplicationData = (part, setApplicationDataFunction) => {
     });
 };
 
-export const postFileData = (formData) => {
+export const postFileData = (formData, setFileLinkFunction) => {
   Axios.post('/application/file', formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
   })
-    .then((res) => console.log(res))
+    .then((res) => {
+      setFileLinkFunction(res.data.data.url);
+    })
     .catch((err) => console.log(err));
 };
 

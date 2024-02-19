@@ -23,13 +23,8 @@ const ApplyWrite = () => {
   const [selectedPart, setSelectedPart] = useState('WEB');
   const [applicationData, setApplicationData] = useState({});
   const [files, setFiles] = useState({});
+  const [fileLink, setFileLink] = useState('');
   const [studentIdValue, setStudentIdValue] = useState('');
-
-  // 테스트용 sessionStorage 구현
-  useEffect(() => {
-    sessionStorage.setItem('test', '60123292');
-    setStudentIdValue(sessionStorage.getItem('test'));
-  });
 
   const {
     register,
@@ -47,8 +42,15 @@ const ApplyWrite = () => {
   const value = watch();
 
   useEffect(() => {
+    sessionStorage.setItem('test', '60193292');
+    setStudentIdValue(sessionStorage.getItem('test'));
     getApplicationData(selectedPart, setApplicationData);
   }, []);
+
+  const handlePartClick = (part) => {
+    setSelectedPart(part);
+    getApplicationData(part, setApplicationData);
+  };
 
   const isFormError = () => {
     if (Object.keys(errors).length > 0) {
@@ -58,30 +60,29 @@ const ApplyWrite = () => {
     }
   };
 
-  const findMajorId = (majors, majorName) => {
-    for (let i = 0; i < majors.length; i++) {
-      if (majors[i].name === majorName) {
-        return majors[i].id;
-      }
-    }
-    return null;
-  };
-
   const onSubmit = () => {
-    // e.preventDefault();
-    // if (Object.keys(files).length > 0) {
-    // const formData = new FormData();
-    // formData.append('file', files[0]);
-    // const fileLinkRes = postFileData(formData);
-    // }
+    if (Object.keys(files).length > 0) {
+      const formData = new FormData();
+      formData.append('file', files[0]);
+      postFileData(formData, setFileLink);
+    }
 
-    const agreementMap = {};
-    applicationData.agreements.forEach((item, idx) => {
-      agreementMap[item.id] = value['agree' + (idx + 1)];
-    });
-    const introducesMap = {};
+    const findMajorId = (majors, majorName) => {
+      for (let i = 0; i < majors.length; i++) {
+        if (majors[i].name === majorName) {
+          return majors[i].id;
+        }
+      }
+      return null;
+    };
+
+    const introducesObject = {};
     applicationData.introduces.forEach((item, idx) => {
-      introducesMap[item.id] = value['question' + (idx + 1)];
+      introducesObject[item.id] = value['question' + (idx + 1)];
+    });
+    const agreementObject = {};
+    applicationData.agreements.forEach((item, idx) => {
+      agreementObject[item.id] = value['agree' + (idx + 1)];
     });
     const selectedMajorId = findMajorId(applicationData.majors, value.majors);
 
@@ -93,16 +94,11 @@ const ApplyWrite = () => {
       email: value.email,
       grade: value.grade,
       part: selectedPart,
-      link: value.link,
-      introduces: introducesMap,
-      agreements: agreementMap,
+      link: selectedPart === 'SERVER' ? value.link : fileLink,
+      introduces: introducesObject,
+      agreements: agreementObject,
     };
-    postApplicationData(JSON.stringify(submitFormData));
-  };
-
-  const handlePartClick = (part) => {
-    setSelectedPart(part);
-    getApplicationData(part, setApplicationData);
+    postApplicationData(submitFormData);
   };
 
   return (
