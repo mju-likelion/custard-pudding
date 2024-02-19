@@ -44,8 +44,7 @@ const ApplyWrite = () => {
   const value = watch();
 
   useEffect(() => {
-    sessionStorage.setItem('test', '60193292');
-    setStudentIdValue(sessionStorage.getItem('test'));
+    setStudentIdValue(sessionStorage.getItem('studentId'));
     getApplicationData(selectedPart, setApplicationData);
   }, []);
 

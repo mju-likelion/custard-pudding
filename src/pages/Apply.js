@@ -23,7 +23,7 @@ const Apply = () => {
       const statusCode = response.data.statusCode;
       if (statusCode === '201') {
         console.log(response);
-        sessionStorage.setItem('studentId', JSON.stringify(data.id));
+        sessionStorage.setItem('studentId', data.id);
         navigate('/write');
       }
     } catch (error) {

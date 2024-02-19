@@ -87,7 +87,7 @@ const Header = () => {
           })}
         </NavContainer>
       </InnerContainer>
-      {isOpenMenu && <NavDropdown />}
+      {isOpenMenu && <NavDropdown closeMenu={closeMenu} />}
     </Container>
   );
 };
