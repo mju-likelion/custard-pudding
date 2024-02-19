@@ -21,22 +21,22 @@ const Header = () => {
   return (
     <Container>
       <InnerContainer>
-        <LogoBox>
-          <BigLogoWrapper src={BigLogo} onClick={() => navigate('/')} />
-          <SmallLogoWrapper src={SmallLogo} onClick={() => navigate('/')} />
+        <LogoBox onClick={() => navigate('/')}>
+          <BigLogoWrapper src={BigLogo} />
+          <SmallLogoWrapper src={SmallLogo} />
           <SubtitleBox>APPLY</SubtitleBox>
         </LogoBox>
         {!isOpenMenu ? (
-          <OpenIconBox onClick={openMenu} />
+          <OpenIconBox onClick={() => openMenu()} />
         ) : (
-          <CloseIconBox onClick={closeMenu} />
+          <CloseIconBox onClick={() => closeMenu()} />
         )}
         <NavContainer>
           <NavItem onClick={() => navigate('/apply')}>지원하기</NavItem>
           <NavItem onClick={() => navigate('/check')}>지원 확인하기</NavItem>
         </NavContainer>
       </InnerContainer>
-      {isOpenMenu && <NavDropdown />}
+      {isOpenMenu && <NavDropdown closeMenu={() => closeMenu()} />}
     </Container>
   );
 };
@@ -47,9 +47,6 @@ const Container = styled.div`
   position: sticky;
   top: 0;
   z-index: 99;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 `;
 
 const InnerContainer = styled.div`

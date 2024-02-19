@@ -1,36 +1,31 @@
 import styled from 'styled-components';
-import { INPUT_LABEL_LIST } from './InfoInputData';
-import { PART } from './InfoInputData';
-import UserInfoInput from '../../components/writePage/UserInfoInput';
-import { useEffect, useState } from 'react';
+import { INPUT_LABEL_LIST } from '../../pages/ApplyWrite/data/InfoInputData';
+import { PART } from '../../pages/ApplyWrite/data/InfoInputData';
+import UserInfoInput from './UserInfoInput';
+import SelectBox from './SelectBox';
 
-const InfoInputBox = ({ register, errors }) => {
-  const [selectedPart, setSelectedPart] = useState('web');
-  const [studentIdValue, setStudentIdValue] = useState('');
-  const handlePartClick = (part) => {
-    setSelectedPart(part);
-  };
-
-  // 테스트용 sessionStorage 구현
-  useEffect(() => {
-    sessionStorage.setItem('test', '6020xxxx');
-    setStudentIdValue(sessionStorage.getItem('test'));
-  });
-
+const InfoInputBox = ({
+  register,
+  errors,
+  selectedPart,
+  handlePartClick,
+  setValue,
+  majorData,
+  getValues,
+  studentIdValue,
+}) => {
   return (
     <Container>
       <InnerInputBox>
         {INPUT_LABEL_LIST.left.map((item) =>
-          item.name === 'studentId' ? (
-            <UserInfoInput
+          item.name === 'grade' || item.name === 'majors' ? (
+            <SelectBox
               key={item.id}
-              label={item.label}
               name={item.name}
-              isDisabled={item.isDisabled}
-              register={register}
-              errors={errors}
-              studentIdValue={studentIdValue}
-              placeholder={item.placeholder}
+              label={item.label}
+              majorData={majorData}
+              getValues={getValues}
+              setValue={setValue}
             />
           ) : (
             <UserInfoInput
@@ -40,7 +35,11 @@ const InfoInputBox = ({ register, errors }) => {
               isDisabled={item.isDisabled}
               register={register}
               errors={errors}
+              setValue={setValue}
+              getValues={getValues}
+              studentIdValue={studentIdValue}
               placeholder={item.placeholder}
+              majorData={majorData}
             />
           ),
         )}
@@ -139,6 +138,7 @@ const PartBtn = styled.button`
   font-size: 10px;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.WHITE_TXT};
+  transition: all 0.2s ease-in-out;
   background-color: ${({ theme, $select }) =>
     $select ? theme.colors.MAIN_PINK : theme.colors.CARD_BG};
 

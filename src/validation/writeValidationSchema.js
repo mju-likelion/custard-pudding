@@ -5,8 +5,7 @@ export const writeValidationSchema = yup.object().shape({
     .string()
     .required()
     .matches(/^[가-힣]{1,6}$/),
-  major: yup.string().required(),
-  // studentId: yup.string().required(),
+  majors: yup.string().required(),
   grade: yup
     .string()
     .required()
@@ -17,9 +16,13 @@ export const writeValidationSchema = yup.object().shape({
     .required()
     .matches(/^010-([0-9]{4})-([0-9]{4})$/),
 
-  firstQuestion: yup.string().required(),
-  secondQuestion: yup.string().required(),
-  thirdQuestion: yup.string().required(),
-  fourthQuestion: yup.string().required(),
-  fifthQuestion: yup.string().required(),
+  question1: yup.string().required(),
+  question2: yup.string().required(),
+  question3: yup.string().required(),
+  question4: yup.string().required(),
+  question5: yup.string().required(),
+
+  agree1: yup.boolean().required(),
+  agree2: yup.boolean().required(),
+  agree3: yup.boolean().required(),
 });
