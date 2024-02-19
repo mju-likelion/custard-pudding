@@ -40,8 +40,13 @@ const Main = () => {
             ))}
             <AdditionalInfoLink>
               ※ 지원 과제에 대한 추가적인 설명은 &nbsp;
-              <Link href="https://www.instagram.com/mju_likelion/">Notion</Link>
-              을 반드시 참고 바랍니다.
+              <Link
+                href="https://www.instagram.com/mju_likelion/"
+                target="_blank"
+              >
+                Notion
+              </Link>
+              &nbsp;을 반드시 참고 바랍니다.
             </AdditionalInfoLink>
           </AssignmentBoxes>
         </AssignmentContainer>

@@ -27,20 +27,17 @@ const Wrapper = styled.button`
       disabled ? theme.colors.DISABLE_BTN : theme.colors.HOVER_BTN};
   }
 
+  @media ${({ theme }) => theme.devices.TABLET} {
+    ${({ theme }) => theme.typographies.BIG_BTN_TXT};
+    width: 272px;
+    height: 100px;
+    padding: 26px 72px;
+  }
   @media ${({ theme }) => theme.devices.DESKTOP} {
     ${({ theme }) => theme.typographies.BIG_BTN_TXT};
     padding: 26px 72px;
-    border-radius: 40px;
     width: 272px;
     height: 100px;
-  }
-
-  @media${({ theme }) => theme.devices.TABLET} {
-    ${({ theme }) => theme.typographies.BIG_BTN_TXT};
-    width: 272px;
-    height: 100px;
-    border-radius: 40px;
-    padding: 26px 72px;
   }
 `;
 
