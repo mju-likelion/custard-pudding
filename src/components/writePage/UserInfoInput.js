@@ -27,7 +27,7 @@ const UserInfoInput = ({
 };
 
 const Container = styled.div`
-  width: 100%;
+  width: 226px;
   height: 26px;
   display: flex;
   align-items: center;
@@ -35,6 +35,7 @@ const Container = styled.div`
   gap: 18px;
 
   @media ${({ theme }) => theme.devices.TABLET} {
+    width: 350px;
     height: 42px;
     gap: 17px;
   }

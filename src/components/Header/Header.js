@@ -98,9 +98,6 @@ const Container = styled.div`
   position: sticky;
   top: 0;
   z-index: 99;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 `;
 const InnerContainer = styled.div`
   max-width: 1200px;

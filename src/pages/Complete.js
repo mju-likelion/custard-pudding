@@ -1,8 +1,11 @@
 import styled from 'styled-components';
+import React from 'react';
+import Confetti from '../Confetti';
 
 const Complete = () => {
   return (
     <PageContainer>
+      <Confetti />
       <Content>
         <Title>
           지원이 <span>완료</span>되었습니다.

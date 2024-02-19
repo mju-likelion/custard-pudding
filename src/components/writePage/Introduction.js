@@ -1,19 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TEXTAREA_LIST } from './IntroductionData';
-import ApplyAnswer from '../../components/writePage/ApplyAnswer';
+import ApplyAnswer from './ApplyAnswer';
 
-const Introduction = ({ register, value }) => {
+const Introduction = ({ register, value, questionList }) => {
   return (
     <>
-      {TEXTAREA_LIST.map((item) => (
+      {questionList?.map((item) => (
         <>
           <Question key={item.id}>
-            {item.id}. 뭐시기 저시기 {item.id}번 문항입니다.
+            {item.sequence}. {item.title}
           </Question>
           <ApplyAnswer
             register={register}
-            name={item.name}
+            name={'question' + String(item.sequence)}
             value={value}
             maxLength={item.maxLength}
           />
@@ -25,16 +24,24 @@ const Introduction = ({ register, value }) => {
 
 const Question = styled.p`
   align-self: flex-start;
+  width: 330px;
   margin-bottom: 10px;
   color: ${({ theme }) => theme.colors.WHITE_TXT};
   font-size: 12px;
   font-weight: 500;
+  line-height: 20px;
 
   @media ${({ theme }) => theme.devices.TABLET} {
+    width: 560px;
+    line-height: 30px;
+
     margin-bottom: 25px;
     ${({ theme }) => theme.typographies.DEFAULT_TXT}
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
+    width: 972px;
+    line-height: 40px;
+
     ${({ theme }) => theme.typographies.BIG_TXT}
   }
 `;
