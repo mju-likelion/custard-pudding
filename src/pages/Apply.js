@@ -21,16 +21,17 @@ const Apply = () => {
         studentId: data.id,
       });
       const statusCode = response.data.statusCode;
-      if (statusCode === 201) {
+      if (statusCode === '201') {
+        console.log(response);
         sessionStorage.setItem('studentId', JSON.stringify(data.id));
         navigate('/write');
       }
     } catch (error) {
       const statusCode = error.response.data.statusCode;
-      if (statusCode === 409) {
+      if (statusCode === '409') {
         setIsExist(true);
         alert('이미 지원 이력이 존재합니다.');
-      } else if (statusCode === 400) {
+      } else if (statusCode === '400') {
         alert('오류가 발생했습니다.');
       }
     }
