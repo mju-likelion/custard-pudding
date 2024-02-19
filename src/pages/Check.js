@@ -12,9 +12,11 @@ import { idValidationSchema } from '../validation/idValidationSchema';
 
 const Check = () => {
   const [isChecked, setIsChecked] = useState(undefined);
+  const [value, setValue] = useState('');
 
   const handleFormSubmit = async (data) => {
     try {
+      setValue(data.id);
       const response = await Axios.get(`/apply/exist/${data.id}`);
       const isExist = response?.data?.data?.isExist;
       setIsChecked(isExist);
@@ -73,9 +75,9 @@ const Check = () => {
           </CardLanyard>
         </form>
       ) : isChecked ? (
-        <CheckCard status="check_success" />
+        <CheckCard status="check_success" value={value} />
       ) : (
-        <CheckCard status="check_failed" />
+        <CheckCard status="check_failed" value={value} />
       )}
     </Container>
   );
