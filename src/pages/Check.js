@@ -15,8 +15,8 @@ const Check = () => {
   const [value, setValue] = useState('');
 
   const handleFormSubmit = async (data) => {
+    setValue(data.id);
     try {
-      setValue(data.id);
       const response = await Axios.get(`/apply/exist/${data.id}`);
       const isExist = response?.data?.data?.isExist;
       setIsChecked(isExist);

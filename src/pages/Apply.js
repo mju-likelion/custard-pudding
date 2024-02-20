@@ -13,23 +13,24 @@ import CheckCard from '../components/checkPage/CheckCard';
 
 const Apply = () => {
   const [isExist, setIsExist] = useState(undefined);
+  const [value, setValue] = useState('');
   const navigate = useNavigate();
 
   const handleFormSubmit = async (data) => {
+    setValue(data.id);
     try {
       const response = await Axios.post('/apply', {
         studentId: data.id,
       });
       const statusCode = response.data.statusCode;
       if (statusCode === '201') {
-        console.log(response);
         sessionStorage.setItem('studentId', data.id);
         navigate('/write');
       }
     } catch (error) {
       console.log(error);
       const statusCode = error.response.data.statusCode;
-      if (statusCode === '409') {
+      if (statusCode === '4090') {
         setIsExist(true);
         alert('이미 지원 이력이 존재합니다.');
       } else if (statusCode === '400') {
@@ -87,7 +88,7 @@ const Apply = () => {
           </CardLanyard>
         </form>
       )}
-      {isExist && <CheckCard status="rejected" />}
+      {isExist && <CheckCard status="rejected" value={value} />}
     </Container>
   );
 };
