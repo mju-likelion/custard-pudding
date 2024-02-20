@@ -1,0 +1,34 @@
+import { Axios } from './Axios';
+
+export const getApplicationData = (part, setApplicationDataFunction) => {
+  Axios.get(`/application/${part}`)
+    .then((res) => {
+      setApplicationDataFunction(res.data.data);
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const postFileData = (formData, setFileLinkFunction) => {
+  Axios.post('/application/file', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  })
+    .then((res) => {
+      setFileLinkFunction(res.data.data.url);
+    })
+    .catch((err) => console.log(err));
+};
+
+export const postApplicationData = (data) => {
+  Axios.post('/application', data, {
+    headers: {
+      'Content-Type': `application/json`,
+    },
+  })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+};
