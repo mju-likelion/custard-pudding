@@ -160,7 +160,6 @@ const ApplyWrite = () => {
           </HomeworkContainer>
           <AgreeContainer>
             <Title>참고 사항</Title>
-            {/* 이게 좋은 로직일까? */}
             {applicationData.agreements &&
               applicationData.agreements.map((item) => (
                 <PersonalAgreeBox
