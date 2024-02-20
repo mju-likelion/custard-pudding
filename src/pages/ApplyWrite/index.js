@@ -20,7 +20,7 @@ const ApplyWrite = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [FormError, setFormError] = useState(false);
+  // const [FormError, setFormError] = useState(false);
   const [selectedPart, setSelectedPart] = useState('WEB');
   const [applicationData, setApplicationData] = useState({});
   const [files, setFiles] = useState({});
@@ -44,7 +44,7 @@ const ApplyWrite = () => {
 
   useEffect(() => {
     setStudentIdValue(sessionStorage.getItem('studentId'));
-    getApplicationData(selectedPart, setApplicationData);
+    getApplicationData(selectedPart, setApplicationData, navigate);
   }, []);
 
   const handlePartClick = (part) => {
@@ -52,13 +52,13 @@ const ApplyWrite = () => {
     getApplicationData(part, setApplicationData);
   };
 
-  const isFormError = () => {
-    if (Object.keys(errors).length > 0) {
-      setFormError(true);
-    } else if (Object.keys(errors).length === 0) {
-      setFormError(false);
-    }
-  };
+  // const isFormError = () => {
+  //   if (Object.keys(errors).length > 0) {
+  //     setFormError(true);
+  //   } else if (Object.keys(errors).length === 0) {
+  //     setFormError(false);
+  //   }
+  // };
 
   const onSubmit = () => {
     if (Object.keys(files).length > 0) {
@@ -98,8 +98,9 @@ const ApplyWrite = () => {
       introduces: introducesObject,
       agreements: agreementObject,
     };
-    postApplicationData(submitFormData);
-    navigate('/complete');
+    {
+      selectedPart === 'WEB' && postApplicationData(submitFormData, navigate);
+    }
     sessionStorage.removeItem('studentId');
   };
 
@@ -174,9 +175,7 @@ const ApplyWrite = () => {
             ※ 작성이 완료되지 않았거나, 형식에 맞지 않는 값이 있습니다.
           </InfoHelperText>
           {value.agree1 && value.agree2 && value.agree3 ? (
-            <SubmitButton onClick={isFormError} $isActive={true}>
-              제출하기
-            </SubmitButton>
+            <SubmitButton $isActive={true}>제출하기</SubmitButton>
           ) : (
             <SubmitButton disabled={true}>제출하기</SubmitButton>
           )}
