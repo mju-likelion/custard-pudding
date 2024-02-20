@@ -6,8 +6,8 @@ const Introduction = ({ register, value, questionList }) => {
   return (
     <>
       {questionList?.map((item) => (
-        <>
-          <Question key={item.id}>
+        <React.Fragment key={item.id}>
+          <Question>
             {item.sequence}. {item.title}
           </Question>
           <ApplyAnswer
@@ -16,7 +16,7 @@ const Introduction = ({ register, value, questionList }) => {
             value={value}
             maxLength={item.maxLength}
           />
-        </>
+        </React.Fragment>
       ))}
     </>
   );

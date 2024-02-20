@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import TAG from '../../assets/imgs/card_tag.svg';
 import { resultData } from './resultData';
 
-const CheckCard = ({ status }) => {
+const CheckCard = ({ status, value }) => {
   let result = {};
 
   switch (status) {
@@ -22,7 +22,7 @@ const CheckCard = ({ status }) => {
   return (
     <CardContainer>
       <Tag src={TAG} />
-      <Content>{result.content}</Content>
+      <Content>{value + result.content}</Content>
       <Icon src={result.img} />
     </CardContainer>
   );
