@@ -82,15 +82,18 @@ const ServerHomeworkInput = styled.input`
   width: 100%;
   height: 30px;
   padding: 10px 16px;
+  font-size: 10px;
   color: ${({ theme }) => theme.colors.WHITE_TXT};
   background-color: ${({ theme }) => theme.colors.CARD_BG};
   @media ${({ theme }) => theme.devices.TABLET} {
     height: 42px;
     padding: 14px;
+    font-size: 14px;
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
     height: 56px;
     padding: 20px 28px;
+    font-size: 18px;
   }
 `;
 const FileInputLabel = styled.label`

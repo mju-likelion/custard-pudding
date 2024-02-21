@@ -14,13 +14,13 @@ export const getApplicationData = (
       console.log(err);
       const DetailStatusCode = err.response.data.statusCode;
       const statusCode = DetailStatusCode.substring(0, 3);
-      if (statusCode === '500') {
+      if (
+        statusCode === '400' ||
+        statusCode === '500' ||
+        statusCode === '900'
+      ) {
         alert(
           '서버에 의도치 않은 에러가 발생했습니다. \n 공식 사이트 채널톡 혹은 인스타 DM으로 문의 부탁드립니다.',
-        );
-      } else if (statusCode === '900') {
-        alert(
-          '사전 과제 포함 필수 값이 누락되었거나, 형식에 맞지 않는 값이 있습니다.  ',
         );
       }
       navigateFunction('/');
@@ -46,7 +46,7 @@ export const postFileData = (formData, setFileLinkFunction) => {
         );
       } else if (statusCode === '900') {
         alert(
-          '자기소개 페이지 혹은 GitHub 링크가 누락되었거나, 파일의 형식이 잘못되었습니다.',
+          '자기소개 페이지 파일 혹은 GitHub 링크가 누락되었거나, 파일의 형식이 잘못되었습니다.',
         );
       }
     });
@@ -61,6 +61,7 @@ export const postApplicationData = (data, navigateFunction) => {
     .then((res) => {
       console.log(res);
       navigateFunction('/complete');
+      sessionStorage.removeItem('studentId');
     })
     .catch((err) => {
       console.log(err);
@@ -74,7 +75,7 @@ export const postApplicationData = (data, navigateFunction) => {
         );
       } else if (statusCode === '900') {
         alert(
-          '(사전 과제 포함) 필수 값이 누락되었거나, 형식에 맞지 않는 값이 있습니다.  ',
+          '(사전 과제 포함) 필수 값이 누락되었거나, 형식에 맞지 않는 값이 있습니다.',
         );
       }
     });

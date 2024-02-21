@@ -59,14 +59,14 @@ const ApplyWrite = () => {
   //     setFormError(false);
   //   }
   // };
-
-  const onSubmit = () => {
+  useEffect(() => {
     if (Object.keys(files).length > 0) {
       const formData = new FormData();
       formData.append('file', files[0]);
       postFileData(formData, setFileLink);
     }
-
+  }, [files[0]]);
+  const onSubmit = () => {
     const findMajorId = (majors, majorName) => {
       for (let i = 0; i < majors.length; i++) {
         if (majors[i].name === majorName) {
@@ -98,10 +98,7 @@ const ApplyWrite = () => {
       introduces: introducesObject,
       agreements: agreementObject,
     };
-    {
-      selectedPart === 'WEB' && postApplicationData(submitFormData, navigate);
-    }
-    sessionStorage.removeItem('studentId');
+    postApplicationData(submitFormData, navigate);
   };
 
   useEffect(() => {
