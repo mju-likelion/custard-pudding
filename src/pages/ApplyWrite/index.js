@@ -41,16 +41,8 @@ const ApplyWrite = () => {
   });
 
   const value = watch();
-
-  useEffect(() => {
-    setStudentIdValue(sessionStorage.getItem('studentId'));
-    getApplicationData(selectedPart, setApplicationData, navigate);
-  }, []);
-
-  const handlePartClick = (part) => {
-    setSelectedPart(part);
-    getApplicationData(part, setApplicationData);
-  };
+  const startDate = new Date('2024-03-01 00:00:00').getTime();
+  const lastDate = new Date('2024-03-07 23:59:59').getTime();
 
   // const isFormError = () => {
   //   if (Object.keys(errors).length > 0) {
@@ -59,6 +51,59 @@ const ApplyWrite = () => {
   //     setFormError(false);
   //   }
   // };
+
+  const handlePartClick = (part) => {
+    setSelectedPart(part);
+    getApplicationData(part, setApplicationData);
+  };
+
+  const onSubmit = () => {
+    const todayDate = new Date().getTime();
+
+    if (startDate <= todayDate && todayDate <= lastDate) {
+      const findMajorId = (majors, majorName) => {
+        for (let i = 0; i < majors.length; i++) {
+          if (majors[i].name === majorName) {
+            return majors[i].id;
+          }
+        }
+        return null;
+      };
+
+      const introducesObject = {};
+      applicationData.introduces.forEach((item, idx) => {
+        introducesObject[item.id] = value['question' + (idx + 1)];
+      });
+      const agreementObject = {};
+      applicationData.agreements.forEach((item, idx) => {
+        agreementObject[item.id] = value['agree' + (idx + 1)];
+      });
+      const selectedMajorId = findMajorId(applicationData.majors, value.majors);
+
+      const submitFormData = {
+        studentId: studentIdValue,
+        name: value.name,
+        majorId: selectedMajorId,
+        phoneNumber: value.phoneNumber,
+        email: value.email,
+        grade: value.grade,
+        part: selectedPart,
+        link: selectedPart === 'SERVER' ? value.link : fileLink,
+        introduces: introducesObject,
+        agreements: agreementObject,
+      };
+      postApplicationData(submitFormData, navigate);
+    } else {
+      alert(
+        '지원 기간이 아닙니다\n지원 기간: 2024-03-01 00:00:00 ~ 2024-03-07 23:59:59',
+      );
+    }
+  };
+  useEffect(() => {
+    setStudentIdValue(sessionStorage.getItem('studentId'));
+    getApplicationData(selectedPart, setApplicationData, navigate);
+  }, []);
+
   useEffect(() => {
     if (Object.keys(files).length > 0) {
       const formData = new FormData();
@@ -66,40 +111,6 @@ const ApplyWrite = () => {
       postFileData(formData, setFileLink);
     }
   }, [files[0]]);
-  const onSubmit = () => {
-    const findMajorId = (majors, majorName) => {
-      for (let i = 0; i < majors.length; i++) {
-        if (majors[i].name === majorName) {
-          return majors[i].id;
-        }
-      }
-      return null;
-    };
-
-    const introducesObject = {};
-    applicationData.introduces.forEach((item, idx) => {
-      introducesObject[item.id] = value['question' + (idx + 1)];
-    });
-    const agreementObject = {};
-    applicationData.agreements.forEach((item, idx) => {
-      agreementObject[item.id] = value['agree' + (idx + 1)];
-    });
-    const selectedMajorId = findMajorId(applicationData.majors, value.majors);
-
-    const submitFormData = {
-      studentId: studentIdValue,
-      name: value.name,
-      majorId: selectedMajorId,
-      phoneNumber: value.phoneNumber,
-      email: value.email,
-      grade: value.grade,
-      part: selectedPart,
-      link: selectedPart === 'SERVER' ? value.link : fileLink,
-      introduces: introducesObject,
-      agreements: agreementObject,
-    };
-    postApplicationData(submitFormData, navigate);
-  };
 
   useEffect(() => {
     if (studentIdValue === null) {
