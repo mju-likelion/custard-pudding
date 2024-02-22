@@ -11,7 +11,7 @@ const HomeworkBox = ({ selectedPart, register, files, setFiles }) => {
       <Title>{HOMEWORK_DATA[selectedPart].title}</Title>
       {selectedPart === 'WEB' && (
         <>
-          <WebHomeworkWrapper>
+          <WebHomeworkWrapper $isExistFile={files[0]?.name ? true : false}>
             <FileInputLabel htmlFor="file">
               {files.length > 0 ? files[0]?.name : '파일 업로드'}
             </FileInputLabel>
@@ -55,13 +55,19 @@ const WebHomeworkWrapper = styled.div`
   width: 244px;
   height: 30px;
   border-radius: 8px;
-  border: 2px dashed ${({ theme }) => theme.colors.MODAL_BG};
+  border: 1px dashed
+    ${({ $isExistFile, theme }) =>
+      $isExistFile ? '#434580' : theme.colors.MODAL_BG};
+
   background-color: ${({ theme }) => theme.colors.CARD_BG};
   padding: 10px 16px;
   @media ${({ theme }) => theme.devices.TABLET} {
     width: 360px;
     height: 42px;
     padding: 14px;
+    border: 2px dashed
+      ${({ $isExistFile, theme }) =>
+        $isExistFile ? '#434580' : theme.colors.MODAL_BG};
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
     width: 440px;
@@ -76,15 +82,18 @@ const ServerHomeworkInput = styled.input`
   width: 100%;
   height: 30px;
   padding: 10px 16px;
+  font-size: 10px;
   color: ${({ theme }) => theme.colors.WHITE_TXT};
   background-color: ${({ theme }) => theme.colors.CARD_BG};
   @media ${({ theme }) => theme.devices.TABLET} {
     height: 42px;
     padding: 14px;
+    font-size: 14px;
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
     height: 56px;
     padding: 20px 28px;
+    font-size: 18px;
   }
 `;
 const FileInputLabel = styled.label`
@@ -113,7 +122,7 @@ const HomeworkHelperText = styled.p`
   color: ${({ theme }) => theme.colors.DISABLE_BTN};
   @media ${({ theme }) => theme.devices.TABLET} {
     margin-top: 10px;
-    font-size: 14px;
+    font-size: 16px;
   }
 `;
 export default HomeworkBox;

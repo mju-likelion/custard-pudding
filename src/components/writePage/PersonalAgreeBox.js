@@ -24,14 +24,14 @@ const PersonalAgreeBox = ({ text, sequence, register }) => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   gap: 6px;
   @media ${({ theme }) => theme.devices.TABLET} {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     gap: 10px;
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
   }
 `;
 const TitleBox = styled.div`

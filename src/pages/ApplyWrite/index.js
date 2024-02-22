@@ -20,7 +20,7 @@ const ApplyWrite = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [FormError, setFormError] = useState(false);
+  // const [FormError, setFormError] = useState(false);
   const [selectedPart, setSelectedPart] = useState('WEB');
   const [applicationData, setApplicationData] = useState({});
   const [files, setFiles] = useState({});
@@ -41,67 +41,76 @@ const ApplyWrite = () => {
   });
 
   const value = watch();
+  const startDate = new Date('2024-03-01 00:00:00').getTime();
+  const lastDate = new Date('2024-03-07 23:59:59').getTime();
 
-  useEffect(() => {
-    setStudentIdValue(sessionStorage.getItem('studentId'));
-    getApplicationData(selectedPart, setApplicationData);
-  }, []);
+  // const isFormError = () => {
+  //   if (Object.keys(errors).length > 0) {
+  //     setFormError(true);
+  //   } else if (Object.keys(errors).length === 0) {
+  //     setFormError(false);
+  //   }
+  // };
 
   const handlePartClick = (part) => {
     setSelectedPart(part);
     getApplicationData(part, setApplicationData);
   };
 
-  const isFormError = () => {
-    if (Object.keys(errors).length > 0) {
-      setFormError(true);
-    } else if (Object.keys(errors).length === 0) {
-      setFormError(false);
+  const onSubmit = () => {
+    const todayDate = new Date().getTime();
+
+    if (startDate <= todayDate && todayDate <= lastDate) {
+      const findMajorId = (majors, majorName) => {
+        for (let i = 0; i < majors.length; i++) {
+          if (majors[i].name === majorName) {
+            return majors[i].id;
+          }
+        }
+        return null;
+      };
+
+      const introducesObject = {};
+      applicationData.introduces.forEach((item, idx) => {
+        introducesObject[item.id] = value['question' + (idx + 1)];
+      });
+      const agreementObject = {};
+      applicationData.agreements.forEach((item, idx) => {
+        agreementObject[item.id] = value['agree' + (idx + 1)];
+      });
+      const selectedMajorId = findMajorId(applicationData.majors, value.majors);
+
+      const submitFormData = {
+        studentId: studentIdValue,
+        name: value.name,
+        majorId: selectedMajorId,
+        phoneNumber: value.phoneNumber,
+        email: value.email,
+        grade: value.grade,
+        part: selectedPart,
+        link: selectedPart === 'SERVER' ? value.link : fileLink,
+        introduces: introducesObject,
+        agreements: agreementObject,
+      };
+      postApplicationData(submitFormData, navigate);
+    } else {
+      alert(
+        '지원 기간이 아닙니다\n지원 기간: 2024-03-01 00:00:00 ~ 2024-03-07 23:59:59',
+      );
     }
   };
+  useEffect(() => {
+    setStudentIdValue(sessionStorage.getItem('studentId'));
+    getApplicationData(selectedPart, setApplicationData, navigate);
+  }, []);
 
-  const onSubmit = () => {
+  useEffect(() => {
     if (Object.keys(files).length > 0) {
       const formData = new FormData();
       formData.append('file', files[0]);
       postFileData(formData, setFileLink);
     }
-
-    const findMajorId = (majors, majorName) => {
-      for (let i = 0; i < majors.length; i++) {
-        if (majors[i].name === majorName) {
-          return majors[i].id;
-        }
-      }
-      return null;
-    };
-
-    const introducesObject = {};
-    applicationData.introduces.forEach((item, idx) => {
-      introducesObject[item.id] = value['question' + (idx + 1)];
-    });
-    const agreementObject = {};
-    applicationData.agreements.forEach((item, idx) => {
-      agreementObject[item.id] = value['agree' + (idx + 1)];
-    });
-    const selectedMajorId = findMajorId(applicationData.majors, value.majors);
-
-    const submitFormData = {
-      studentId: studentIdValue,
-      name: value.name,
-      majorId: selectedMajorId,
-      phoneNumber: value.phoneNumber,
-      email: value.email,
-      grade: value.grade,
-      part: selectedPart,
-      link: selectedPart === 'SERVER' ? value.link : fileLink,
-      introduces: introducesObject,
-      agreements: agreementObject,
-    };
-    postApplicationData(submitFormData);
-    navigate('/complete');
-    sessionStorage.removeItem('studentId');
-  };
+  }, [files[0]]);
 
   useEffect(() => {
     if (studentIdValue === null) {
@@ -160,7 +169,6 @@ const ApplyWrite = () => {
           </HomeworkContainer>
           <AgreeContainer>
             <Title>참고 사항</Title>
-            {/* 이게 좋은 로직일까? */}
             {applicationData.agreements &&
               applicationData.agreements.map((item) => (
                 <PersonalAgreeBox
@@ -175,9 +183,7 @@ const ApplyWrite = () => {
             ※ 작성이 완료되지 않았거나, 형식에 맞지 않는 값이 있습니다.
           </InfoHelperText>
           {value.agree1 && value.agree2 && value.agree3 ? (
-            <SubmitButton onClick={isFormError} $isActive={true}>
-              제출하기
-            </SubmitButton>
+            <SubmitButton $isActive={true}>제출하기</SubmitButton>
           ) : (
             <SubmitButton disabled={true}>제출하기</SubmitButton>
           )}
