@@ -13,14 +13,16 @@ import CheckCard from '../components/checkPage/CheckCard';
 
 const Apply = () => {
   const [isExist, setIsExist] = useState(undefined);
+  const [value, setValue] = useState('');
   const navigate = useNavigate();
 
   const startDay = new Date('2024-03-01 00:00:00').getTime();
   const lastDay = new Date('2024-03-07 23:59:59').getTime();
 
   const handleFormSubmit = async (data) => {
+    // setValue(data.id);
+    //
     // const today = new Date().getTime();
-
     // if (startDay <= today && today <= lastDay) {
     //   try {
     //     const response = await Axios.post('/apply', {
@@ -28,13 +30,12 @@ const Apply = () => {
     //     });
     //     const statusCode = response.data.statusCode;
     //     if (statusCode === '201') {
-    //       console.log(response);
     //       sessionStorage.setItem('studentId', data.id);
     //       navigate('/write');
     //     }
     //   } catch (error) {
     //     const statusCode = error.response.data.statusCode;
-    //     if (statusCode === '409') {
+    //     if (statusCode === '4090') {
     //       setIsExist(true);
     //       alert('이미 지원 이력이 존재합니다.');
     //     } else if (statusCode === '400') {
@@ -46,26 +47,6 @@ const Apply = () => {
     //     '지원 기간이 아닙니다\n지원 기간: 2024-03-01 00:00:00 ~ 2024-03-07 23:59:59',
     //   );
     // }
-
-    try {
-      const response = await Axios.post('/apply', {
-        studentId: data.id,
-      });
-      const statusCode = response.data.statusCode;
-      if (statusCode === '201') {
-        console.log(response);
-        sessionStorage.setItem('studentId', data.id);
-        navigate('/write');
-      }
-    } catch (error) {
-      const statusCode = error.response.data.statusCode;
-      if (statusCode === '409') {
-        setIsExist(true);
-        alert('이미 지원 이력이 존재합니다.');
-      } else if (statusCode === '400') {
-        alert('오류가 발생했습니다.');
-      }
-    }
   };
   const inputSizeValue = {
     width: '220px',
@@ -117,7 +98,7 @@ const Apply = () => {
           </CardLanyard>
         </form>
       )}
-      {isExist && <CheckCard status="rejected" />}
+      {isExist && <CheckCard status="rejected" value={value} />}
     </Container>
   );
 };
