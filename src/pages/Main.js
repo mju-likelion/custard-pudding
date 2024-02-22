@@ -41,7 +41,7 @@ const Main = () => {
             <AdditionalInfoLink>
               ※ 지원 과제에 대한 추가적인 설명은 &nbsp;
               <Link
-                href="https://www.instagram.com/mju_likelion/"
+                href="https://material-handle-e32.notion.site/2a29850ebb4442b19b091d7a708dcc4e?pvs=4"
                 target="_blank"
               >
                 Notion
