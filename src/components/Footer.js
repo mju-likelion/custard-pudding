@@ -9,10 +9,18 @@ const Footer = () => {
   return (
     <Container>
       <SnsLinks>
-        <a href="https://github.com/mju-likelion/">
+        <a
+          href="https://github.com/mju-likelion/"
+          target="_blank"
+          rel="noreferrer"
+        >
           <Github />
         </a>
-        <a href="https://www.instagram.com/mju_likelion/">
+        <a
+          href="https://www.instagram.com/mju_likelion/"
+          target="_blank"
+          rel="noreferrer"
+        >
           <Instar />
         </a>
         <CopyMail>
