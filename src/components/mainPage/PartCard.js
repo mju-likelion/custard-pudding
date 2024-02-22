@@ -32,7 +32,7 @@ const Ring = styled.img`
 `;
 const Card = styled.div`
   width: 280px;
-  height: 190px;
+  height: 200px;
   padding: 10px 15px 15px 20px;
   @media ${({ theme }) => theme.devices.TABLET} {
     width: 490px;
@@ -73,6 +73,7 @@ const Content = styled.p`
   line-height: 30px;
   @media ${({ theme }) => theme.devices.TABLET} {
     ${({ theme }) => theme.typographies.BIG_TXT}
+    line-height: 40px;
   }
 }
 `;

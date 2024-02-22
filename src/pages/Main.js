@@ -97,6 +97,8 @@ const PartContainer = styled.div`
   @media ${({ theme }) => theme.devices.MOBILE} {
     padding: 0 30px;
   }
+  white-space: pre-line;
+  word-break: keep-all;
 `;
 const Title = styled.p`
   display: inline-block;
@@ -127,6 +129,8 @@ const AssignmentContainer = styled.div`
   @media ${({ theme }) => theme.devices.MOBILE} {
     padding: 0 30px;
   }
+  white-space: pre-line;
+  word-break: keep-all;
 `;
 const AssignmentBoxes = styled.div`
   display: flex;

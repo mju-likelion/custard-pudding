@@ -45,19 +45,25 @@ const Line = styled.div`
   @media ${({ theme }) => theme.devices.TABLET} {
     display: block;
     width: 1px;
+    height: 180px;
+    background-color: ${({ theme }) => theme.colors.WHITE_TXT};
+  }
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    display: block;
+    width: 1px;
     height: 46px;
     background-color: ${({ theme }) => theme.colors.WHITE_TXT};
   }
 `;
 const Content = styled.p`
   ${({ theme }) => theme.typographies.M_DEFAULT_TXT}
-  line-height: 20px;
+  line-height: 30px;
   @media ${({ theme }) => theme.devices.TABLET} {
     ${({ theme }) => theme.typographies.DEFAULT_TXT}
+    line-height: 40px;
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
     ${({ theme }) => theme.typographies.BIG_TXT}
-    line-height: 25px;
   }
 `;
 
