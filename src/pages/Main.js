@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import PartCard from '../components/mainPage/PartCard';
 import AssignmentBox from '../components/mainPage/AssignmentBox';
 import BigButton from '../components/Button/BigButton';
-
+import OpenChat from '../components/mainPage/OpenChat';
 import ScrollBar from '../components/mainPage/ScrollBar';
 import part_message from '../messages/part';
 import letter from '../assets/imgs/letter.svg';
@@ -52,6 +52,7 @@ const Main = () => {
         </AssignmentContainer>
         <BigButton onClick={() => navigate('/apply')}>지원하기</BigButton>
       </PageWrapper>
+      <OpenChat />
       <ScrollBar />
     </Container>
   );
