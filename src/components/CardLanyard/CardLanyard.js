@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReactComponent as CardString } from '../../assets/imgs/card_string.svg';
+import { ReactComponent as CardString } from '../../assets/imgs/card_string_test.svg';
 
 /**
  * @param {string} width
