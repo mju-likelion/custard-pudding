@@ -5,7 +5,7 @@ const PersonalAgreeBox = ({ text, sequence, register }) => {
   return (
     <Container>
       <TitleBox>
-        <Title>개인정보 동의</Title>
+        <Title>{sequence === 3 ? '참고 및 주의사항' : '개인정보 동의'}</Title>
         <CheckWrapper>
           <CheckLabel htmlFor={'agree' + String(sequence)}>[동의]</CheckLabel>
           <CheckBox

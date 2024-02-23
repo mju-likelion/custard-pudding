@@ -92,7 +92,7 @@ const ApplyWrite = () => {
         introduces: introducesObject,
         agreements: agreementObject,
       };
-      postApplicationData(submitFormData, navigate);
+      postApplicationData(submitFormData, navigate, selectedPart);
     } else {
       alert(
         '지원 기간이 아닙니다\n지원 기간: 2024-03-01 00:00:00 ~ 2024-03-07 23:59:59',
@@ -108,7 +108,7 @@ const ApplyWrite = () => {
     if (Object.keys(files).length > 0) {
       const formData = new FormData();
       formData.append('file', files[0]);
-      postFileData(formData, setFileLink);
+      postFileData(formData, setFileLink, setFiles, selectedPart);
     }
   }, [files[0]]);
 
