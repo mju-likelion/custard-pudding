@@ -20,8 +20,8 @@ const Apply = () => {
   const lastDay = new Date('2024-03-07 23:59:59').getTime();
 
   const handleFormSubmit = async (data) => {
-    // setValue(data.id);
-    //
+    setValue(data.id);
+
     // const today = new Date().getTime();
     // if (startDay <= today && today <= lastDay) {
     try {

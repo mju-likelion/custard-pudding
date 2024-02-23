@@ -67,7 +67,7 @@ const Icon = styled.img`
   width: 150px;
   height: 95px;
   position: absolute;
-  right: 30px;
+  right: 0;
   bottom: 0;
   @media ${({ theme }) => theme.devices.TABLET} {
     width: 310px;
