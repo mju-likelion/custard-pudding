@@ -179,9 +179,9 @@ const ApplyWrite = () => {
                 />
               ))}
           </AgreeContainer>
-          <InfoHelperText $isError={!isValid}>
+          <AllHelperText $isError={!isValid}>
             ※ 작성이 완료되지 않았거나, 형식에 맞지 않는 값이 있습니다.
-          </InfoHelperText>
+          </AllHelperText>
           {value.agree1 && value.agree2 && value.agree3 ? (
             <SubmitButton $isActive={true}>제출하기</SubmitButton>
           ) : (
@@ -227,7 +227,8 @@ const Title = styled.div`
     margin-bottom: 50px;
   }
 `;
-const InfoHelperText = styled.div`
+
+const AllHelperText = styled.div`
   margin-bottom: 15px;
   font-size: 12px;
   font-weight: 300;

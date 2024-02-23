@@ -3,7 +3,12 @@ import styled from 'styled-components';
 
 const SubmitButton = ({ children, disabled, onClick }) => {
   return (
-    <Container type="submit" $disabled={disabled} onClick={onClick}>
+    <Container
+      type="submit"
+      $disabled={disabled}
+      disabled={disabled}
+      onClick={onClick}
+    >
       {children}
     </Container>
   );

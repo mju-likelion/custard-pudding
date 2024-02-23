@@ -10,11 +10,17 @@ export const writeValidationSchema = yup.object().shape({
     .string()
     .required()
     .oneOf(['1', '2', '3', '4', '휴학', '졸업유예']),
-  email: yup.string().required().email(),
+  email: yup
+    .string()
+    .required('이메일은 필수로 작성해주세요.')
+    .email('이메일 형식으로 작성해주세요.'),
   phoneNumber: yup
     .string()
-    .required()
-    .matches(/^010-([0-9]{4})-([0-9]{4})$/),
+    .required('전화번호는 필수로 작성해주세요.')
+    .matches(
+      /^010-([0-9]{4})-([0-9]{4})$/,
+      "'010-1234-5678' 형태로 작성해주세요.",
+    ),
 
   question1: yup.string().required(),
   question2: yup.string().required(),

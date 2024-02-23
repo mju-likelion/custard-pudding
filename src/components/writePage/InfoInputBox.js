@@ -16,7 +16,7 @@ const InfoInputBox = ({
 }) => {
   return (
     <Container>
-      <InnerInputBox>
+      <LeftInnerInputBox>
         {INPUT_LABEL_LIST.left.map((item) =>
           item.name === 'grade' || item.name === 'majors' ? (
             <SelectBox
@@ -43,9 +43,9 @@ const InfoInputBox = ({
             />
           ),
         )}
-      </InnerInputBox>
+      </LeftInnerInputBox>
       <HorizontalLine />
-      <InnerInputBox>
+      <RightInnerInputBox>
         {INPUT_LABEL_LIST.right.map((item) => (
           <UserInfoInput
             key={item.id}
@@ -71,7 +71,7 @@ const InfoInputBox = ({
             ))}
           </PartBtnBox>
         </ApplyPartBox>
-      </InnerInputBox>
+      </RightInnerInputBox>
     </Container>
   );
 };
@@ -98,12 +98,20 @@ const Container = styled.div`
     height: 388px;
   }
 `;
-const InnerInputBox = styled.div`
+const LeftInnerInputBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
   @media ${({ theme }) => theme.devices.TABLET} {
     gap: 28px;
+  }
+`;
+const RightInnerInputBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  @media ${({ theme }) => theme.devices.TABLET} {
+    gap: 32px;
   }
 `;
 
@@ -152,6 +160,7 @@ const PartBtn = styled.button`
     ${({ theme }) => theme.typographies.DEFAULT_TXT}
   }
 `;
+
 const HorizontalLine = styled.div`
   width: 100%;
   height: 1px;

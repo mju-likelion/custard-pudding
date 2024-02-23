@@ -10,23 +10,41 @@ const UserInfoInput = ({
   studentIdValue,
 }) => {
   return (
-    <Container>
-      <InfoLabel>{label}</InfoLabel>
-      {isDisabled ? (
-        <InfoInput disabled error={errors[name]} value={studentIdValue} />
-      ) : (
-        <InfoInput
-          placeholder={placeholder}
-          id={name}
-          {...register(name)}
-          error={errors[name]}
-        />
+    <AllContainer $isRight={name === 'email' || name === 'phoneNumber'}>
+      <InputContainer>
+        <InfoLabel>{label}</InfoLabel>
+        {isDisabled ? (
+          <InfoInput disabled $error={errors[name]} value={studentIdValue} />
+        ) : (
+          <InfoInput
+            placeholder={placeholder}
+            id={name}
+            {...register(name)}
+            $error={errors[name]}
+          />
+        )}
+      </InputContainer>
+      {(name === 'email' || name === 'phoneNumber') && errors[name] && (
+        <InfoHelperText $errors={errors[name]}>
+          {errors[name].message}
+        </InfoHelperText>
       )}
-    </Container>
+    </AllContainer>
   );
 };
 
-const Container = styled.div`
+const AllContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: ${({ $isRight }) => ($isRight ? '42px' : 'none')};
+  @media ${({ theme }) => theme.devices.TABLET} {
+    height: ${({ $isRight }) => ($isRight ? '56px' : 'none')};
+  }
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    height: ${({ $isRight }) => ($isRight ? '72px' : 'none')};
+  }
+`;
+const InputContainer = styled.div`
   width: 226px;
   height: 26px;
   display: flex;
@@ -60,8 +78,8 @@ const InfoInput = styled.input`
   height: 100%;
   padding: 8px 10px;
   border: none;
-  border: ${({ error, theme }) =>
-    error ? `1px solid ${theme.colors.HOVER_BTN}` : 'none'};
+  border: ${({ $error, theme }) =>
+    $error ? `1px solid ${theme.colors.HOVER_BTN}` : 'none'};
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.CARD_BG};
   &:disabled {
@@ -78,6 +96,22 @@ const InfoInput = styled.input`
   @media ${({ theme }) => theme.devices.TABLET} {
     padding: 14px 18px;
     font-size: 14px;
+  }
+`;
+const InfoHelperText = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  font-size: 9px;
+  font-weight: 300;
+  visibility: ${({ $errors }) => ($errors ? 'visible' : 'hidden')};
+  color: ${({ theme }) => theme.colors.HOVER_BTN};
+  @media ${({ theme }) => theme.devices.TABLET} {
+    margin-top: 15px;
+    font-size: 13px;
+  }
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    font-size: 15px;
   }
 `;
 
