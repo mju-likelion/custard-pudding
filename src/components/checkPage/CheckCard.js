@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import TAG from '../../assets/imgs/card_tag.svg';
+const TAG =
+  'https://likelion12th-apply-pages.s3.ap-northeast-2.amazonaws.com/svgs/card_tag_upload.svg';
 import { resultData } from './resultData';
 
 const CheckCard = ({ status, value }) => {
