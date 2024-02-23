@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+const TAG =
+  'https://likelion12th-apply-pages.s3.ap-northeast-2.amazonaws.com/svgs/card_tag_upload.svg';
 import { useNavigate } from 'react-router-dom';
-import TAG from '../../assets/imgs/card_tag.svg';
 import SmallButton from './SmallButton';
+
 import { resultData } from './resultData';
 
 const CheckCard = ({ status, value }) => {
