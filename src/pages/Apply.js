@@ -21,7 +21,7 @@ const Apply = () => {
 
   const handleFormSubmit = async (data) => {
     setValue(data.id);
-    //
+
     // const today = new Date().getTime();
     // if (startDay <= today && today <= lastDay) {
     try {

@@ -34,20 +34,20 @@ const ScrollBar = () => {
 };
 
 const Wrapper = styled.div`
-  width: 25px;
-  height: calc(100vh - 56px - 100px);
-  @media ${({ theme }) => theme.devices.MOBILE} {
-    width: 40px;
-  }
+  z-index: 999;
+  width: 20px;
+  // 화면 높이 - Footer 높이 - 원 높이
+  height: calc(100vh - 100px - 60px);
   @media ${({ theme }) => theme.devices.TABLET} {
-    width: 70px;
-    height: calc(100vh - 70px - 100px);
+    width: 30px;
+    height: calc(100vh - 100px - 70px);
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
-    width: 100px;
-    height: calc(100vh - 70px - 100px);
+    width: 50px;
+    height: calc(100vh - 100px - 110px);
   }
   position: fixed;
+  top: 0;
   right: 0;
   text-align: center;
 `;
