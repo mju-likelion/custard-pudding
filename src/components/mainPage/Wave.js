@@ -11,51 +11,49 @@ const WaveAnimation = ({ position }) => {
 
 const rotate = keyframes`
   from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  to { transform: rotate(-360deg); }
 `;
 
 const Box = styled.div`
   position: relative;
 
-  top: ${({ $position }) => `calc(${$position}% - 120px)`};
+  top: ${({ $position }) => `calc(${$position}%)`};
+
   @media ${({ theme }) => theme.devices.MOBILE} {
-    top: ${({ $position }) => `calc(${$position}% - 150px)`};
+    top: ${({ $position }) => `calc(${$position}%)`};
   }
   @media ${({ theme }) => theme.devices.TABLET} {
-    top: ${({ $position }) => `calc(${$position}% - 250px)`};
+    top: ${({ $position }) => `calc(${$position}%)`};
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
-    top: ${({ $position }) => `calc(${$position}% - 330px)`};
+    top: ${({ $position }) => `calc(${$position}%)`};
   }
 `;
 
 const Wave = styled.div`
   position: absolute;
   opacity: 0.4;
-  border-radius: 43%;
+  border-radius: 45%;
 
-  width: 150px;
-  height: 120px;
-  @media ${({ theme }) => theme.devices.MOBILE} {
-    width: 150px;
-    height: 130px;
-  }
+  width: 70px;
+  height: 60px;
+
   @media ${({ theme }) => theme.devices.TABLET} {
-    width: 300px;
-    height: 200px;
+    width: 80px;
+    height: 60px;
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
-    width: 400px;
-    height: 300px;
+    width: 120px;
+    height: 90px;
   }
 
   &.one {
-    animation: ${rotate} 10000ms infinite linear;
+    animation: ${rotate} 8000ms infinite linear;
     opacity: 0.9;
     background: #ff7494;
   }
   &.two {
-    animation: ${rotate} 8000ms infinite linear;
+    animation: ${rotate} 4500ms infinite linear;
     opacity: 0.9;
     background: #ffabbe;
   }
