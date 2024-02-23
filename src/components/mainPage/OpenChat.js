@@ -18,11 +18,11 @@ const OpenChatLink = styled.a`
   text-decoration: none;
 
   @media ${({ theme }) => theme.devices.TABLET} {
-    right: 80px;
-    bottom: 70px;
+    right: 90px;
+    bottom: 80px;
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
-    right: 100px;
+    right: 120px;
     bottom: 100px;
   }
 `;
