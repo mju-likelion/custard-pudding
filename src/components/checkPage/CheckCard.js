@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import TAG from '../../assets/imgs/card_tag.svg';
 import { resultData } from './resultData';
+import SmallButton from './SmallButton';
 
 const CheckCard = ({ status, value }) => {
   let result = {};
@@ -24,54 +25,62 @@ const CheckCard = ({ status, value }) => {
       <Tag src={TAG} />
       <Content>{value + result.content}</Content>
       <Icon src={result.img} />
+      <SmallButton type="button">메인으로</SmallButton>
     </CardContainer>
   );
 };
 
 const CardContainer = styled.div`
-  width: 240px;
-  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
   border-radius: 25px;
   background: ${({ theme }) => theme.colors.MODAL_BG};
+
+  width: 240px;
+  height: 300px;
   @media ${({ theme }) => theme.devices.TABLET} {
-    width: 400px;
-    height: 530px;
+    width: 360px;
+    height: 490px;
+    margin-top: 50px;
   }
 `;
 const Tag = styled.img`
   display: block;
-  margin: -37px auto 0;
-  width: 60px;
+
+  width: 70px;
+  margin: -44px auto 0;
   @media ${({ theme }) => theme.devices.TABLET} {
-    width: 130px;
-    margin: -78px auto 0;
+    width: 105px;
+    margin: -65px auto 0;
   }
 `;
 const Content = styled.div`
-  margin: 60px auto 0;
-  line-height: 30px;
+  margin: 30px 0 20px;
   text-align: center;
   white-space: pre-wrap;
   color: ${({ theme }) => theme.colors.WHITE_TXT};
+
   ${({ theme }) => theme.typographies.DEFAULT_TXT};
+  line-height: 30px;
+
   @media ${({ theme }) => theme.devices.TABLET} {
-    width: 300px;
-    margin: 90px auto 0;
-    line-height: 60px;
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
+    line-height: 60px;
   }
 `;
 const Icon = styled.img`
-  width: 150px;
-  height: 95px;
   position: absolute;
   right: 0;
   bottom: 0;
+
+  width: 150px;
+  height: 95px;
   @media ${({ theme }) => theme.devices.TABLET} {
-    width: 310px;
-    height: 190px;
+    width: 200px;
+    height: 160px;
     ${({ theme }) => theme.typographies.TITLE};
   }
 `;

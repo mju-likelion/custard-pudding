@@ -43,6 +43,8 @@ const Container = styled.div`
   justify-content: space-evenly;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.INPUT_BG};
+  position: sticky;
+  z-index: 99;
 `;
 const SnsLinks = styled.div`
   display: flex;
