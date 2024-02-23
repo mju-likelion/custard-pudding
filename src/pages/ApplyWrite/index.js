@@ -20,7 +20,6 @@ const ApplyWrite = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // const [FormError, setFormError] = useState(false);
   const [selectedPart, setSelectedPart] = useState('WEB');
   const [applicationData, setApplicationData] = useState({});
   const [files, setFiles] = useState({});
@@ -43,14 +42,6 @@ const ApplyWrite = () => {
   const value = watch();
   const startDate = new Date('2024-03-01 00:00:00').getTime();
   const lastDate = new Date('2024-03-07 23:59:59').getTime();
-
-  // const isFormError = () => {
-  //   if (Object.keys(errors).length > 0) {
-  //     setFormError(true);
-  //   } else if (Object.keys(errors).length === 0) {
-  //     setFormError(false);
-  //   }
-  // };
 
   const handlePartClick = (part) => {
     setSelectedPart(part);
@@ -213,6 +204,9 @@ const InfoContainer = styled.div`
   align-items: center;
   margin: 100px 0;
   @media ${({ theme }) => theme.devices.TABLET} {
+    margin: 120px 0 200px 0;
+  }
+  @media ${({ theme }) => theme.devices.DESKTOP} {
     margin: 175px 0 200px 0;
   }
 `;

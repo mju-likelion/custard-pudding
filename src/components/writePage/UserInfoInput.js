@@ -89,7 +89,7 @@ const InfoInput = styled.input`
   &:focus {
     border: ${({ theme }) => `2px solid ${theme.colors.MODAL_BG}`};
   }
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.WHITE_TXT};
 
@@ -108,9 +108,6 @@ const InfoHelperText = styled.div`
   color: ${({ theme }) => theme.colors.HOVER_BTN};
   @media ${({ theme }) => theme.devices.TABLET} {
     margin-top: 15px;
-    font-size: 13px;
-  }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
     font-size: 15px;
   }
 `;
