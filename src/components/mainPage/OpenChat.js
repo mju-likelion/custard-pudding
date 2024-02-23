@@ -13,13 +13,13 @@ const OpenChat = () => {
 
 const OpenChatLink = styled.a`
   position: fixed;
-  right: 80px;
+  right: 70px;
   bottom: 100px;
   text-decoration: none;
 
   @media ${({ theme }) => theme.devices.TABLET} {
-    right: 100px;
-    bottom: 100px;
+    right: 80px;
+    bottom: 70px;
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
     right: 100px;
