@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
-const SmallButton = ({ children, type }) => {
-  return <Wrapper type={type}>{children}</Wrapper>;
+const SmallButton = ({ children, type, onClick }) => {
+  return (
+    <Wrapper type={type} onClick={onClick}>
+      {children}
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.button`

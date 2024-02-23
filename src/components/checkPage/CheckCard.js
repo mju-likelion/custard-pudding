@@ -1,9 +1,11 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import TAG from '../../assets/imgs/card_tag.svg';
-import { resultData } from './resultData';
 import SmallButton from './SmallButton';
+import { resultData } from './resultData';
 
 const CheckCard = ({ status, value }) => {
+  const navigate = useNavigate();
   let result = {};
 
   switch (status) {
@@ -25,7 +27,9 @@ const CheckCard = ({ status, value }) => {
       <Tag src={TAG} />
       <Content>{value + result.content}</Content>
       <Icon src={result.img} />
-      <SmallButton type="button">메인으로</SmallButton>
+      <SmallButton type="button" onClick={() => navigate('/')}>
+        메인으로
+      </SmallButton>
     </CardContainer>
   );
 };
