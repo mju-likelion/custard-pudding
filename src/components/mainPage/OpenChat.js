@@ -16,6 +16,7 @@ const OpenChatLink = styled.a`
   right: 70px;
   bottom: 100px;
   text-decoration: none;
+  z-index: 999;
 
   @media ${({ theme }) => theme.devices.TABLET} {
     right: 90px;
