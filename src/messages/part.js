@@ -7,7 +7,7 @@ const part = {
     icon: react_icon,
     content:
       '웹 클라이언트 개발에 필요한 HTML, CSS, JavaScript 및 React 학습을 통해 기본적인 개발 역량을 잡아나갑니다.',
-    tech_list: 'git, GitHub, JavaScript, Vercel, React',
+    tech_list: 'git, GitHub, JavaScript, Vercel, React, Zustand',
     assignment:
       'HTML + CSS만을 사용하여 간단한 자기소개 페이지를 만들어 제출해주세요.\n' +
       'HTML, CSS 파일을 .zip 파일로 압축해서 지원서 작성 시 업로드 해주세요.',
