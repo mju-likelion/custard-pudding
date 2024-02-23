@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReactComponent as CardString } from '../../assets/imgs/card_string_test.svg';
+import { ReactComponent as CardString } from '../../assets/imgs/card_string_bg.svg';
 
 /**
  * @param {string} width
@@ -35,7 +35,7 @@ const NameCardString = styled(CardString)`
   left: 50%;
   transform: translate(-50%);
   position: absolute;
-  top: -36px;
+  top: -44px;
   width: 64px;
   height: 62px;
   @media ${({ theme }) => theme.devices.DESKTOP} {
