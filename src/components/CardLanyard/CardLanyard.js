@@ -35,7 +35,7 @@ const NameCardString = styled(CardString)`
   left: 50%;
   transform: translate(-50%);
   position: absolute;
-  top: -36px;
+  top: -46px;
   width: 64px;
   height: 62px;
   @media ${({ theme }) => theme.devices.DESKTOP} {
