@@ -1,6 +1,6 @@
-import SUCCESS from '../../assets/imgs/checked.svg';
-import FAILED from '../../assets/imgs/failed.svg';
-import REJECTED from '../../assets/imgs/reject.svg';
+import SUCCESS from '../../assets/imgs/check_success.svg';
+import FAILED from '../../assets/imgs/check_fail.svg';
+import REJECTED from '../../assets/imgs/apply_reject.svg';
 
 export const resultData = {
   check_success: {
