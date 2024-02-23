@@ -37,7 +37,6 @@ const Apply = () => {
       const statusCode = error.response.data.statusCode;
       if (statusCode === '4090') {
         setIsExist(true);
-        alert('이미 지원 이력이 존재합니다.');
       } else if (statusCode === '400') {
         alert('오류가 발생했습니다.');
       }
