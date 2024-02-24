@@ -21,6 +21,11 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-family: 'GmarketSans', 'nanumgothic', sans-serif;
     overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+  }
+  ::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
   }
   button {
     margin: 0;
