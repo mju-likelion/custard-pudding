@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import LION from '../assets/imgs/Lion.svg';
+import LION from '../assets/imgs/hi_lion.svg';
 import TAIL from '../assets/imgs/tail.svg';
 
 const NotFound = () => {
