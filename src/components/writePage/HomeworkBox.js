@@ -29,7 +29,10 @@ const HomeworkBox = ({ selectedPart, register, files, setFiles }) => {
         <ServerHomeworkInput {...register('link')} />
       )}
       <HomeworkHelperText>
-        {HOMEWORK_DATA[selectedPart].helperText}
+        {HOMEWORK_DATA[selectedPart].taskHelperText}
+      </HomeworkHelperText>
+      <HomeworkHelperText>
+        {HOMEWORK_DATA[selectedPart].LinkHelperText}
       </HomeworkHelperText>
     </>
   );

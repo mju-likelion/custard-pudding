@@ -20,7 +20,6 @@ const ApplyWrite = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // const [FormError, setFormError] = useState(false);
   const [selectedPart, setSelectedPart] = useState('WEB');
   const [applicationData, setApplicationData] = useState({});
   const [files, setFiles] = useState({});
@@ -43,14 +42,6 @@ const ApplyWrite = () => {
   const value = watch();
   const startDate = new Date('2024-03-01 00:00:00').getTime();
   const lastDate = new Date('2024-03-07 23:59:59').getTime();
-
-  // const isFormError = () => {
-  //   if (Object.keys(errors).length > 0) {
-  //     setFormError(true);
-  //   } else if (Object.keys(errors).length === 0) {
-  //     setFormError(false);
-  //   }
-  // };
 
   const handlePartClick = (part) => {
     setSelectedPart(part);
@@ -92,7 +83,7 @@ const ApplyWrite = () => {
         introduces: introducesObject,
         agreements: agreementObject,
       };
-      postApplicationData(submitFormData, navigate);
+      postApplicationData(submitFormData, navigate, selectedPart);
     } else {
       alert(
         '지원 기간이 아닙니다\n지원 기간: 2024-03-01 00:00:00 ~ 2024-03-07 23:59:59',
@@ -108,7 +99,7 @@ const ApplyWrite = () => {
     if (Object.keys(files).length > 0) {
       const formData = new FormData();
       formData.append('file', files[0]);
-      postFileData(formData, setFileLink);
+      postFileData(formData, setFileLink, setFiles, selectedPart);
     }
   }, [files[0]]);
 
@@ -179,9 +170,9 @@ const ApplyWrite = () => {
                 />
               ))}
           </AgreeContainer>
-          <InfoHelperText $isError={!isValid}>
+          <AllHelperText $isError={!isValid}>
             ※ 작성이 완료되지 않았거나, 형식에 맞지 않는 값이 있습니다.
-          </InfoHelperText>
+          </AllHelperText>
           {value.agree1 && value.agree2 && value.agree3 ? (
             <SubmitButton $isActive={true}>제출하기</SubmitButton>
           ) : (
@@ -213,6 +204,9 @@ const InfoContainer = styled.div`
   align-items: center;
   margin: 100px 0;
   @media ${({ theme }) => theme.devices.TABLET} {
+    margin: 120px 0 200px 0;
+  }
+  @media ${({ theme }) => theme.devices.DESKTOP} {
     margin: 175px 0 200px 0;
   }
 `;
@@ -227,7 +221,8 @@ const Title = styled.div`
     margin-bottom: 50px;
   }
 `;
-const InfoHelperText = styled.div`
+
+const AllHelperText = styled.div`
   margin-bottom: 15px;
   font-size: 12px;
   font-weight: 300;
