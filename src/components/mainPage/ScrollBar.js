@@ -36,15 +36,15 @@ const ScrollBar = () => {
 const Wrapper = styled.div`
   z-index: 999;
   width: 20px;
-  // 화면 높이 - Footer 높이 - 원 높이
-  height: calc(100vh - 100px - 60px);
+  // 화면 높이 - 원 높이
+  height: calc(100vh - 60px);
   @media ${({ theme }) => theme.devices.TABLET} {
     width: 30px;
-    height: calc(100vh - 100px - 70px);
+    height: calc(100vh - 70px);
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
     width: 50px;
-    height: calc(100vh - 100px - 110px);
+    height: calc(100vh - 110px);
   }
   position: fixed;
   top: 0;
