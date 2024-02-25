@@ -14,6 +14,7 @@ import CheckCard from '../components/checkPage/CheckCard';
 const Apply = () => {
   const [isExist, setIsExist] = useState(undefined);
   const [value, setValue] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const startDay = new Date('2024-03-01 00:00:00').getTime();
@@ -25,6 +26,7 @@ const Apply = () => {
     // const today = new Date().getTime();
     // if (startDay <= today && today <= lastDay) {
     try {
+      setIsLoading(true);
       const response = await Axios.post('/apply', {
         studentId: data.id,
       });
@@ -36,6 +38,7 @@ const Apply = () => {
     } catch (error) {
       const statusCode = error.response.data.statusCode;
       if (statusCode === '4090') {
+        setIsLoading(false);
         setIsExist(true);
       } else if (statusCode === '400') {
         alert('오류가 발생했습니다.');
@@ -92,7 +95,9 @@ const Apply = () => {
                   messageErrors={errors}
                 />
               </InputWraaper>
-              <Button>지원하기</Button>
+              <Button disabled={isLoading} type="submit">
+                {isLoading ? '로딩중' : '지원하기'}
+              </Button>
             </ContentsWrapper>
           </CardLanyard>
         </form>

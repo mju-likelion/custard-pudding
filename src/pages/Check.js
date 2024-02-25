@@ -13,14 +13,17 @@ import { idValidationSchema } from '../validation/idValidationSchema';
 const Check = () => {
   const [isChecked, setIsChecked] = useState(undefined);
   const [value, setValue] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleFormSubmit = async (data) => {
     setValue(data.id);
     try {
+      setIsLoading(true);
       const response = await Axios.get(`/apply/exist/${data.id}`);
       const isExist = response?.data?.data?.isExist;
       setIsChecked(isExist);
     } catch (error) {
+      setIsLoading(false);
       console.log(error);
     }
   };
@@ -70,7 +73,9 @@ const Check = () => {
                   messageErrors={errors}
                 />
               </InputWraaper>
-              <Button type={'submit'}>확인하기</Button>
+              <Button disabled={isLoading} type="submit">
+                {isLoading ? '로딩중' : '확인하기'}
+              </Button>
             </ContentsWrapper>
           </CardLanyard>
         </form>
