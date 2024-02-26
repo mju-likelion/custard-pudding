@@ -63,19 +63,24 @@ export const postFileData = (
     });
 };
 
-export const postApplicationData = (data, navigateFunction, selectedPart) => {
+export const postApplicationData = (
+  data,
+  navigateFunction,
+  selectedPart,
+  setIsLoading,
+) => {
   Axios.post('/application', data, {
     headers: {
       'Content-Type': `application/json`,
     },
   })
     .then((res) => {
-      console.log(res);
+      setIsLoading(false);
       navigateFunction('/complete');
       sessionStorage.removeItem('studentId');
     })
     .catch((err) => {
-      console.log(err);
+      setIsLoading(false);
       const DetailStatusCode = err.response.data.statusCode;
       const statusCode = DetailStatusCode.substring(0, 3);
       if (statusCode === '400') {
