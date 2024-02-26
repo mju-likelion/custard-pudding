@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -12,8 +12,8 @@ import { DEFAULT_VALUES } from './data/HookFormDefaultData';
 import { writeValidationSchema } from '../../validation/writeValidationSchema';
 import {
   getApplicationData,
-  postFileData,
   postApplicationData,
+  postFileData,
 } from '../../api/ApplyWrite';
 
 const ApplyWrite = () => {
@@ -25,6 +25,7 @@ const ApplyWrite = () => {
   const [files, setFiles] = useState({});
   const [fileLink, setFileLink] = useState('');
   const [studentIdValue, setStudentIdValue] = useState('');
+  const [isLoading, setIsLoading] = useState('');
 
   const {
     register,
@@ -49,6 +50,7 @@ const ApplyWrite = () => {
   };
 
   const onSubmit = () => {
+    setIsLoading(true);
     const todayDate = new Date().getTime();
 
     // if (startDate <= todayDate && todayDate <= lastDate) {
@@ -83,7 +85,7 @@ const ApplyWrite = () => {
       introduces: introducesObject,
       agreements: agreementObject,
     };
-    postApplicationData(submitFormData, navigate, selectedPart);
+    postApplicationData(submitFormData, navigate, selectedPart, setIsLoading);
     // } else {
     //   alert(
     //     '지원 기간이 아닙니다\n지원 기간: 2024-03-01 00:00:00 ~ 2024-03-07 23:59:59',
@@ -173,7 +175,7 @@ const ApplyWrite = () => {
           <AllHelperText $isError={!isValid}>
             ※ 작성이 완료되지 않았거나, 형식에 맞지 않는 값이 있습니다.
           </AllHelperText>
-          {value.agree1 && value.agree2 && value.agree3 ? (
+          {value.agree1 && value.agree2 && value.agree3 && !isLoading ? (
             <SubmitButton $isActive={true}>제출하기</SubmitButton>
           ) : (
             <SubmitButton disabled={true}>제출하기</SubmitButton>
@@ -197,7 +199,6 @@ const AllContainer = styled.div`
     margin-bottom: 100px;
   }
 `;
-
 const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -221,7 +222,6 @@ const Title = styled.div`
     margin-bottom: 50px;
   }
 `;
-
 const AllHelperText = styled.div`
   margin-bottom: 15px;
   font-size: 12px;
@@ -260,7 +260,6 @@ const HomeworkContainer = styled.div`
     width: 972px;
   }
 `;
-
 const AgreeContainer = styled.div`
   display: flex;
   flex-direction: column;
