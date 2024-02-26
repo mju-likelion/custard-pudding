@@ -158,6 +158,7 @@ const ApplyWrite = () => {
               register={register}
               files={files}
               setFiles={setFiles}
+              setFileLink={setFileLink}
             />
           </HomeworkContainer>
           <AgreeContainer>
