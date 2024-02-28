@@ -42,7 +42,7 @@ export const Theme = {
     `,
 
     SMALL_ERROR_TXT: css`
-      font-size: 8px;
+      font-size: 10px;
     `,
     M_DEFAULT_TXT: css`
       font-size: 12px;

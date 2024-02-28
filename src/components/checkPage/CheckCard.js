@@ -47,8 +47,8 @@ const CardContainer = styled.div`
   width: 240px;
   height: 300px;
   @media ${({ theme }) => theme.devices.TABLET} {
-    width: 360px;
-    height: 490px;
+    width: 340px;
+    height: 420px;
     margin-top: 50px;
   }
 `;
@@ -74,7 +74,7 @@ const Content = styled.div`
   @media ${({ theme }) => theme.devices.TABLET} {
     font-size: 28px;
     font-weight: 700;
-    line-height: 60px;
+    line-height: 45px;
   }
 `;
 const Icon = styled.img`

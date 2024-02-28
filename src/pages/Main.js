@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import PartCard from '../components/mainPage/PartCard';
 import AssignmentBox from '../components/mainPage/AssignmentBox';
-import BigButton from '../components/Button/BigButton';
+import BigButton from '../components/mainPage/BigButton';
 import OpenChat from '../components/mainPage/OpenChat';
 import ScrollBar from '../components/mainPage/ScrollBar';
 import part_message from '../messages/part';

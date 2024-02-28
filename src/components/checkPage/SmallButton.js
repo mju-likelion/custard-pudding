@@ -10,11 +10,11 @@ const SmallButton = ({ children, type, onClick }) => {
 
 const Wrapper = styled.button`
   border-radius: 40px;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 300;
   padding: 9px 16px;
-  width: 74px;
-  height: 26px;
+  width: 110px;
+  height: 40px;
   color: ${({ theme }) => theme.colors.WHITE_TXT};
   background-color: ${({ theme }) => theme.colors.MAIN_PINK};
 

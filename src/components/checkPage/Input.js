@@ -35,7 +35,7 @@ const Caption = styled.p`
 `;
 
 const StyledInput = styled.input`
-  width: ${({ $inputSize }) => $inputSize.width};
+  width: 100%;
   height: ${({ $inputSize }) => $inputSize.height};
   background: transparent;
   border: 1px solid #d4d4d8;
@@ -55,13 +55,14 @@ const ErrorMessage = styled.p`
   height: ${({ $messageSize }) => $messageSize.height};
   color: ${({ theme }) => theme.colors.HOVER_BTN};
   ${({ theme }) => theme.typographies.SMALL_ERROR_TXT};
-  margin-top: 4px;
+  margin-top: 7px;
+  margin-left: 4px;
 
   @media ${({ theme }) => theme.devices.DESKTOP} {
     width: ${({ $messageSize }) => $messageSize.pcWidth};
     height: ${({ $messageSize }) => $messageSize.pcHeight};
     ${({ theme }) => theme.typographies.BIG_TXT};
-    margin-top: 6px;
+    margin-top: 10px;
   }
 `;
 
