@@ -33,12 +33,4 @@ export const writeValidationSchema = yup.object().shape({
 
   agree1: yup.boolean().required(),
   agree2: yup.boolean().required(),
-
-  link: yup
-    .string()
-    .required('링크는 필수로 작성해주세요.')
-    .matches(
-      /(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}/gi,
-      '올바른 형식의 링크를 작성해주세요.',
-    ),
 });

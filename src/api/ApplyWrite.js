@@ -58,6 +58,7 @@ export const postApplicationData = (data, navigateFunction, setIsLoading) => {
       sessionStorage.removeItem('studentId');
     })
     .catch((err) => {
+      setIsLoading(false);
       alert(err.response.data.message);
     });
 };

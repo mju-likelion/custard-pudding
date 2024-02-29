@@ -39,6 +39,7 @@ const ApplyWrite = () => {
     mode: 'onChange',
     defaultValues: DEFAULT_VALUES,
   });
+  console.log(errors);
 
   const value = watch();
   const startDate = new Date('2024-03-01 00:00:00').getTime();
@@ -177,7 +178,7 @@ const ApplyWrite = () => {
           <AllHelperText $isError={!isValid}>
             ※ 작성이 완료되지 않았거나, 형식에 맞지 않는 값이 있습니다.
           </AllHelperText>
-          {value.agree1 && value.agree2 && !isLoading ? (
+          {value.agree1 && value.agree2 && !isLoading && files[0] ? (
             <SubmitButton $isActive={true}>제출하기</SubmitButton>
           ) : (
             <SubmitButton disabled={true}>제출하기</SubmitButton>
