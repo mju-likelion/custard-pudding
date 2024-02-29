@@ -23,32 +23,32 @@ const Apply = () => {
   const handleFormSubmit = async (data) => {
     setValue(data.id);
 
-    // const today = new Date().getTime();
-    // if (startDay <= today && today <= lastDay) {
-    try {
-      setIsLoading(true);
-      const response = await Axios.post('/apply', {
-        studentId: data.id,
-      });
-      const statusCode = response.data.statusCode;
-      if (statusCode === '201') {
-        sessionStorage.setItem('studentId', data.id);
-        navigate('/write');
+    const today = new Date().getTime();
+    if (startDay <= today && today <= lastDay) {
+      try {
+        setIsLoading(true);
+        const response = await Axios.post('/apply', {
+          studentId: data.id,
+        });
+        const statusCode = response.data.statusCode;
+        if (statusCode === '201') {
+          sessionStorage.setItem('studentId', data.id);
+          navigate('/write');
+        }
+      } catch (error) {
+        const statusCode = error.response.data.statusCode;
+        if (statusCode === '4090') {
+          setIsLoading(false);
+          setIsExist(true);
+        } else if (statusCode === '400') {
+          alert('오류가 발생했습니다.');
+        }
       }
-    } catch (error) {
-      const statusCode = error.response.data.statusCode;
-      if (statusCode === '4090') {
-        setIsLoading(false);
-        setIsExist(true);
-      } else if (statusCode === '400') {
-        alert('오류가 발생했습니다.');
-      }
+    } else {
+      alert(
+        '지원 기간이 아닙니다\n지원 기간: 2024-03-01 00:00:00 ~ 2024-03-07 23:59:59',
+      );
     }
-    // } else {
-    //   alert(
-    //     '지원 기간이 아닙니다\n지원 기간: 2024-03-01 00:00:00 ~ 2024-03-07 23:59:59',
-    //   );
-    // }
   };
   const inputSizeValue = {
     width: '220px',
