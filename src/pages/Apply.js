@@ -26,6 +26,9 @@ const Apply = () => {
     // const today = new Date().getTime();
     // if (startDay <= today && today <= lastDay) {
     try {
+      const studentIdRegEx = /^[6][0][0-9]{6}$/;
+      const extest = studentIdRegEx.test(data.id);
+      console.log(extest);
       setIsLoading(true);
       const response = await Axios.post('/apply', {
         studentId: data.id,
