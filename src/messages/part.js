@@ -10,7 +10,7 @@ const part = {
     tech_list: 'git, GitHub, JavaScript, Vercel, React, Zustand',
     assignment:
       'HTML + CSS만을 사용하여 간단한 자기소개 페이지를 만들어 제출해주세요.\n' +
-      'HTML, CSS 파일을 .zip 파일로 압축해서 지원서 작성 시 업로드 해주세요.',
+      'HTML, CSS 파일을 학번.zip 파일로 압축해서 지원서 작성 시 업로드 해주세요.',
   },
   server: {
     part_name: 'Server',
@@ -21,7 +21,7 @@ const part = {
       'git, GitHub, Spring Boot, JPA, Spring Security, JAVA, nginx, EC2, MySQL',
     assignment:
       'Java 언어를 사용하는 간단한 프로그래밍 과제가 GitHub를 통해 출제됩니다.\n' +
-      '지원 기간 안에 GitHub를 통해 해당 과제를 완료하고 지원서 작성 시 Fork한 레포지토리의 링크를 첨부해주세요.',
+      '지원 기간 안에 GitHub를 통해 해당 과제를 완료하고 지원서 작성 시 Fork한 레포지토리의 링크 혹은 구글 드라이브 링크를 첨부해주세요. *(액세스 권한 - 링크가 있는 모든 사용자) ',
   },
 };
 

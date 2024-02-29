@@ -5,7 +5,7 @@ const PersonalAgreeBox = ({ text, sequence, register }) => {
   return (
     <Container>
       <TitleBox>
-        <Title>{sequence === 3 ? '참고 및 주의사항' : '개인정보 동의'}</Title>
+        <Title>{sequence === 2 ? '참고 및 주의사항' : '개인정보 동의'}</Title>
         <CheckWrapper>
           <CheckLabel htmlFor={'agree' + String(sequence)}>[동의]</CheckLabel>
           <CheckBox
@@ -16,7 +16,9 @@ const PersonalAgreeBox = ({ text, sequence, register }) => {
         </CheckWrapper>
       </TitleBox>
       <AgreeContentBox>
-        <AgreeContent>{text}</AgreeContent>
+        <AgreeContent $isRefer={sequence === 2 ? true : false}>
+          {text}
+        </AgreeContent>
       </AgreeContentBox>
     </Container>
   );
@@ -118,9 +120,9 @@ const AgreeContent = styled.div`
   height: 100%;
   font-size: 10px;
   font-weight: 500;
-  color: #b6b6b6;
   line-height: 20px;
-
+  color: ${({ theme, $isRefer }) =>
+    $isRefer ? theme.colors.HOVER_BTN : '#b6b6b6'};
   white-space: pre-line;
   overflow-y: scroll;
   padding-right: 10px;

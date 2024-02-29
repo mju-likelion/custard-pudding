@@ -36,10 +36,10 @@ const Wrapper = styled.button`
     height: 70px;
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
-    ${({ theme }) => theme.typographies.BIG_BTN_TXT};
+    font-size: 26px;
     border-radius: 60px;
-    width: 272px;
-    height: 100px;
+    width: 250px;
+    height: 90px;
   }
 `;
 

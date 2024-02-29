@@ -6,6 +6,7 @@ export const HOMEWORK_DATA = {
   SERVER: {
     title: '지원 과제 Repo 링크를 남겨주세요 (서버 파트)',
     taskHelperText: '※ 지원 기간이 지난 후의 commit 기록은 반영되지 않습니다.',
-    LinkHelperText: '※ 다른 주소가 아닌 GitHub repository 링크를 첨부해주세요.',
+    LinkHelperText:
+      '※ 다른 주소가 아닌 GitHub repository 링크 혹은 구글 드라이브 링크(액세스 권한-링크가 있는 모든 사용자)를 첨부해주세요.',
   },
 };

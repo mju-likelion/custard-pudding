@@ -83,7 +83,7 @@ const ApplyWrite = () => {
       introduces: introducesObject,
       agreements: agreementObject,
     };
-    postApplicationData(submitFormData, navigate, selectedPart);
+    postApplicationData(submitFormData, navigate);
     // } else {
     //   alert(
     //     '지원 기간이 아닙니다\n지원 기간: 2024-03-01 00:00:00 ~ 2024-03-07 23:59:59',
@@ -156,6 +156,7 @@ const ApplyWrite = () => {
               register={register}
               files={files}
               setFiles={setFiles}
+              errors={errors}
             />
           </HomeworkContainer>
           <AgreeContainer>
@@ -173,7 +174,7 @@ const ApplyWrite = () => {
           <AllHelperText $isError={!isValid}>
             ※ 작성이 완료되지 않았거나, 형식에 맞지 않는 값이 있습니다.
           </AllHelperText>
-          {value.agree1 && value.agree2 && value.agree3 ? (
+          {value.agree1 && value.agree2 ? (
             <SubmitButton $isActive={true}>제출하기</SubmitButton>
           ) : (
             <SubmitButton disabled={true}>제출하기</SubmitButton>
