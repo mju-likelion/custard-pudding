@@ -9,7 +9,6 @@ import Input from '../components/checkPage/Input';
 import SmallButton from '../components/checkPage/SmallButton';
 import CheckCard from '../components/checkPage/CheckCard';
 import { idValidationSchema } from '../validation/idValidationSchema';
-
 const Check = () => {
   const [isChecked, setIsChecked] = useState(undefined);
   const [value, setValue] = useState('');
@@ -24,7 +23,6 @@ const Check = () => {
       setIsChecked(isExist);
     } catch (error) {
       setIsLoading(false);
-      console.log(error);
     }
   };
 
@@ -73,9 +71,9 @@ const Check = () => {
                   messageErrors={errors}
                 />
               </InputWraaper>
-              <Button disabled={isLoading} type="submit">
+              <SmallButton disabled={isLoading} type="submit">
                 {isLoading ? '로딩중' : '확인하기'}
-              </Button>
+              </SmallButton>
             </ContentsWrapper>
           </CardLanyard>
         </form>
@@ -92,14 +90,17 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 100px - 70px);
   width: 100%;
+  height: calc(100vh - 100px - 56px);
+  @media ${({ theme }) => theme.devices.TABLET} {
+    height: calc(100vh - 100px - 70px);
+  }
 `;
 const InputWraaper = styled.div`
-  margin: 34px 0 58px 0;
+  margin: 34px 0 60px 0;
 
   @media ${({ theme }) => theme.devices.DESKTOP} {
-    margin: 18px 0 48px 0;
+    margin: 18px 0 40px 0;
   }
 `;
 const ContentsWrapper = styled.div`
@@ -110,9 +111,6 @@ const ContentsWrapper = styled.div`
   @media ${({ theme }) => theme.devices.DESKTOP} {
     margin: 85px 54px 24px 52px;
   }
-`;
-const Button = styled(SmallButton)`
-  /* margin-top: 28px; */
 `;
 
 export default Check;

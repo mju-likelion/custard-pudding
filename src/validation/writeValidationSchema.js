@@ -13,7 +13,10 @@ export const writeValidationSchema = yup.object().shape({
   email: yup
     .string()
     .required('이메일은 필수로 작성해주세요.')
-    .email('이메일 형식으로 작성해주세요.'),
+    .matches(
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
+      '이메일 형식으로 작성해주세요.',
+    ),
   phoneNumber: yup
     .string()
     .required('전화번호는 필수로 작성해주세요.')
@@ -30,5 +33,4 @@ export const writeValidationSchema = yup.object().shape({
 
   agree1: yup.boolean().required(),
   agree2: yup.boolean().required(),
-  agree3: yup.boolean().required(),
 });

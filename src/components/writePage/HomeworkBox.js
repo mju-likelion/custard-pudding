@@ -6,6 +6,7 @@ const HomeworkBox = ({
   register,
   files,
   setFiles,
+  errors,
   setFileLink,
 }) => {
   const handleFileChange = (e) => {
@@ -47,6 +48,11 @@ const HomeworkBox = ({
       )}
       {selectedPart === 'SERVER' && (
         <ServerHomeworkInput {...register('link')} />
+      )}
+      {selectedPart === 'SERVER' && (
+        <InfoHelperText $errors={errors['link']}>
+          {errors['link']?.message}
+        </InfoHelperText>
       )}
       <HomeworkHelperText>
         {HOMEWORK_DATA[selectedPart].taskHelperText}
@@ -153,10 +159,24 @@ const HomeworkHelperText = styled.p`
   margin-top: 5px;
   font-size: 10px;
   font-weight: 300;
+  line-height: 28px;
   color: ${({ theme }) => theme.colors.DISABLE_BTN};
   @media ${({ theme }) => theme.devices.TABLET} {
     margin-top: 10px;
     font-size: 16px;
+  }
+`;
+const InfoHelperText = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  font-size: 9px;
+  font-weight: 300;
+  visibility: ${({ $errors }) => ($errors ? 'visible' : 'hidden')};
+  color: ${({ theme }) => theme.colors.HOVER_BTN};
+  @media ${({ theme }) => theme.devices.TABLET} {
+    margin-top: 15px;
+    font-size: 15px;
   }
 `;
 export default HomeworkBox;

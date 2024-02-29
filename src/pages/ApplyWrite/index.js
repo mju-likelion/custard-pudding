@@ -85,7 +85,7 @@ const ApplyWrite = () => {
       introduces: introducesObject,
       agreements: agreementObject,
     };
-    postApplicationData(submitFormData, navigate, selectedPart, setIsLoading);
+    postApplicationData(submitFormData, navigate, setIsLoading);
     // } else {
     //   alert(
     //     '지원 기간이 아닙니다\n지원 기간: 2024-03-01 00:00:00 ~ 2024-03-07 23:59:59',
@@ -101,7 +101,7 @@ const ApplyWrite = () => {
     if (Object.keys(files).length > 0) {
       const formData = new FormData();
       formData.append('file', files[0]);
-      postFileData(formData, setFileLink, setFiles, selectedPart);
+      postFileData(formData, setFileLink, setFiles);
     }
   }, [files[0]]);
 
@@ -159,6 +159,7 @@ const ApplyWrite = () => {
               files={files}
               setFiles={setFiles}
               setFileLink={setFileLink}
+              errors={errors}
             />
           </HomeworkContainer>
           <AgreeContainer>
@@ -176,7 +177,10 @@ const ApplyWrite = () => {
           <AllHelperText $isError={!isValid}>
             ※ 작성이 완료되지 않았거나, 형식에 맞지 않는 값이 있습니다.
           </AllHelperText>
-          {value.agree1 && value.agree2 && value.agree3 && !isLoading ? (
+          {value.agree1 &&
+          value.agree2 &&
+          !isLoading &&
+          (files[0] || value.link) ? (
             <SubmitButton $isActive={true}>제출하기</SubmitButton>
           ) : (
             <SubmitButton disabled={true}>제출하기</SubmitButton>
