@@ -149,11 +149,22 @@ const FileInput = styled.input`
   display: none;
 `;
 const RemoveButton = styled.button`
-  width: 100px;
-  height: 40px;
   color: #6b6b6b;
   border-radius: 8px;
   border: 2px solid #6b6b6b;
+  width: 70px;
+  height: 30px;
+  font-size: 12px;
+  @media ${({ theme }) => theme.devices.TABLET} {
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+  }
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    width: 100px;
+    height: 56px;
+    font-size: 17px;
+  }
 `;
 const HomeworkHelperText = styled.p`
   margin-top: 5px;

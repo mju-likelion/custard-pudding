@@ -15,7 +15,7 @@ const PersonalAgreeBox = ({ text, sequence, register }) => {
           />
         </CheckWrapper>
       </TitleBox>
-      <AgreeContentBox>
+      <AgreeContentBox $isRefer={sequence === 2 ? true : false}>
         <AgreeContent $isRefer={sequence === 2 ? true : false}>
           {text}
         </AgreeContent>
@@ -100,18 +100,18 @@ const CheckBox = styled.input`
 `;
 const AgreeContentBox = styled.div`
   width: 326px;
-  height: 156px;
+  height: ${({ $isRefer }) => ($isRefer ? ' 100px' : '156px')};
   background-color: ${({ theme }) => theme.colors.CARD_BG};
   border-radius: 15px;
   padding: 20px 14px 20px 24px;
   @media ${({ theme }) => theme.devices.TABLET} {
     width: 562px;
-    height: 250px;
+    height: ${({ $isRefer }) => ($isRefer ? ' 200px' : '250px')};
     padding: 32px 30px 32px 40px;
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
     width: 972px;
-    height: 320px;
+    height: ${({ $isRefer }) => ($isRefer ? ' 200px' : '320px')};
     padding: 40px 40px 40px 60px;
   }
 `;
@@ -148,7 +148,7 @@ const AgreeContent = styled.div`
     padding-right: 6px;
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
-    line-height: 40px;
+    line-height: ${({ $isRefer }) => ($isRefer ? '30px' : '40px')};
     ${({ theme }) => theme.typographies.DEFAULT_TXT}
     padding-right: 20px;
   }

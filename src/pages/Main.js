@@ -50,6 +50,10 @@ const Main = () => {
               &nbsp;을 반드시 참고 바랍니다.
             </AdditionalInfoLink>
           </AssignmentBoxes>
+          <AdditionalInfo>
+            ※ 지원 접수 마감일에는 지원자가 몰려 지원이 어려울 수 있으니,
+            가능하시다면 미리 제출해 주시기 바랍니다.
+          </AdditionalInfo>
         </AssignmentContainer>
         <BigButton onClick={() => navigate('/apply')}>지원하기</BigButton>
       </PageWrapper>
@@ -147,14 +151,35 @@ const AssignmentBoxes = styled.div`
   }
 `;
 const AdditionalInfoLink = styled.p`
-  ${({ theme }) => theme.typographies.M_DEFAULT_TXT}
+  font-size: 12px;
+  font-weight: 300;
   line-height: 18px;
+  color: #939393;
   @media ${({ theme }) => theme.devices.TABLET} {
-    ${({ theme }) => theme.typographies.DEFAULT_TXT}
+    font-size: 16px;
+    line-height: 24px;
   }
   @media ${({ theme }) => theme.devices.DESKTOP} {
-    ${({ theme }) => theme.typographies.BIG_TXT}
+    font-size: 20px;
+  }
+  align-self: center;
+`;
+const AdditionalInfo = styled.p`
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  color: #939393;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 18px;
+
+  @media ${({ theme }) => theme.devices.TABLET} {
+    font-size: 16px;
     line-height: 24px;
+  }
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    font-size: 20px;
   }
   align-self: center;
 `;
