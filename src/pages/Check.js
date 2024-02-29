@@ -72,9 +72,9 @@ const Check = () => {
                   messageErrors={errors}
                 />
               </InputWraaper>
-              <Button disabled={isLoading} type="submit">
+              <SmallButton disabled={isLoading} type="submit">
                 {isLoading ? '로딩중' : '확인하기'}
-              </Button>
+              </SmallButton>
             </ContentsWrapper>
           </CardLanyard>
         </form>

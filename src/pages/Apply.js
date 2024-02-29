@@ -95,9 +95,9 @@ const Apply = () => {
                   messageErrors={errors}
                 />
               </InputWraaper>
-              <Button disabled={isLoading} type="submit">
+              <SmallButton disabled={isLoading} type="submit">
                 {isLoading ? '로딩중' : '지원하기'}
-              </Button>
+              </SmallButton>
             </ContentsWrapper>
           </CardLanyard>
         </form>
