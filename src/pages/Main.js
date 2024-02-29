@@ -6,6 +6,7 @@ import BigButton from '../components/mainPage/BigButton';
 import OpenChat from '../components/mainPage/OpenChat';
 import ScrollBar from '../components/mainPage/ScrollBar';
 import part_message from '../messages/part';
+
 const LETTER_URL =
   'https://likelion12th-apply-pages.s3.ap-northeast-2.amazonaws.com/svgs/letter.svg';
 
@@ -39,23 +40,27 @@ const Main = () => {
                 assignment={value.assignment}
               />
             ))}
-            <AdditionalInfoLink>
-              ※ 지원 과제에 대한 추가적인 설명은 &nbsp;
-              <Link
-                href="https://material-handle-e32.notion.site/2a29850ebb4442b19b091d7a708dcc4e?pvs=4"
-                target="_blank"
-              >
-                Notion
-              </Link>
-              &nbsp;을 반드시 참고 바랍니다.
-            </AdditionalInfoLink>
           </AssignmentBoxes>
-          <AdditionalInfo>
-            ※ 지원 접수 마감일에는 지원자가 몰려 지원이 어려울 수 있으니,
-            가능하시다면 미리 제출해 주시기 바랍니다.
-          </AdditionalInfo>
+          <BottomBox>
+            <Texts>
+              <AdditionalInfoLink>
+                ※ 지원 과제에 대한 추가적인 설명은 &nbsp;
+                <Link
+                  href="https://material-handle-e32.notion.site/2a29850ebb4442b19b091d7a708dcc4e?pvs=4"
+                  target="_blank"
+                >
+                  Notion
+                </Link>
+                &nbsp;을 반드시 참고 바랍니다.
+              </AdditionalInfoLink>
+              <AdditionalInfo>
+                ※ 지원 접수 마감일에는 지원자가 몰려 지원이 어려울 수 있으니,
+                가능하다면 미리 제출해 주시기 바랍니다.
+              </AdditionalInfo>
+            </Texts>
+            <BigButton onClick={() => navigate('/apply')}>지원하기</BigButton>
+          </BottomBox>
         </AssignmentContainer>
-        <BigButton onClick={() => navigate('/apply')}>지원하기</BigButton>
       </PageWrapper>
       <OpenChat />
       <ScrollBar />
@@ -110,8 +115,8 @@ const Title = styled.p`
   display: inline-block;
   margin-bottom: 50px;
   border-bottom: 2px solid ${({ theme }) => theme.colors.WHITE_TXT};
-  ${({ theme }) => theme.typographies.SUB_TITLE}
-  @media ${({ theme }) => theme.devices.TABLET} {
+  ${({ theme }) => theme.typographies.SUB_TITLE} @media ${({ theme }) =>
+    theme.devices.TABLET} {
     ${({ theme }) => theme.typographies.TITLE}
   }
 `;
@@ -150,6 +155,19 @@ const AssignmentBoxes = styled.div`
     gap: 70px;
   }
 `;
+const BottomBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 100px;
+`;
+const Texts = styled.div`
+  margin-top: 80px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
 const AdditionalInfoLink = styled.p`
   font-size: 12px;
   font-weight: 300;
@@ -165,9 +183,6 @@ const AdditionalInfoLink = styled.p`
   align-self: center;
 `;
 const AdditionalInfo = styled.p`
-  text-align: center;
-  display: flex;
-  justify-content: center;
   margin-top: 30px;
   color: #939393;
   font-size: 12px;
