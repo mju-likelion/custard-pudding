@@ -6,14 +6,15 @@ import BigButton from '../components/mainPage/BigButton';
 import OpenChat from '../components/mainPage/OpenChat';
 import ScrollBar from '../components/mainPage/ScrollBar';
 import part_message from '../messages/part';
-import letter from '../assets/imgs/letter.svg';
+const LETTER_URL =
+  'https://likelion12th-apply-pages.s3.ap-northeast-2.amazonaws.com/svgs/letter.svg';
 
 const Main = () => {
   const navigate = useNavigate();
   return (
     <Container>
       <PageWrapper>
-        <LetterImg src={letter} />
+        <LetterImg src={LETTER_URL} />
         <PartContainer>
           <Title>파트</Title>
           <PartCards>

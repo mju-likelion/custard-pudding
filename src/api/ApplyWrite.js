@@ -46,13 +46,14 @@ export const postFileData = (
     });
 };
 
-export const postApplicationData = (data, navigateFunction, selectedPart) => {
+export const postApplicationData = (data, navigateFunction, setIsLoading) => {
   Axios.post('/application', data, {
     headers: {
       'Content-Type': `application/json`,
     },
   })
-    .then(() => {
+    .then((res) => {
+      setIsLoading(false);
       navigateFunction('/complete');
       sessionStorage.removeItem('studentId');
     })

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const SmallButton = ({ children, type, onClick }) => {
+const SmallButton = ({ children, type, onClick, ...rest }) => {
   return (
-    <Wrapper type={type} onClick={onClick}>
+    <Wrapper type={type} onClick={onClick} {...rest}>
       {children}
     </Wrapper>
   );
@@ -20,6 +20,10 @@ const Wrapper = styled.button`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.HOVER_BTN};
+  }
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.colors.DISABLE_BTN};
   }
 
   @media ${({ theme }) => theme.devices.DESKTOP} {

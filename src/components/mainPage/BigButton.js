@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 
-/**
- * @param {string} text
- */
 const BigButton = ({ children, disabled, onClick }) => {
   return (
     <Wrapper type="button" disabled={disabled} onClick={onClick}>
