@@ -11,7 +11,6 @@ export const getApplicationData = (
       return res;
     })
     .catch((err) => {
-      console.log(err);
       const DetailStatusCode = err.response.data.statusCode;
       const statusCode = DetailStatusCode.substring(0, 3);
       if (

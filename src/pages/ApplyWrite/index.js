@@ -39,7 +39,6 @@ const ApplyWrite = () => {
     mode: 'onChange',
     defaultValues: DEFAULT_VALUES,
   });
-  console.log(errors);
 
   const value = watch();
   const startDate = new Date('2024-03-01 00:00:00').getTime();
