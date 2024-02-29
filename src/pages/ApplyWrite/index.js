@@ -53,44 +53,44 @@ const ApplyWrite = () => {
     setIsLoading(true);
     const todayDate = new Date().getTime();
 
-    // if (startDate <= todayDate && todayDate <= lastDate) {
-    const findMajorId = (majors, majorName) => {
-      for (let i = 0; i < majors.length; i++) {
-        if (majors[i].name === majorName) {
-          return majors[i].id;
+    if (startDate <= todayDate && todayDate <= lastDate) {
+      const findMajorId = (majors, majorName) => {
+        for (let i = 0; i < majors.length; i++) {
+          if (majors[i].name === majorName) {
+            return majors[i].id;
+          }
         }
-      }
-      return null;
-    };
+        return null;
+      };
 
-    const introducesObject = {};
-    applicationData.introduces.forEach((item, idx) => {
-      introducesObject[item.id] = value['question' + (idx + 1)];
-    });
-    const agreementObject = {};
-    applicationData.agreements.forEach((item, idx) => {
-      agreementObject[item.id] = value['agree' + (idx + 1)];
-    });
-    const selectedMajorId = findMajorId(applicationData.majors, value.majors);
+      const introducesObject = {};
+      applicationData.introduces.forEach((item, idx) => {
+        introducesObject[item.id] = value['question' + (idx + 1)];
+      });
+      const agreementObject = {};
+      applicationData.agreements.forEach((item, idx) => {
+        agreementObject[item.id] = value['agree' + (idx + 1)];
+      });
+      const selectedMajorId = findMajorId(applicationData.majors, value.majors);
 
-    const submitFormData = {
-      studentId: studentIdValue,
-      name: value.name,
-      majorId: selectedMajorId,
-      phoneNumber: value.phoneNumber,
-      email: value.email,
-      grade: value.grade,
-      part: selectedPart,
-      link: selectedPart === 'SERVER' ? value.link : fileLink,
-      introduces: introducesObject,
-      agreements: agreementObject,
-    };
-    postApplicationData(submitFormData, navigate, setIsLoading);
-    // } else {
-    //   alert(
-    //     '지원 기간이 아닙니다\n지원 기간: 2024-03-01 00:00:00 ~ 2024-03-07 23:59:59',
-    //   );
-    // }
+      const submitFormData = {
+        studentId: studentIdValue,
+        name: value.name,
+        majorId: selectedMajorId,
+        phoneNumber: value.phoneNumber,
+        email: value.email,
+        grade: value.grade,
+        part: selectedPart,
+        link: selectedPart === 'SERVER' ? value.link : fileLink,
+        introduces: introducesObject,
+        agreements: agreementObject,
+      };
+      postApplicationData(submitFormData, navigate, setIsLoading);
+    } else {
+      alert(
+        '지원 기간이 아닙니다\n지원 기간: 2024-03-01 00:00:00 ~ 2024-03-07 23:59:59',
+      );
+    }
   };
   useEffect(() => {
     setStudentIdValue(sessionStorage.getItem('studentId'));
