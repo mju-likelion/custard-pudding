@@ -49,9 +49,11 @@ const HomeworkBox = ({
       {selectedPart === 'SERVER' && (
         <ServerHomeworkInput {...register('link')} />
       )}
-      <InfoHelperText $errors={errors['link']}>
-        {errors['link']?.message}
-      </InfoHelperText>
+      {selectedPart === 'SERVER' && (
+        <InfoHelperText $errors={errors['link']}>
+          {errors['link']?.message}
+        </InfoHelperText>
+      )}
       <HomeworkHelperText>
         {HOMEWORK_DATA[selectedPart].taskHelperText}
       </HomeworkHelperText>
