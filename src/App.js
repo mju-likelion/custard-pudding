@@ -6,7 +6,7 @@ import RoutesContainer from './components/RoutesContainer';
 import useRouteTracker from './hooks/useRouteTracker';
 
 function App() {
-  useRouteTracker();
+  // useRouteTracker();
 
   return (
     <ThemeProvider theme={Theme}>
