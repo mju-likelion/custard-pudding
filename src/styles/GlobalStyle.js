@@ -8,12 +8,15 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'GmarketSans', 'nanumgothic', sans-serif;
   }
+
   html {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: #1C1B1A;
   }
+
   body {
     width: 100%;
     height: 100%;
@@ -23,10 +26,12 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     scrollbar-width: none; /* Firefox */
   }
+
   ::-webkit-scrollbar {
     width: 0;
     background: transparent;
   }
+
   button {
     margin: 0;
     padding: 0;
@@ -38,10 +43,12 @@ const GlobalStyle = createGlobalStyle`
       cursor: not-allowed;
     }
   }
-  input{
+
+  input {
     margin: 0;
     padding: 0;
   }
+
   input:focus, textarea:focus {
     outline: none;
   }
