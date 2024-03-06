@@ -38,11 +38,15 @@ const Apply = () => {
       } catch (error) {
         const statusCode = error.response.data.statusCode;
         if (statusCode === '4090') {
-          setIsLoading(false);
           setIsExist(true);
         } else if (statusCode === '400') {
-          alert('오류가 발생했습니다.');
+          alert(error.response.data.message);
+        } else {
+          alert(
+            '서버에 이슈가 있습니다. 문제가 지속될 경우 관리자에게 문의해주세요.',
+          );
         }
+        setIsLoading(false);
       }
     } else {
       alert(
