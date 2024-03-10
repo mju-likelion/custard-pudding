@@ -1,4 +1,8 @@
 # 12기 지원페이지 웹
+<div align=center><img width="400" alt="스크린샷 2024-03-10 오전 11 25 26" src="https://github.com/mju-likelion/custard-pudding/assets/110520124/3c66c9aa-cb34-49ee-9685-f5ec001e3d01"></div>
+<div align=center><img width="400" alt="스크린샷 2024-03-10 오전 11 25 42" src="https://github.com/mju-likelion/custard-pudding/assets/110520124/a13b5c53-77e2-4795-9cd6-dc3b9397375a"></div>
+<div align=center><img width="400" alt="스크린샷 2024-03-10 오전 11 26 24" src="https://github.com/mju-likelion/custard-pudding/assets/110520124/679fb17f-5668-49c4-98fb-4e890181fd0d"></div>
+
 
 ## 📠 Convention
 
