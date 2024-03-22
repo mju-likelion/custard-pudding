@@ -24,57 +24,34 @@ const Apply = () => {
     setValue(data.id);
 
     const today = new Date().getTime();
-    // if (startDay <= today && today <= lastDay) {
-    //   try {
-    //     setIsLoading(true);
-    //     const response = await Axios.post('/apply', {
-    //       studentId: data.id,
-    //     });
-    //     const statusCode = response.data.statusCode;
-    //     if (statusCode === '201') {
-    //       sessionStorage.setItem('studentId', data.id);
-    //       navigate('/write');
-    //     }
-    //   } catch (error) {
-    //     const statusCode = error.response.data.statusCode;
-    //     if (statusCode === '4090') {
-    //       setIsExist(true);
-    //     } else if (statusCode === '400') {
-    //       alert(error.response.data.message);
-    //     } else {
-    //       alert(
-    //         '서버에 이슈가 있습니다. 문제가 지속될 경우 관리자에게 문의해주세요.',
-    //       );
-    //     }
-    //     setIsLoading(false);
-    //   }
-    // } else {
-    //   alert(
-    //     '지원 기간이 아닙니다\n지원 기간: 2024-03-01 00:00:00 ~ 2024-03-07 23:59:59',
-    //   );
-    // }
-    try {
-      setIsLoading(true);
-      const response = await Axios.post('/apply', {
-        studentId: data.id,
-      });
-      const statusCode = response.data.statusCode;
-      if (statusCode === '201') {
-        sessionStorage.setItem('studentId', data.id);
-        navigate('/write');
+    if (startDay <= today && today <= lastDay) {
+      try {
+        setIsLoading(true);
+        const response = await Axios.post('/apply', {
+          studentId: data.id,
+        });
+        const statusCode = response.data.statusCode;
+        if (statusCode === '201') {
+          sessionStorage.setItem('studentId', data.id);
+          navigate('/write');
+        }
+      } catch (error) {
+        const statusCode = error.response.data.statusCode;
+        if (statusCode === '4090') {
+          setIsExist(true);
+        } else if (statusCode === '400') {
+          alert(error.response.data.message);
+        } else {
+          alert(
+            '서버에 이슈가 있습니다. 문제가 지속될 경우 관리자에게 문의해주세요.',
+          );
+        }
+        setIsLoading(false);
       }
-    } catch (error) {
-      const statusCode = error.response.data.statusCode;
-      if (statusCode === '4090') {
-        setIsExist(true);
-      } else if (statusCode === '400') {
-        alert(error.response.data.message);
-      } else {
-        alert(
-          '서버에 이슈가 있습니다. 문제가 지속될 경우 관리자에게 문의해주세요.',
-        );
-      }
-      setIsLoading(false);
+    } else {
+      alert(
+        '지원 기간이 아닙니다\n지원 기간: 2024-03-01 00:00:00 ~ 2024-03-07 23:59:59',
+      );
     }
   };
   const inputSizeValue = {
