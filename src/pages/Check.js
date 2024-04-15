@@ -18,7 +18,7 @@ const Check = () => {
     setValue(data.id);
     try {
       setIsLoading(true);
-      const response = await Axios.get(`/apply/exist/${data.id}`);
+      const response = await Axios.get(`/applies/exist/${data.id}`);
       const isExist = response?.data?.data?.isExist;
       setIsChecked(isExist);
     } catch (error) {

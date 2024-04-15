@@ -5,7 +5,7 @@ export const getApplicationData = (
   setApplicationDataFunction,
   navigateFunction,
 ) => {
-  Axios.get(`/application/${part}`)
+  Axios.get(`/applications/${part}`)
     .then((res) => {
       setApplicationDataFunction(res.data.data);
       return res;
@@ -31,7 +31,7 @@ export const postFileData = (
   setFileLinkFunction,
   setFilesFunction,
 ) => {
-  Axios.post('/application/file', formData, {
+  Axios.post('/applications/file', formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
@@ -46,7 +46,7 @@ export const postFileData = (
 };
 
 export const postApplicationData = (data, navigateFunction, setIsLoading) => {
-  Axios.post('/application', data, {
+  Axios.post('/applications', data, {
     headers: {
       'Content-Type': `application/json`,
     },
