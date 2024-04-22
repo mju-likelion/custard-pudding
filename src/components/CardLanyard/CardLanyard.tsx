@@ -1,18 +1,27 @@
 import styled from 'styled-components';
+import { PropsWithChildren } from 'react';
 import { ReactComponent as CardString } from '../../assets/imgs/card_string_bg.svg';
 
-/**
- * @param {string} width
- * @param {string} height
- */
+interface CardLanyardProps {
+  width: string;
+  height: string;
+  $pcWidth: string;
+  $pcHeight: string;
+}
 
-const CardLanyard = ({ width, height, pcWidth, pcHeight, children }) => {
+const CardLanyard = ({
+  width,
+  height,
+  $pcWidth,
+  $pcHeight,
+  children,
+}: PropsWithChildren<CardLanyardProps>) => {
   return (
     <CardContainer
       width={width}
       height={height}
-      $pcWidth={pcWidth}
-      $pcHeight={pcHeight}
+      $pcWidth={$pcWidth}
+      $pcHeight={$pcHeight}
     >
       <NameCardString />
       <CardBody>{children}</CardBody>
@@ -20,7 +29,7 @@ const CardLanyard = ({ width, height, pcWidth, pcHeight, children }) => {
   );
 };
 
-const CardContainer = styled.div`
+const CardContainer = styled.div<CardLanyardProps>`
   position: relative;
   width: ${({ width }) => width};
   height: ${({ height }) => height};
