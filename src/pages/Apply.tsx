@@ -17,7 +17,9 @@ interface StudentData {
 }
 
 const Apply = () => {
-  const [isExist, setIsExist] = useState<boolean | undefined>(undefined);
+  const [hasAlreadyApplied, sethasAlreadyApplied] = useState<
+    boolean | undefined
+  >(undefined);
   const [value, setValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -44,7 +46,7 @@ const Apply = () => {
         if (axios.isAxiosError(error)) {
           const statusCode = error.response?.data.statusCode;
           if (statusCode === '4090') {
-            setIsExist(true);
+            sethasAlreadyApplied(true);
           } else if (statusCode === '400') {
             alert(error.response?.data.message);
           } else {
@@ -87,7 +89,7 @@ const Apply = () => {
 
   return (
     <Container>
-      {isExist === undefined && (
+      {hasAlreadyApplied === undefined && (
         <form onSubmit={handleSubmit(handleFormSubmit)}>
           <CardLanyard
             width={'250px'}
@@ -113,7 +115,7 @@ const Apply = () => {
           </CardLanyard>
         </form>
       )}
-      {isExist && <CheckCard status="rejected" value={value} />}
+      {hasAlreadyApplied && <CheckCard status="rejected" value={value} />}
     </Container>
   );
 };
