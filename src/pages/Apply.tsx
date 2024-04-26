@@ -17,9 +17,7 @@ interface StudentData {
 }
 
 const Apply = () => {
-  const [hasAlreadyApplied, sethasAlreadyApplied] = useState<
-    boolean | undefined
-  >(undefined);
+  const [hasAlreadyApplied, sethasAlreadyApplied] = useState<boolean>(false);
   const [value, setValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -89,7 +87,7 @@ const Apply = () => {
 
   return (
     <Container>
-      {hasAlreadyApplied === undefined && (
+      {!hasAlreadyApplied && (
         <form onSubmit={handleSubmit(handleFormSubmit)}>
           <CardLanyard
             width={'250px'}
