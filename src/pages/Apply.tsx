@@ -16,6 +16,8 @@ interface StudentData {
   id: string;
 }
 
+type StatusCode = '201' | '4090' | '400';
+
 const Apply = () => {
   const [hasAlreadyApplied, sethasAlreadyApplied] = useState<boolean>(false);
   const [value, setValue] = useState('');
@@ -35,14 +37,15 @@ const Apply = () => {
         const response = await Axios.post('/apply', {
           studentId: data.id,
         });
-        const statusCode = response.data.statusCode;
+        const statusCode: StatusCode | undefined = response.data.statusCode;
         if (statusCode === '201') {
           sessionStorage.setItem('studentId', data.id);
           navigate('/write');
         }
       } catch (error: unknown) {
         if (axios.isAxiosError(error)) {
-          const statusCode = error.response?.data.statusCode;
+          const statusCode: StatusCode | undefined =
+            error.response?.data.statusCode;
           if (statusCode === '4090') {
             sethasAlreadyApplied(true);
           } else if (statusCode === '400') {
