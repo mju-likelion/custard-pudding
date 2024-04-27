@@ -19,7 +19,7 @@ interface StudentData {
 type StatusCode = '201' | '4090' | '400';
 
 const Apply = () => {
-  const [hasAlreadyApplied, sethasAlreadyApplied] = useState<boolean>(false);
+  const [hasAlreadyApplied, setHasAlreadyApplied] = useState<boolean>(false);
   const [value, setValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -47,7 +47,7 @@ const Apply = () => {
           const statusCode: StatusCode | undefined =
             error.response?.data.statusCode;
           if (statusCode === '4090') {
-            sethasAlreadyApplied(true);
+            setHasAlreadyApplied(true);
           } else if (statusCode === '400') {
             alert(error.response?.data.message);
           } else {
