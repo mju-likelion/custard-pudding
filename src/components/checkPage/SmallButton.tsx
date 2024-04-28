@@ -1,6 +1,18 @@
+import { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 
-const SmallButton = ({ children, type, onClick, ...rest }) => {
+interface SmallButtonProps {
+  type: 'submit';
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  disabled: boolean;
+}
+
+const SmallButton = ({
+  children,
+  type,
+  onClick,
+  ...rest
+}: PropsWithChildren<SmallButtonProps>) => {
   return (
     <Wrapper type={type} onClick={onClick} {...rest}>
       {children}

@@ -10,9 +10,16 @@ import Input from '../components/checkPage/Input';
 import SmallButton from '../components/checkPage/SmallButton';
 import { idValidationSchema } from '../validation/idValidationSchema';
 import CheckCard from '../components/checkPage/CheckCard';
+import axios, { AxiosError } from 'axios';
+
+interface StudentData {
+  id: string;
+}
+
+type StatusCode = '201' | '4090' | '400';
 
 const Apply = () => {
-  const [isExist, setIsExist] = useState(undefined);
+  const [hasAlreadyApplied, setHasAlreadyApplied] = useState<boolean>(false);
   const [value, setValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -20,7 +27,7 @@ const Apply = () => {
   const startDay = new Date('2024-03-01 00:00:00').getTime();
   const lastDay = new Date('2024-03-07 23:59:59').getTime();
 
-  const handleFormSubmit = async (data) => {
+  const handleFormSubmit = async (data: StudentData) => {
     setValue(data.id);
 
     const today = new Date().getTime();
@@ -30,23 +37,26 @@ const Apply = () => {
         const response = await Axios.post('/apply', {
           studentId: data.id,
         });
-        const statusCode = response.data.statusCode;
+        const statusCode: StatusCode | undefined = response.data.statusCode;
         if (statusCode === '201') {
           sessionStorage.setItem('studentId', data.id);
           navigate('/write');
         }
-      } catch (error) {
-        const statusCode = error.response.data.statusCode;
-        if (statusCode === '4090') {
-          setIsExist(true);
-        } else if (statusCode === '400') {
-          alert(error.response.data.message);
-        } else {
-          alert(
-            '서버에 이슈가 있습니다. 문제가 지속될 경우 관리자에게 문의해주세요.',
-          );
+      } catch (error: unknown) {
+        if (axios.isAxiosError(error)) {
+          const statusCode: StatusCode | undefined =
+            error.response?.data.statusCode;
+          if (statusCode === '4090') {
+            setHasAlreadyApplied(true);
+          } else if (statusCode === '400') {
+            alert(error.response?.data.message);
+          } else {
+            alert(
+              '서버에 이슈가 있습니다. 문제가 지속될 경우 관리자에게 문의해주세요.',
+            );
+          }
+          setIsLoading(false);
         }
-        setIsLoading(false);
       }
     } else {
       alert(
@@ -80,13 +90,13 @@ const Apply = () => {
 
   return (
     <Container>
-      {isExist === undefined && (
+      {!hasAlreadyApplied && (
         <form onSubmit={handleSubmit(handleFormSubmit)}>
           <CardLanyard
             width={'250px'}
             height={'318px'}
-            pcWidth={'544px'}
-            pcHeight={'358px'}
+            $pcWidth={'544px'}
+            $pcHeight={'358px'}
           >
             <ContentsWrapper>
               <SubTitle>지원하기</SubTitle>
@@ -106,7 +116,7 @@ const Apply = () => {
           </CardLanyard>
         </form>
       )}
-      {isExist && <CheckCard status="rejected" value={value} />}
+      {hasAlreadyApplied && <CheckCard status="rejected" value={value} />}
     </Container>
   );
 };
