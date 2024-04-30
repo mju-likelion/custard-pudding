@@ -14,6 +14,7 @@
 | develop | 배포 전 작업 기준                  |
 | feature | 기능 단위 구현                     |
 | hotfix  | 서비스 중 긴급 수정 건에 대한 처리 |
+| refactor  | 리팩토링 |
 
 <details>
 <summary>Branch Naming Convention Detail</summary>
