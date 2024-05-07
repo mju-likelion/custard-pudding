@@ -16,7 +16,11 @@ interface StudentData {
   id: string;
 }
 
-type StatusCode = '201' | '4090' | '400';
+enum ERROR_CODE {
+  'SUCCESS' = '201',
+  'SERVER_ERROR' = '401',
+  'ALREADY_APPLIED' = '4090',
+}
 
 const Apply = () => {
   const [hasAlreadyApplied, setHasAlreadyApplied] = useState<boolean>(false);
@@ -37,22 +41,22 @@ const Apply = () => {
         const response = await Axios.post('/apply', {
           studentId: data.id,
         });
-        const statusCode: StatusCode | undefined = response.data.statusCode;
-        if (statusCode === '201') {
+        const statusCode: ERROR_CODE | undefined = response.data.statusCode;
+        if (statusCode === ERROR_CODE.SUCCESS) {
           sessionStorage.setItem('studentId', data.id);
           navigate('/write');
         }
       } catch (error: unknown) {
         if (axios.isAxiosError(error)) {
-          const statusCode: StatusCode | undefined =
+          const statusCode: ERROR_CODE | undefined =
             error.response?.data.statusCode;
-          if (statusCode === '4090') {
+          if (statusCode === ERROR_CODE.ALREADY_APPLIED) {
             setHasAlreadyApplied(true);
-          } else if (statusCode === '400') {
+          } else if (statusCode === ERROR_CODE.SERVER_ERROR) {
             alert(error.response?.data.message);
           } else {
             alert(
-              '서버에 이슈가 있습니다. 문제가 지속될 경우 관리자에게 문의해주세요.',
+              '서버에 이슈가 있습니다. 문제가 지속될 경우 메인 홈페이지의 채팅을 통해 관리자에게 문의해주세요.',
             );
           }
           setIsLoading(false);
