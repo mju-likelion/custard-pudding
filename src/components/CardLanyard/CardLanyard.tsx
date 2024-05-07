@@ -34,7 +34,7 @@ const CardContainer = styled.div<CardLanyardProps>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
 
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     width: ${({ $pcWidth }) => $pcWidth};
     height: ${({ $pcHeight }) => $pcHeight};
   }
@@ -47,7 +47,7 @@ const NameCardString = styled(CardString)`
   top: -44px;
   width: 64px;
   height: 62px;
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     top: -88px;
     width: 126px;
     height: 122px;
@@ -58,7 +58,7 @@ const CardBody = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${({ theme }) => theme.colors.MODAL_BG};
+  background-color: ${({ theme }) => theme.colors.background200};
   border-bottom: 24px;
   box-shadow: 7px 6px 0.4em #161515;
   border-radius: 24px;
