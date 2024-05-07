@@ -27,18 +27,18 @@ const Wrapper = styled.button`
   padding: 9px 16px;
   width: 110px;
   height: 40px;
-  color: ${({ theme }) => theme.colors.WHITE_TXT};
-  background-color: ${({ theme }) => theme.colors.MAIN_PINK};
+  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.pink100};
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.HOVER_BTN};
+    background-color: ${({ theme }) => theme.colors.pink200};
   }
 
   &:disabled {
-    background-color: ${({ theme }) => theme.colors.DISABLE_BTN};
+    background-color: ${({ theme }) => theme.colors.background100};
   }
 
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     ${({ theme }) => theme.typographies.SMALL_BTN_TXT};
     padding: 14px 48px;
     border-radius: 40px;
