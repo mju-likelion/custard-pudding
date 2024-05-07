@@ -17,10 +17,10 @@ const Complete = () => {
 
 const PageContainer = styled.div`
   height: calc(100vh - 56px - 100px - 230px);
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     height: calc(100vh - 70px - 100px - 230px);
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     height: calc(100vh - 70px - 100px - 230px);
   }
 `;
@@ -31,18 +31,18 @@ const Content = styled.p`
 const Title = styled.p`
   margin-bottom: 30px;
   & > span {
-    color: ${({ theme }) => theme.colors.MAIN_PINK};
+    color: ${({ theme }) => theme.colors.pink100};
   }
-  ${({ theme }) => theme.typographies.SUB_TITLE};
-  @media ${({ theme }) => theme.devices.TABLET} {
-    ${({ theme }) => theme.typographies.TITLE};
+  ${({ theme }) => theme.typographies.subtitle};
+  @media ${({ theme }) => theme.size.tablet} {
+    ${({ theme }) => theme.typographies.title};
   }
 `;
 const Small = styled.p`
-  color: ${({ theme }) => theme.colors.DISABLE_BTN};
+  color: ${({ theme }) => theme.colors.background100};
   ${({ theme }) => theme.typographies.DEFAULT_TXT};
-  @media ${({ theme }) => theme.devices.TABLET} {
-    ${({ theme }) => theme.typographies.SUB_TITLE};
+  @media ${({ theme }) => theme.size.tablet} {
+    ${({ theme }) => theme.typographies.subtitle};
   }
 `;
 export default Complete;
