@@ -17,6 +17,7 @@
     "jsx": "react-jsx",
     "incremental": true,
     "baseUrl": "./src",
+    "noImplicitAny": true,
   },
   "include": ["src/**/*", "src/types/*.d.ts"],
 }
