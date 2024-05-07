@@ -11,10 +11,10 @@ const SmallButton = ({
   children,
   type,
   onClick,
-  ...rest
+  disabled,
 }: PropsWithChildren<SmallButtonProps>) => {
   return (
-    <Wrapper type={type} onClick={onClick} {...rest}>
+    <Wrapper type={type} onClick={onClick} disabled={disabled}>
       {children}
     </Wrapper>
   );
