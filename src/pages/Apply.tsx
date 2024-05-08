@@ -16,7 +16,7 @@ interface StudentData {
   id: string;
 }
 
-enum ERROR_CODE {
+enum STATUS_CODE {
   'SUCCESS' = '201',
   'SERVER_ERROR' = '401',
   'ALREADY_APPLIED' = '4090',
@@ -41,18 +41,18 @@ const Apply = () => {
         const response = await Axios.post('/apply', {
           studentId: data.id,
         });
-        const statusCode: ERROR_CODE | undefined = response.data.statusCode;
-        if (statusCode === ERROR_CODE.SUCCESS) {
+        const statusCode: STATUS_CODE | undefined = response.data.statusCode;
+        if (statusCode === STATUS_CODE.SUCCESS) {
           sessionStorage.setItem('studentId', data.id);
           navigate('/write');
         }
       } catch (error: unknown) {
         if (axios.isAxiosError(error)) {
-          const statusCode: ERROR_CODE | undefined =
+          const statusCode: STATUS_CODE | undefined =
             error.response?.data.statusCode;
-          if (statusCode === ERROR_CODE.ALREADY_APPLIED) {
+          if (statusCode === STATUS_CODE.ALREADY_APPLIED) {
             setHasAlreadyApplied(true);
-          } else if (statusCode === ERROR_CODE.SERVER_ERROR) {
+          } else if (statusCode === STATUS_CODE.SERVER_ERROR) {
             alert(error.response?.data.message);
           } else {
             alert(
