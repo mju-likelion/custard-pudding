@@ -46,7 +46,7 @@ const Apply = () => {
           sessionStorage.setItem('studentId', data.id);
           navigate('/write');
         }
-      } catch (error: unknown) {
+      } catch (error) {
         if (axios.isAxiosError(error)) {
           const statusCode: STATUS_CODE | undefined =
             error.response?.data.statusCode;
