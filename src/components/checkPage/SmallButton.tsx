@@ -39,7 +39,7 @@ const Wrapper = styled.button`
   }
 
   @media ${({ theme }) => theme.size.desktop} {
-    ${({ theme }) => theme.typographies.SMALL_BTN_TXT};
+    ${({ theme }) => theme.typographies.smallBtnTxt};
     padding: 14px 48px;
     border-radius: 40px;
     width: 160px;

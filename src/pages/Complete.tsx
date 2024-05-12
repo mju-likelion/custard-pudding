@@ -40,7 +40,7 @@ const Title = styled.p`
 `;
 const Small = styled.p`
   color: ${({ theme }) => theme.colors.background100};
-  ${({ theme }) => theme.typographies.DEFAULT_TXT};
+  ${({ theme }) => theme.typographies.defaultTxt};
   @media ${({ theme }) => theme.size.tablet} {
     ${({ theme }) => theme.typographies.subtitle};
   }

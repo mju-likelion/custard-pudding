@@ -15,33 +15,39 @@ const subtitle = {
 };
 
 const btnTxt = {
-  BIG_BTN_TXT: () => css`
+  //BIG_BTN_TXT
+  bigBtnTxt: () => css`
     font-size: 32px;
     font-weight: 500;
   `,
-  SMALL_BTN_TXT: () => css`
+  //SMALL_BTN_TXT
+  smallBtnTxt: () => css`
     font-size: 16px;
     font-weight: 500;
   `,
 };
 
 const bodyTxt = {
-  DEFAULT_TXT: () => css`
+  //DEFAULT_TXT
+  defaultTxt: () => css`
     font-size: 16px;
     font-weight: 500;
   `,
-  BIG_TXT: () => css`
+  //BIG_TXT
+  bigTxt: () => css`
     font-size: 20px;
     font-weight: 500;
   `,
-  SMALL_TXT: () => css`
+  //SMALL_TXT
+  smallTxt: () => css`
     font-size: 14px;
     font-weight: 300;
   `,
 };
 
 const errorTxt = {
-  SMALL_ERROR_TXT: () => css`
+  //SMALL_ERROR_TXT
+  smallErrorTxt: () => css`
     font-size: 10px;
   `,
 };
