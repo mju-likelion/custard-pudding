@@ -22,4 +22,5 @@ const white = {
   //WHITE_TXT
   white: '#F9F3F3',
 };
+
 export const colors = { ...pink, ...background, ...white };
