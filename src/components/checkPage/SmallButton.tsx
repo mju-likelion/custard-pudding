@@ -4,17 +4,17 @@ import styled from 'styled-components';
 interface SmallButtonProps {
   type: 'submit';
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 const SmallButton = ({
   children,
   type,
   onClick,
-  disabled,
+  disabled = false,
 }: PropsWithChildren<SmallButtonProps>) => {
   return (
-    <Wrapper type={type} onClick={onClick} disabled={disabled}>
+    <Wrapper type={type} onClick={onClick}>
       {children}
     </Wrapper>
   );
