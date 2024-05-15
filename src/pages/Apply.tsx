@@ -99,8 +99,8 @@ const Apply = () => {
           <CardLanyard
             width={'250px'}
             height={'318px'}
-            $pcWidth={'544px'}
-            $pcHeight={'358px'}
+            pcWidth={'544px'}
+            pcHeight={'358px'}
           >
             <ContentsWrapper>
               <SubTitle>지원하기</SubTitle>

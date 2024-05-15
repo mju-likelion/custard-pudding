@@ -5,23 +5,23 @@ import { ReactComponent as CardString } from '../../assets/imgs/card_string_bg.s
 interface CardLanyardProps {
   width: string;
   height: string;
-  $pcWidth: string;
-  $pcHeight: string;
+  pcWidth: string;
+  pcHeight: string;
 }
 
 const CardLanyard = ({
   width,
   height,
-  $pcWidth,
-  $pcHeight,
+  pcWidth,
+  pcHeight,
   children,
 }: PropsWithChildren<CardLanyardProps>) => {
   return (
     <CardContainer
       width={width}
       height={height}
-      $pcWidth={$pcWidth}
-      $pcHeight={$pcHeight}
+      $pcWidth={pcWidth}
+      $pcHeight={pcHeight}
     >
       <NameCardString />
       <CardBody>{children}</CardBody>
@@ -29,7 +29,12 @@ const CardLanyard = ({
   );
 };
 
-const CardContainer = styled.div<CardLanyardProps>`
+const CardContainer = styled.div<{
+  width: string;
+  height: string;
+  $pcWidth: string;
+  $pcHeight: string;
+}>`
   position: relative;
   width: ${({ width }) => width};
   height: ${({ height }) => height};
