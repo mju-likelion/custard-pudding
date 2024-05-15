@@ -37,7 +37,6 @@ const Apply = () => {
     const today = new Date().getTime();
     if (startDay <= today && today <= lastDay) {
       try {
-        setIsLoading(true);
         const response = await Axios.post('/apply', {
           studentId: data.id,
         });
@@ -59,8 +58,10 @@ const Apply = () => {
               '서버에 이슈가 있습니다. 문제가 지속될 경우 메인 홈페이지의 채팅을 통해 관리자에게 문의해주세요.',
             );
           }
-          setIsLoading(false);
+          setIsLoading(true);
         }
+      } finally {
+        setIsLoading(false);
       }
     } else {
       alert(
