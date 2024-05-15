@@ -3,10 +3,10 @@ import { PropsWithChildren } from 'react';
 import { ReactComponent as CardString } from '../../assets/imgs/card_string_bg.svg';
 
 interface CardLanyardProps {
-  width: string;
-  height: string;
-  pcWidth: string;
-  pcHeight: string;
+  width: number;
+  height: number;
+  pcWidth: number;
+  pcHeight: number;
 }
 
 const CardLanyard = ({
@@ -30,18 +30,18 @@ const CardLanyard = ({
 };
 
 const CardContainer = styled.div<{
-  width: string;
-  height: string;
-  $pcWidth: string;
-  $pcHeight: string;
+  width: number;
+  height: number;
+  $pcWidth: number;
+  $pcHeight: number;
 }>`
   position: relative;
-  width: ${({ width }) => width};
-  height: ${({ height }) => height};
+  width: ${({ width }) => `${width}px`};
+  height: ${({ height }) => `${height}px`};
 
   @media ${({ theme }) => theme.size.desktop} {
-    width: ${({ $pcWidth }) => $pcWidth};
-    height: ${({ $pcHeight }) => $pcHeight};
+    width: ${({ $pcWidth }) => `${$pcWidth}px`};
+    height: ${({ $pcHeight }) => `${$pcHeight}px`};
   }
 `;
 

@@ -96,12 +96,7 @@ const Apply = () => {
     <Container>
       {!hasAlreadyApplied && (
         <form onSubmit={handleSubmit(handleFormSubmit)}>
-          <CardLanyard
-            width={'250px'}
-            height={'318px'}
-            pcWidth={'544px'}
-            pcHeight={'358px'}
-          >
+          <CardLanyard width={250} height={318} pcWidth={544} pcHeight={358}>
             <ContentsWrapper>
               <SubTitle>지원하기</SubTitle>
               <InputWrapper>
