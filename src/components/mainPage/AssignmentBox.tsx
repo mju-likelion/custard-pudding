@@ -17,14 +17,14 @@ const Box = styled.div`
   flex-direction: column;
   align-items: start;
   gap: 20px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 100%;
     padding: 30px;
     flex-direction: row;
     align-items: center;
     gap: 30px;
   }
-  background-color: ${({ theme }) => theme.colors.CARD_BG};
+  background-color: ${({ theme }) => theme.colors.background300};
   border-radius: 30px;
 `;
 const PartName = styled.div`
@@ -32,38 +32,38 @@ const PartName = styled.div`
   border-radius: 40px;
   font-size: 16px;
   font-weight: 700;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     padding: 20px;
     border-radius: 50px;
-    ${({ theme }) => theme.typographies.SUB_TITLE};
+    ${({ theme }) => theme.typographies.subtitle};
   }
   text-align: center;
-  background-color: ${({ theme }) => theme.colors.MODAL_BG};
+  background-color: ${({ theme }) => theme.colors.background200};
 `;
 const Line = styled.div`
   display: none;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     display: block;
     width: 1px;
     height: 180px;
-    background-color: ${({ theme }) => theme.colors.WHITE_TXT};
+    background-color: ${({ theme }) => theme.colors.white};
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     display: block;
     width: 1px;
     height: 46px;
-    background-color: ${({ theme }) => theme.colors.WHITE_TXT};
+    background-color: ${({ theme }) => theme.colors.white};
   }
 `;
 const Content = styled.p`
-  ${({ theme }) => theme.typographies.M_DEFAULT_TXT}
+  ${({ theme }) => theme.typographies.mDefault}
   line-height: 30px;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    ${({ theme }) => theme.typographies.DEFAULT_TXT}
+  @media ${({ theme }) => theme.size.tablet} {
+    ${({ theme }) => theme.typographies.defaultTxt}
     line-height: 40px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    ${({ theme }) => theme.typographies.BIG_TXT}
+  @media ${({ theme }) => theme.size.desktop} {
+    ${({ theme }) => theme.typographies.bigTxt}
   }
 `;
 
