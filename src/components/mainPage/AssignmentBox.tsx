@@ -1,6 +1,15 @@
+import { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 
-const AssignmentBox = ({ part_name, assignment }) => {
+interface AssignmentBoxProps {
+  part_name: string;
+  assignment: string;
+}
+
+const AssignmentBox = ({
+  part_name,
+  assignment,
+}: PropsWithChildren<AssignmentBoxProps>) => {
   return (
     <Box>
       <PartName>{part_name}</PartName>
