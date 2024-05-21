@@ -1,25 +1,25 @@
 const pink = {
-  //MAIN_PINK
+  // MAIN_PINK
   pink100: '#F48096',
-  //HOVER_BTN
+  // HOVER_BTN
   pink200: '#FF5172',
 };
 
 const background = {
-  //DISABLE_BTN
+  // DISABLE_BTN
   background100: '#939393',
-  //  MODAL_BG
+  // MODAL_BG
   background200: '#3B3B3B',
-  //CARD_BG
+  // CARD_BG
   background300: '#2B2B2B',
-  //INPUT_BG
+  // INPUT_BG
   background400: '#242424',
-  //PAGE_BG
+  // PAGE_BG
   background500: '#1C1B1A',
 };
 
 const white = {
-  //WHITE_TXT
+  // WHITE_TXT
   white: '#F9F3F3',
 };
 

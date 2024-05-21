@@ -15,12 +15,12 @@ const subtitle = {
 };
 
 const btnTxt = {
-  //BIG_BTN_TXT
+  // BIG_BTN_TXT
   bigBtnTxt: () => css`
     font-size: 32px;
     font-weight: 500;
   `,
-  //SMALL_BTN_TXT
+  // SMALL_BTN_TXT
   smallBtnTxt: () => css`
     font-size: 16px;
     font-weight: 500;
@@ -28,17 +28,17 @@ const btnTxt = {
 };
 
 const bodyTxt = {
-  //DEFAULT_TXT
+  // DEFAULT_TXT
   defaultTxt: () => css`
     font-size: 16px;
     font-weight: 500;
   `,
-  //BIG_TXT
+  // BIG_TXT
   bigTxt: () => css`
     font-size: 20px;
     font-weight: 500;
   `,
-  //SMALL_TXT
+  // SMALL_TXT
   smallTxt: () => css`
     font-size: 14px;
     font-weight: 300;
@@ -46,19 +46,19 @@ const bodyTxt = {
 };
 
 const errorTxt = {
-  //SMALL_ERROR_TXT
+  // SMALL_ERROR_TXT
   smallErrorTxt: () => css`
     font-size: 10px;
   `,
 };
 
 const mobileBodyTxt = {
-  //M_DEFAULT_TXT
+  // M_DEFAULT_TXT
   mDefault: () => css`
     font-size: 12px;
     font-weight: 500;
   `,
-  //M_SMALL_TXT
+  // M_SMALL_TXT
   mSmall: () => css`
     font-size: 10px;
     font-weight: 300;
