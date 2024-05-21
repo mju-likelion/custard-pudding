@@ -9,6 +9,7 @@ import Input from '../components/checkPage/Input';
 import SmallButton from '../components/checkPage/SmallButton';
 import CheckCard from '../components/checkPage/CheckCard';
 import { idValidationSchema } from '../validation/idValidationSchema';
+
 const Check = () => {
   const [isChecked, setIsChecked] = useState(undefined);
   const [value, setValue] = useState('');
@@ -54,12 +55,7 @@ const Check = () => {
     <Container>
       {isChecked === undefined ? (
         <form onSubmit={handleSubmit(handleFormSubmit)}>
-          <CardLanyard
-            width={'250px'}
-            height={'318px'}
-            pcWidth={'544px'}
-            pcHeight={'358px'}
-          >
+          <CardLanyard width={250} height={318} pcWidth={544} pcHeight={358}>
             <ContentsWrapper>
               <SubTitle>지원 확인하기</SubTitle>
               <InputWrapper>
