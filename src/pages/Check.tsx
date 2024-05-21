@@ -12,7 +12,7 @@ import { idValidationSchema } from '../validation/idValidationSchema';
 import { StudentData } from './Apply';
 
 const Check = () => {
-  const [isChecked, setIsChecked] = useState(undefined);
+  const [isChecked, setIsChecked] = useState<boolean | undefined>(undefined);
   const [value, setValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
