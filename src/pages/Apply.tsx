@@ -12,7 +12,7 @@ import { idValidationSchema } from '../validation/idValidationSchema';
 import CheckCard from '../components/checkPage/CheckCard';
 import axios, { AxiosError } from 'axios';
 
-interface StudentData {
+export interface StudentData {
   id: string;
 }
 

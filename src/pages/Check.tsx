@@ -9,13 +9,14 @@ import Input from '../components/checkPage/Input';
 import SmallButton from '../components/checkPage/SmallButton';
 import CheckCard from '../components/checkPage/CheckCard';
 import { idValidationSchema } from '../validation/idValidationSchema';
+import { StudentData } from './Apply';
 
 const Check = () => {
   const [isChecked, setIsChecked] = useState(undefined);
   const [value, setValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleFormSubmit = async (data) => {
+  const handleFormSubmit = async (data: StudentData) => {
     setValue(data.id);
     try {
       setIsLoading(true);
