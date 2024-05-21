@@ -73,10 +73,10 @@ const Container = styled.div`
 `;
 const PageWrapper = styled.div`
   width: 300px;
-  @media ${({ theme }) => theme.devices.MOBILE} {
+  @media ${({ theme }) => theme.size.mobile} {
     width: 390px;
   }
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 600px;
   }
   margin: 0 auto;
@@ -85,27 +85,27 @@ const PageWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 100px;
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     width: 1200px;
     gap: 200px;
   }
 `;
 const LetterImg = styled.img`
   width: 300px;
-  @media ${({ theme }) => theme.devices.MOBILE} {
+  @media ${({ theme }) => theme.size.mobile} {
     width: 340px;
   }
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 450px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     width: 860px;
   }
 `;
 const PartContainer = styled.div`
   width: 100%;
   padding: 0 10px;
-  @media ${({ theme }) => theme.devices.MOBILE} {
+  @media ${({ theme }) => theme.size.mobile} {
     padding: 0 30px;
   }
   white-space: pre-line;
@@ -114,10 +114,10 @@ const PartContainer = styled.div`
 const Title = styled.p`
   display: inline-block;
   margin-bottom: 50px;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.WHITE_TXT};
-  ${({ theme }) => theme.typographies.SUB_TITLE} @media ${({ theme }) =>
-    theme.devices.TABLET} {
-    ${({ theme }) => theme.typographies.TITLE}
+  border-bottom: 2px solid ${({ theme }) => theme.colors.white};
+  ${({ theme }) => theme.typographies.subtitle} @media ${({ theme }) =>
+    theme.size.tablet} {
+    ${({ theme }) => theme.typographies.title}
   }
 `;
 const PartCards = styled.div`
@@ -126,10 +126,10 @@ const PartCards = styled.div`
   justify-content: space-between;
   gap: 60px;
   margin: 0 5px;
-  @media ${({ theme }) => theme.devices.MOBILE} {
+  @media ${({ theme }) => theme.size.mobile} {
     margin: 0 30px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     margin: 0 40px;
     flex-direction: row;
   }
@@ -137,7 +137,7 @@ const PartCards = styled.div`
 const AssignmentContainer = styled.div`
   width: 100%;
   padding: 0 10px;
-  @media ${({ theme }) => theme.devices.MOBILE} {
+  @media ${({ theme }) => theme.size.mobile} {
     padding: 0 30px;
   }
   white-space: pre-line;
@@ -148,10 +148,10 @@ const AssignmentBoxes = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 40px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     gap: 40px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     gap: 70px;
   }
 `;
@@ -173,11 +173,11 @@ const AdditionalInfoLink = styled.p`
   font-weight: 300;
   line-height: 18px;
   color: #939393;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     font-size: 16px;
     line-height: 24px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     font-size: 20px;
   }
   align-self: center;
@@ -189,17 +189,17 @@ const AdditionalInfo = styled.p`
   font-weight: 300;
   line-height: 18px;
 
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     font-size: 16px;
     line-height: 24px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     font-size: 20px;
   }
   align-self: center;
 `;
 const Link = styled.a`
-  color: ${({ theme }) => theme.colors.MAIN_PINK};
+  color: ${({ theme }) => theme.colors.pink100};
   text-underline-position: under;
   text-decoration-thickness: 2px;
 `;
