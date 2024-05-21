@@ -25,6 +25,8 @@ const Check = () => {
       setIsChecked(isExist);
     } catch (error) {
       setIsLoading(false);
+    } finally {
+      setIsLoading(false);
     }
   };
 
