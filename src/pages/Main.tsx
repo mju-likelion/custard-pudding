@@ -115,8 +115,8 @@ const Title = styled.p`
   display: inline-block;
   margin-bottom: 50px;
   border-bottom: 2px solid ${({ theme }) => theme.colors.white};
-  ${({ theme }) => theme.typographies.subtitle} @media ${({ theme }) =>
-    theme.size.tablet} {
+  ${({ theme }) => theme.typographies.subtitle}
+  @media ${({ theme }) => theme.size.tablet} {
     ${({ theme }) => theme.typographies.title}
   }
 `;

@@ -28,22 +28,22 @@ const Wrapper = styled.button`
   font-weight: 500;
   width: 130px;
   height: 45px;
-  color: ${({ theme }) => theme.colors.WHITE_TXT};
+  color: ${({ theme }) => theme.colors.white};
   background-color: ${({ theme, disabled }) =>
-    disabled ? theme.colors.DISABLE_BTN : theme.colors.MAIN_PINK};
+    disabled ? theme.colors.background100 : theme.colors.pink100};
 
   &:hover {
     background-color: ${({ theme, disabled }) =>
-      disabled ? theme.colors.DISABLE_BTN : theme.colors.HOVER_BTN};
+      disabled ? theme.colors.background100 : theme.colors.pink200};
   }
 
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     border-radius: 35px;
     font-size: 22px;
     width: 200px;
     height: 70px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     font-size: 26px;
     border-radius: 60px;
     width: 250px;
