@@ -62,7 +62,7 @@ const Check = () => {
           >
             <ContentsWrapper>
               <SubTitle>지원 확인하기</SubTitle>
-              <InputWraaper>
+              <InputWrapper>
                 <Input
                   inputSize={inputSizeValue}
                   captionSize={captionSizeValue}
@@ -70,7 +70,7 @@ const Check = () => {
                   hookFormRegister={register}
                   messageErrors={errors}
                 />
-              </InputWraaper>
+              </InputWrapper>
               <SmallButton disabled={isLoading} type="submit">
                 {isLoading ? '로딩중' : '확인하기'}
               </SmallButton>
@@ -96,7 +96,7 @@ const Container = styled.div`
     height: calc(100vh - 100px - 70px);
   }
 `;
-const InputWraaper = styled.div`
+const InputWrapper = styled.div`
   margin: 34px 0 60px 0;
 
   @media ${({ theme }) => theme.devices.DESKTOP} {

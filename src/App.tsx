@@ -1,15 +1,12 @@
 import { ThemeProvider } from 'styled-components';
 import { BrowserRouter } from 'react-router-dom';
-import { Theme } from './styles/Theme';
+import { theme } from './styles';
 import GlobalStyle from './styles/GlobalStyle';
 import RoutesContainer from './components/RoutesContainer';
-import useRouteTracker from './hooks/useRouteTracker';
 
 function App() {
-  // useRouteTracker();
-
   return (
-    <ThemeProvider theme={Theme}>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <BrowserRouter>
         <RoutesContainer />
