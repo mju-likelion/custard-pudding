@@ -1,8 +1,19 @@
 import styled from 'styled-components';
+import { PropsWithChildren } from 'react';
+import React from 'react';
 
-const BigButton = ({ children, disabled, onClick }) => {
+interface BigButtonProps {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
+}
+
+const BigButton = ({
+  children,
+  disabled = false,
+  onClick,
+}: PropsWithChildren<BigButtonProps>) => {
   return (
-    <Wrapper type="button" disabled={disabled} onClick={onClick}>
+    <Wrapper type="button" onClick={onClick}>
       {children}
     </Wrapper>
   );
