@@ -18,11 +18,11 @@ const OpenChatLink = styled.a`
   text-decoration: none;
   z-index: 999;
 
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     right: 90px;
     bottom: 80px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     right: 120px;
     bottom: 100px;
   }
@@ -34,25 +34,25 @@ const Box = styled.div`
   font-size: 12px;
   font-weight: 300;
 
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 150px;
     height: 45px;
     padding: 14px;
-    ${({ theme }) => theme.typographies.SMALL_TXT};
+    ${({ theme }) => theme.typographies.smallTxt};
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     width: 180px;
     height: 55px;
     padding: 18px 15px 15px;
-    ${({ theme }) => theme.typographies.DEFAULT_TXT};
+    ${({ theme }) => theme.typographies.defaultTxt};
   }
 
   position: relative;
   border-radius: 25px;
   text-align: center;
   line-height: 20px;
-  color: ${({ theme }) => theme.colors.WHITE_TXT};
-  background-color: ${({ theme }) => theme.colors.MODAL_BG};
+  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.background200};
 `;
 const LionImg = styled.img`
   position: absolute;
@@ -60,12 +60,12 @@ const LionImg = styled.img`
   top: -23px;
   right: -55px;
 
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 100px;
     top: -25px;
     right: -65px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     width: 120px;
     top: -30px;
     right: -80px;
