@@ -14,13 +14,13 @@ const Box = styled.div<{ $position: number }>`
 
   top: ${({ $position }) => `calc(${$position}%)`};
 
-  @media ${({ theme }) => theme.devices.MOBILE} {
+  @media ${({ theme }) => theme.size.mobile} {
     top: ${({ $position }) => `calc(${$position}%)`};
   }
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     top: ${({ $position }) => `calc(${$position}%)`};
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     top: ${({ $position }) => `calc(${$position}%)`};
   }
 `;
@@ -33,11 +33,11 @@ const Wave = styled.div<{ $position: number }>`
   width: 70px;
   height: 60px;
 
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 80px;
     height: 60px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     width: 120px;
     height: 90px;
   }
