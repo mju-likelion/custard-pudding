@@ -4,21 +4,12 @@ interface WaveAnimationProps {
   position: number;
 }
 
-const WaveAnimation = ({ position }: WaveAnimationProps) => {
-  return (
-    <Box $position={position}>
-      <Wave className="one" $position={position} />
-      <Wave className="two" $position={position} />
-    </Box>
-  );
-};
-
 const rotate = keyframes`
   from { transform: rotate(0deg); }
   to { transform: rotate(-360deg); }
 `;
 
-const Box = styled.div`
+const Box = styled.div<{ $position: number }>`
   position: relative;
 
   top: ${({ $position }) => `calc(${$position}%)`};
@@ -34,7 +25,7 @@ const Box = styled.div`
   }
 `;
 
-const Wave = styled.div`
+const Wave = styled.div<{ $position: number }>`
   position: absolute;
   opacity: 0.4;
   border-radius: 45%;
@@ -62,5 +53,14 @@ const Wave = styled.div`
     background: #ffabbe;
   }
 `;
+
+const WaveAnimation = ({ position }: WaveAnimationProps) => {
+  return (
+    <Box $position={position}>
+      <Wave className="one" $position={position} />
+      <Wave className="two" $position={position} />
+    </Box>
+  );
+};
 
 export default WaveAnimation;
