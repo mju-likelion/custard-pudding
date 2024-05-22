@@ -2,8 +2,27 @@ import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import WaveAnimation from './Wave';
 
+const Wrapper = styled.div`
+  z-index: 999;
+  width: 20px;
+  // 화면 높이 - 원 높이
+  height: calc(100vh - 60px);
+  @media ${({ theme }) => theme.size.tablet} {
+    width: 30px;
+    height: calc(100vh - 70px);
+  }
+  @media ${({ theme }) => theme.size.desktop} {
+    width: 50px;
+    height: calc(100vh - 110px);
+  }
+  position: fixed;
+  top: 0;
+  right: 0;
+  text-align: center;
+`;
+
 const ScrollBar = () => {
-  const [position, setPosition] = useState(0);
+  const [position, setPosition] = useState<number>(0);
 
   function onScroll() {
     // 현재 스크롤 위치
@@ -33,22 +52,4 @@ const ScrollBar = () => {
   );
 };
 
-const Wrapper = styled.div`
-  z-index: 999;
-  width: 20px;
-  // 화면 높이 - 원 높이
-  height: calc(100vh - 60px);
-  @media ${({ theme }) => theme.devices.TABLET} {
-    width: 30px;
-    height: calc(100vh - 70px);
-  }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    width: 50px;
-    height: calc(100vh - 110px);
-  }
-  position: fixed;
-  top: 0;
-  right: 0;
-  text-align: center;
-`;
 export default ScrollBar;

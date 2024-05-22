@@ -1,6 +1,10 @@
 import styled, { keyframes } from 'styled-components';
 
-const WaveAnimation = ({ position }) => {
+interface WaveAnimationProps {
+  position: number;
+}
+
+const WaveAnimation = ({ position }: WaveAnimationProps) => {
   return (
     <Box $position={position}>
       <Wave className="one" $position={position} />
