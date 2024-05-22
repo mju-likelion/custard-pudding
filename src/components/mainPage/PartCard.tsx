@@ -9,27 +9,6 @@ interface PartCardProps {
   tech_list: string;
 }
 
-const PartCard = ({
-  part_name,
-  icon,
-  content,
-  tech_list,
-}: PropsWithChildren<PartCardProps>) => {
-  return (
-    <CardContainer>
-      <Ring src={card_ring} />
-      <Card>
-        <Part>
-          <PartTitle>{part_name}</PartTitle>
-          <Icon src={icon} />
-        </Part>
-        <Content>{content}</Content>
-        <TechList>{tech_list}</TechList>
-      </Card>
-    </CardContainer>
-  );
-};
-
 const CardContainer = styled.div`
   position: relative;
 `;
@@ -97,5 +76,26 @@ const TechList = styled.p`
     line-height: 23px;
   }
 `;
+
+const PartCard = ({
+  part_name,
+  icon,
+  content,
+  tech_list,
+}: PropsWithChildren<PartCardProps>) => {
+  return (
+    <CardContainer>
+      <Ring src={card_ring} />
+      <Card>
+        <Part>
+          <PartTitle>{part_name}</PartTitle>
+          <Icon src={icon} />
+        </Part>
+        <Content>{content}</Content>
+        <TechList>{tech_list}</TechList>
+      </Card>
+    </CardContainer>
+  );
+};
 
 export default PartCard;

@@ -6,19 +6,6 @@ interface AssignmentBoxProps {
   assignment: string;
 }
 
-const AssignmentBox = ({
-  part_name,
-  assignment,
-}: PropsWithChildren<AssignmentBoxProps>) => {
-  return (
-    <Box>
-      <PartName>{part_name}</PartName>
-      <Line />
-      <Content>{assignment}</Content>
-    </Box>
-  );
-};
-
 const Box = styled.div`
   width: 280px;
   padding: 15px;
@@ -75,5 +62,18 @@ const Content = styled.p`
     ${({ theme }) => theme.typographies.bigTxt}
   }
 `;
+
+const AssignmentBox = ({
+  part_name,
+  assignment,
+}: PropsWithChildren<AssignmentBoxProps>) => {
+  return (
+    <Box>
+      <PartName>{part_name}</PartName>
+      <Line />
+      <Content>{assignment}</Content>
+    </Box>
+  );
+};
 
 export default AssignmentBox;

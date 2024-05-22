@@ -10,64 +10,6 @@ import part_message from '../messages/part';
 const LETTER_URL =
   'https://likelion12th-apply-pages.s3.ap-northeast-2.amazonaws.com/svgs/letter.svg';
 
-const Main = () => {
-  const navigate = useNavigate();
-  return (
-    <Container>
-      <PageWrapper>
-        <LetterImg src={LETTER_URL} />
-        <PartContainer>
-          <Title>파트</Title>
-          <PartCards>
-            {Object.entries(part_message).map(([key, value]) => (
-              <PartCard
-                key={key}
-                part_name={value.part_name}
-                icon={value.icon}
-                content={value.content}
-                tech_list={value.tech_list}
-              />
-            ))}
-          </PartCards>
-        </PartContainer>
-        <AssignmentContainer>
-          <Title>지원 과제</Title>
-          <AssignmentBoxes>
-            {Object.entries(part_message).map(([key, value]) => (
-              <AssignmentBox
-                key={key}
-                part_name={value.part_name}
-                assignment={value.assignment}
-              />
-            ))}
-          </AssignmentBoxes>
-          <BottomBox>
-            <Texts>
-              <AdditionalInfoLink>
-                ※ 지원 과제에 대한 추가적인 설명은 &nbsp;
-                <Link
-                  href="https://material-handle-e32.notion.site/2a29850ebb4442b19b091d7a708dcc4e?pvs=4"
-                  target="_blank"
-                >
-                  Notion
-                </Link>
-                &nbsp;을 반드시 참고 바랍니다.
-              </AdditionalInfoLink>
-              <AdditionalInfo>
-                ※ 지원 접수 마감일에는 지원자가 몰려 지원이 어려울 수 있으니,
-                가능하다면 미리 제출해 주시기 바랍니다.
-              </AdditionalInfo>
-            </Texts>
-            <BigButton onClick={() => navigate('/apply')}>지원하기</BigButton>
-          </BottomBox>
-        </AssignmentContainer>
-      </PageWrapper>
-      <OpenChat />
-      <ScrollBar />
-    </Container>
-  );
-};
-
 const Container = styled.div`
   display: flex;
 `;
@@ -203,5 +145,63 @@ const Link = styled.a`
   text-underline-position: under;
   text-decoration-thickness: 2px;
 `;
+
+const Main = () => {
+  const navigate = useNavigate();
+  return (
+    <Container>
+      <PageWrapper>
+        <LetterImg src={LETTER_URL} />
+        <PartContainer>
+          <Title>파트</Title>
+          <PartCards>
+            {Object.entries(part_message).map(([key, value]) => (
+              <PartCard
+                key={key}
+                part_name={value.part_name}
+                icon={value.icon}
+                content={value.content}
+                tech_list={value.tech_list}
+              />
+            ))}
+          </PartCards>
+        </PartContainer>
+        <AssignmentContainer>
+          <Title>지원 과제</Title>
+          <AssignmentBoxes>
+            {Object.entries(part_message).map(([key, value]) => (
+              <AssignmentBox
+                key={key}
+                part_name={value.part_name}
+                assignment={value.assignment}
+              />
+            ))}
+          </AssignmentBoxes>
+          <BottomBox>
+            <Texts>
+              <AdditionalInfoLink>
+                ※ 지원 과제에 대한 추가적인 설명은 &nbsp;
+                <Link
+                  href="https://material-handle-e32.notion.site/2a29850ebb4442b19b091d7a708dcc4e?pvs=4"
+                  target="_blank"
+                >
+                  Notion
+                </Link>
+                &nbsp;을 반드시 참고 바랍니다.
+              </AdditionalInfoLink>
+              <AdditionalInfo>
+                ※ 지원 접수 마감일에는 지원자가 몰려 지원이 어려울 수 있으니,
+                가능하다면 미리 제출해 주시기 바랍니다.
+              </AdditionalInfo>
+            </Texts>
+            <BigButton onClick={() => navigate('/apply')}>지원하기</BigButton>
+          </BottomBox>
+        </AssignmentContainer>
+      </PageWrapper>
+      <OpenChat />
+      <ScrollBar />
+    </Container>
+  );
+};
 
 export default Main;

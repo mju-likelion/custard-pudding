@@ -11,6 +11,33 @@ import CheckCard from '../components/checkPage/CheckCard';
 import { idValidationSchema } from '../validation/idValidationSchema';
 import { StudentData } from './Apply';
 
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 100px - 56px);
+  @media ${({ theme }) => theme.devices.TABLET} {
+    height: calc(100vh - 100px - 70px);
+  }
+`;
+const InputWrapper = styled.div`
+  margin: 34px 0 60px 0;
+
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    margin: 18px 0 40px 0;
+  }
+`;
+const ContentsWrapper = styled.div`
+  margin: 42px 16px 19px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    margin: 85px 54px 24px 52px;
+  }
+`;
+
 const Check = () => {
   const [isChecked, setIsChecked] = useState<boolean | undefined>(undefined);
   const [value, setValue] = useState('');
@@ -84,32 +111,5 @@ const Check = () => {
     </Container>
   );
 };
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: calc(100vh - 100px - 56px);
-  @media ${({ theme }) => theme.devices.TABLET} {
-    height: calc(100vh - 100px - 70px);
-  }
-`;
-const InputWrapper = styled.div`
-  margin: 34px 0 60px 0;
-
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    margin: 18px 0 40px 0;
-  }
-`;
-const ContentsWrapper = styled.div`
-  margin: 42px 16px 19px 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    margin: 85px 54px 24px 52px;
-  }
-`;
 
 export default Check;

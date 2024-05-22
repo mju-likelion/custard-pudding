@@ -9,26 +9,6 @@ interface CardLanyardProps {
   pcHeight: number;
 }
 
-const CardLanyard = ({
-  width,
-  height,
-  pcWidth,
-  pcHeight,
-  children,
-}: PropsWithChildren<CardLanyardProps>) => {
-  return (
-    <CardContainer
-      width={width}
-      height={height}
-      $pcWidth={pcWidth}
-      $pcHeight={pcHeight}
-    >
-      <NameCardString />
-      <CardBody>{children}</CardBody>
-    </CardContainer>
-  );
-};
-
 const CardContainer = styled.div<{
   width: number;
   height: number;
@@ -70,5 +50,25 @@ const CardBody = styled.div`
   width: 100%;
   height: 100%;
 `;
+
+const CardLanyard = ({
+  width,
+  height,
+  pcWidth,
+  pcHeight,
+  children,
+}: PropsWithChildren<CardLanyardProps>) => {
+  return (
+    <CardContainer
+      width={width}
+      height={height}
+      $pcWidth={pcWidth}
+      $pcHeight={pcHeight}
+    >
+      <NameCardString />
+      <CardBody>{children}</CardBody>
+    </CardContainer>
+  );
+};
 
 export default CardLanyard;

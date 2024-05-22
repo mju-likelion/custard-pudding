@@ -1,16 +1,6 @@
 import styled from 'styled-components';
 import lion from '.././../assets/imgs/openchat_lion.svg';
 
-const OpenChat = () => {
-  const openChatLink = 'https://open.kakao.com/o/spjt66ag';
-  return (
-    <OpenChatLink href={openChatLink} target="_blank">
-      <Box>카카오톡 문의하기</Box>
-      <LionImg src={lion} />
-    </OpenChatLink>
-  );
-};
-
 const OpenChatLink = styled.a`
   position: fixed;
   right: 70px;
@@ -71,5 +61,15 @@ const LionImg = styled.img`
     right: -80px;
   }
 `;
+
+const OpenChat = () => {
+  const openChatLink = 'https://open.kakao.com/o/spjt66ag';
+  return (
+    <OpenChatLink href={openChatLink} target="_blank">
+      <Box>카카오톡 문의하기</Box>
+      <LionImg src={lion} />
+    </OpenChatLink>
+  );
+};
 
 export default OpenChat;

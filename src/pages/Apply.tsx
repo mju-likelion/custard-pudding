@@ -22,6 +22,33 @@ enum STATUS_CODE {
   'ALREADY_APPLIED' = '4090',
 }
 
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 100px - 56px);
+  @media ${({ theme }) => theme.size.tablet} {
+    height: calc(100vh - 100px - 70px);
+  }
+`;
+const InputWrapper = styled.div`
+  margin: 34px 0 60px 0;
+
+  @media ${({ theme }) => theme.size.desktop} {
+    margin: 18px 0 40px 0;
+  }
+`;
+const ContentsWrapper = styled.div`
+  margin: 42px 16px 19px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media ${({ theme }) => theme.size.desktop} {
+    margin: 85px 54px 24px 52px;
+  }
+`;
+
 const Apply = () => {
   const [hasAlreadyApplied, setHasAlreadyApplied] = useState<boolean>(false);
   const [value, setValue] = useState('');
@@ -120,31 +147,5 @@ const Apply = () => {
     </Container>
   );
 };
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: calc(100vh - 100px - 56px);
-  @media ${({ theme }) => theme.size.tablet} {
-    height: calc(100vh - 100px - 70px);
-  }
-`;
-const InputWrapper = styled.div`
-  margin: 34px 0 60px 0;
-
-  @media ${({ theme }) => theme.size.desktop} {
-    margin: 18px 0 40px 0;
-  }
-`;
-const ContentsWrapper = styled.div`
-  margin: 42px 16px 19px 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  @media ${({ theme }) => theme.size.desktop} {
-    margin: 85px 54px 24px 52px;
-  }
-`;
 
 export default Apply;
