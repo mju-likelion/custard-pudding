@@ -1,23 +1,6 @@
 import styled from 'styled-components';
 import { ToastContainer } from 'react-toastify';
 
-const Toast = () => {
-  return (
-    <StyledToastContainer
-      limit={1}
-      position="bottom-center"
-      autoClose={1500}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-    />
-  );
-};
-
 const StyledToastContainer = styled(ToastContainer)`
   width: 100%;
   display: flex;
@@ -40,5 +23,22 @@ const StyledToastContainer = styled(ToastContainer)`
     }
   }
 `;
+
+const Toast = () => {
+  return (
+    <StyledToastContainer
+      limit={1}
+      position="bottom-center"
+      autoClose={1500}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+    />
+  );
+};
 
 export default Toast;
