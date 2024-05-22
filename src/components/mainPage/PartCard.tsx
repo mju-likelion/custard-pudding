@@ -1,7 +1,20 @@
 import styled from 'styled-components';
 import card_ring from '../../assets/imgs/card_ring.svg';
+import { PropsWithChildren } from 'react';
 
-const PartCard = ({ part_name, icon, content, tech_list }) => {
+interface PartCardProps {
+  part_name: string;
+  icon?: string;
+  content: string;
+  tech_list: string;
+}
+
+const PartCard = ({
+  part_name,
+  icon,
+  content,
+  tech_list,
+}: PropsWithChildren<PartCardProps>) => {
   return (
     <CardContainer>
       <Ring src={card_ring} />
@@ -23,7 +36,7 @@ const CardContainer = styled.div`
 const Ring = styled.img`
   width: 58px;
   margin: -17px 0 0 -20px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 105px;
     margin: -30px 0 0 -36px;
   }
@@ -34,7 +47,7 @@ const Card = styled.div`
   width: 280px;
   height: 200px;
   padding: 10px 15px 15px 20px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 490px;
     height: 300px;
     padding: 10px 20px 20px 30px;
@@ -42,12 +55,12 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: ${({ theme }) => theme.colors.CARD_BG};
+  background-color: ${({ theme }) => theme.colors.background300};
   border-radius: 30px;
 `;
 const Part = styled.div`
   height: 35px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     height: 62px;
   }
   align-self: end;
@@ -58,30 +71,29 @@ const Part = styled.div`
 const PartTitle = styled.p`
   font-size: 20px;
   font-weight: 700;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    ${({ theme }) => theme.typographies.SUB_TITLE}
+  @media ${({ theme }) => theme.size.tablet} {
+    ${({ theme }) => theme.typographies.subtitle}
   }
 `;
 const Icon = styled.img`
   width: 35px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 64px;
   }
 `;
 const Content = styled.p`
-  ${({ theme }) => theme.typographies.M_DEFAULT_TXT}
+  ${({ theme }) => theme.typographies.mDefault}
   line-height: 30px;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    ${({ theme }) => theme.typographies.BIG_TXT}
+  @media ${({ theme }) => theme.size.tablet} {
+    ${({ theme }) => theme.typographies.bigTxt}
     line-height: 40px;
   }
-}
 `;
 const TechList = styled.p`
-  ${({ theme }) => theme.typographies.M_SMALL_TXT}
+  ${({ theme }) => theme.typographies.mSmall}
   line-height: 14px;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    ${({ theme }) => theme.typographies.SMALL_TXT}
+  @media ${({ theme }) => theme.size.tablet} {
+    ${({ theme }) => theme.typographies.smallTxt}
     line-height: 23px;
   }
 `;
