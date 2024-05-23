@@ -11,7 +11,7 @@ import CheckCard from '../components/checkPage/CheckCard';
 import { idValidationSchema } from '../validation/idValidationSchema';
 import { StudentData } from './Apply';
 
-interface SizeValue {
+export interface SizeValue {
   width: number;
   height: number;
   pcWidth: number;
