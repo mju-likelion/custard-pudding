@@ -1,6 +1,13 @@
 import styled from 'styled-components';
+import { SizeValue } from 'pages/Check';
 
-const Caption = styled.p`
+interface InputProps {
+  inputSize: SizeValue;
+  captionSize: SizeValue;
+  messageSize: SizeValue;
+}
+
+const Caption = styled.p<{ $captionSize: SizeValue }>`
   ${({ theme }) => theme.typographies.smallTxt};
   text-align: left;
   margin: 0 0 6px 2px;
@@ -16,7 +23,7 @@ const Caption = styled.p`
   }
 `;
 
-const StyledInput = styled.input`
+const StyledInput = styled.input<{ $inputSize: SizeValue }>`
   width: 100%;
   height: ${({ $inputSize }) => $inputSize.height};
   background: transparent;
@@ -32,7 +39,7 @@ const StyledInput = styled.input`
   }
 `;
 
-const ErrorMessage = styled.p`
+const ErrorMessage = styled.p<{ $messageSize: SizeValue }>`
   width: ${({ $messageSize }) => $messageSize.width};
   height: ${({ $messageSize }) => $messageSize.height};
   color: ${({ theme }) => theme.colors.pink200};
@@ -56,7 +63,7 @@ const Input = ({
   messageSize,
   hookFormRegister,
   messageErrors,
-}) => {
+}: InputProps) => {
   return (
     <Wrapper>
       <Caption $captionSize={captionSize}>학번</Caption>

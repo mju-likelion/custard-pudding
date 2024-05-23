@@ -11,6 +11,13 @@ import CheckCard from '../components/checkPage/CheckCard';
 import { idValidationSchema } from '../validation/idValidationSchema';
 import { StudentData } from './Apply';
 
+interface SizeValue {
+  width: number;
+  height: number;
+  pcWidth: number;
+  pcHeight: number;
+}
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -57,23 +64,23 @@ const Check = () => {
     }
   };
 
-  const inputSizeValue = {
-    width: '220px',
-    height: '28px',
-    pcWidth: '438px',
-    pcHeight: '56px',
+  const inputSizeValue: SizeValue = {
+    width: 220,
+    height: 28,
+    pcWidth: 438,
+    pcHeight: 56,
   };
-  const captionSizeValue = {
-    width: '220px',
-    height: '12px',
-    pcWidth: '438px',
-    pcHeight: '24px',
+  const captionSizeValue: SizeValue = {
+    width: 220,
+    height: 12,
+    pcWidth: 438,
+    pcHeight: 24,
   };
-  const messageSizeValue = {
-    width: '220px',
-    height: '8px',
-    pcWidth: '438px',
-    pcHeight: '20px',
+  const messageSizeValue: SizeValue = {
+    width: 220,
+    height: 8,
+    pcWidth: 438,
+    pcHeight: 20,
   };
   const {
     register,

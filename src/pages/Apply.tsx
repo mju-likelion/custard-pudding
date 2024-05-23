@@ -103,10 +103,10 @@ const Apply = () => {
     pcHeight: '56px',
   };
   const captionSizeValue = {
-    width: '220px',
-    height: '12px',
-    pcWidth: '438px',
-    pcHeight: '24px',
+    width: 220,
+    height: 12,
+    pcWidth: 438,
+    pcHeight: 24,
   };
   const messageSizeValue = {
     width: '220px',
