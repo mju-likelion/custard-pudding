@@ -12,11 +12,11 @@ const CardContainer = styled.div`
   align-items: center;
   position: relative;
   border-radius: 25px;
-  background: ${({ theme }) => theme.colors.MODAL_BG};
+  background: ${({ theme }) => theme.colors.background200};
 
   width: 240px;
   height: 300px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 340px;
     height: 420px;
     margin-top: 50px;
@@ -27,7 +27,7 @@ const Tag = styled.img`
 
   width: 70px;
   margin: -44px auto 0;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 105px;
     margin: -65px auto 0;
   }
@@ -36,12 +36,12 @@ const Content = styled.div`
   margin: 30px 0 20px;
   text-align: center;
   white-space: pre-wrap;
-  color: ${({ theme }) => theme.colors.WHITE_TXT};
+  color: ${({ theme }) => theme.colors.white};
 
-  ${({ theme }) => theme.typographies.DEFAULT_TXT};
+  ${({ theme }) => theme.typographies.defaultTxt};
   line-height: 30px;
 
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     font-size: 28px;
     font-weight: 700;
     line-height: 45px;
@@ -54,10 +54,10 @@ const Icon = styled.img`
 
   width: 150px;
   height: 95px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 200px;
     height: 160px;
-    ${({ theme }) => theme.typographies.TITLE};
+    ${({ theme }) => theme.typographies.title};
   }
 `;
 
