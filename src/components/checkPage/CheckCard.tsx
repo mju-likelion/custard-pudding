@@ -1,10 +1,15 @@
 import styled from 'styled-components';
-const TAG =
-  'https://likelion12th-apply-pages.s3.ap-northeast-2.amazonaws.com/svgs/card_tag_upload.svg';
 import { useNavigate } from 'react-router-dom';
 import SmallButton from './SmallButton';
-
 import { resultData } from './resultData';
+
+interface CheckCardPrpps {
+  status: 'check_success' | 'check_failed' | 'rejected';
+  value: string;
+}
+
+const TAG =
+  'https://likelion12th-apply-pages.s3.ap-northeast-2.amazonaws.com/svgs/card_tag_upload.svg';
 
 const CardContainer = styled.div`
   display: flex;
@@ -61,7 +66,7 @@ const Icon = styled.img`
   }
 `;
 
-const CheckCard = ({ status, value }) => {
+const CheckCard = ({ status, value }: CheckCardPrpps) => {
   const navigate = useNavigate();
   let result = {};
 
