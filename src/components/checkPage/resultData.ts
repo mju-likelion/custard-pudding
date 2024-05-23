@@ -5,7 +5,14 @@ const FAILED_IMG_URL =
 const REJECTED_IMG_URL =
   'https://likelion12th-apply-pages.s3.ap-northeast-2.amazonaws.com/svgs/apply_reject.svg';
 
-export const resultData = {
+interface ResultData {
+  [key: string]: {
+    content: string;
+    img: string;
+  };
+}
+
+export const resultData: ResultData = {
   check_success: {
     content: '님의\n 지원이 정상적으로\n 확인되었습니다.',
     img: SUCCESS_IMG_URL,

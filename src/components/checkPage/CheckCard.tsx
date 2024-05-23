@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import SmallButton from './SmallButton';
 import { resultData } from './resultData';
 
-interface CheckCardPrpps {
+interface CheckCardProps {
   status: 'check_success' | 'check_failed' | 'rejected';
   value: string;
 }
@@ -66,23 +66,9 @@ const Icon = styled.img`
   }
 `;
 
-const CheckCard = ({ status, value }: CheckCardPrpps) => {
+const CheckCard = ({ status, value }: CheckCardProps) => {
   const navigate = useNavigate();
-  let result = {};
-
-  switch (status) {
-    case 'check_success':
-      result = resultData['check_success'];
-      break;
-
-    case 'check_failed':
-      result = resultData['check_failed'];
-      break;
-
-    case 'rejected':
-      result = resultData['rejected'];
-      break;
-  }
+  const result = resultData[status];
 
   return (
     <CardContainer>
