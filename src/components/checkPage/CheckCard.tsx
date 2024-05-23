@@ -6,36 +6,6 @@ import SmallButton from './SmallButton';
 
 import { resultData } from './resultData';
 
-const CheckCard = ({ status, value }) => {
-  const navigate = useNavigate();
-  let result = {};
-
-  switch (status) {
-    case 'check_success':
-      result = resultData['check_success'];
-      break;
-
-    case 'check_failed':
-      result = resultData['check_failed'];
-      break;
-
-    case 'rejected':
-      result = resultData['rejected'];
-      break;
-  }
-
-  return (
-    <CardContainer>
-      <Tag src={TAG} />
-      <Content>{value + result.content}</Content>
-      <Icon src={result.img} />
-      <SmallButton type="button" onClick={() => navigate('/')}>
-        메인으로
-      </SmallButton>
-    </CardContainer>
-  );
-};
-
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -90,4 +60,35 @@ const Icon = styled.img`
     ${({ theme }) => theme.typographies.TITLE};
   }
 `;
+
+const CheckCard = ({ status, value }) => {
+  const navigate = useNavigate();
+  let result = {};
+
+  switch (status) {
+    case 'check_success':
+      result = resultData['check_success'];
+      break;
+
+    case 'check_failed':
+      result = resultData['check_failed'];
+      break;
+
+    case 'rejected':
+      result = resultData['rejected'];
+      break;
+  }
+
+  return (
+    <CardContainer>
+      <Tag src={TAG} />
+      <Content>{value + result.content}</Content>
+      <Icon src={result.img} />
+      <SmallButton type="button" onClick={() => navigate('/')}>
+        메인으로
+      </SmallButton>
+    </CardContainer>
+  );
+};
+
 export default CheckCard;

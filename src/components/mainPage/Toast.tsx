@@ -7,7 +7,7 @@ const StyledToastContainer = styled(ToastContainer)`
   justify-content: center;
   &&&.Toastify__toast-container {
     margin-bottom: 100px;
-    @media ${({ theme }) => theme.devices.TABLET} {
+    @media ${({ theme }) => theme.size.tablet} {
       margin-bottom: 70px;
     }
     .Toastify__toast {
