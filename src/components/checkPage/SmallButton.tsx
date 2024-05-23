@@ -2,8 +2,8 @@ import { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import React from 'react';
 
-interface SmallButtonProps {
-  type: 'submit';
+interface SmallButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
 }
