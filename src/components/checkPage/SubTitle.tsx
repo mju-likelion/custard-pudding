@@ -5,14 +5,6 @@ interface SubTitleProps {
   children: React.ReactNode;
 }
 
-const SubTitle = (props: SubTitleProps) => {
-  return (
-    <>
-      <TitleBox>{props.children}</TitleBox>
-    </>
-  );
-};
-
 const TitleBox = styled.div`
   ${({ theme }) => theme.typographies.defaultTxt};
   border-bottom: 1px solid;
@@ -24,5 +16,13 @@ const TitleBox = styled.div`
     padding-bottom: 4px;
   }
 `;
+
+const SubTitle = (props: SubTitleProps) => {
+  return (
+    <>
+      <TitleBox>{props.children}</TitleBox>
+    </>
+  );
+};
 
 export default SubTitle;
