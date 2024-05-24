@@ -15,13 +15,12 @@ const Caption = styled.p<{ $captionSize: SizeValue }>`
   ${({ theme }) => theme.typographies.smallTxt};
   text-align: left;
   margin: 0 0 6px 2px;
-
-  width: ${({ $captionSize }) => $captionSize.width};
-  height: ${({ $captionSize }) => $captionSize.height};
+  width: ${({ $captionSize }) => `${$captionSize.width}px`};
+  height: ${({ $captionSize }) => `${$captionSize.height}px`};
 
   @media ${({ theme }) => theme.size.desktop} {
-    width: ${({ $captionSize }) => $captionSize.pcWidth};
-    height: ${({ $captionSize }) => $captionSize.pcHeight};
+    width: ${({ $captionSize }) => `${$captionSize.pcWidth}px`};
+    height: ${({ $captionSize }) => `${$captionSize.pcHeight}px`};
     ${({ theme }) => theme.typographies.bigTxt};
     margin: 0 0 4px 2px;
   }
@@ -38,22 +37,22 @@ const StyledInput = styled.input<{ $inputSize: SizeValue }>`
   border-radius: 8px;
 
   @media ${({ theme }) => theme.size.desktop} {
-    width: ${({ $inputSize }) => $inputSize.pcWidth};
-    height: ${({ $inputSize }) => $inputSize.pcHeight};
+    width: ${({ $inputSize }) => `${$inputSize.pcWidth}px`};
+    height: ${({ $inputSize }) => `${$inputSize.pcHeight}px`};
   }
 `;
 
 const ErrorMessage = styled.p<{ $messageSize: SizeValue }>`
-  width: ${({ $messageSize }) => $messageSize.width};
-  height: ${({ $messageSize }) => $messageSize.height};
+  width: ${({ $messageSize }) => `${$messageSize.width}px`};
+  height: ${({ $messageSize }) => `${$messageSize.height}px`};
   color: ${({ theme }) => theme.colors.pink200};
   ${({ theme }) => theme.typographies.smallErrorTxt};
   margin-top: 7px;
   margin-left: 4px;
 
   @media ${({ theme }) => theme.size.desktop} {
-    width: ${({ $messageSize }) => $messageSize.pcWidth};
-    height: ${({ $messageSize }) => $messageSize.pcHeight};
+    width: ${({ $messageSize }) => `${$messageSize.pcWidth}px`};
+    height: ${({ $messageSize }) => `${$messageSize.pcHeight}px`};
     ${({ theme }) => theme.typographies.bigTxt};
     margin-top: 10px;
   }
