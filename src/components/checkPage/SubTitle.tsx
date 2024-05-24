@@ -1,9 +1,14 @@
 import styled from 'styled-components';
+import React from 'react';
 
-const SubTitle = ({ children }) => {
+interface SubTitleProps {
+  children: React.ReactNode;
+}
+
+const SubTitle = (props: SubTitleProps) => {
   return (
     <>
-      <TitleBox>{children}</TitleBox>
+      <TitleBox>{props.children}</TitleBox>
     </>
   );
 };
