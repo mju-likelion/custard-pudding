@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
 import { Axios } from '../api/Axios';
@@ -50,7 +50,9 @@ const Check = () => {
   const [value, setValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleFormSubmit = async (data: StudentData) => {
+  const handleFormSubmit: SubmitHandler<StudentData> = async (
+    data: StudentData,
+  ) => {
     setValue(data.id);
     try {
       setIsLoading(true);
@@ -82,11 +84,14 @@ const Check = () => {
     pcWidth: 438,
     pcHeight: 20,
   };
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(idValidationSchema) });
+  } = useForm<StudentData>({
+    resolver: yupResolver(idValidationSchema),
+  });
 
   return (
     <Container>

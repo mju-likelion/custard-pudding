@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 import { SizeValue } from 'pages/Check';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
+import { StudentData } from 'pages/Apply';
 
 interface InputProps {
   inputSize: SizeValue;
   captionSize: SizeValue;
   messageSize: SizeValue;
+  hookFormRegister: UseFormRegister<StudentData>;
+  messageErrors: FieldErrors<StudentData>;
 }
 
 const Caption = styled.p<{ $captionSize: SizeValue }>`
