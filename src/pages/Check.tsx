@@ -60,7 +60,7 @@ const Check = () => {
       const isExist = response?.data?.data?.isExist;
       setIsChecked(isExist);
     } catch (error) {
-      setIsLoading(false);
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
