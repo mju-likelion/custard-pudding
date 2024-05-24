@@ -10,7 +10,7 @@ import Input from '../components/checkPage/Input';
 import SmallButton from '../components/checkPage/SmallButton';
 import { idValidationSchema } from '../validation/idValidationSchema';
 import CheckCard from '../components/checkPage/CheckCard';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 
 export interface StudentData {
   id: string;
@@ -97,10 +97,10 @@ const Apply = () => {
     }
   };
   const inputSizeValue = {
-    width: '220px',
-    height: '28px',
-    pcWidth: '438px',
-    pcHeight: '56px',
+    width: 220,
+    height: 28,
+    pcWidth: 438,
+    pcHeight: 56,
   };
   const captionSizeValue = {
     width: 220,
@@ -109,10 +109,10 @@ const Apply = () => {
     pcHeight: 24,
   };
   const messageSizeValue = {
-    width: '220px',
-    height: '8px',
-    pcWidth: '438px',
-    pcHeight: '20px',
+    width: 220,
+    height: 8,
+    pcWidth: 438,
+    pcHeight: 20,
   };
   const {
     register,
