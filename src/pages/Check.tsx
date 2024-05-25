@@ -116,9 +116,9 @@ const Check = () => {
           </CardLanyard>
         </form>
       ) : isChecked ? (
-        <CheckCard status="check_success" value={value} />
+        <CheckCard status="checkSuccess" value={value} />
       ) : (
-        <CheckCard status="check_failed" value={value} />
+        <CheckCard status="checkFailed" value={value} />
       )}
     </Container>
   );

@@ -4,7 +4,7 @@ import SmallButton from './SmallButton';
 import { resultData } from './resultData';
 
 interface CheckCardProps {
-  status: 'check_success' | 'check_failed' | 'rejected';
+  status: 'checkSuccess' | 'checkFailed' | 'rejected';
   value: string;
 }
 
