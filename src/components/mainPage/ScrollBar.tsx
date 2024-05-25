@@ -22,7 +22,7 @@ const Wrapper = styled.div`
 `;
 
 const ScrollBar = () => {
-  const [position, setPosition] = useState<number>(0);
+  const [position, setPosition] = useState(0);
 
   function onScroll() {
     // 현재 스크롤 위치
