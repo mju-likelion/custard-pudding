@@ -3,10 +3,10 @@ import card_ring from '../../assets/imgs/card_ring.svg';
 import { PropsWithChildren } from 'react';
 
 interface PartCardProps {
-  part_name: string;
+  partName: string;
   icon?: string;
   content: string;
-  tech_list: string;
+  techList: string;
 }
 
 const CardContainer = styled.div`
@@ -78,21 +78,21 @@ const TechList = styled.p`
 `;
 
 const PartCard = ({
-  part_name,
+  partName,
   icon,
   content,
-  tech_list,
+  techList,
 }: PropsWithChildren<PartCardProps>) => {
   return (
     <CardContainer>
       <Ring src={card_ring} />
       <Card>
         <Part>
-          <PartTitle>{part_name}</PartTitle>
+          <PartTitle>{partName}</PartTitle>
           <Icon src={icon} />
         </Part>
         <Content>{content}</Content>
-        <TechList>{tech_list}</TechList>
+        <TechList>{techList}</TechList>
       </Card>
     </CardContainer>
   );

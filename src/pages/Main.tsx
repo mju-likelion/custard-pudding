@@ -5,7 +5,7 @@ import AssignmentBox from '../components/mainPage/AssignmentBox';
 import BigButton from '../components/mainPage/BigButton';
 import OpenChat from '../components/mainPage/OpenChat';
 import ScrollBar from '../components/mainPage/ScrollBar';
-import part_message from '../messages/part';
+import partMessage from '../messages/part';
 
 const LETTER_URL =
   'https://likelion12th-apply-pages.s3.ap-northeast-2.amazonaws.com/svgs/letter.svg';
@@ -155,13 +155,13 @@ const Main = () => {
         <PartContainer>
           <Title>파트</Title>
           <PartCards>
-            {Object.entries(part_message).map(([key, value]) => (
+            {Object.entries(partMessage).map(([key, value]) => (
               <PartCard
                 key={key}
-                part_name={value.part_name}
+                partName={value.partName}
                 icon={value.icon}
                 content={value.content}
-                tech_list={value.tech_list}
+                techList={value.techList}
               />
             ))}
           </PartCards>
@@ -169,10 +169,10 @@ const Main = () => {
         <AssignmentContainer>
           <Title>지원 과제</Title>
           <AssignmentBoxes>
-            {Object.entries(part_message).map(([key, value]) => (
+            {Object.entries(partMessage).map(([key, value]) => (
               <AssignmentBox
                 key={key}
-                part_name={value.part_name}
+                partName={value.partName}
                 assignment={value.assignment}
               />
             ))}

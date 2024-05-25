@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 
 interface AssignmentBoxProps {
-  part_name: string;
+  partName: string;
   assignment: string;
 }
 
@@ -64,12 +64,12 @@ const Content = styled.p`
 `;
 
 const AssignmentBox = ({
-  part_name,
+  partName,
   assignment,
 }: PropsWithChildren<AssignmentBoxProps>) => {
   return (
     <Box>
-      <PartName>{part_name}</PartName>
+      <PartName>{partName}</PartName>
       <Line />
       <Content>{assignment}</Content>
     </Box>
