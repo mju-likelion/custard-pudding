@@ -63,7 +63,7 @@ const LionImg = styled.img`
 `;
 
 const OpenChat = () => {
-  const openChatLink = 'https://open.kakao.com/o/spjt66ag';
+  const openChatLink = process.env.REACT_APP_OPENCHAT_URL;
   return (
     <OpenChatLink href={openChatLink} target="_blank">
       <Box>카카오톡 문의하기</Box>

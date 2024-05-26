@@ -8,8 +8,7 @@ interface CheckCardProps {
   value: string;
 }
 
-const TAG =
-  'https://likelion12th-apply-pages.s3.ap-northeast-2.amazonaws.com/svgs/card_tag_upload.svg';
+const TAG = process.env.REACT_APP_S3_URL;
 
 const CardContainer = styled.div`
   display: flex;
