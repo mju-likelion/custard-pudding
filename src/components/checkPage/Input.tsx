@@ -58,8 +58,6 @@ const ErrorMessage = styled.p<{ $messageSize: SizeValue }>`
   }
 `;
 
-const Wrapper = styled.div``;
-
 const Input = ({
   inputSize,
   captionSize,
@@ -68,13 +66,13 @@ const Input = ({
   messageErrors,
 }: InputProps) => {
   return (
-    <Wrapper>
+    <div>
       <Caption $captionSize={captionSize}>학번</Caption>
       <StyledInput $inputSize={inputSize} {...hookFormRegister('id')} />
       <ErrorMessage $messageSize={messageSize}>
         {messageErrors.id && messageErrors.id.message}
       </ErrorMessage>
-    </Wrapper>
+    </div>
   );
 };
 
