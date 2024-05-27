@@ -1,13 +1,9 @@
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 
-interface CopyMailProps {
-  children: React.ReactNode;
-}
-
-const CopyMail = (props: CopyMailProps) => {
+const CopyMail = (props: PropsWithChildren) => {
   const MAIL_ADDRESS = 'mju@likelion.org';
   const handleCopy = () => {
     toast('💖\u00A0\u00A0메일 주소가 복사 되었습니다!');
