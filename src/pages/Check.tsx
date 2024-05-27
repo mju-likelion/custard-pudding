@@ -46,7 +46,7 @@ const ContentsWrapper = styled.div`
 `;
 
 const Check = () => {
-  const [isChecked, setIsChecked] = useState<boolean | undefined>(undefined);
+  const [isChecked, setIsChecked] = useState<boolean>();
   const [value, setValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
