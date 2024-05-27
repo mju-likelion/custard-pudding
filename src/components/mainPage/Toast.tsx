@@ -30,10 +30,7 @@ const Toast = () => {
       limit={1}
       position="bottom-center"
       autoClose={1500}
-      hideProgressBar={false}
-      newestOnTop={false}
       closeOnClick
-      rtl={false}
       pauseOnFocusLoss
       draggable
       pauseOnHover
