@@ -143,7 +143,7 @@ const Apply = () => {
           </CardLanyard>
         </form>
       )}
-      {hasAlreadyApplied && <CheckCard status="rejected" value={value} />}
+      {hasAlreadyApplied && <CheckCard status="rejected" studentId={value} />}
     </Container>
   );
 };

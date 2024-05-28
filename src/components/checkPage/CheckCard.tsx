@@ -5,7 +5,7 @@ import { resultData } from './resultData';
 
 interface CheckCardProps {
   status: 'checkSuccess' | 'checkFailed' | 'rejected';
-  value: string;
+  studentId: string;
 }
 
 const TAG = process.env.REACT_APP_S3_URL;
@@ -65,15 +65,15 @@ const Icon = styled.img`
   }
 `;
 
-const CheckCard = ({ status, value }: CheckCardProps) => {
+const CheckCard = ({ status, studentId }: CheckCardProps) => {
   const navigate = useNavigate();
-  const result = resultData[status];
+  const applyResult = resultData[status];
 
   return (
     <CardContainer>
       <Tag src={TAG} />
-      <Content>{value + result.content}</Content>
-      <Icon src={result.img} />
+      <Content>{studentId + applyResult.content}</Content>
+      <Icon src={applyResult.img} />
       <SmallButton type="button" onClick={() => navigate('/')}>
         메인으로
       </SmallButton>
