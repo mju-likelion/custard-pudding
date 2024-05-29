@@ -5,48 +5,7 @@ import { useState, useEffect } from 'react';
 import ErrorInfo from '../../components/NotFound/ErrorInfo';
 import ErrorInfoTablet from '../../components/NotFound/ErrorInfoTablet';
 import ErrorInfoMobile from '../../components/NotFound/ErrorInfoMobile';
-const NotFound = () => {
-  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
-  const DESKTOP_WIDTH = 1199;
-  const TABLET_WIDTH = 599;
 
-  const navigate = useNavigate();
-
-  const changeWidth = () => {
-    if (innerWidth > DESKTOP_WIDTH) {
-      return <ErrorInfo />;
-    } else if (innerWidth > TABLET_WIDTH) {
-      return <ErrorInfoTablet />;
-    } else {
-      return <ErrorInfoMobile />;
-    }
-  };
-
-  useEffect(() => {
-    const resizeListener = () => {
-      setInnerWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', resizeListener);
-    return () => {
-      window.removeEventListener('resize', resizeListener);
-    };
-  });
-
-  return (
-    <PageContainer>
-      <ErrorContainer>
-        <ErrorImg src={errorLionImg}></ErrorImg>
-        <DetailContainer>
-          <Title>&apos;404&apos; 에러</Title>
-          <Subtitle>현재 페이지를 찾을 수 없습니다.</Subtitle>
-          {changeWidth()}
-
-          <MainButton onClick={() => navigate('/')}>메인으로</MainButton>
-        </DetailContainer>
-      </ErrorContainer>
-    </PageContainer>
-  );
-};
 const PageContainer = styled.div`
   height: calc(100vh - 56px - 100px);
   display: flex;
@@ -148,4 +107,48 @@ const MainButton = styled.button`
     font-size: 18px;
   }
 `;
+
+const NotFound = () => {
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+  const DESKTOP_WIDTH = 1199;
+  const TABLET_WIDTH = 599;
+
+  const navigate = useNavigate();
+
+  const changeWidth = () => {
+    if (innerWidth > DESKTOP_WIDTH) {
+      return <ErrorInfo />;
+    } else if (innerWidth > TABLET_WIDTH) {
+      return <ErrorInfoTablet />;
+    } else {
+      return <ErrorInfoMobile />;
+    }
+  };
+
+  useEffect(() => {
+    const resizeListener = () => {
+      setInnerWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', resizeListener);
+    return () => {
+      window.removeEventListener('resize', resizeListener);
+    };
+  });
+
+  return (
+    <PageContainer>
+      <ErrorContainer>
+        <ErrorImg src={errorLionImg}></ErrorImg>
+        <DetailContainer>
+          <Title>&apos;404&apos; 에러</Title>
+          <Subtitle>현재 페이지를 찾을 수 없습니다.</Subtitle>
+          {changeWidth()}
+
+          <MainButton onClick={() => navigate('/')}>메인으로</MainButton>
+        </DetailContainer>
+      </ErrorContainer>
+    </PageContainer>
+  );
+};
+
 export default NotFound;
