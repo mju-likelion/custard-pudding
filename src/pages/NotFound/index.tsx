@@ -43,10 +43,10 @@ const ErrorImg = styled.img`
   width: 100px;
   height: auto;
   margin-bottom: 20px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 180px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     width: 260px;
   }
 `;
@@ -54,7 +54,7 @@ const DetailContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     align-items: flex-start;
   }
 `;
@@ -62,12 +62,12 @@ const Title = styled.p`
   font-size: 30px;
   font-weight: 700;
   margin-bottom: 35px;
-  color: ${({ theme }) => theme.colors.MAIN_PINK};
-  @media ${({ theme }) => theme.devices.TABLET} {
+  color: ${({ theme }) => theme.colors.pink100};
+  @media ${({ theme }) => theme.size.tablet} {
     font-size: 30px;
     margin-bottom: 30px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     font-size: 50px;
     margin-bottom: 40px;
   }
@@ -75,11 +75,11 @@ const Title = styled.p`
 const Subtitle = styled.p`
   font-size: 17px;
   margin-bottom: 15px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     font-size: 18px;
     margin-bottom: 15px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     font-size: 22px;
     margin-bottom: 20px;
   }
@@ -95,13 +95,13 @@ const MainButton = styled.button`
   &:hover {
     background-color: #3d3d3d;
   }
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 130px;
     height: 50px;
     border-radius: 30px;
     font-size: 14px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     width: 150px;
     height: 60px;
     font-size: 18px;
