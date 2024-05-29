@@ -110,8 +110,8 @@ const MainButton = styled.button`
 
 const NotFound = () => {
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
-  const DESKTOP_WIDTH = 1199;
-  const TABLET_WIDTH = 599;
+  const DESKTOP_WIDTH: number = 1199;
+  const TABLET_WIDTH: number = 599;
 
   const navigate = useNavigate();
 
