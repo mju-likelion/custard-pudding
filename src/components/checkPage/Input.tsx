@@ -69,9 +69,11 @@ const Input = ({
     <div>
       <Caption $captionSize={captionSize}>학번</Caption>
       <StyledInput $inputSize={inputSize} {...hookFormRegister('id')} />
-      <ErrorMessage $messageSize={messageSize}>
-        {messageErrors.id && messageErrors.id.message}
-      </ErrorMessage>
+      {messageErrors.id && (
+        <ErrorMessage $messageSize={messageSize}>
+          {messageErrors.id.message}
+        </ErrorMessage>
+      )}
     </div>
   );
 };
