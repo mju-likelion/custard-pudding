@@ -1,36 +1,31 @@
 import styled, { keyframes } from 'styled-components';
 
-const WaveAnimation = ({ position }) => {
-  return (
-    <Box $position={position}>
-      <Wave className="one" $position={position} />
-      <Wave className="two" $position={position} />
-    </Box>
-  );
-};
+interface WaveAnimationProps {
+  position: number;
+}
 
 const rotate = keyframes`
   from { transform: rotate(0deg); }
   to { transform: rotate(-360deg); }
 `;
 
-const Box = styled.div`
+const Box = styled.div<{ $position: number }>`
   position: relative;
 
   top: ${({ $position }) => `calc(${$position}%)`};
 
-  @media ${({ theme }) => theme.devices.MOBILE} {
+  @media ${({ theme }) => theme.size.mobile} {
     top: ${({ $position }) => `calc(${$position}%)`};
   }
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     top: ${({ $position }) => `calc(${$position}%)`};
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     top: ${({ $position }) => `calc(${$position}%)`};
   }
 `;
 
-const Wave = styled.div`
+const Wave = styled.div<{ $position: number }>`
   position: absolute;
   opacity: 0.4;
   border-radius: 45%;
@@ -38,11 +33,11 @@ const Wave = styled.div`
   width: 70px;
   height: 60px;
 
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 80px;
     height: 60px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     width: 120px;
     height: 90px;
   }
@@ -58,5 +53,14 @@ const Wave = styled.div`
     background: #ffabbe;
   }
 `;
+
+const WaveAnimation = ({ position }: WaveAnimationProps) => {
+  return (
+    <Box $position={position}>
+      <Wave className="one" $position={position} />
+      <Wave className="two" $position={position} />
+    </Box>
+  );
+};
 
 export default WaveAnimation;

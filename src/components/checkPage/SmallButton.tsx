@@ -1,24 +1,12 @@
 import { PropsWithChildren } from 'react';
 import styled from 'styled-components';
+import React from 'react';
 
-interface SmallButtonProps {
-  type: 'submit';
+interface SmallButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
 }
-
-const SmallButton = ({
-  children,
-  type,
-  onClick,
-  disabled = false,
-}: PropsWithChildren<SmallButtonProps>) => {
-  return (
-    <Wrapper type={type} onClick={onClick}>
-      {children}
-    </Wrapper>
-  );
-};
 
 const Wrapper = styled.button`
   border-radius: 40px;
@@ -46,5 +34,18 @@ const Wrapper = styled.button`
     height: 54px;
   }
 `;
+
+const SmallButton = ({
+  children,
+  type,
+  onClick,
+  disabled = false,
+}: PropsWithChildren<SmallButtonProps>) => {
+  return (
+    <Wrapper type={type} onClick={onClick}>
+      {children}
+    </Wrapper>
+  );
+};
 
 export default SmallButton;
