@@ -4,16 +4,16 @@ import { HOMEWORK_DATA } from '../../pages/ApplyWrite/data/HomeworkData';
 const Title = styled.p`
   align-self: flex-start;
   margin-bottom: 10px;
-  color: ${({ theme }) => theme.colors.WHITE_TXT};
+  color: ${({ theme }) => theme.colors.white};
   font-size: 12px;
   font-weight: 500;
 
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     margin-bottom: 25px;
-    ${({ theme }) => theme.typographies.DEFAULT_TXT}
+    ${({ theme }) => theme.typographies.defaultTxt}
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    ${({ theme }) => theme.typographies.BIG_TXT}
+  @media ${({ theme }) => theme.size.desktop} {
+    ${({ theme }) => theme.typographies.bigTxt}
   }
 `;
 const WebInput = styled.div`
@@ -26,19 +26,19 @@ const WebHomeworkWrapper = styled.div`
   border-radius: 8px;
   border: 1px dashed
     ${({ $isExistFile, theme }) =>
-      $isExistFile ? '#434580' : theme.colors.MODAL_BG};
+      $isExistFile ? '#434580' : theme.colors.background200};
 
-  background-color: ${({ theme }) => theme.colors.CARD_BG};
+  background-color: ${({ theme }) => theme.colors.background300};
   padding: 10px 16px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 360px;
     height: 42px;
     padding: 14px;
     border: 2px dashed
       ${({ $isExistFile, theme }) =>
-        $isExistFile ? '#434580' : theme.colors.MODAL_BG};
+        $isExistFile ? '#434580' : theme.colors.background200};
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     width: 440px;
     height: 56px;
     padding: 20px 28px;
@@ -52,14 +52,14 @@ const ServerHomeworkInput = styled.input`
   height: 30px;
   padding: 10px 16px;
   font-size: 10px;
-  color: ${({ theme }) => theme.colors.WHITE_TXT};
-  background-color: ${({ theme }) => theme.colors.CARD_BG};
-  @media ${({ theme }) => theme.devices.TABLET} {
+  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.background300};
+  @media ${({ theme }) => theme.size.tablet} {
     height: 42px;
     padding: 14px;
     font-size: 14px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     height: 56px;
     padding: 20px 28px;
     font-size: 18px;
@@ -75,10 +75,10 @@ const FileInputLabel = styled.label`
     cursor: pointer;
   }
 
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     font-size: 14px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     font-size: 16px;
   }
 `;
@@ -92,12 +92,12 @@ const RemoveButton = styled.button`
   width: 70px;
   height: 30px;
   font-size: 12px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 100px;
     height: 40px;
     font-size: 16px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     width: 100px;
     height: 56px;
     font-size: 17px;
@@ -108,8 +108,8 @@ const HomeworkHelperText = styled.p`
   font-size: 10px;
   font-weight: 300;
   line-height: 28px;
-  color: ${({ theme }) => theme.colors.DISABLE_BTN};
-  @media ${({ theme }) => theme.devices.TABLET} {
+  color: ${({ theme }) => theme.colors.background100};
+  @media ${({ theme }) => theme.size.tablet} {
     margin-top: 10px;
     font-size: 16px;
   }
@@ -121,8 +121,8 @@ const InfoHelperText = styled.div`
   font-size: 9px;
   font-weight: 300;
   visibility: ${({ $errors }) => ($errors ? 'visible' : 'hidden')};
-  color: ${({ theme }) => theme.colors.HOVER_BTN};
-  @media ${({ theme }) => theme.devices.TABLET} {
+  color: ${({ theme }) => theme.colors.pink200};
+  @media ${({ theme }) => theme.size.tablet} {
     margin-top: 15px;
     font-size: 15px;
   }

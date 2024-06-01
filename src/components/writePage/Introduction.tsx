@@ -6,23 +6,23 @@ const Question = styled.p`
   align-self: flex-start;
   width: 330px;
   margin-bottom: 10px;
-  color: ${({ theme }) => theme.colors.WHITE_TXT};
+  color: ${({ theme }) => theme.colors.white};
   font-size: 12px;
   font-weight: 500;
   line-height: 20px;
 
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 560px;
     line-height: 30px;
 
     margin-bottom: 25px;
-    ${({ theme }) => theme.typographies.DEFAULT_TXT}
+    ${({ theme }) => theme.typographies.defaultTxt}
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     width: 972px;
     line-height: 40px;
 
-    ${({ theme }) => theme.typographies.BIG_TXT}
+    ${({ theme }) => theme.typographies.bigTxt}
   }
 `;
 

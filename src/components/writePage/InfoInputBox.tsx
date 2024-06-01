@@ -12,12 +12,12 @@ const Container = styled.div`
   padding: 35px 52px;
   width: 330px;
   height: 367px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     padding: 65px 105px;
     width: 560px;
     height: 656px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -30,7 +30,7 @@ const LeftInnerInputBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     gap: 28px;
   }
 `;
@@ -38,7 +38,7 @@ const RightInnerInputBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     gap: 32px;
   }
 `;
@@ -47,7 +47,7 @@ const ApplyPartBox = styled.div`
   display: flex;
   align-items: center;
   gap: 18px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     gap: 17px;
   }
 `;
@@ -55,10 +55,10 @@ const PartLabel = styled.p`
   font-size: 12px;
   font-weight: 500;
   white-space: nowrap;
-  color: ${({ theme }) => theme.colors.WHITE_TXT};
+  color: ${({ theme }) => theme.colors.white};
 
-  @media ${({ theme }) => theme.devices.TABLET} {
-    ${({ theme }) => theme.typographies.BIG_TXT}
+  @media ${({ theme }) => theme.size.tablet} {
+    ${({ theme }) => theme.typographies.bigTxt}
   }
 `;
 const PartBtnBox = styled.div`
@@ -73,29 +73,29 @@ const PartBtn = styled.button`
   border-radius: 8px;
   font-size: 10px;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.WHITE_TXT};
+  color: ${({ theme }) => theme.colors.white};
   transition: all 0.2s ease-in-out;
   background-color: ${({ theme, $select }) =>
-    $select ? theme.colors.MAIN_PINK : theme.colors.CARD_BG};
+    $select ? theme.colors.pink100 : theme.colors.background300};
 
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 116px;
     height: 42px;
     font-size: 14px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     width: 130px;
-    ${({ theme }) => theme.typographies.DEFAULT_TXT}
+    ${({ theme }) => theme.typographies.defaultTxt}
   }
 `;
 
 const HorizontalLine = styled.div`
   width: 100%;
   height: 1px;
-  background-color: ${({ theme }) => theme.colors.CARD_BG};
+  background-color: ${({ theme }) => theme.colors.background300};
   margin: auto 0;
   display: block;
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     display: none;
   }
 `;

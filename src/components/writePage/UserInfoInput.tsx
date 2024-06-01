@@ -4,10 +4,10 @@ const AllContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: ${({ $isRight }) => ($isRight ? '42px' : 'none')};
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     height: ${({ $isRight }) => ($isRight ? '56px' : 'none')};
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     height: ${({ $isRight }) => ($isRight ? '72px' : 'none')};
   }
 `;
@@ -19,12 +19,12 @@ const InputContainer = styled.div`
   justify-content: space-between;
   gap: 18px;
 
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 350px;
     height: 42px;
     gap: 17px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     width: 369px;
   }
 `;
@@ -33,10 +33,10 @@ const InfoLabel = styled.p`
   font-size: 12px;
   font-weight: 500;
   white-space: nowrap;
-  color: ${({ theme }) => theme.colors.WHITE_TXT};
+  color: ${({ theme }) => theme.colors.white};
 
-  @media ${({ theme }) => theme.devices.TABLET} {
-    ${({ theme }) => theme.typographies.BIG_TXT}
+  @media ${({ theme }) => theme.size.tablet} {
+    ${({ theme }) => theme.typographies.bigTxt}
   }
 `;
 
@@ -46,21 +46,21 @@ const InfoInput = styled.input`
   padding: 8px 10px;
   border: none;
   border: ${({ $error, theme }) =>
-    $error ? `1px solid ${theme.colors.HOVER_BTN}` : 'none'};
+    $error ? `1px solid ${theme.colors.pink200}` : 'none'};
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.CARD_BG};
+  background-color: ${({ theme }) => theme.colors.background300};
   &:disabled {
     background-color: #202020;
-    border: 1px solid ${({ theme }) => theme.colors.MODAL_BG};
+    border: 1px solid ${({ theme }) => theme.colors.background200};
   }
   &:focus {
-    border: ${({ theme }) => `2px solid ${theme.colors.MODAL_BG}`};
+    border: ${({ theme }) => `2px solid ${theme.colors.background200}`};
   }
   font-size: 9px;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.WHITE_TXT};
+  color: ${({ theme }) => theme.colors.white};
 
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     padding: 14px 18px;
     font-size: 14px;
   }
@@ -72,8 +72,8 @@ const InfoHelperText = styled.div`
   font-size: 9px;
   font-weight: 300;
   visibility: ${({ $errors }) => ($errors ? 'visible' : 'hidden')};
-  color: ${({ theme }) => theme.colors.HOVER_BTN};
-  @media ${({ theme }) => theme.devices.TABLET} {
+  color: ${({ theme }) => theme.colors.pink200};
+  @media ${({ theme }) => theme.size.tablet} {
     margin-top: 15px;
     font-size: 15px;
   }

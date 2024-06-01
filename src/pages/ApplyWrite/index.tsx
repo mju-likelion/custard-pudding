@@ -22,10 +22,10 @@ const AllContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 40px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     margin-bottom: 60px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     margin-bottom: 100px;
   }
 `;
@@ -34,20 +34,20 @@ const InfoContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 100px 0;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     margin: 120px 0 200px 0;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     margin: 175px 0 200px 0;
   }
 `;
 const Title = styled.div`
   align-self: flex-start;
   margin-bottom: 20px;
-  color: ${({ theme }) => theme.colors.MAIN_PINK};
+  color: ${({ theme }) => theme.colors.pink100};
   font-size: 20px;
   font-weight: 700;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     font-size: 32px;
     margin-bottom: 50px;
   }
@@ -56,13 +56,13 @@ const AllHelperText = styled.div`
   margin-bottom: 15px;
   font-size: 12px;
   font-weight: 300;
-  color: ${({ theme }) => theme.colors.HOVER_BTN};
+  color: ${({ theme }) => theme.colors.pink200};
   visibility: ${({ $isError }) => ($isError ? 'visible' : 'hidden')};
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     margin-bottom: 28px;
     font-size: 17px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     font-size: 20px;
   }
 `;
@@ -71,7 +71,7 @@ const IntroduceContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 60px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     margin-bottom: 90px;
   }
 `;
@@ -81,12 +81,12 @@ const HomeworkContainer = styled.div`
   flex-direction: column;
   margin-bottom: 110px;
 
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 560px;
     margin-bottom: 200px;
   }
 
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     width: 972px;
   }
 `;
@@ -94,7 +94,7 @@ const AgreeContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 60px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     margin-bottom: 90px;
   }
 `;

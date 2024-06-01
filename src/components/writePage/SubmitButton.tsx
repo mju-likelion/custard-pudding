@@ -9,20 +9,20 @@ const Container = styled.button`
   align-items: center;
   border-radius: 40px;
   font-size: 13px;
-  color: ${({ theme }) => theme.colors.WHITE_TXT};
+  color: ${({ theme }) => theme.colors.white};
   background-color: ${({ theme, $disabled }) =>
-    $disabled ? theme.colors.DISABLE_BTN : theme.colors.MAIN_PINK};
+    $disabled ? theme.colors.background100 : theme.colors.pink100};
   &:hover {
     background-color: ${({ theme, $disabled }) =>
-      $disabled ? theme.colors.DISABLE_BTN : theme.colors.HOVER_BTN};
+      $disabled ? theme.colors.background100 : theme.colors.pink200};
   }
 
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 176px;
     height: 74px;
-    ${({ theme }) => theme.typographies.BIG_TXT};
+    ${({ theme }) => theme.typographies.bigTxt};
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     width: 232px;
     height: 96px;
     font-size: 28px;

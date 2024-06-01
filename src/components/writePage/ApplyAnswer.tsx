@@ -6,15 +6,15 @@ const AnswerContainer = styled.label`
   padding: 26px 12px 40px 27px;
   margin-bottom: 50px;
   border-radius: 15px;
-  background-color: ${({ theme }) => theme.colors.CARD_BG};
-  @media ${({ theme }) => theme.devices.TABLET} {
+  background-color: ${({ theme }) => theme.colors.background300};
+  @media ${({ theme }) => theme.size.tablet} {
     width: 560px;
     height: 670px;
     padding: 36px 25px 55px 40px;
     margin-bottom: 110px;
   }
 
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     width: 972px;
     height: 574px;
     padding: 60px 38px 80px 60px;
@@ -27,23 +27,23 @@ const AnswerLength = styled.p`
   font-size: 10px;
   font-weight: 500;
   margin-top: 12px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     font-size: 14px;
     margin-top: 16px;
   }
 
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    ${({ theme }) => theme.typographies.DEFAULT_TXT}
+  @media ${({ theme }) => theme.size.desktop} {
+    ${({ theme }) => theme.typographies.defaultTxt}
     margin-top: 26px;
   }
 `;
 const AnswerTextarea = styled.textarea`
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => theme.colors.CARD_BG};
+  background-color: ${({ theme }) => theme.colors.background300};
   font-size: 10px;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.WHITE_TXT};
+  color: ${({ theme }) => theme.colors.white};
   border: none;
   resize: none;
   line-height: 20px;
@@ -53,15 +53,15 @@ const AnswerTextarea = styled.textarea`
     width: 6px;
   }
   &::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.colors.MODAL_BG};
+    background: ${({ theme }) => theme.colors.background200};
     border-radius: 10px;
     height: 50%;
   }
   &::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.CARD_BG};
+    background: ${({ theme }) => theme.colors.background300};
   }
 
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     padding-right: 18px;
     line-height: 40px;
     font-size: 14px;
@@ -69,9 +69,9 @@ const AnswerTextarea = styled.textarea`
       width: 8px;
     }
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     padding-right: 28px;
-    ${({ theme }) => theme.typographies.DEFAULT_TXT}
+    ${({ theme }) => theme.typographies.defaultTxt}
     &::-webkit-scrollbar {
       width: 10px;
     }

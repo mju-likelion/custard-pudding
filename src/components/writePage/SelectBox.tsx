@@ -11,12 +11,12 @@ const AllContainer = styled.div`
   justify-content: space-between;
   gap: 18px;
 
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 350px;
     height: 42px;
     gap: 17px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     width: 369px;
   }
 `;
@@ -24,10 +24,10 @@ const InfoLabel = styled.p`
   font-size: 12px;
   font-weight: 500;
   white-space: nowrap;
-  color: ${({ theme }) => theme.colors.WHITE_TXT};
+  color: ${({ theme }) => theme.colors.white};
 
-  @media ${({ theme }) => theme.devices.TABLET} {
-    ${({ theme }) => theme.typographies.BIG_TXT}
+  @media ${({ theme }) => theme.size.tablet} {
+    ${({ theme }) => theme.typographies.bigTxt}
   }
 `;
 
@@ -44,7 +44,7 @@ const SelectWrapper = styled.div`
     font-size: 10px;
     font-weight: 300;
     color: #939393;
-    @media ${({ theme }) => theme.devices.TABLET} {
+    @media ${({ theme }) => theme.size.tablet} {
       right: 20px;
       font-size: 16px;
     }
@@ -57,13 +57,13 @@ const SelectWrapper = styled.div`
   cursor: pointer;
 
   border: ${({ error, theme }) =>
-    error ? `1px solid ${theme.colors.HOVER_BTN}` : 'none'};
+    error ? `1px solid ${theme.colors.pink200}` : 'none'};
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.CARD_BG};
+  background-color: ${({ theme }) => theme.colors.background300};
   padding: 0 10px;
   font-size: 10px;
 
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     padding: 0 18px;
     font-size: 14px;
   }
@@ -73,7 +73,7 @@ const SelectOptions = styled.div`
   border-radius: 8px;
   margin-top: 10px;
   padding: 5px 4px;
-  background-color: ${({ theme }) => theme.colors.CARD_BG};
+  background-color: ${({ theme }) => theme.colors.background300};
 
   position: absolute;
   display: flex;
@@ -85,20 +85,20 @@ const SelectOptions = styled.div`
     width: 8px;
   }
   &::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.colors.MODAL_BG};
+    background: ${({ theme }) => theme.colors.background200};
     border-radius: 10px;
     height: 50%;
   }
   &::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.CARD_BG};
+    background: ${({ theme }) => theme.colors.background300};
   }
   height: 178px;
   cursor: pointer;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     width: 294px;
     height: 262px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     width: 313px;
   }
 `;
@@ -108,7 +108,7 @@ const Option = styled.div`
   align-items: center;
   padding: 0 20px;
   border-radius: 8px;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.MODAL_BG};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.background200};
   font-size: 10px;
   font-weight: 300;
 
@@ -120,10 +120,10 @@ const Option = styled.div`
     border: none;
   }
   &:hover {
-    background-color: ${({ theme }) => theme.colors.MODAL_BG};
+    background-color: ${({ theme }) => theme.colors.background200};
     opacity: 0.9;
   }
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     height: 42px;
     font-size: 14px;
   }
