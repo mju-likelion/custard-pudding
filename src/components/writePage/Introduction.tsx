@@ -2,26 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import ApplyAnswer from './ApplyAnswer';
 
-const Introduction = ({ register, value, questionList }) => {
-  return (
-    <>
-      {questionList?.map((item) => (
-        <React.Fragment key={item.id}>
-          <Question>
-            {item.sequence}. {item.title}
-          </Question>
-          <ApplyAnswer
-            register={register}
-            name={'question' + String(item.sequence)}
-            value={value}
-            maxLength={item.maxLength}
-          />
-        </React.Fragment>
-      ))}
-    </>
-  );
-};
-
 const Question = styled.p`
   align-self: flex-start;
   width: 330px;
@@ -45,5 +25,25 @@ const Question = styled.p`
     ${({ theme }) => theme.typographies.BIG_TXT}
   }
 `;
+
+const Introduction = ({ register, value, questionList }) => {
+  return (
+    <>
+      {questionList?.map((item) => (
+        <React.Fragment key={item.id}>
+          <Question>
+            {item.sequence}. {item.title}
+          </Question>
+          <ApplyAnswer
+            register={register}
+            name={'question' + String(item.sequence)}
+            value={value}
+            maxLength={item.maxLength}
+          />
+        </React.Fragment>
+      ))}
+    </>
+  );
+};
 
 export default Introduction;

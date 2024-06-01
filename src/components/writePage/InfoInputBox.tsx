@@ -4,78 +4,6 @@ import { PART } from '../../pages/ApplyWrite/data/InfoInputData';
 import UserInfoInput from './UserInfoInput';
 import SelectBox from './SelectBox';
 
-const InfoInputBox = ({
-  register,
-  errors,
-  selectedPart,
-  handlePartClick,
-  setValue,
-  majorData,
-  getValues,
-  studentIdValue,
-}) => {
-  return (
-    <Container>
-      <LeftInnerInputBox>
-        {INPUT_LABEL_LIST.left.map((item) =>
-          item.name === 'grade' || item.name === 'majors' ? (
-            <SelectBox
-              key={item.id}
-              name={item.name}
-              label={item.label}
-              majorData={majorData}
-              getValues={getValues}
-              setValue={setValue}
-            />
-          ) : (
-            <UserInfoInput
-              key={item.id}
-              label={item.label}
-              name={item.name}
-              isDisabled={item.isDisabled}
-              register={register}
-              errors={errors}
-              setValue={setValue}
-              getValues={getValues}
-              studentIdValue={studentIdValue}
-              placeholder={item.placeholder}
-              majorData={majorData}
-            />
-          ),
-        )}
-      </LeftInnerInputBox>
-      <HorizontalLine />
-      <RightInnerInputBox>
-        {INPUT_LABEL_LIST.right.map((item) => (
-          <UserInfoInput
-            key={item.id}
-            label={item.label}
-            name={item.name}
-            register={register}
-            errors={errors}
-            placeholder={item.placeholder}
-          />
-        ))}
-        <ApplyPartBox>
-          <PartLabel>지원파트</PartLabel>
-          <PartBtnBox>
-            {PART.map((item) => (
-              <PartBtn
-                key={item.id}
-                $select={selectedPart === item.partEn}
-                onClick={() => handlePartClick(item.partEn)}
-                type="button"
-              >
-                {item.partKo}
-              </PartBtn>
-            ))}
-          </PartBtnBox>
-        </ApplyPartBox>
-      </RightInnerInputBox>
-    </Container>
-  );
-};
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -171,5 +99,77 @@ const HorizontalLine = styled.div`
     display: none;
   }
 `;
+
+const InfoInputBox = ({
+  register,
+  errors,
+  selectedPart,
+  handlePartClick,
+  setValue,
+  majorData,
+  getValues,
+  studentIdValue,
+}) => {
+  return (
+    <Container>
+      <LeftInnerInputBox>
+        {INPUT_LABEL_LIST.left.map((item) =>
+          item.name === 'grade' || item.name === 'majors' ? (
+            <SelectBox
+              key={item.id}
+              name={item.name}
+              label={item.label}
+              majorData={majorData}
+              getValues={getValues}
+              setValue={setValue}
+            />
+          ) : (
+            <UserInfoInput
+              key={item.id}
+              label={item.label}
+              name={item.name}
+              isDisabled={item.isDisabled}
+              register={register}
+              errors={errors}
+              setValue={setValue}
+              getValues={getValues}
+              studentIdValue={studentIdValue}
+              placeholder={item.placeholder}
+              majorData={majorData}
+            />
+          ),
+        )}
+      </LeftInnerInputBox>
+      <HorizontalLine />
+      <RightInnerInputBox>
+        {INPUT_LABEL_LIST.right.map((item) => (
+          <UserInfoInput
+            key={item.id}
+            label={item.label}
+            name={item.name}
+            register={register}
+            errors={errors}
+            placeholder={item.placeholder}
+          />
+        ))}
+        <ApplyPartBox>
+          <PartLabel>지원파트</PartLabel>
+          <PartBtnBox>
+            {PART.map((item) => (
+              <PartBtn
+                key={item.id}
+                $select={selectedPart === item.partEn}
+                onClick={() => handlePartClick(item.partEn)}
+                type="button"
+              >
+                {item.partKo}
+              </PartBtn>
+            ))}
+          </PartBtnBox>
+        </ApplyPartBox>
+      </RightInnerInputBox>
+    </Container>
+  );
+};
 
 export default InfoInputBox;

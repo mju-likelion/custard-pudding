@@ -16,6 +16,89 @@ import {
   postFileData,
 } from '../../api/ApplyWrite';
 
+const AllContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+  @media ${({ theme }) => theme.devices.TABLET} {
+    margin-bottom: 60px;
+  }
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    margin-bottom: 100px;
+  }
+`;
+const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 100px 0;
+  @media ${({ theme }) => theme.devices.TABLET} {
+    margin: 120px 0 200px 0;
+  }
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    margin: 175px 0 200px 0;
+  }
+`;
+const Title = styled.div`
+  align-self: flex-start;
+  margin-bottom: 20px;
+  color: ${({ theme }) => theme.colors.MAIN_PINK};
+  font-size: 20px;
+  font-weight: 700;
+  @media ${({ theme }) => theme.devices.TABLET} {
+    font-size: 32px;
+    margin-bottom: 50px;
+  }
+`;
+const AllHelperText = styled.div`
+  margin-bottom: 15px;
+  font-size: 12px;
+  font-weight: 300;
+  color: ${({ theme }) => theme.colors.HOVER_BTN};
+  visibility: ${({ $isError }) => ($isError ? 'visible' : 'hidden')};
+  @media ${({ theme }) => theme.devices.TABLET} {
+    margin-bottom: 28px;
+    font-size: 17px;
+  }
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    font-size: 20px;
+  }
+`;
+
+const IntroduceContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+  @media ${({ theme }) => theme.devices.TABLET} {
+    margin-bottom: 90px;
+  }
+`;
+const HomeworkContainer = styled.div`
+  width: 330px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 110px;
+
+  @media ${({ theme }) => theme.devices.TABLET} {
+    width: 560px;
+    margin-bottom: 200px;
+  }
+
+  @media ${({ theme }) => theme.devices.DESKTOP} {
+    width: 972px;
+  }
+`;
+const AgreeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+  @media ${({ theme }) => theme.devices.TABLET} {
+    margin-bottom: 90px;
+  }
+`;
+
 const ApplyWrite = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -190,88 +273,5 @@ const ApplyWrite = () => {
     </form>
   );
 };
-
-const AllContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 40px;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    margin-bottom: 60px;
-  }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    margin-bottom: 100px;
-  }
-`;
-const InfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 100px 0;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    margin: 120px 0 200px 0;
-  }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    margin: 175px 0 200px 0;
-  }
-`;
-const Title = styled.div`
-  align-self: flex-start;
-  margin-bottom: 20px;
-  color: ${({ theme }) => theme.colors.MAIN_PINK};
-  font-size: 20px;
-  font-weight: 700;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    font-size: 32px;
-    margin-bottom: 50px;
-  }
-`;
-const AllHelperText = styled.div`
-  margin-bottom: 15px;
-  font-size: 12px;
-  font-weight: 300;
-  color: ${({ theme }) => theme.colors.HOVER_BTN};
-  visibility: ${({ $isError }) => ($isError ? 'visible' : 'hidden')};
-  @media ${({ theme }) => theme.devices.TABLET} {
-    margin-bottom: 28px;
-    font-size: 17px;
-  }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    font-size: 20px;
-  }
-`;
-
-const IntroduceContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 60px;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    margin-bottom: 90px;
-  }
-`;
-const HomeworkContainer = styled.div`
-  width: 330px;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 110px;
-
-  @media ${({ theme }) => theme.devices.TABLET} {
-    width: 560px;
-    margin-bottom: 200px;
-  }
-
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    width: 972px;
-  }
-`;
-const AgreeContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 60px;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    margin-bottom: 90px;
-  }
-`;
 
 export default ApplyWrite;

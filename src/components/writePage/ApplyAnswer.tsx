@@ -1,16 +1,5 @@
 import styled from 'styled-components';
 
-const ApplyAnswer = ({ register, name, value, maxLength }) => {
-  return (
-    <AnswerContainer htmlFor={name}>
-      <AnswerTextarea id={name} {...register(name)} maxLength={maxLength} />
-      <AnswerLength>
-        ( {value[name].length} / {maxLength} )
-      </AnswerLength>
-    </AnswerContainer>
-  );
-};
-
 const AnswerContainer = styled.label`
   width: 330px;
   height: 330px;
@@ -88,5 +77,16 @@ const AnswerTextarea = styled.textarea`
     }
   }
 `;
+
+const ApplyAnswer = ({ register, name, value, maxLength }) => {
+  return (
+    <AnswerContainer htmlFor={name}>
+      <AnswerTextarea id={name} {...register(name)} maxLength={maxLength} />
+      <AnswerLength>
+        ( {value[name].length} / {maxLength} )
+      </AnswerLength>
+    </AnswerContainer>
+  );
+};
 
 export default ApplyAnswer;

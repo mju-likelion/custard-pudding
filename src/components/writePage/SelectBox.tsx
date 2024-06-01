@@ -3,63 +3,6 @@ import styled from 'styled-components';
 import { useEffect } from 'react';
 import { GRADE_DATA } from '../../pages/ApplyWrite/data/SelectGradeData';
 
-const SelectBox = ({ name, setValue, majorData, getValues, label }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const SelectContainerRef = useRef(null);
-
-  const handleClickOutside = (e) => {
-    if (
-      SelectContainerRef.current &&
-      !SelectContainerRef.current.contains(e.target)
-    ) {
-      setIsOpen(false);
-    }
-  };
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [SelectContainerRef]);
-
-  const handleOptions = () => {
-    setIsOpen(!isOpen);
-  };
-  //
-
-  const setData = (data) => {
-    setValue(name, data);
-    setIsOpen(false);
-  };
-
-  return (
-    <AllContainer>
-      <InfoLabel>{label}</InfoLabel>
-      <SelectContainer ref={SelectContainerRef}>
-        <SelectWrapper onClick={handleOptions} $isOpen={isOpen}>
-          {getValues(name)}
-        </SelectWrapper>
-        {isOpen && (
-          <SelectOptions $isScroll={name === 'majors'}>
-            {name === 'majors' &&
-              majorData.map((item) => (
-                <Option key={item.id} onClick={() => setData(item.name)}>
-                  {item.name}
-                </Option>
-              ))}
-            {name === 'grade' &&
-              GRADE_DATA.map((item, idx) => (
-                <Option key={idx} onClick={() => setData(item)}>
-                  {item}
-                </Option>
-              ))}
-          </SelectOptions>
-        )}
-      </SelectContainer>
-    </AllContainer>
-  );
-};
-
 const AllContainer = styled.div`
   width: 226px;
   height: 26px;
@@ -185,5 +128,62 @@ const Option = styled.div`
     font-size: 14px;
   }
 `;
+
+const SelectBox = ({ name, setValue, majorData, getValues, label }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const SelectContainerRef = useRef(null);
+
+  const handleClickOutside = (e) => {
+    if (
+      SelectContainerRef.current &&
+      !SelectContainerRef.current.contains(e.target)
+    ) {
+      setIsOpen(false);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [SelectContainerRef]);
+
+  const handleOptions = () => {
+    setIsOpen(!isOpen);
+  };
+  //
+
+  const setData = (data) => {
+    setValue(name, data);
+    setIsOpen(false);
+  };
+
+  return (
+    <AllContainer>
+      <InfoLabel>{label}</InfoLabel>
+      <SelectContainer ref={SelectContainerRef}>
+        <SelectWrapper onClick={handleOptions} $isOpen={isOpen}>
+          {getValues(name)}
+        </SelectWrapper>
+        {isOpen && (
+          <SelectOptions $isScroll={name === 'majors'}>
+            {name === 'majors' &&
+              majorData.map((item) => (
+                <Option key={item.id} onClick={() => setData(item.name)}>
+                  {item.name}
+                </Option>
+              ))}
+            {name === 'grade' &&
+              GRADE_DATA.map((item, idx) => (
+                <Option key={idx} onClick={() => setData(item)}>
+                  {item}
+                </Option>
+              ))}
+          </SelectOptions>
+        )}
+      </SelectContainer>
+    </AllContainer>
+  );
+};
 
 export default SelectBox;

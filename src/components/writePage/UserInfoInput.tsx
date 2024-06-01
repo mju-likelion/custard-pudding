@@ -1,38 +1,5 @@
 import styled from 'styled-components';
 
-const UserInfoInput = ({
-  label,
-  name,
-  isDisabled,
-  register,
-  errors,
-  placeholder,
-  studentIdValue,
-}) => {
-  return (
-    <AllContainer $isRight={name === 'email' || name === 'phoneNumber'}>
-      <InputContainer>
-        <InfoLabel>{label}</InfoLabel>
-        {isDisabled ? (
-          <InfoInput disabled $error={errors[name]} value={studentIdValue} />
-        ) : (
-          <InfoInput
-            placeholder={placeholder}
-            id={name}
-            {...register(name)}
-            $error={errors[name]}
-          />
-        )}
-      </InputContainer>
-      {(name === 'email' || name === 'phoneNumber') && errors[name] && (
-        <InfoHelperText $errors={errors[name]}>
-          {errors[name].message}
-        </InfoHelperText>
-      )}
-    </AllContainer>
-  );
-};
-
 const AllContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -111,5 +78,38 @@ const InfoHelperText = styled.div`
     font-size: 15px;
   }
 `;
+
+const UserInfoInput = ({
+  label,
+  name,
+  isDisabled,
+  register,
+  errors,
+  placeholder,
+  studentIdValue,
+}) => {
+  return (
+    <AllContainer $isRight={name === 'email' || name === 'phoneNumber'}>
+      <InputContainer>
+        <InfoLabel>{label}</InfoLabel>
+        {isDisabled ? (
+          <InfoInput disabled $error={errors[name]} value={studentIdValue} />
+        ) : (
+          <InfoInput
+            placeholder={placeholder}
+            id={name}
+            {...register(name)}
+            $error={errors[name]}
+          />
+        )}
+      </InputContainer>
+      {(name === 'email' || name === 'phoneNumber') && errors[name] && (
+        <InfoHelperText $errors={errors[name]}>
+          {errors[name].message}
+        </InfoHelperText>
+      )}
+    </AllContainer>
+  );
+};
 
 export default UserInfoInput;

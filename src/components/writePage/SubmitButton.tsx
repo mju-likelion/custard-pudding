@@ -1,19 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SubmitButton = ({ children, disabled, onClick }) => {
-  return (
-    <Container
-      type="submit"
-      $disabled={disabled}
-      disabled={disabled}
-      onClick={onClick}
-    >
-      {children}
-    </Container>
-  );
-};
-
 const Container = styled.button`
   width: 114px;
   height: 44px;
@@ -41,4 +28,18 @@ const Container = styled.button`
     font-size: 28px;
   }
 `;
+
+const SubmitButton = ({ children, disabled, onClick }) => {
+  return (
+    <Container
+      type="submit"
+      $disabled={disabled}
+      disabled={disabled}
+      onClick={onClick}
+    >
+      {children}
+    </Container>
+  );
+};
+
 export default SubmitButton;

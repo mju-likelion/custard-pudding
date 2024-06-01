@@ -1,69 +1,6 @@
 import styled from 'styled-components';
 import { HOMEWORK_DATA } from '../../pages/ApplyWrite/data/HomeworkData';
 
-const HomeworkBox = ({
-  selectedPart,
-  register,
-  files,
-  setFiles,
-  errors,
-  setFileLink,
-}) => {
-  const handleFileChange = (e) => {
-    setFiles(e.target.files);
-  };
-
-  const onClick = (e) => {
-    e.preventDefault();
-    setFiles({});
-    setFileLink('');
-    const fileInput = document.getElementById('file');
-    if (fileInput) {
-      fileInput.value = '';
-    }
-  };
-
-  return (
-    <>
-      <Title>{HOMEWORK_DATA[selectedPart].title}</Title>
-      {selectedPart === 'WEB' && (
-        <WebInput>
-          <WebHomeworkWrapper $isExistFile={!!files[0]?.name}>
-            <FileInputLabel htmlFor="file">
-              {files.length > 0 ? files[0]?.name : '파일 업로드'}
-            </FileInputLabel>
-          </WebHomeworkWrapper>
-          <FileInput
-            key={files.length === 0 ? 'empty' : 'loaded'} // 파일 상태에 따라 key 값 변경
-            id="file"
-            name="file"
-            type="file"
-            accept=".zip"
-            onChange={(e) => handleFileChange(e)}
-          />
-          {files.length > 0 && (
-            <RemoveButton onClick={(e) => onClick(e)}>삭제하기</RemoveButton>
-          )}
-        </WebInput>
-      )}
-      {selectedPart === 'SERVER' && (
-        <ServerHomeworkInput {...register('link')} />
-      )}
-      {selectedPart === 'SERVER' && (
-        <InfoHelperText $errors={errors['link']}>
-          {errors['link']?.message}
-        </InfoHelperText>
-      )}
-      <HomeworkHelperText>
-        {HOMEWORK_DATA[selectedPart].taskHelperText}
-      </HomeworkHelperText>
-      <HomeworkHelperText>
-        {HOMEWORK_DATA[selectedPart].LinkHelperText}
-      </HomeworkHelperText>
-    </>
-  );
-};
-
 const Title = styled.p`
   align-self: flex-start;
   margin-bottom: 10px;
@@ -190,4 +127,68 @@ const InfoHelperText = styled.div`
     font-size: 15px;
   }
 `;
+
+const HomeworkBox = ({
+  selectedPart,
+  register,
+  files,
+  setFiles,
+  errors,
+  setFileLink,
+}) => {
+  const handleFileChange = (e) => {
+    setFiles(e.target.files);
+  };
+
+  const onClick = (e) => {
+    e.preventDefault();
+    setFiles({});
+    setFileLink('');
+    const fileInput = document.getElementById('file');
+    if (fileInput) {
+      fileInput.value = '';
+    }
+  };
+
+  return (
+    <>
+      <Title>{HOMEWORK_DATA[selectedPart].title}</Title>
+      {selectedPart === 'WEB' && (
+        <WebInput>
+          <WebHomeworkWrapper $isExistFile={!!files[0]?.name}>
+            <FileInputLabel htmlFor="file">
+              {files.length > 0 ? files[0]?.name : '파일 업로드'}
+            </FileInputLabel>
+          </WebHomeworkWrapper>
+          <FileInput
+            key={files.length === 0 ? 'empty' : 'loaded'} // 파일 상태에 따라 key 값 변경
+            id="file"
+            name="file"
+            type="file"
+            accept=".zip"
+            onChange={(e) => handleFileChange(e)}
+          />
+          {files.length > 0 && (
+            <RemoveButton onClick={(e) => onClick(e)}>삭제하기</RemoveButton>
+          )}
+        </WebInput>
+      )}
+      {selectedPart === 'SERVER' && (
+        <ServerHomeworkInput {...register('link')} />
+      )}
+      {selectedPart === 'SERVER' && (
+        <InfoHelperText $errors={errors['link']}>
+          {errors['link']?.message}
+        </InfoHelperText>
+      )}
+      <HomeworkHelperText>
+        {HOMEWORK_DATA[selectedPart].taskHelperText}
+      </HomeworkHelperText>
+      <HomeworkHelperText>
+        {HOMEWORK_DATA[selectedPart].LinkHelperText}
+      </HomeworkHelperText>
+    </>
+  );
+};
+
 export default HomeworkBox;

@@ -1,28 +1,6 @@
 import styled from 'styled-components';
 import agreeIcon from '../../assets/imgs/agree_icon.svg';
 
-const PersonalAgreeBox = ({ text, sequence, register }) => {
-  return (
-    <Container>
-      <TitleBox>
-        <Title>{sequence === 2 ? '참고 및 주의사항' : '개인정보 동의'}</Title>
-        <CheckWrapper>
-          <CheckLabel htmlFor={'agree' + String(sequence)}>[동의]</CheckLabel>
-          <CheckBox
-            {...register('agree' + String(sequence))}
-            type="checkbox"
-            id={'agree' + String(sequence)}
-          />
-        </CheckWrapper>
-      </TitleBox>
-      <AgreeContentBox $isRefer={sequence === 2 ? true : false}>
-        <AgreeContent $isRefer={sequence === 2 ? true : false}>
-          {text}
-        </AgreeContent>
-      </AgreeContentBox>
-    </Container>
-  );
-};
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -153,5 +131,28 @@ const AgreeContent = styled.div`
     padding-right: 20px;
   }
 `;
+
+const PersonalAgreeBox = ({ text, sequence, register }) => {
+  return (
+    <Container>
+      <TitleBox>
+        <Title>{sequence === 2 ? '참고 및 주의사항' : '개인정보 동의'}</Title>
+        <CheckWrapper>
+          <CheckLabel htmlFor={'agree' + String(sequence)}>[동의]</CheckLabel>
+          <CheckBox
+            {...register('agree' + String(sequence))}
+            type="checkbox"
+            id={'agree' + String(sequence)}
+          />
+        </CheckWrapper>
+      </TitleBox>
+      <AgreeContentBox $isRefer={sequence === 2 ? true : false}>
+        <AgreeContent $isRefer={sequence === 2 ? true : false}>
+          {text}
+        </AgreeContent>
+      </AgreeContentBox>
+    </Container>
+  );
+};
 
 export default PersonalAgreeBox;
