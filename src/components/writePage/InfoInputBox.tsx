@@ -4,6 +4,14 @@ import { PART } from '../../pages/ApplyWrite/data/InfoInputData';
 import UserInfoInput from './UserInfoInput';
 import SelectBox from './SelectBox';
 
+export interface InputItemData {
+  id: number;
+  label: string;
+  name: string;
+  placeholder: string;
+  isDisabled?: boolean;
+}
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -67,7 +75,7 @@ const PartBtnBox = styled.div`
   justify-content: space-between;
 `;
 
-const PartBtn = styled.button`
+const PartBtn = styled.button<{ $select: string }>`
   width: 74px;
   height: 26px;
   border-radius: 8px;
@@ -150,6 +158,8 @@ const InfoInputBox = ({
             register={register}
             errors={errors}
             placeholder={item.placeholder}
+            isDisabled={false}
+            studentIdValue={''}
           />
         ))}
         <ApplyPartBox>

@@ -1,6 +1,18 @@
 import styled from 'styled-components';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
+import { InputItemData } from './InfoInputBox';
 
-const AllContainer = styled.div`
+interface UserInfoInputProps {
+  label: string;
+  name: string;
+  isDisabled: boolean;
+  register: UseFormRegister<InputItemData>;
+  errors: FieldErrors<InputItemData>;
+  placeholder: string;
+  studentIdValue: string;
+}
+
+const AllContainer = styled.div<{ $isRight: boolean }>`
   display: flex;
   flex-direction: column;
   height: ${({ $isRight }) => ($isRight ? '42px' : 'none')};
@@ -87,7 +99,7 @@ const UserInfoInput = ({
   errors,
   placeholder,
   studentIdValue,
-}) => {
+}: UserInfoInputProps) => {
   return (
     <AllContainer $isRight={name === 'email' || name === 'phoneNumber'}>
       <InputContainer>

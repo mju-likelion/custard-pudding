@@ -52,7 +52,7 @@ const Title = styled.div`
     margin-bottom: 50px;
   }
 `;
-const AllHelperText = styled.div`
+const AllHelperText = styled.div<{ $isError: boolean }>`
   margin-bottom: 15px;
   font-size: 12px;
   font-weight: 300;
@@ -103,7 +103,7 @@ const ApplyWrite = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [selectedPart, setSelectedPart] = useState('WEB');
+  const [selectedPart, setSelectedPart] = useState<string>('WEB');
   const [applicationData, setApplicationData] = useState({});
   const [files, setFiles] = useState({});
   const [fileLink, setFileLink] = useState('');
@@ -127,7 +127,7 @@ const ApplyWrite = () => {
   const startDate = new Date('2024-03-01 00:00:00').getTime();
   const lastDate = new Date('2024-03-07 23:59:59').getTime();
 
-  const handlePartClick = (part) => {
+  const handlePartClick = (part: string) => {
     setSelectedPart(part);
     getApplicationData(part, setApplicationData);
   };
@@ -196,7 +196,7 @@ const ApplyWrite = () => {
   }, [studentIdValue]);
 
   useEffect(() => {
-    const handleBeforeUnload = (event) => {
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
       event.preventDefault();
       event.returnValue = false; // Chrome에서 returnValue set 필요
     };

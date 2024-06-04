@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 
-const Container = styled.button`
+interface SubmitButtonProps {
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
+}
+
+const Container = styled.button<{ $disabled: boolean }>`
   width: 114px;
   height: 44px;
   display: flex;
@@ -29,7 +34,11 @@ const Container = styled.button`
   }
 `;
 
-const SubmitButton = ({ children, disabled, onClick }) => {
+const SubmitButton = ({
+  children,
+  disabled = false,
+  onClick,
+}: PropsWithChildren<SubmitButtonProps>) => {
   return (
     <Container
       type="submit"
