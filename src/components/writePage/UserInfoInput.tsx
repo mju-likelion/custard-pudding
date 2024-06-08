@@ -1,15 +1,23 @@
 import styled from 'styled-components';
-import { FieldErrors, UseFormRegister } from 'react-hook-form';
+import {
+  FieldErrors,
+  UseFormRegister,
+  UseFormGetValues,
+  UseFormSetValue,
+} from 'react-hook-form';
 import { InputItemData } from './InfoInputBox';
+import { DefaultValuesType } from 'pages/ApplyWrite/data/HookFormDefaultData';
 
 interface UserInfoInputProps {
   label: string;
-  name: string;
-  isDisabled: boolean;
+  name: keyof InputItemData;
+  isDisabled: boolean | undefined;
   register: UseFormRegister<InputItemData>;
   errors: FieldErrors<InputItemData>;
-  placeholder: string;
-  studentIdValue: string;
+  placeholder: string | undefined;
+  studentIdValue: string | null | undefined;
+  setValue?: UseFormSetValue<DefaultValuesType>;
+  getValues?: UseFormGetValues<DefaultValuesType>;
 }
 
 const AllContainer = styled.div<{ $isRight: boolean }>`
@@ -52,7 +60,7 @@ const InfoLabel = styled.p`
   }
 `;
 
-const InfoInput = styled.input`
+const InfoInput = styled.input<{ $error: boolean }>`
   width: 100%;
   height: 100%;
   padding: 8px 10px;
@@ -77,7 +85,7 @@ const InfoInput = styled.input`
     font-size: 14px;
   }
 `;
-const InfoHelperText = styled.div`
+const InfoHelperText = styled.div<{ $errors: boolean }>`
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;
@@ -100,24 +108,29 @@ const UserInfoInput = ({
   placeholder,
   studentIdValue,
 }: UserInfoInputProps) => {
+  const isRight = name === 'email' || name === 'phoneNumber';
   return (
-    <AllContainer $isRight={name === 'email' || name === 'phoneNumber'}>
+    <AllContainer $isRight={isRight}>
       <InputContainer>
         <InfoLabel>{label}</InfoLabel>
         {isDisabled ? (
-          <InfoInput disabled $error={errors[name]} value={studentIdValue} />
+          <InfoInput
+            disabled
+            $error={!!errors[name]}
+            value={studentIdValue ?? ''}
+          />
         ) : (
           <InfoInput
             placeholder={placeholder}
-            id={name}
-            {...register(name)}
-            $error={errors[name]}
+            id={name as string}
+            {...register(name as string)}
+            $error={!!errors[name]}
           />
         )}
       </InputContainer>
       {(name === 'email' || name === 'phoneNumber') && errors[name] && (
-        <InfoHelperText $errors={errors[name]}>
-          {errors[name].message}
+        <InfoHelperText $errors={!!errors[name]}>
+          {errors[name]?.message}
         </InfoHelperText>
       )}
     </AllContainer>

@@ -1,15 +1,35 @@
+import React from 'react';
 import styled from 'styled-components';
 import { INPUT_LABEL_LIST } from '../../pages/ApplyWrite/data/InfoInputData';
 import { PART } from '../../pages/ApplyWrite/data/InfoInputData';
 import UserInfoInput from './UserInfoInput';
+import {
+  FieldErrors,
+  UseFormGetValues,
+  UseFormRegister,
+  UseFormSetValue,
+} from 'react-hook-form';
 import SelectBox from './SelectBox';
+import { DefaultValuesType } from 'pages/ApplyWrite/data/HookFormDefaultData';
 
 export interface InputItemData {
   id: number;
   label: string;
-  name: string;
+  name: 'name' | 'phoneNumber' | string;
   placeholder: string;
   isDisabled?: boolean;
+  [key: string]: number | string | boolean | undefined;
+}
+
+export interface InfoInputBoxProps {
+  register: UseFormRegister<InputItemData>;
+  errors: FieldErrors<InputItemData>;
+  selectedPart: string;
+  handlePartClick: (part: string) => void;
+  setValue: UseFormSetValue<DefaultValuesType>;
+  majorData: string;
+  getValues: UseFormGetValues<DefaultValuesType>;
+  studentIdValue: string | null;
 }
 
 const Container = styled.div`
@@ -75,7 +95,7 @@ const PartBtnBox = styled.div`
   justify-content: space-between;
 `;
 
-const PartBtn = styled.button<{ $select: string }>`
+const PartBtn = styled.button<{ $select: boolean }>`
   width: 74px;
   height: 26px;
   border-radius: 8px;
@@ -108,7 +128,7 @@ const HorizontalLine = styled.div`
   }
 `;
 
-const InfoInputBox = ({
+const InfoInputBox: React.FC<InfoInputBoxProps> = ({
   register,
   errors,
   selectedPart,
@@ -143,7 +163,6 @@ const InfoInputBox = ({
               getValues={getValues}
               studentIdValue={studentIdValue}
               placeholder={item.placeholder}
-              majorData={majorData}
             />
           ),
         )}

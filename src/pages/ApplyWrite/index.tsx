@@ -107,7 +107,7 @@ const ApplyWrite = () => {
   const [applicationData, setApplicationData] = useState({});
   const [files, setFiles] = useState({});
   const [fileLink, setFileLink] = useState('');
-  const [studentIdValue, setStudentIdValue] = useState('');
+  const [studentIdValue, setStudentIdValue] = useState<string | null>('');
   const [isLoading, setIsLoading] = useState('');
 
   const {
@@ -176,9 +176,10 @@ const ApplyWrite = () => {
     }
   };
   useEffect(() => {
-    setStudentIdValue(sessionStorage.getItem('studentId'));
+    const storedStudentId = sessionStorage.getItem('studentId');
+    if (storedStudentId) setStudentIdValue(storedStudentId);
     getApplicationData(selectedPart, setApplicationData, navigate);
-  }, []);
+  }, [selectedPart, navigate]);
 
   useEffect(() => {
     if (Object.keys(files).length > 0) {
