@@ -11,6 +11,7 @@ import {
 } from 'react-hook-form';
 import SelectBox from './SelectBox';
 import { DefaultValuesType } from 'pages/ApplyWrite/data/HookFormDefaultData';
+import { MajorDataItem } from './SelectBox';
 
 export interface InputItemData {
   id: number;
@@ -27,7 +28,7 @@ export interface InfoInputBoxProps {
   selectedPart: string;
   handlePartClick: (part: string) => void;
   setValue: UseFormSetValue<DefaultValuesType>;
-  majorData: string;
+  majorData: MajorDataItem[];
   getValues: UseFormGetValues<DefaultValuesType>;
   studentIdValue: string | null;
 }

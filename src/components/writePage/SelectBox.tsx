@@ -2,6 +2,22 @@ import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useEffect } from 'react';
 import { GRADE_DATA } from '../../pages/ApplyWrite/data/SelectGradeData';
+import { UseFormGetValues, UseFormSetValue } from 'react-hook-form';
+import { DefaultValuesType } from 'pages/ApplyWrite/data/HookFormDefaultData';
+
+export interface MajorDataItem {
+  id: string;
+  name: string;
+  sequence: number;
+}
+
+interface SelectboxProps {
+  name: 'grade' | 'majors';
+  setValue: UseFormSetValue<DefaultValuesType>;
+  majorData: MajorDataItem[];
+  getValues: UseFormGetValues<DefaultValuesType>;
+  label: string;
+}
 
 const AllContainer = styled.div`
   width: 226px;
@@ -36,7 +52,7 @@ const SelectContainer = styled.div`
   height: 100%;
   position: relative;
 `;
-const SelectWrapper = styled.div`
+const SelectWrapper = styled.div<{ $isOpen: boolean }>`
   &::after {
     content: ${({ $isOpen }) => ($isOpen ? '"∧"' : '"∨"')};
     position: absolute;
@@ -129,7 +145,13 @@ const Option = styled.div`
   }
 `;
 
-const SelectBox = ({ name, setValue, majorData, getValues, label }) => {
+const SelectBox = ({
+  name,
+  setValue,
+  majorData,
+  getValues,
+  label,
+}: SelectboxProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const SelectContainerRef = useRef(null);
 
