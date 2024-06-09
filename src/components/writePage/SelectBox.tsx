@@ -84,7 +84,7 @@ const SelectWrapper = styled.div<{ $isOpen: boolean }>`
     font-size: 14px;
   }
 `;
-const SelectOptions = styled.div`
+const SelectOptions = styled.div<{ $isScroll: boolean }>`
   width: 184px;
   border-radius: 8px;
   margin-top: 10px;
@@ -155,7 +155,7 @@ const SelectBox = ({
   const [isOpen, setIsOpen] = useState(false);
   const SelectContainerRef = useRef(null);
 
-  const handleClickOutside = (e) => {
+  const handleClickOutside = (e: MouseEvent) => {
     if (
       SelectContainerRef.current &&
       !SelectContainerRef.current.contains(e.target)
@@ -175,7 +175,7 @@ const SelectBox = ({
   };
   //
 
-  const setData = (data) => {
+  const setData = (data: string) => {
     setValue(name, data);
     setIsOpen(false);
   };
