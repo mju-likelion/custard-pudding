@@ -17,6 +17,7 @@ interface SelectboxProps {
   majorData: MajorDataItem[];
   getValues: UseFormGetValues<DefaultValuesType>;
   label: string;
+  hasError?: boolean;
 }
 
 const AllContainer = styled.div`
@@ -52,7 +53,7 @@ const SelectContainer = styled.div`
   height: 100%;
   position: relative;
 `;
-const SelectWrapper = styled.div<{ $isOpen: boolean }>`
+const SelectWrapper = styled.div<{ $isOpen: boolean; hasError?: boolean }>`
   &::after {
     content: ${({ $isOpen }) => ($isOpen ? '"∧"' : '"∨"')};
     position: absolute;
@@ -72,8 +73,8 @@ const SelectWrapper = styled.div<{ $isOpen: boolean }>`
   align-items: center;
   cursor: pointer;
 
-  border: ${({ error, theme }) =>
-    error ? `1px solid ${theme.colors.pink200}` : 'none'};
+  border: ${({ hasError, theme }) =>
+    hasError ? `1px solid ${theme.colors.pink200}` : 'none'};
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.background300};
   padding: 0 10px;
@@ -151,6 +152,7 @@ const SelectBox = ({
   majorData,
   getValues,
   label,
+  hasError,
 }: SelectboxProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const SelectContainerRef = useRef(null);

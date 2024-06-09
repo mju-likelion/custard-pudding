@@ -151,6 +151,7 @@ const InfoInputBox: React.FC<InfoInputBoxProps> = ({
               majorData={majorData}
               getValues={getValues}
               setValue={setValue}
+              hasError={!!errors.majors}
             />
           ) : (
             <UserInfoInput
