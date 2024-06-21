@@ -158,10 +158,7 @@ const SelectBox = ({
   const SelectContainerRef = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (e: MouseEvent) => {
-    if (
-      SelectContainerRef.current &&
-      !SelectContainerRef.current.contains(e.target as HTMLElement)
-    ) {
+    if (!SelectContainerRef.current?.contains(e.target as HTMLElement)) {
       setIsOpen(false);
     }
   };
