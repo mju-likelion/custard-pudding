@@ -93,12 +93,14 @@ const ApplyAnswer = ({
   value,
   maxLength,
 }: ApplyAnswerProps) => {
+  const length =
+    typeof value[name] === 'string' ? (value[name] as string).length : 0;
+
   return (
     <AnswerContainer htmlFor={name}>
       <AnswerTextarea id={name} {...register(name)} maxLength={maxLength} />
       <AnswerLength>
-        {/* @Todo value[name]이 string, boolean 이 있음. string 형식일  때만 아래 요구사항을 수행하도록 변경하기 */}
-        ( {typeof value[name] === 'string' && value[name].length} / {maxLength})
+        ( {length} / {maxLength})
       </AnswerLength>
     </AnswerContainer>
   );
