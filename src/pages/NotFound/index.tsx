@@ -11,10 +11,10 @@ const PageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     height: calc(100vh - 70px - 100px);
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     height: calc(100vh - 70px - 100px);
   }
 `;
@@ -24,12 +24,12 @@ const ErrorContainer = styled.div`
   align-items: center;
   gap: 20px;
   width: 300px;
-  @media ${({ theme }) => theme.devices.TABLET} {
+  @media ${({ theme }) => theme.size.tablet} {
     flex-direction: row;
     gap: 20px;
     width: 500px;
   }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
+  @media ${({ theme }) => theme.size.desktop} {
     gap: 20px;
     width: 760px;
   }
