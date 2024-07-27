@@ -155,7 +155,6 @@ const HomeworkBox = ({
   };
 
   const onClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
     setFiles({});
     setFileLink('');
     const fileInput = document.getElementById('file') as HTMLInputElement;
