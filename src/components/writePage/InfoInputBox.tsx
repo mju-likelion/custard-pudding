@@ -12,6 +12,7 @@ import {
 import SelectBox from './SelectBox';
 import { DefaultValuesType } from 'pages/ApplyWrite/data/HookFormDefaultData';
 import { MajorDataItem } from './SelectBox';
+import { IPartKey } from 'pages/ApplyWrite/data/HomeworkData';
 
 export interface InputItemData {
   id: number;
@@ -26,7 +27,7 @@ export interface InfoInputBoxProps {
   register: UseFormRegister<InputItemData>;
   errors: FieldErrors<InputItemData>;
   selectedPart: string;
-  handlePartClick: (part: string) => void;
+  handlePartClick: (part: IPartKey) => void;
   setValue: UseFormSetValue<DefaultValuesType>;
   majorData: MajorDataItem[];
   getValues: UseFormGetValues<DefaultValuesType>;
@@ -190,7 +191,7 @@ const InfoInputBox: React.FC<InfoInputBoxProps> = ({
               <PartBtn
                 key={item.id}
                 $select={selectedPart === item.partEn}
-                onClick={() => handlePartClick(item.partEn)}
+                onClick={() => handlePartClick(item.partEn as IPartKey)}
                 type="button"
               >
                 {item.partKo}

@@ -1,4 +1,11 @@
-export const HOMEWORK_DATA = {
+export type IPartKey = 'WEB' | 'SERVER';
+// export type IHOMEWORK_DATA = Record<IPart, { [key: string]: any }>;
+export type IHOMEWORK_DATA = Record<
+  IPartKey,
+  { title: string; taskHelperText: string; LinkHelperText?: string }
+>;
+
+export const HOMEWORK_DATA: IHOMEWORK_DATA = {
   WEB: {
     title: '자기소개 페이지를 첨부해주세요 (웹파트)',
     taskHelperText: '※ 학번.zip 파일 형식으로 첨부해주세요.',

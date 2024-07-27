@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { UseFormRegister } from 'react-hook-form';
 import ApplyAnswer from './ApplyAnswer';
+import { IntroduceItem, ValuesType, ValueTypeKeys } from 'pages/ApplyWrite';
 
 const Question = styled.p`
   align-self: flex-start;
@@ -26,7 +28,12 @@ const Question = styled.p`
   }
 `;
 
-const Introduction = ({ register, value, questionList }) => {
+interface IntroductionProps {
+  register: UseFormRegister<any>;
+  value: ValuesType;
+  questionList: IntroduceItem[];
+}
+const Introduction = ({ register, value, questionList }: IntroductionProps) => {
   return (
     <>
       {questionList?.map((item) => (
@@ -36,7 +43,7 @@ const Introduction = ({ register, value, questionList }) => {
           </Question>
           <ApplyAnswer
             register={register}
-            name={'question' + String(item.sequence)}
+            name={('question' + String(item.sequence)) as ValueTypeKeys}
             value={value}
             maxLength={item.maxLength}
           />

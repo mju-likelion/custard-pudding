@@ -15,6 +15,7 @@ import {
   postApplicationData,
   postFileData,
 } from '../../api/ApplyWrite';
+import { IPartKey } from './data/HomeworkData';
 
 const AllContainer = styled.div`
   width: 100%;
@@ -98,17 +99,78 @@ const AgreeContainer = styled.div`
     margin-bottom: 90px;
   }
 `;
+export interface IntroduceItem {
+  id: string;
+  title: string;
+  maxLength: number;
+  sequence: number;
+  part: string;
+}
+interface AgreementItem {
+  id: string;
+  content: string;
+  sequence: number;
+}
+
+interface MajorItem {
+  id: string;
+  name: string;
+  sequence: number;
+}
+
+export interface ApplicationData {
+  introduces: IntroduceItem[];
+  agreements: AgreementItem[];
+  majors: MajorItem[];
+}
+
+export type ValueTypeKeys =
+  | 'question1'
+  | 'question2'
+  | 'question3'
+  | 'question4'
+  | 'question5'
+  | 'grade'
+  | 'majors'
+  | 'agree1'
+  | 'agree2'
+  | 'agree3'
+  | 'link'
+  | 'name'
+  | 'phoneNumber'
+  | 'email';
+
+export interface ValuesType {
+  question1: string;
+  question2: string;
+  question3: string;
+  question4: string;
+  question5: string;
+  grade: string;
+  majors: string;
+  agree1: boolean;
+  agree2: boolean;
+  agree3: boolean;
+  link: string;
+  name: string;
+  phoneNumber: string;
+  email: string;
+}
 
 const ApplyWrite = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [selectedPart, setSelectedPart] = useState<string>('WEB');
-  const [applicationData, setApplicationData] = useState({});
+  const [selectedPart, setSelectedPart] = useState<IPartKey>('WEB');
+  const [applicationData, setApplicationData] = useState<ApplicationData>({
+    introduces: [],
+    agreements: [],
+    majors: [],
+  });
   const [files, setFiles] = useState({});
   const [fileLink, setFileLink] = useState('');
   const [studentIdValue, setStudentIdValue] = useState<string | null>('');
-  const [isLoading, setIsLoading] = useState('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const {
     register,
@@ -117,7 +179,7 @@ const ApplyWrite = () => {
     watch,
     setValue,
     getValues,
-  } = useForm({
+  } = useForm<any>({
     resolver: yupResolver(writeValidationSchema),
     mode: 'onChange',
     defaultValues: DEFAULT_VALUES,
@@ -127,7 +189,7 @@ const ApplyWrite = () => {
   const startDate = new Date('2024-03-01 00:00:00').getTime();
   const lastDate = new Date('2024-03-07 23:59:59').getTime();
 
-  const handlePartClick = (part: string) => {
+  const handlePartClick = (part: IPartKey) => {
     setSelectedPart(part);
     getApplicationData(part, setApplicationData);
   };
@@ -137,7 +199,10 @@ const ApplyWrite = () => {
     const todayDate = new Date().getTime();
 
     if (startDate <= todayDate && todayDate <= lastDate) {
-      const findMajorId = (majors, majorName) => {
+      const findMajorId = (
+        majors: MajorItem[],
+        majorName: string,
+      ): string | null => {
         for (let i = 0; i < majors.length; i++) {
           if (majors[i].name === majorName) {
             return majors[i].id;
@@ -146,11 +211,11 @@ const ApplyWrite = () => {
         return null;
       };
 
-      const introducesObject = {};
+      const introducesObject: { [key: string]: string } = {};
       applicationData.introduces.forEach((item, idx) => {
         introducesObject[item.id] = value['question' + (idx + 1)];
       });
-      const agreementObject = {};
+      const agreementObject: { [key: string]: boolean } = {};
       applicationData.agreements.forEach((item, idx) => {
         agreementObject[item.id] = value['agree' + (idx + 1)];
       });
@@ -184,10 +249,10 @@ const ApplyWrite = () => {
   useEffect(() => {
     if (Object.keys(files).length > 0) {
       const formData = new FormData();
-      formData.append('file', files[0]);
+      formData.append('file', (files as any)[0]);
       postFileData(formData, setFileLink, setFiles);
     }
-  }, [files[0]]);
+  }, [files]);
 
   useEffect(() => {
     if (studentIdValue === null) {
@@ -264,8 +329,8 @@ const ApplyWrite = () => {
           {value.agree1 &&
           value.agree2 &&
           !isLoading &&
-          (files[0] || value.link) ? (
-            <SubmitButton $isActive={true}>제출하기</SubmitButton>
+          ((files as any)[0] || value.link) ? (
+            <SubmitButton disabled={true}>제출하기</SubmitButton>
           ) : (
             <SubmitButton disabled={true}>제출하기</SubmitButton>
           )}

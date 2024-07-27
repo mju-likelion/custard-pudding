@@ -1,5 +1,19 @@
 import styled from 'styled-components';
-import { HOMEWORK_DATA } from '../../pages/ApplyWrite/data/HomeworkData';
+import {
+  HOMEWORK_DATA,
+  IPartKey,
+} from '../../pages/ApplyWrite/data/HomeworkData';
+import React from 'react';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
+
+interface HomeworkBoxProps {
+  selectedPart: IPartKey;
+  register: UseFormRegister<any>;
+  files: any;
+  setFiles: any;
+  errors: FieldErrors<any>;
+  setFileLink: any;
+}
 
 const Title = styled.p`
   align-self: flex-start;
@@ -20,7 +34,7 @@ const WebInput = styled.div`
   display: flex;
   gap: 10px;
 `;
-const WebHomeworkWrapper = styled.div`
+const WebHomeworkWrapper = styled.div<{ $isExistFile: any }>`
   width: 244px;
   height: 30px;
   border-radius: 8px;
@@ -114,7 +128,7 @@ const HomeworkHelperText = styled.p`
     font-size: 16px;
   }
 `;
-const InfoHelperText = styled.div`
+const InfoHelperText = styled.div<{ $errors: boolean }>`
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;
@@ -135,16 +149,16 @@ const HomeworkBox = ({
   setFiles,
   errors,
   setFileLink,
-}) => {
-  const handleFileChange = (e) => {
+}: HomeworkBoxProps) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFiles(e.target.files);
   };
 
-  const onClick = (e) => {
+  const onClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     setFiles({});
     setFileLink('');
-    const fileInput = document.getElementById('file');
+    const fileInput = document.getElementById('file') as HTMLInputElement;
     if (fileInput) {
       fileInput.value = '';
     }
@@ -177,8 +191,8 @@ const HomeworkBox = ({
         <ServerHomeworkInput {...register('link')} />
       )}
       {selectedPart === 'SERVER' && (
-        <InfoHelperText $errors={errors['link']}>
-          {errors['link']?.message}
+        <InfoHelperText $errors={errors['link'] ? true : false}>
+          <>{errors['link']?.message}</>
         </InfoHelperText>
       )}
       <HomeworkHelperText>

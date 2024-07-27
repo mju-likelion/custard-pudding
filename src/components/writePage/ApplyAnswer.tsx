@@ -1,4 +1,13 @@
 import styled from 'styled-components';
+import { UseFormRegister } from 'react-hook-form';
+import { ValuesType, ValueTypeKeys } from 'pages/ApplyWrite';
+
+interface ApplyAnswerProps {
+  register: UseFormRegister<any>;
+  name: ValueTypeKeys;
+  value: ValuesType;
+  maxLength: number;
+}
 
 const AnswerContainer = styled.label`
   width: 330px;
@@ -78,12 +87,18 @@ const AnswerTextarea = styled.textarea`
   }
 `;
 
-const ApplyAnswer = ({ register, name, value, maxLength }) => {
+const ApplyAnswer = ({
+  register,
+  name,
+  value,
+  maxLength,
+}: ApplyAnswerProps) => {
   return (
     <AnswerContainer htmlFor={name}>
       <AnswerTextarea id={name} {...register(name)} maxLength={maxLength} />
       <AnswerLength>
-        ( {value[name].length} / {maxLength} )
+        {/* @Todo value[name]이 string, boolean 이 있음. string 형식일  때만 아래 요구사항을 수행하도록 변경하기 */}
+        ( {typeof value[name] === 'string' && value[name].length} / {maxLength})
       </AnswerLength>
     </AnswerContainer>
   );

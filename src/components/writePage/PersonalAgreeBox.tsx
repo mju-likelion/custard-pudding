@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 import agreeIcon from '../../assets/imgs/agree_icon.svg';
+import { UseFormRegister } from 'react-hook-form';
+
+interface PersonalAgreeBoxProps {
+  text: string;
+  sequence: number;
+  register: UseFormRegister<any>;
+}
 
 const Container = styled.div`
   display: flex;
@@ -76,7 +83,7 @@ const CheckBox = styled.input`
     height: 28px;
   }
 `;
-const AgreeContentBox = styled.div`
+const AgreeContentBox = styled.div<{ $isRefer: boolean }>`
   width: 326px;
   height: ${({ $isRefer }) => ($isRefer ? ' 100px' : '156px')};
   background-color: ${({ theme }) => theme.colors.background300};
@@ -93,7 +100,7 @@ const AgreeContentBox = styled.div`
     padding: 40px 40px 40px 60px;
   }
 `;
-const AgreeContent = styled.div`
+const AgreeContent = styled.div<{ $isRefer: boolean }>`
   width: 100%;
   height: 100%;
   font-size: 10px;
@@ -133,7 +140,11 @@ const AgreeContent = styled.div`
   }
 `;
 
-const PersonalAgreeBox = ({ text, sequence, register }) => {
+const PersonalAgreeBox = ({
+  text,
+  sequence,
+  register,
+}: PersonalAgreeBoxProps) => {
   return (
     <Container>
       <TitleBox>
