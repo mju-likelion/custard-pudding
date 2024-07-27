@@ -1,9 +1,13 @@
+import { IPartKey } from 'pages/ApplyWrite/data/HomeworkData';
 import { Axios } from './Axios';
+import { NavigateFunction } from 'react-router-dom';
+import { ApplicationData } from 'pages/ApplyWrite';
+import React from 'react';
 
 export const getApplicationData = (
-  part,
-  setApplicationDataFunction,
-  navigateFunction,
+  part: IPartKey,
+  setApplicationDataFunction: (param: any) => void,
+  navigateFunction?: NavigateFunction,
 ) => {
   Axios.get(`/application/${part}`)
     .then((res) => {
@@ -22,14 +26,14 @@ export const getApplicationData = (
           '서버에 의도치 않은 에러가 발생했습니다. \n 공식 사이트 채널톡 혹은 인스타 DM으로 문의 부탁드립니다.',
         );
       }
-      navigateFunction('/');
+      navigateFunction?.('/');
     });
 };
 
 export const postFileData = (
-  formData,
-  setFileLinkFunction,
-  setFilesFunction,
+  formData: FormData,
+  setFileLinkFunction: (param: any) => void,
+  setFilesFunction: (param: { [key: string]: any }) => void,
 ) => {
   Axios.post('/application/file', formData, {
     headers: {
@@ -45,7 +49,11 @@ export const postFileData = (
     });
 };
 
-export const postApplicationData = (data, navigateFunction, setIsLoading) => {
+export const postApplicationData = (
+  data: { [key: string]: any },
+  navigateFunction: NavigateFunction,
+  setIsLoading: (param: boolean) => void,
+) => {
   Axios.post('/application', data, {
     headers: {
       'Content-Type': `application/json`,

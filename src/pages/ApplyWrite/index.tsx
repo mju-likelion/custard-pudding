@@ -15,17 +15,162 @@ import {
   postApplicationData,
   postFileData,
 } from '../../api/ApplyWrite';
+import { IPartKey } from './data/HomeworkData';
+
+const AllContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+  @media ${({ theme }) => theme.size.tablet} {
+    margin-bottom: 60px;
+  }
+  @media ${({ theme }) => theme.size.desktop} {
+    margin-bottom: 100px;
+  }
+`;
+const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 100px 0;
+  @media ${({ theme }) => theme.size.tablet} {
+    margin: 120px 0 200px 0;
+  }
+  @media ${({ theme }) => theme.size.desktop} {
+    margin: 175px 0 200px 0;
+  }
+`;
+const Title = styled.div`
+  align-self: flex-start;
+  margin-bottom: 20px;
+  color: ${({ theme }) => theme.colors.pink100};
+  font-size: 20px;
+  font-weight: 700;
+  @media ${({ theme }) => theme.size.tablet} {
+    font-size: 32px;
+    margin-bottom: 50px;
+  }
+`;
+const AllHelperText = styled.div<{ $isError: boolean }>`
+  margin-bottom: 15px;
+  font-size: 12px;
+  font-weight: 300;
+  color: ${({ theme }) => theme.colors.pink200};
+  visibility: ${({ $isError }) => ($isError ? 'visible' : 'hidden')};
+  @media ${({ theme }) => theme.size.tablet} {
+    margin-bottom: 28px;
+    font-size: 17px;
+  }
+  @media ${({ theme }) => theme.size.desktop} {
+    font-size: 20px;
+  }
+`;
+
+const IntroduceContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+  @media ${({ theme }) => theme.size.tablet} {
+    margin-bottom: 90px;
+  }
+`;
+const HomeworkContainer = styled.div`
+  width: 330px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 110px;
+
+  @media ${({ theme }) => theme.size.tablet} {
+    width: 560px;
+    margin-bottom: 200px;
+  }
+
+  @media ${({ theme }) => theme.size.desktop} {
+    width: 972px;
+  }
+`;
+const AgreeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+  @media ${({ theme }) => theme.size.tablet} {
+    margin-bottom: 90px;
+  }
+`;
+export interface IntroduceItem {
+  id: string;
+  title: string;
+  maxLength: number;
+  sequence: number;
+  part: string;
+}
+interface AgreementItem {
+  id: string;
+  content: string;
+  sequence: number;
+}
+
+interface MajorItem {
+  id: string;
+  name: string;
+  sequence: number;
+}
+
+export interface ApplicationData {
+  introduces: IntroduceItem[];
+  agreements: AgreementItem[];
+  majors: MajorItem[];
+}
+
+export type ValueTypeKeys =
+  | 'question1'
+  | 'question2'
+  | 'question3'
+  | 'question4'
+  | 'question5'
+  | 'grade'
+  | 'majors'
+  | 'agree1'
+  | 'agree2'
+  | 'agree3'
+  | 'link'
+  | 'name'
+  | 'phoneNumber'
+  | 'email';
+
+export interface ValuesType {
+  question1: string;
+  question2: string;
+  question3: string;
+  question4: string;
+  question5: string;
+  grade: string;
+  majors: string;
+  agree1: boolean;
+  agree2: boolean;
+  agree3: boolean;
+  link: string;
+  name: string;
+  phoneNumber: string;
+  email: string;
+}
 
 const ApplyWrite = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [selectedPart, setSelectedPart] = useState('WEB');
-  const [applicationData, setApplicationData] = useState({});
+  const [selectedPart, setSelectedPart] = useState<IPartKey>('WEB');
+  const [applicationData, setApplicationData] = useState<ApplicationData>({
+    introduces: [],
+    agreements: [],
+    majors: [],
+  });
   const [files, setFiles] = useState({});
   const [fileLink, setFileLink] = useState('');
-  const [studentIdValue, setStudentIdValue] = useState('');
-  const [isLoading, setIsLoading] = useState('');
+  const [studentIdValue, setStudentIdValue] = useState<string | null>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const {
     register,
@@ -34,7 +179,7 @@ const ApplyWrite = () => {
     watch,
     setValue,
     getValues,
-  } = useForm({
+  } = useForm<any>({
     resolver: yupResolver(writeValidationSchema),
     mode: 'onChange',
     defaultValues: DEFAULT_VALUES,
@@ -44,9 +189,13 @@ const ApplyWrite = () => {
   const startDate = new Date('2024-03-01 00:00:00').getTime();
   const lastDate = new Date('2024-03-07 23:59:59').getTime();
 
-  const handlePartClick = (part) => {
+  const setApiData = (param: any) => {
+    setApplicationData(param);
+  };
+
+  const handlePartClick = (part: IPartKey) => {
     setSelectedPart(part);
-    getApplicationData(part, setApplicationData);
+    getApplicationData(part, setApiData);
   };
 
   const onSubmit = () => {
@@ -54,7 +203,10 @@ const ApplyWrite = () => {
     const todayDate = new Date().getTime();
 
     if (startDate <= todayDate && todayDate <= lastDate) {
-      const findMajorId = (majors, majorName) => {
+      const findMajorId = (
+        majors: MajorItem[],
+        majorName: string,
+      ): string | null => {
         for (let i = 0; i < majors.length; i++) {
           if (majors[i].name === majorName) {
             return majors[i].id;
@@ -63,11 +215,11 @@ const ApplyWrite = () => {
         return null;
       };
 
-      const introducesObject = {};
+      const introducesObject: { [key: string]: string } = {};
       applicationData.introduces.forEach((item, idx) => {
         introducesObject[item.id] = value['question' + (idx + 1)];
       });
-      const agreementObject = {};
+      const agreementObject: { [key: string]: boolean } = {};
       applicationData.agreements.forEach((item, idx) => {
         agreementObject[item.id] = value['agree' + (idx + 1)];
       });
@@ -85,7 +237,10 @@ const ApplyWrite = () => {
         introduces: introducesObject,
         agreements: agreementObject,
       };
-      postApplicationData(submitFormData, navigate, setIsLoading);
+      const setApiIsLoading = (param: boolean) => {
+        setIsLoading(param);
+      };
+      postApplicationData(submitFormData, navigate, setApiIsLoading);
     } else {
       alert(
         '지원 기간이 아닙니다\n지원 기간: 2024-03-01 00:00:00 ~ 2024-03-07 23:59:59',
@@ -93,17 +248,26 @@ const ApplyWrite = () => {
     }
   };
   useEffect(() => {
-    setStudentIdValue(sessionStorage.getItem('studentId'));
+    const storedStudentId = sessionStorage.getItem('studentId');
+    if (storedStudentId) setStudentIdValue(storedStudentId);
     getApplicationData(selectedPart, setApplicationData, navigate);
-  }, []);
+  }, [selectedPart, navigate]);
+
+  const setApiFormData = (param: any) => {
+    setFileLink(param);
+  };
+
+  const setApiFiles = (param: { [key: string]: any }) => {
+    setFiles({});
+  };
 
   useEffect(() => {
     if (Object.keys(files).length > 0) {
       const formData = new FormData();
-      formData.append('file', files[0]);
-      postFileData(formData, setFileLink, setFiles);
+      formData.append('file', (files as any)[0]);
+      postFileData(formData, setApiFormData, setApiFiles);
     }
-  }, [files[0]]);
+  }, [files]);
 
   useEffect(() => {
     if (studentIdValue === null) {
@@ -113,7 +277,7 @@ const ApplyWrite = () => {
   }, [studentIdValue]);
 
   useEffect(() => {
-    const handleBeforeUnload = (event) => {
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
       event.preventDefault();
       event.returnValue = false; // Chrome에서 returnValue set 필요
     };
@@ -180,8 +344,8 @@ const ApplyWrite = () => {
           {value.agree1 &&
           value.agree2 &&
           !isLoading &&
-          (files[0] || value.link) ? (
-            <SubmitButton $isActive={true}>제출하기</SubmitButton>
+          ((files as any)[0] || value.link) ? (
+            <SubmitButton disabled={true}>제출하기</SubmitButton>
           ) : (
             <SubmitButton disabled={true}>제출하기</SubmitButton>
           )}
@@ -190,88 +354,5 @@ const ApplyWrite = () => {
     </form>
   );
 };
-
-const AllContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 40px;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    margin-bottom: 60px;
-  }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    margin-bottom: 100px;
-  }
-`;
-const InfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 100px 0;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    margin: 120px 0 200px 0;
-  }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    margin: 175px 0 200px 0;
-  }
-`;
-const Title = styled.div`
-  align-self: flex-start;
-  margin-bottom: 20px;
-  color: ${({ theme }) => theme.colors.MAIN_PINK};
-  font-size: 20px;
-  font-weight: 700;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    font-size: 32px;
-    margin-bottom: 50px;
-  }
-`;
-const AllHelperText = styled.div`
-  margin-bottom: 15px;
-  font-size: 12px;
-  font-weight: 300;
-  color: ${({ theme }) => theme.colors.HOVER_BTN};
-  visibility: ${({ $isError }) => ($isError ? 'visible' : 'hidden')};
-  @media ${({ theme }) => theme.devices.TABLET} {
-    margin-bottom: 28px;
-    font-size: 17px;
-  }
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    font-size: 20px;
-  }
-`;
-
-const IntroduceContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 60px;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    margin-bottom: 90px;
-  }
-`;
-const HomeworkContainer = styled.div`
-  width: 330px;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 110px;
-
-  @media ${({ theme }) => theme.devices.TABLET} {
-    width: 560px;
-    margin-bottom: 200px;
-  }
-
-  @media ${({ theme }) => theme.devices.DESKTOP} {
-    width: 972px;
-  }
-`;
-const AgreeContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 60px;
-  @media ${({ theme }) => theme.devices.TABLET} {
-    margin-bottom: 90px;
-  }
-`;
 
 export default ApplyWrite;

@@ -11,3 +11,5 @@ export const DEFAULT_VALUES = {
   agree3: false,
   link: '',
 };
+
+export type DefaultValuesType = typeof DEFAULT_VALUES;
