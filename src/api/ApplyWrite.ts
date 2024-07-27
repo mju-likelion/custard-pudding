@@ -6,9 +6,7 @@ import React from 'react';
 
 export const getApplicationData = (
   part: IPartKey,
-  setApplicationDataFunction: React.Dispatch<
-    React.SetStateAction<ApplicationData>
-  >,
+  setApplicationDataFunction: (param: any) => void,
   navigateFunction?: NavigateFunction,
 ) => {
   Axios.get(`/application/${part}`)
@@ -34,8 +32,8 @@ export const getApplicationData = (
 
 export const postFileData = (
   formData: FormData,
-  setFileLinkFunction: React.Dispatch<React.SetStateAction<string>>,
-  setFilesFunction: React.Dispatch<React.SetStateAction<{}>>,
+  setFileLinkFunction: (param: any) => void,
+  setFilesFunction: (param: { [key: string]: any }) => void,
 ) => {
   Axios.post('/application/file', formData, {
     headers: {
@@ -54,7 +52,7 @@ export const postFileData = (
 export const postApplicationData = (
   data: { [key: string]: any },
   navigateFunction: NavigateFunction,
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  setIsLoading: (param: boolean) => void,
 ) => {
   Axios.post('/application', data, {
     headers: {

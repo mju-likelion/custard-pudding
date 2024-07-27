@@ -189,9 +189,13 @@ const ApplyWrite = () => {
   const startDate = new Date('2024-03-01 00:00:00').getTime();
   const lastDate = new Date('2024-03-07 23:59:59').getTime();
 
+  const setApiData = (param: any) => {
+    setApplicationData(param);
+  };
+
   const handlePartClick = (part: IPartKey) => {
     setSelectedPart(part);
-    getApplicationData(part, setApplicationData);
+    getApplicationData(part, setApiData);
   };
 
   const onSubmit = () => {
@@ -233,7 +237,10 @@ const ApplyWrite = () => {
         introduces: introducesObject,
         agreements: agreementObject,
       };
-      postApplicationData(submitFormData, navigate, setIsLoading);
+      const setApiIsLoading = (param: boolean) => {
+        setIsLoading(param);
+      };
+      postApplicationData(submitFormData, navigate, setApiIsLoading);
     } else {
       alert(
         '지원 기간이 아닙니다\n지원 기간: 2024-03-01 00:00:00 ~ 2024-03-07 23:59:59',
@@ -246,11 +253,19 @@ const ApplyWrite = () => {
     getApplicationData(selectedPart, setApplicationData, navigate);
   }, [selectedPart, navigate]);
 
+  const setApiFormData = (param: any) => {
+    setFileLink(param);
+  };
+
+  const setApiFiles = (param: { [key: string]: any }) => {
+    setFiles({});
+  };
+
   useEffect(() => {
     if (Object.keys(files).length > 0) {
       const formData = new FormData();
       formData.append('file', (files as any)[0]);
-      postFileData(formData, setFileLink, setFiles);
+      postFileData(formData, setApiFormData, setApiFiles);
     }
   }, [files]);
 
