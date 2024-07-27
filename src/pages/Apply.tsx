@@ -10,9 +10,9 @@ import Input from '../components/checkPage/Input';
 import SmallButton from '../components/checkPage/SmallButton';
 import { idValidationSchema } from '../validation/idValidationSchema';
 import CheckCard from '../components/checkPage/CheckCard';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 
-interface StudentData {
+export interface StudentData {
   id: string;
 }
 
@@ -21,6 +21,33 @@ enum STATUS_CODE {
   'SERVER_ERROR' = '401',
   'ALREADY_APPLIED' = '4090',
 }
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 100px - 56px);
+  @media ${({ theme }) => theme.size.tablet} {
+    height: calc(100vh - 100px - 70px);
+  }
+`;
+const InputWrapper = styled.div`
+  margin: 34px 0 60px 0;
+
+  @media ${({ theme }) => theme.size.desktop} {
+    margin: 18px 0 40px 0;
+  }
+`;
+const ContentsWrapper = styled.div`
+  margin: 42px 16px 19px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media ${({ theme }) => theme.size.desktop} {
+    margin: 85px 54px 24px 52px;
+  }
+`;
 
 const Apply = () => {
   const [hasAlreadyApplied, setHasAlreadyApplied] = useState<boolean>(false);
@@ -70,22 +97,22 @@ const Apply = () => {
     }
   };
   const inputSizeValue = {
-    width: '220px',
-    height: '28px',
-    pcWidth: '438px',
-    pcHeight: '56px',
+    width: 220,
+    height: 28,
+    pcWidth: 438,
+    pcHeight: 56,
   };
   const captionSizeValue = {
-    width: '220px',
-    height: '12px',
-    pcWidth: '438px',
-    pcHeight: '24px',
+    width: 220,
+    height: 12,
+    pcWidth: 438,
+    pcHeight: 24,
   };
   const messageSizeValue = {
-    width: '220px',
-    height: '8px',
-    pcWidth: '438px',
-    pcHeight: '20px',
+    width: 220,
+    height: 8,
+    pcWidth: 438,
+    pcHeight: 20,
   };
   const {
     register,
@@ -116,35 +143,9 @@ const Apply = () => {
           </CardLanyard>
         </form>
       )}
-      {hasAlreadyApplied && <CheckCard status="rejected" value={value} />}
+      {hasAlreadyApplied && <CheckCard status="rejected" studentId={value} />}
     </Container>
   );
 };
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: calc(100vh - 100px - 56px);
-  @media ${({ theme }) => theme.size.tablet} {
-    height: calc(100vh - 100px - 70px);
-  }
-`;
-const InputWrapper = styled.div`
-  margin: 34px 0 60px 0;
-
-  @media ${({ theme }) => theme.size.desktop} {
-    margin: 18px 0 40px 0;
-  }
-`;
-const ContentsWrapper = styled.div`
-  margin: 42px 16px 19px 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  @media ${({ theme }) => theme.size.desktop} {
-    margin: 85px 54px 24px 52px;
-  }
-`;
 
 export default Apply;
