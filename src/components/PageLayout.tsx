@@ -4,6 +4,13 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header/Header';
 import Footer from './Footer';
 
+const PageContainer = styled.div`
+  width: 100vw;
+  height: 100%;
+  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.background500};
+`;
+
 const PageLayout = () => {
   const ScrollToTop = () => {
     const location = useLocation();
@@ -23,10 +30,4 @@ const PageLayout = () => {
   );
 };
 
-const PageContainer = styled.div`
-  width: 100vw;
-  height: 100%;
-  color: ${({ theme }) => theme.colors.WHITE_TXT};
-  background-color: ${({ theme }) => theme.colors.PAGE_BG};
-`;
 export default PageLayout;
