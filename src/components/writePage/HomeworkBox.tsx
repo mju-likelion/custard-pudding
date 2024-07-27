@@ -188,12 +188,12 @@ const HomeworkBox = ({
         </WebInput>
       )}
       {selectedPart === 'SERVER' && (
-        <ServerHomeworkInput {...register('link')} />
-      )}
-      {selectedPart === 'SERVER' && (
-        <InfoHelperText $errors={errors['link'] ? true : false}>
-          <>{errors['link']?.message}</>
-        </InfoHelperText>
+        <>
+          <ServerHomeworkInput {...register('link')} />
+          <InfoHelperText $errors={errors['link'] ? true : false}>
+            <>{errors['link']?.message}</>
+          </InfoHelperText>
+        </>
       )}
       <HomeworkHelperText>
         {HOMEWORK_DATA[selectedPart].taskHelperText}
