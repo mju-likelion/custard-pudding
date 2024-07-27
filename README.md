@@ -1,4 +1,11 @@
 # 12기 지원페이지 웹
+<div align=center><img width="400" alt="스크린샷 2024-03-10 오전 11 25 26" src="https://github.com/mju-likelion/custard-pudding/assets/110520124/3c66c9aa-cb34-49ee-9685-f5ec001e3d01"></div>
+<div align=center><img width="400" alt="스크린샷 2024-03-10 오전 11 25 42" src="https://github.com/mju-likelion/custard-pudding/assets/110520124/a13b5c53-77e2-4795-9cd6-dc3b9397375a"></div>
+<div align=center><img width="400" alt="스크린샷 2024-03-10 오전 11 26 24" src="https://github.com/mju-likelion/custard-pudding/assets/110520124/679fb17f-5668-49c4-98fb-4e890181fd0d"></div>
+<div align=center><img width="400" alt="스크린샷 2024-03-10 오전 11 26 24" src="https://github.com/mju-likelion/custard-pudding/assets/117571282/4dcc08f4-6eb3-429b-9ae0-fd325e776f69"></div>
+<div align=center><img width="400" alt="image" src="https://github.com/mju-likelion/custard-pudding/assets/110520124/b56e811a-6c5c-4ad8-9320-f56e2585e9c3"></div>
+
+
 
 ## 📠 Convention
 
@@ -10,6 +17,7 @@
 | develop | 배포 전 작업 기준                  |
 | feature | 기능 단위 구현                     |
 | hotfix  | 서비스 중 긴급 수정 건에 대한 처리 |
+| refactor  | 리팩토링 |
 
 <details>
 <summary>Branch Naming Convention Detail</summary>
