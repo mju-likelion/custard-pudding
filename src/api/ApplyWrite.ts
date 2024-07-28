@@ -1,8 +1,6 @@
 import { IPartKey } from 'pages/ApplyWrite/data/HomeworkData';
 import { Axios } from './Axios';
 import { NavigateFunction } from 'react-router-dom';
-import { ApplicationData } from 'pages/ApplyWrite';
-import React from 'react';
 
 export const getApplicationData = (
   part: IPartKey,
